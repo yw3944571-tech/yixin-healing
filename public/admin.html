@@ -2,21 +2,25 @@
 
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  />
+  <meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+
+>
 
   <title>奕心疗愈舍｜订单管理</title>
 
   <style>
+
     * {
       box-sizing: border-box;
     }
 
     body {
       margin: 0;
+
       font-family:
         -apple-system,
         BlinkMacSystemFont,
@@ -25,330 +29,907 @@
         sans-serif;
 
       background: #f6f3ee;
+
       color: #2d2926;
     }
 
+
+    /* =====================
+       登录页面
+    ===================== */
+
+    #loginPage {
+      min-height: 100vh;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      padding: 20px;
+    }
+
+
+    .login-card {
+      width: 100%;
+
+      max-width: 400px;
+
+      background: white;
+
+      padding: 36px;
+
+      border-radius: 18px;
+
+      box-shadow:
+        0 10px 40px
+        rgba(0, 0, 0, 0.08);
+    }
+
+
+    .login-title {
+      margin: 0;
+
+      color: #292421;
+
+      font-size: 26px;
+    }
+
+
+    .login-subtitle {
+      margin-top: 8px;
+
+      margin-bottom: 28px;
+
+      color: #999;
+
+      font-size: 13px;
+
+      letter-spacing: 0.5px;
+    }
+
+
+    .login-input {
+      width: 100%;
+
+      padding: 14px;
+
+      margin-bottom: 16px;
+
+      border:
+        1px solid #ddd;
+
+      border-radius: 9px;
+
+      font-size: 15px;
+
+      outline: none;
+    }
+
+
+    .login-input:focus {
+      border-color:
+        #c6a56b;
+    }
+
+
+    .login-btn {
+      width: 100%;
+
+      border: none;
+
+      background:
+        #292421;
+
+      color: white;
+
+      padding: 14px;
+
+      border-radius: 9px;
+
+      font-size: 15px;
+
+      cursor: pointer;
+    }
+
+
+    .login-btn:hover {
+      opacity: 0.9;
+    }
+
+
+    .login-error {
+      min-height: 20px;
+
+      margin-top: 15px;
+
+      text-align: center;
+
+      color: #c0392b;
+
+      font-size: 14px;
+    }
+
+
+    /* =====================
+       管理后台
+    ===================== */
+
     .header {
-      background: #292421;
+      background:
+        #292421;
+
       color: white;
 
       padding: 20px;
     }
 
+
     .header-inner {
       max-width: 1200px;
+
       margin: auto;
 
       display: flex;
+
       align-items: center;
+
       justify-content: space-between;
+
       gap: 20px;
     }
 
+
     .brand {
       font-size: 20px;
+
       font-weight: 600;
     }
 
+
     .subtitle {
       font-size: 13px;
+
       opacity: 0.7;
+
       margin-top: 5px;
     }
+
+
+    .header-actions {
+      display: flex;
+
+      gap: 10px;
+
+      align-items: center;
+    }
+
 
     .refresh-btn {
       border: none;
 
-      background: #c6a56b;
+      background:
+        #c6a56b;
+
       color: white;
 
-      padding: 10px 18px;
-      border-radius: 8px;
+      padding:
+        10px 18px;
+
+      border-radius:
+        8px;
 
       cursor: pointer;
+
       font-size: 14px;
     }
 
-    .refresh-btn:hover {
+
+    .logout-btn {
+      border:
+        1px solid
+        rgba(255,255,255,0.3);
+
+      background:
+        transparent;
+
+      color: white;
+
+      padding:
+        10px 18px;
+
+      border-radius:
+        8px;
+
+      cursor: pointer;
+
+      font-size: 14px;
+    }
+
+
+    .refresh-btn:hover,
+    .logout-btn:hover {
       opacity: 0.9;
     }
 
+
     .container {
-      max-width: 1200px;
-      margin: 30px auto;
-      padding: 0 20px;
+      max-width:
+        1200px;
+
+      margin:
+        30px auto;
+
+      padding:
+        0 20px;
     }
+
 
     .stats {
       display: grid;
-      grid-template-columns:
-        repeat(auto-fit, minmax(180px, 1fr));
 
-      gap: 18px;
-      margin-bottom: 25px;
+      grid-template-columns:
+        repeat(
+          auto-fit,
+          minmax(
+            180px,
+            1fr
+          )
+        );
+
+      gap:
+        18px;
+
+      margin-bottom:
+        25px;
     }
+
 
     .stat-card {
-      background: white;
+      background:
+        white;
 
-      padding: 20px;
+      padding:
+        20px;
 
-      border-radius: 12px;
+      border-radius:
+        12px;
 
       box-shadow:
         0 4px 20px
-        rgba(0, 0, 0, 0.05);
+        rgba(
+          0,
+          0,
+          0,
+          0.05
+        );
     }
+
 
     .stat-label {
-      font-size: 13px;
-      color: #888;
+      font-size:
+        13px;
+
+      color:
+        #888;
     }
+
 
     .stat-number {
-      font-size: 30px;
-      margin-top: 10px;
+      font-size:
+        30px;
 
-      font-weight: 600;
+      margin-top:
+        10px;
 
-      color: #2d2926;
+      font-weight:
+        600;
+
+      color:
+        #2d2926;
     }
 
+
     .table-card {
-      background: white;
+      background:
+        white;
 
-      border-radius: 12px;
+      border-radius:
+        12px;
 
-      overflow: hidden;
+      overflow:
+        hidden;
 
       box-shadow:
         0 4px 20px
-        rgba(0, 0, 0, 0.05);
+        rgba(
+          0,
+          0,
+          0,
+          0.05
+        );
     }
+
 
     .table-wrap {
-      overflow-x: auto;
+      overflow-x:
+        auto;
     }
+
 
     table {
-      width: 100%;
-      border-collapse: collapse;
+      width:
+        100%;
 
-      min-width: 1000px;
+      border-collapse:
+        collapse;
+
+      min-width:
+        1000px;
     }
+
 
     th {
-      background: #f1ece4;
+      background:
+        #f1ece4;
 
-      text-align: left;
+      text-align:
+        left;
 
-      padding: 15px;
+      padding:
+        15px;
 
-      font-size: 13px;
+      font-size:
+        13px;
 
-      white-space: nowrap;
+      white-space:
+        nowrap;
     }
 
+
     td {
-      padding: 15px;
+      padding:
+        15px;
 
       border-top:
         1px solid #eee;
 
-      font-size: 14px;
+      font-size:
+        14px;
 
-      vertical-align: top;
+      vertical-align:
+        top;
     }
+
 
     .status {
-      display: inline-block;
+      display:
+        inline-block;
 
-      padding: 5px 10px;
+      padding:
+        5px 10px;
 
-      border-radius: 20px;
+      border-radius:
+        20px;
 
-      font-size: 12px;
+      font-size:
+        12px;
 
-      background: #fff4d6;
+      background:
+        #fff4d6;
 
-      color: #9a6a00;
+      color:
+        #9a6a00;
     }
+
 
     .empty {
-      padding: 80px 20px;
+      padding:
+        80px 20px;
 
-      text-align: center;
+      text-align:
+        center;
 
-      color: #999;
+      color:
+        #999;
     }
+
 
     .loading {
-      padding: 50px;
+      padding:
+        50px;
 
-      text-align: center;
+      text-align:
+        center;
 
-      color: #888;
+      color:
+        #888;
     }
 
-    @media (max-width: 600px) {
+
+    @media (
+      max-width:
+      600px
+    ) {
 
       .header-inner {
-        align-items: flex-start;
-        flex-direction: column;
+        align-items:
+          flex-start;
+
+        flex-direction:
+          column;
       }
 
+
+      .header-actions {
+        width:
+          100%;
+      }
+
+
+      .refresh-btn,
+      .logout-btn {
+        flex:
+          1;
+      }
+
+
       .container {
-        margin-top: 20px;
+        margin-top:
+          20px;
       }
 
     }
+
   </style>
 
 </head>
 
 <body>
 
-  <header class="header">
+  <!-- =====================
+       登录页面
+  ====================== -->
 
-```
-<div class="header-inner">
+  <div
+    id="loginPage"
+  >
 
-  <div>
+<div
+  class="login-card"
+>
 
-    <div class="brand">
-      奕心疗愈舍 · 订单管理
-    </div>
+  <h1
+    class="login-title"
+  >
+    奕心疗愈舍
+  </h1>
 
-    <div class="subtitle">
-      YIXIN HEALING · APPOINTMENT SYSTEM
-    </div>
 
+  <div
+    class="login-subtitle"
+  >
+    ADMIN LOGIN · 管理员登录
   </div>
+
+
+  <input
+    id="username"
+    class="login-input"
+    type="text"
+    placeholder="管理员账号"
+    autocomplete="username"
+  >
+
+
+  <input
+    id="password"
+    class="login-input"
+    type="password"
+    placeholder="管理员密码"
+    autocomplete="current-password"
+  >
+
 
   <button
-    class="refresh-btn"
-    onclick="loadOrders()"
+    class="login-btn"
+    onclick="login()"
   >
-    刷新订单
+    登录后台
   </button>
 
+
+  <div
+    id="loginError"
+    class="login-error"
+  >
+  </div>
+
 </div>
-```
-
-  </header>
-
-  <main class="container">
-
-```
-<section class="stats">
-
-  <div class="stat-card">
-
-    <div class="stat-label">
-      总订单
-    </div>
-
-    <div
-      class="stat-number"
-      id="totalOrders"
-    >
-      0
-    </div>
 
   </div>
 
-
-  <div class="stat-card">
-
-    <div class="stat-label">
-      待确认
-    </div>
-
-    <div
-      class="stat-number"
-      id="pendingOrders"
-    >
-      0
-    </div>
-
-  </div>
-
-</section>
-
-
-<section class="table-card">
+  <!-- =====================
+       管理后台
+  ====================== -->
 
   <div
-    class="loading"
-    id="loading"
+    id="adminPage"
+    style="display: none;"
   >
-    正在加载订单...
-  </div>
 
+<header
+  class="header"
+>
 
   <div
-    class="empty"
-    id="empty"
-    style="display: none"
-  >
-    暂时还没有预约订单
-  </div>
-
-
-  <div
-    class="table-wrap"
-    id="tableWrap"
-    style="display: none"
+    class="header-inner"
   >
 
-    <table>
+    <div>
 
-      <thead>
-
-        <tr>
-
-          <th>订单号</th>
-
-          <th>服务</th>
-
-          <th>价格</th>
-
-          <th>时长</th>
-
-          <th>疗愈师</th>
-
-          <th>预约时间</th>
-
-          <th>客户</th>
-
-          <th>手机号</th>
-
-          <th>服务地址</th>
-
-          <th>状态</th>
-
-          <th>下单时间</th>
-
-        </tr>
-
-      </thead>
-
-
-      <tbody
-        id="ordersBody"
+      <div
+        class="brand"
       >
-      </tbody>
+        奕心疗愈舍 · 订单管理
+      </div>
 
-    </table>
+
+      <div
+        class="subtitle"
+      >
+        YIXIN HEALING · APPOINTMENT SYSTEM
+      </div>
+
+    </div>
+
+
+    <div
+      class="header-actions"
+    >
+
+      <button
+        class="refresh-btn"
+        onclick="loadOrders()"
+      >
+        刷新订单
+      </button>
+
+
+      <button
+        class="logout-btn"
+        onclick="logout()"
+      >
+        退出登录
+      </button>
+
+    </div>
 
   </div>
 
-</section>
-```
+</header>
 
-  </main>
+
+<main
+  class="container"
+>
+
+
+  <section
+    class="stats"
+  >
+
+    <div
+      class="stat-card"
+    >
+
+      <div
+        class="stat-label"
+      >
+        总订单
+      </div>
+
+
+      <div
+        class="stat-number"
+        id="totalOrders"
+      >
+        0
+      </div>
+
+    </div>
+
+
+    <div
+      class="stat-card"
+    >
+
+      <div
+        class="stat-label"
+      >
+        待确认
+      </div>
+
+
+      <div
+        class="stat-number"
+        id="pendingOrders"
+      >
+        0
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <section
+    class="table-card"
+  >
+
+    <div
+      class="loading"
+      id="loading"
+    >
+      正在加载订单...
+    </div>
+
+
+    <div
+      class="empty"
+      id="empty"
+      style="display: none"
+    >
+      暂时还没有预约订单
+    </div>
+
+
+    <div
+      class="table-wrap"
+      id="tableWrap"
+      style="display: none"
+    >
+
+      <table>
+
+        <thead>
+
+          <tr>
+
+            <th>订单号</th>
+
+            <th>服务</th>
+
+            <th>价格</th>
+
+            <th>时长</th>
+
+            <th>疗愈师</th>
+
+            <th>预约时间</th>
+
+            <th>客户</th>
+
+            <th>手机号</th>
+
+            <th>服务地址</th>
+
+            <th>状态</th>
+
+            <th>下单时间</th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody
+          id="ordersBody"
+        >
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </section>
+
+
+</main>
+
+  </div>
 
   <script>
+
+
+    async function login() {
+
+      const username =
+        document
+          .getElementById(
+            "username"
+          )
+          .value
+          .trim();
+
+
+      const password =
+        document
+          .getElementById(
+            "password"
+          )
+          .value;
+
+
+      const loginError =
+        document.getElementById(
+          "loginError"
+        );
+
+
+      loginError.textContent =
+        "";
+
+
+      if (
+        !username ||
+        !password
+      ) {
+
+        loginError.textContent =
+          "请输入管理员账号和密码";
+
+        return;
+
+      }
+
+
+      try {
+
+        const response =
+          await fetch(
+            "/api/admin/login",
+            {
+              method:
+                "POST",
+
+              headers: {
+                "Content-Type":
+                  "application/json"
+              },
+
+              body:
+                JSON.stringify(
+                  {
+                    username,
+                    password
+                  }
+                )
+            }
+          );
+
+
+        const data =
+          await response.json();
+
+
+        if (
+          !data.success
+        ) {
+
+          loginError.textContent =
+            data.message ||
+            "账号或密码错误";
+
+          return;
+
+        }
+
+
+        localStorage.setItem(
+          "adminToken",
+          data.token
+        );
+
+
+        showAdminPage();
+
+
+        loadOrders();
+
+      } catch (
+        error
+      ) {
+
+        console.error(
+          error
+        );
+
+
+        loginError.textContent =
+          "登录失败，请检查网络";
+
+      }
+
+    }
+
+
+    function showAdminPage() {
+
+      document
+        .getElementById(
+          "loginPage"
+        )
+        .style.display =
+          "none";
+
+
+      document
+        .getElementById(
+          "adminPage"
+        )
+        .style.display =
+          "block";
+
+    }
+
+
+    function showLoginPage() {
+
+      document
+        .getElementById(
+          "adminPage"
+        )
+        .style.display =
+          "none";
+
+
+      document
+        .getElementById(
+          "loginPage"
+        )
+        .style.display =
+          "flex";
+
+    }
+
+
+    function logout() {
+
+      localStorage.removeItem(
+        "adminToken"
+      );
+
+
+      document
+        .getElementById(
+          "username"
+        )
+        .value =
+          "";
+
+
+      document
+        .getElementById(
+          "password"
+        )
+        .value =
+          "";
+
+
+      document
+        .getElementById(
+          "loginError"
+        )
+        .textContent =
+          "";
+
+
+      showLoginPage();
+
+    }
+
 
     async function loadOrders() {
 
@@ -357,15 +938,18 @@
           "loading"
         );
 
+
       const empty =
         document.getElementById(
           "empty"
         );
 
+
       const tableWrap =
         document.getElementById(
           "tableWrap"
         );
+
 
       const ordersBody =
         document.getElementById(
@@ -373,11 +957,34 @@
         );
 
 
+      const token =
+        localStorage.getItem(
+          "adminToken"
+        );
+
+
+      if (
+        !token
+      ) {
+
+        showLoginPage();
+
+        return;
+
+      }
+
+
       loading.style.display =
         "block";
 
+
+      loading.textContent =
+        "正在加载订单...";
+
+
       empty.style.display =
         "none";
+
 
       tableWrap.style.display =
         "none";
@@ -387,15 +994,41 @@
 
         const response =
           await fetch(
-            "/api/orders"
+            "/api/orders",
+            {
+              headers: {
+                Authorization:
+                  "Bearer " + token
+              }
+            }
           );
+
+
+        if (
+          response.status ===
+          401
+        ) {
+
+          localStorage.removeItem(
+            "adminToken"
+          );
+
+
+          showLoginPage();
+
+
+          return;
+
+        }
 
 
         const data =
           await response.json();
 
 
-        if (!data.success) {
+        if (
+          !data.success
+        ) {
 
           throw new Error(
             data.message ||
@@ -409,20 +1042,24 @@
           data.orders || [];
 
 
-        document.getElementById(
-          "totalOrders"
-        ).textContent =
-          orders.length;
+        document
+          .getElementById(
+            "totalOrders"
+          )
+          .textContent =
+            orders.length;
 
 
-        document.getElementById(
-          "pendingOrders"
-        ).textContent =
-          orders.filter(
-            order =>
-              order.status ===
-              "待确认"
-          ).length;
+        document
+          .getElementById(
+            "pendingOrders"
+          )
+          .textContent =
+            orders.filter(
+              order =>
+                order.status ===
+                "待确认"
+            ).length;
 
 
         ordersBody.innerHTML =
@@ -434,7 +1071,8 @@
 
 
         if (
-          orders.length === 0
+          orders.length ===
+          0
         ) {
 
           empty.style.display =
@@ -469,37 +1107,79 @@
 
 
             row.innerHTML =
-              `
-              <td>${order.id || "-"}</td>
+              "<td>" +
+              escapeHtml(
+                order.id || "-"
+              ) +
+              "</td>" +
 
-              <td>${order.service || "-"}</td>
+              "<td>" +
+              escapeHtml(
+                order.service || "-"
+              ) +
+              "</td>" +
 
-              <td>¥${order.price || 0}</td>
+              "<td>¥" +
+              escapeHtml(
+                String(
+                  order.price || 0
+                )
+              ) +
+              "</td>" +
 
-              <td>${order.duration || "-"}</td>
+              "<td>" +
+              escapeHtml(
+                order.duration || "-"
+              ) +
+              "</td>" +
 
-              <td>${order.therapist || "-"}</td>
+              "<td>" +
+              escapeHtml(
+                order.therapist || "-"
+              ) +
+              "</td>" +
 
-              <td>
-                ${order.date || "-"}
-                <br>
-                ${order.time || "-"}
-              </td>
+              "<td>" +
+              escapeHtml(
+                order.date || "-"
+              ) +
+              "<br>" +
+              escapeHtml(
+                order.time || "-"
+              ) +
+              "</td>" +
 
-              <td>${order.name || "-"}</td>
+              "<td>" +
+              escapeHtml(
+                order.name || "-"
+              ) +
+              "</td>" +
 
-              <td>${order.phone || "-"}</td>
+              "<td>" +
+              escapeHtml(
+                order.phone || "-"
+              ) +
+              "</td>" +
 
-              <td>${order.address || "-"}</td>
+              "<td>" +
+              escapeHtml(
+                order.address || "-"
+              ) +
+              "</td>" +
 
-              <td>
-                <span class="status">
-                  ${order.status || "-"}
-                </span>
-              </td>
+              "<td>" +
+              "<span class=\"status\">" +
+              escapeHtml(
+                order.status || "-"
+              ) +
+              "</span>" +
+              "</td>" +
 
-              <td>${createdAt}</td>
-              `;
+              "<td>" +
+              escapeHtml(
+                createdAt
+              ) +
+              "</td>";
 
 
             ordersBody.appendChild(
@@ -507,7 +1187,6 @@
             );
 
           }
-
         );
 
       } catch (
@@ -527,7 +1206,60 @@
     }
 
 
-    loadOrders();
+    function escapeHtml(value) {
+
+      const div =
+        document.createElement(
+          "div"
+        );
+
+
+      div.textContent =
+        value;
+
+
+      return div.innerHTML;
+
+    }
+
+
+    document
+      .getElementById(
+        "password"
+      )
+      .addEventListener(
+        "keydown",
+        function(event) {
+
+          if (
+            event.key ===
+            "Enter"
+          ) {
+
+            login();
+
+          }
+
+        }
+      );
+
+
+    const token =
+      localStorage.getItem(
+        "adminToken"
+      );
+
+
+    if (
+      token
+    ) {
+
+      showAdminPage();
+
+      loadOrders();
+
+    }
+
 
   </script>
 
