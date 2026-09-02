@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-
 <html lang="zh-CN">
+
 <head>
+
   <meta charset="UTF-8">
 
-<meta
-name="viewport"
-content="width=device-width, initial-scale=1.0"
-
->
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>奕心疗愈舍｜订单管理</title>
 
@@ -240,7 +240,7 @@ content="width=device-width, initial-scale=1.0"
       grid-template-columns:
         repeat(
           auto-fit,
-          minmax(180px, 1fr)
+          minmax(170px, 1fr)
         );
 
       gap: 18px;
@@ -495,7 +495,9 @@ content="width=device-width, initial-scale=1.0"
 
 </head>
 
+
 <body>
+
 
   <!-- =========================
        登录页面
@@ -503,50 +505,51 @@ content="width=device-width, initial-scale=1.0"
 
   <div id="loginPage">
 
-<div class="login-card">
+    <div class="login-card">
 
-  <h1 class="login-title">
-    奕心疗愈舍
-  </h1>
+      <h1 class="login-title">
+        奕心疗愈舍
+      </h1>
 
 
-  <div class="login-subtitle">
-    ADMIN LOGIN · 管理员登录
+      <div class="login-subtitle">
+        ADMIN LOGIN · 管理员登录
+      </div>
+
+
+      <input
+        id="username"
+        class="login-input"
+        type="text"
+        placeholder="管理员账号"
+      >
+
+
+      <input
+        id="password"
+        class="login-input"
+        type="password"
+        placeholder="管理员密码"
+      >
+
+
+      <button
+        class="login-btn"
+        onclick="login()"
+      >
+        登录后台
+      </button>
+
+
+      <div
+        id="loginError"
+        class="login-error"
+      ></div>
+
+    </div>
+
   </div>
 
-
-  <input
-    id="username"
-    class="login-input"
-    type="text"
-    placeholder="管理员账号"
-  >
-
-
-  <input
-    id="password"
-    class="login-input"
-    type="password"
-    placeholder="管理员密码"
-  >
-
-
-  <button
-    class="login-btn"
-    onclick="login()"
-  >
-    登录后台
-  </button>
-
-
-  <div
-    id="loginError"
-    class="login-error"
-  ></div>
-
-</div>
-
-  </div>
 
   <!-- =========================
        管理后台
@@ -557,214 +560,323 @@ content="width=device-width, initial-scale=1.0"
     style="display: none;"
   >
 
-<header class="header">
 
-  <div class="header-inner">
+    <header class="header">
 
-    <div>
+      <div class="header-inner">
 
-      <div class="brand">
-        奕心疗愈舍 · 订单管理
+        <div>
+
+          <div class="brand">
+            奕心疗愈舍 · 订单管理
+          </div>
+
+          <div class="subtitle">
+            YIXIN HEALING · APPOINTMENT SYSTEM
+          </div>
+
+        </div>
+
+
+        <div class="header-actions">
+
+          <button
+            class="refresh-btn"
+            onclick="loadOrders()"
+          >
+            刷新订单
+          </button>
+
+
+          <button
+            class="logout-btn"
+            onclick="logout()"
+          >
+            退出登录
+          </button>
+
+        </div>
+
       </div>
 
-      <div class="subtitle">
-        YIXIN HEALING · APPOINTMENT SYSTEM
-      </div>
-
-    </div>
+    </header>
 
 
-    <div class="header-actions">
-
-      <button
-        class="refresh-btn"
-        onclick="loadOrders()"
-      >
-        刷新订单
-      </button>
+    <main class="container">
 
 
-      <button
-        class="logout-btn"
-        onclick="logout()"
-      >
-        退出登录
-      </button>
+      <!-- =========================
+           数据统计
+      ========================= -->
 
-    </div>
+      <section class="stats">
+
+
+        <div class="stat-card">
+
+          <div class="stat-label">
+            总订单
+          </div>
+
+          <div
+            class="stat-number"
+            id="totalOrders"
+          >
+            0
+          </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <div class="stat-label">
+            今日订单
+          </div>
+
+          <div
+            class="stat-number"
+            id="todayOrders"
+          >
+            0
+          </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <div class="stat-label">
+            待确认
+          </div>
+
+          <div
+            class="stat-number"
+            id="pendingOrders"
+          >
+            0
+          </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <div class="stat-label">
+            已确认
+          </div>
+
+          <div
+            class="stat-number"
+            id="confirmedOrders"
+          >
+            0
+          </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <div class="stat-label">
+            服务中
+          </div>
+
+          <div
+            class="stat-number"
+            id="servingOrders"
+          >
+            0
+          </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <div class="stat-label">
+            已完成
+          </div>
+
+          <div
+            class="stat-number"
+            id="completedOrders"
+          >
+            0
+          </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <div class="stat-label">
+            已取消
+          </div>
+
+          <div
+            class="stat-number"
+            id="cancelledOrders"
+          >
+            0
+          </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <div class="stat-label">
+            今日预约金额
+          </div>
+
+          <div
+            class="stat-number"
+            id="todayRevenue"
+          >
+            ¥0
+          </div>
+
+        </div>
+
+
+      </section>
+
+
+      <!-- =========================
+           搜索筛选
+      ========================= -->
+
+      <section class="toolbar">
+
+
+        <input
+          id="searchInput"
+          class="search-input"
+          type="text"
+          placeholder="搜索订单号、客户姓名或手机号"
+          oninput="filterOrders()"
+        >
+
+
+        <select
+          id="statusFilter"
+          class="filter-select"
+          onchange="filterOrders()"
+        >
+
+          <option value="">
+            全部状态
+          </option>
+
+          <option value="待确认">
+            待确认
+          </option>
+
+          <option value="已确认">
+            已确认
+          </option>
+
+          <option value="服务中">
+            服务中
+          </option>
+
+          <option value="已完成">
+            已完成
+          </option>
+
+          <option value="已取消">
+            已取消
+          </option>
+
+        </select>
+
+
+      </section>
+
+
+      <!-- =========================
+           订单表格
+      ========================= -->
+
+      <section class="table-card">
+
+
+        <div
+          class="loading"
+          id="loading"
+        >
+          正在加载订单...
+        </div>
+
+
+        <div
+          class="empty"
+          id="empty"
+          style="display: none;"
+        >
+          暂时还没有预约订单
+        </div>
+
+
+        <div
+          class="table-wrap"
+          id="tableWrap"
+          style="display: none;"
+        >
+
+          <table>
+
+            <thead>
+
+              <tr>
+
+                <th>订单号</th>
+
+                <th>服务</th>
+
+                <th>价格</th>
+
+                <th>时长</th>
+
+                <th>疗愈师</th>
+
+                <th>预约时间</th>
+
+                <th>客户</th>
+
+                <th>手机号</th>
+
+                <th>服务地址</th>
+
+                <th>状态</th>
+
+                <th>下单时间</th>
+
+                <th>操作</th>
+
+              </tr>
+
+            </thead>
+
+
+            <tbody
+              id="ordersBody"
+            ></tbody>
+
+          </table>
+
+        </div>
+
+
+      </section>
+
+
+    </main>
+
 
   </div>
 
-</header>
-
-
-<main class="container">
-
-
-  <!-- 数据统计 -->
-
-  <section class="stats">
-
-    <div class="stat-card">
-
-      <div class="stat-label">
-        总订单
-      </div>
-
-      <div
-        class="stat-number"
-        id="totalOrders"
-      >
-        0
-      </div>
-
-    </div>
-
-
-    <div class="stat-card">
-
-      <div class="stat-label">
-        待确认
-      </div>
-
-      <div
-        class="stat-number"
-        id="pendingOrders"
-      >
-        0
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- 搜索筛选 -->
-
-  <section class="toolbar">
-
-    <input
-      id="searchInput"
-      class="search-input"
-      type="text"
-      placeholder="搜索订单号、客户姓名或手机号"
-      oninput="filterOrders()"
-    >
-
-
-    <select
-      id="statusFilter"
-      class="filter-select"
-      onchange="filterOrders()"
-    >
-
-      <option value="">
-        全部状态
-      </option>
-
-      <option value="待确认">
-        待确认
-      </option>
-
-      <option value="已确认">
-        已确认
-      </option>
-
-      <option value="服务中">
-        服务中
-      </option>
-
-      <option value="已完成">
-        已完成
-      </option>
-
-      <option value="已取消">
-        已取消
-      </option>
-
-    </select>
-
-  </section>
-
-
-  <!-- 订单表格 -->
-
-  <section class="table-card">
-
-
-    <div
-      class="loading"
-      id="loading"
-    >
-      正在加载订单...
-    </div>
-
-
-    <div
-      class="empty"
-      id="empty"
-      style="display: none;"
-    >
-      暂时还没有预约订单
-    </div>
-
-
-    <div
-      class="table-wrap"
-      id="tableWrap"
-      style="display: none;"
-    >
-
-      <table>
-
-        <thead>
-
-          <tr>
-
-            <th>订单号</th>
-
-            <th>服务</th>
-
-            <th>价格</th>
-
-            <th>时长</th>
-
-            <th>疗愈师</th>
-
-            <th>预约时间</th>
-
-            <th>客户</th>
-
-            <th>手机号</th>
-
-            <th>服务地址</th>
-
-            <th>状态</th>
-
-            <th>下单时间</th>
-
-            <th>操作</th>
-
-          </tr>
-
-        </thead>
-
-
-        <tbody
-          id="ordersBody"
-        ></tbody>
-
-      </table>
-
-    </div>
-
-
-  </section>
-
-
-</main>
-
-  </div>
 
   <script>
 
@@ -815,8 +927,11 @@ content="width=device-width, initial-scale=1.0"
 
               body:
                 JSON.stringify({
-                  username: username,
-                  password: password
+                  username:
+                    username,
+
+                  password:
+                    password
                 })
             }
           );
@@ -1044,12 +1159,81 @@ content="width=device-width, initial-scale=1.0"
 
     function updateStats() {
 
+      const total =
+        allOrders.length;
+
+
+      const pending =
+        allOrders.filter(
+          function(order) {
+
+            return (
+              order.status ===
+              "待确认"
+            );
+
+          }
+        ).length;
+
+
+      const confirmed =
+        allOrders.filter(
+          function(order) {
+
+            return (
+              order.status ===
+              "已确认"
+            );
+
+          }
+        ).length;
+
+
+      const serving =
+        allOrders.filter(
+          function(order) {
+
+            return (
+              order.status ===
+              "服务中"
+            );
+
+          }
+        ).length;
+
+
+      const completed =
+        allOrders.filter(
+          function(order) {
+
+            return (
+              order.status ===
+              "已完成"
+            );
+
+          }
+        ).length;
+
+
+      const cancelled =
+        allOrders.filter(
+          function(order) {
+
+            return (
+              order.status ===
+              "已取消"
+            );
+
+          }
+        ).length;
+
+
       document
         .getElementById(
           "totalOrders"
         )
         .textContent =
-          allOrders.length;
+          total;
 
 
       document
@@ -1057,17 +1241,130 @@ content="width=device-width, initial-scale=1.0"
           "pendingOrders"
         )
         .textContent =
-          allOrders.filter(
-            function(order) {
+          pending;
 
-              return (
-                order.status ===
-                "待确认"
-              );
 
-            }
-          )
-          .length;
+      document
+        .getElementById(
+          "confirmedOrders"
+        )
+        .textContent =
+          confirmed;
+
+
+      document
+        .getElementById(
+          "servingOrders"
+        )
+        .textContent =
+          serving;
+
+
+      document
+        .getElementById(
+          "completedOrders"
+        )
+        .textContent =
+          completed;
+
+
+      document
+        .getElementById(
+          "cancelledOrders"
+        )
+        .textContent =
+          cancelled;
+
+
+      // =========================
+      // 今日订单
+      // =========================
+
+      const now =
+        new Date();
+
+
+      const year =
+        now.getFullYear();
+
+
+      const month =
+        String(
+          now.getMonth() + 1
+        ).padStart(
+          2,
+          "0"
+        );
+
+
+      const day =
+        String(
+          now.getDate()
+        ).padStart(
+          2,
+          "0"
+        );
+
+
+      const today =
+        year +
+        "-" +
+        month +
+        "-" +
+        day;
+
+
+      const todayOrderList =
+        allOrders.filter(
+          function(order) {
+
+            return (
+              order.date ===
+              today
+            );
+
+          }
+        );
+
+
+      document
+        .getElementById(
+          "todayOrders"
+        )
+        .textContent =
+          todayOrderList.length;
+
+
+      // =========================
+      // 今日预约金额
+      // =========================
+
+      const todayRevenue =
+        todayOrderList.reduce(
+          function(
+            total,
+            order
+          ) {
+
+            return (
+              total +
+              Number(
+                order.price || 0
+              )
+            );
+
+          },
+          0
+        );
+
+
+      document
+        .getElementById(
+          "todayRevenue"
+        )
+        .textContent =
+          "¥" +
+          todayRevenue.toFixed(0);
 
     }
 
@@ -1241,7 +1538,8 @@ content="width=device-width, initial-scale=1.0"
             function(status) {
 
               const selected =
-                order.status === status
+                order.status ===
+                status
                   ? " selected"
                   : "";
 
@@ -1670,4 +1968,5 @@ content="width=device-width, initial-scale=1.0"
   </script>
 
 </body>
+
 </html>
