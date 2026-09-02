@@ -17,7 +17,6 @@ function showToast(message) {
   if (!toast || !toastText) return;
 
   toastText.textContent = message;
-
   toast.classList.add("show");
 
   clearTimeout(toastTimer);
@@ -35,14 +34,9 @@ function showToast(message) {
 const homePage = document.getElementById("homePage");
 const bookingPage = document.getElementById("bookingPage");
 
-const startBookingBtn =
-  document.getElementById("startBookingBtn");
-
-const bookingBackBtn =
-  document.getElementById("bookingBackBtn");
-
-const submitOrderBtn =
-  document.getElementById("submitOrderBtn");
+const startBookingBtn = document.getElementById("startBookingBtn");
+const bookingBackBtn = document.getElementById("bookingBackBtn");
+const submitOrderBtn = document.getElementById("submitOrderBtn");
 
 
 // =========================
@@ -63,40 +57,24 @@ const bookingData = {
 
 
 // =========================
-// 打开预约页面
+// 页面切换
 // =========================
 
 function openBookingPage() {
-
   homePage.classList.remove("active-page");
-
   bookingPage.classList.add("active-page");
 
-  window.scrollTo({
-    top: 0,
-    behavior: "instant"
-  });
+  window.scrollTo(0, 0);
 
   updateBookingSummary();
-
 }
 
 
-// =========================
-// 返回首页
-// =========================
-
 function goHome() {
-
   bookingPage.classList.remove("active-page");
-
   homePage.classList.add("active-page");
 
-  window.scrollTo({
-    top: 0,
-    behavior: "instant"
-  });
-
+  window.scrollTo(0, 0);
 }
 
 
@@ -105,30 +83,21 @@ function goHome() {
 // =========================
 
 if (startBookingBtn) {
-
   startBookingBtn.addEventListener("click", () => {
-
     openBookingPage();
-
     showToast("请选择疗愈服务");
-
   });
-
 }
 
 
 // =========================
-// 返回按钮
+// 返回首页
 // =========================
 
 if (bookingBackBtn) {
-
   bookingBackBtn.addEventListener("click", () => {
-
     goHome();
-
   });
-
 }
 
 
@@ -136,56 +105,37 @@ if (bookingBackBtn) {
 // 首页项目预约
 // =========================
 
-const homeBookButtons =
-  document.querySelectorAll(".book-btn");
+const homeBookButtons = document.querySelectorAll(".book-btn");
 
 homeBookButtons.forEach((button) => {
-
   button.addEventListener("click", () => {
 
-    bookingData.service =
-      button.dataset.service;
-
-    bookingData.price =
-      Number(button.dataset.price);
-
-    bookingData.duration =
-      button.dataset.duration;
+    bookingData.service = button.dataset.service;
+    bookingData.price = Number(button.dataset.price);
+    bookingData.duration = button.dataset.duration;
 
     selectBookingServiceButton();
-
     openBookingPage();
 
-    showToast(
-      `已选择：${bookingData.service}`
-    );
-
+    showToast(`已选择：${bookingData.service}`);
   });
-
 });
 
 
 // =========================
-// 预约页面服务选择
+// 预约页面选择服务
 // =========================
 
-const serviceOptions =
-  document.querySelectorAll(
-    ".booking-service-option"
-  );
+const serviceOptions = document.querySelectorAll(
+  ".booking-service-option"
+);
 
 serviceOptions.forEach((button) => {
-
   button.addEventListener("click", () => {
 
-    bookingData.service =
-      button.dataset.service;
-
-    bookingData.price =
-      Number(button.dataset.price);
-
-    bookingData.duration =
-      button.dataset.duration;
+    bookingData.service = button.dataset.service;
+    bookingData.price = Number(button.dataset.price);
+    bookingData.duration = button.dataset.duration;
 
     serviceOptions.forEach((item) => {
       item.classList.remove("selected");
@@ -194,9 +144,7 @@ serviceOptions.forEach((button) => {
     button.classList.add("selected");
 
     updateBookingSummary();
-
   });
-
 });
 
 
@@ -204,23 +152,13 @@ function selectBookingServiceButton() {
 
   serviceOptions.forEach((button) => {
 
-    const serviceName =
-      button.dataset.service;
-
-    if (
-      serviceName === bookingData.service
-    ) {
-
+    if (button.dataset.service === bookingData.service) {
       button.classList.add("selected");
-
     } else {
-
       button.classList.remove("selected");
-
     }
 
   });
-
 }
 
 
@@ -228,17 +166,14 @@ function selectBookingServiceButton() {
 // 选择疗愈师
 // =========================
 
-const therapistOptions =
-  document.querySelectorAll(
-    ".booking-therapist-option"
-  );
+const therapistOptions = document.querySelectorAll(
+  ".booking-therapist-option"
+);
 
 therapistOptions.forEach((button) => {
-
   button.addEventListener("click", () => {
 
-    bookingData.therapist =
-      button.dataset.therapist;
+    bookingData.therapist = button.dataset.therapist;
 
     therapistOptions.forEach((item) => {
       item.classList.remove("selected");
@@ -247,9 +182,7 @@ therapistOptions.forEach((button) => {
     button.classList.add("selected");
 
     updateBookingSummary();
-
   });
-
 });
 
 
@@ -257,28 +190,20 @@ therapistOptions.forEach((button) => {
 // 日期
 // =========================
 
-const bookingDate =
-  document.getElementById("bookingDate");
+const bookingDate = document.getElementById("bookingDate");
 
 if (bookingDate) {
 
-  const today =
-    new Date().toISOString().split("T")[0];
+  const today = new Date().toISOString().split("T")[0];
 
   bookingDate.min = today;
 
-  bookingDate.addEventListener(
-    "change",
-    () => {
+  bookingDate.addEventListener("change", () => {
 
-      bookingData.date =
-        bookingDate.value;
+    bookingData.date = bookingDate.value;
 
-      updateBookingSummary();
-
-    }
-  );
-
+    updateBookingSummary();
+  });
 }
 
 
@@ -286,17 +211,12 @@ if (bookingDate) {
 // 时间
 // =========================
 
-const timeOptions =
-  document.querySelectorAll(
-    ".time-option"
-  );
+const timeOptions = document.querySelectorAll(".time-option");
 
 timeOptions.forEach((button) => {
-
   button.addEventListener("click", () => {
 
-    bookingData.time =
-      button.dataset.time;
+    bookingData.time = button.dataset.time;
 
     timeOptions.forEach((item) => {
       item.classList.remove("selected");
@@ -305,144 +225,86 @@ timeOptions.forEach((button) => {
     button.classList.add("selected");
 
     updateBookingSummary();
-
   });
-
 });
 
 
 // =========================
-// 输入信息
+// 联系信息
 // =========================
 
-const bookingName =
-  document.getElementById("bookingName");
-
-const bookingPhone =
-  document.getElementById("bookingPhone");
-
-const bookingAddress =
-  document.getElementById("bookingAddress");
+const bookingName = document.getElementById("bookingName");
+const bookingPhone = document.getElementById("bookingPhone");
+const bookingAddress = document.getElementById("bookingAddress");
 
 
 if (bookingName) {
-
-  bookingName.addEventListener(
-    "input",
-    () => {
-
-      bookingData.name =
-        bookingName.value.trim();
-
-    }
-  );
-
+  bookingName.addEventListener("input", () => {
+    bookingData.name = bookingName.value.trim();
+  });
 }
 
 
 if (bookingPhone) {
-
-  bookingPhone.addEventListener(
-    "input",
-    () => {
-
-      bookingData.phone =
-        bookingPhone.value.trim();
-
-    }
-  );
-
+  bookingPhone.addEventListener("input", () => {
+    bookingData.phone = bookingPhone.value.trim();
+  });
 }
 
 
 if (bookingAddress) {
-
-  bookingAddress.addEventListener(
-    "input",
-    () => {
-
-      bookingData.address =
-        bookingAddress.value.trim();
-
-    }
-  );
-
+  bookingAddress.addEventListener("input", () => {
+    bookingData.address = bookingAddress.value.trim();
+  });
 }
 
 
 // =========================
-// 更新订单信息
+// 更新订单确认
 // =========================
 
 function updateBookingSummary() {
 
   const summaryService =
-    document.getElementById(
-      "summaryService"
-    );
+    document.getElementById("summaryService");
 
   const summaryTherapist =
-    document.getElementById(
-      "summaryTherapist"
-    );
+    document.getElementById("summaryTherapist");
 
   const summaryTime =
-    document.getElementById(
-      "summaryTime"
-    );
+    document.getElementById("summaryTime");
 
   const summaryPrice =
-    document.getElementById(
-      "summaryPrice"
-    );
+    document.getElementById("summaryPrice");
 
 
   if (summaryService) {
-
     summaryService.textContent =
       bookingData.service
         ? `${bookingData.service} · ${bookingData.duration}`
         : "暂未选择";
-
   }
 
 
   if (summaryTherapist) {
-
     summaryTherapist.textContent =
-      bookingData.therapist ||
-      "暂未选择";
-
+      bookingData.therapist || "暂未选择";
   }
 
 
   if (summaryTime) {
 
-    if (
-      bookingData.date &&
-      bookingData.time
-    ) {
-
-      summaryTime.textContent =
-        `${bookingData.date} ${bookingData.time}`;
-
-    } else {
-
-      summaryTime.textContent =
-        "暂未选择";
-
-    }
-
+    summaryTime.textContent =
+      bookingData.date && bookingData.time
+        ? `${bookingData.date} ${bookingData.time}`
+        : "暂未选择";
   }
 
 
   if (summaryPrice) {
-
     summaryPrice.textContent =
       `¥${bookingData.price}`;
-
   }
-
 }
 
 
@@ -451,151 +313,150 @@ function updateBookingSummary() {
 // =========================
 
 function isValidPhone(phone) {
-
-  const phoneRegex =
-    /^1[3-9]\d{9}$/;
-
-  return phoneRegex.test(phone);
-
+  return /^1[3-9]\d{9}$/.test(phone);
 }
 
 
 // =========================
-// 提交预约
+// 提交真实订单
 // =========================
 
 if (submitOrderBtn) {
 
-  submitOrderBtn.addEventListener(
-    "click",
-    () => {
+  submitOrderBtn.addEventListener("click", async () => {
 
-      // 服务
-      if (!bookingData.service) {
+    // 服务
+    if (!bookingData.service) {
+      showToast("请选择疗愈服务");
+      return;
+    }
 
-        showToast("请选择疗愈服务");
-        return;
+    // 疗愈师
+    if (!bookingData.therapist) {
+      showToast("请选择疗愈师");
+      return;
+    }
 
-      }
+    // 日期
+    if (!bookingData.date) {
+      showToast("请选择服务日期");
+      return;
+    }
 
+    // 时间
+    if (!bookingData.time) {
+      showToast("请选择服务时间");
+      return;
+    }
 
-      // 疗愈师
-      if (!bookingData.therapist) {
+    // 姓名
+    if (!bookingData.name) {
+      showToast("请输入姓名");
+      return;
+    }
 
-        showToast("请选择疗愈师");
-        return;
+    // 手机号
+    if (!bookingData.phone) {
+      showToast("请输入手机号");
+      return;
+    }
 
-      }
+    if (!isValidPhone(bookingData.phone)) {
+      showToast("请输入正确的手机号");
+      return;
+    }
 
-
-      // 日期
-      if (!bookingData.date) {
-
-        showToast("请选择服务日期");
-        return;
-
-      }
-
-
-      // 时间
-      if (!bookingData.time) {
-
-        showToast("请选择服务时间");
-        return;
-
-      }
-
-
-      // 姓名
-      if (!bookingData.name) {
-
-        showToast("请输入姓名");
-        return;
-
-      }
-
-
-      // 手机号
-      if (!bookingData.phone) {
-
-        showToast("请输入手机号");
-        return;
-
-      }
+    // 地址
+    if (!bookingData.address) {
+      showToast("请输入服务地址");
+      return;
+    }
 
 
-      if (
-        !isValidPhone(
-          bookingData.phone
-        )
-      ) {
+    // 防止重复提交
+    submitOrderBtn.disabled = true;
 
-        showToast(
-          "请输入正确的手机号"
+    const originalText = submitOrderBtn.textContent;
+
+    submitOrderBtn.textContent = "正在提交...";
+
+
+    try {
+
+      // =====================
+      // 真正发送订单到服务器
+      // =====================
+
+      const response = await fetch(
+        "/api/orders",
+        {
+          method: "POST",
+
+          headers: {
+            "Content-Type": "application/json"
+          },
+
+          body: JSON.stringify(bookingData)
+        }
+      );
+
+
+      const result = await response.json();
+
+
+      // 服务器返回失败
+      if (!response.ok || !result.success) {
+
+        throw new Error(
+          result.message || "预约提交失败"
         );
 
-        return;
-
       }
 
 
-      // 地址
-      if (!bookingData.address) {
-
-        showToast("请输入服务地址");
-        return;
-
-      }
+      // 成功
+      showToast(
+        `预约成功，订单号：${result.order.id}`
+      );
 
 
-      // 防止重复点击
-      submitOrderBtn.disabled = true;
-
-      const originalText =
-        submitOrderBtn.textContent;
-
-      submitOrderBtn.textContent =
-        "正在提交...";
+      console.log(
+        "订单创建成功：",
+        result.order
+      );
 
 
-      // 模拟提交
+      // 恢复按钮
+      submitOrderBtn.disabled = false;
+      submitOrderBtn.textContent = originalText;
+
+
+      // 订单数据暂时保留，方便后续订单中心使用
+
       setTimeout(() => {
 
-        const orderId =
-          `YX${Date.now()}`;
+        goHome();
 
-        console.log(
-          "预约订单：",
-          {
-            orderId,
-            ...bookingData
-          }
-        );
+      }, 2200);
 
 
-        showToast(
-          `预约成功，订单号：${orderId}`
-        );
+    } catch (error) {
 
+      console.error(
+        "提交订单失败：",
+        error
+      );
 
-        submitOrderBtn.disabled =
-          false;
+      showToast(
+        error.message || "网络异常，请稍后重试"
+      );
 
-        submitOrderBtn.textContent =
-          originalText;
-
-
-        // 暂时 2 秒后回首页
-        setTimeout(() => {
-
-          goHome();
-
-        }, 2000);
-
-      }, 800);
+      submitOrderBtn.disabled = false;
+      submitOrderBtn.textContent = originalText;
 
     }
-  );
+
+  });
 
 }
 
@@ -604,21 +465,15 @@ if (submitOrderBtn) {
 // 底部导航
 // =========================
 
-const navItems =
-  document.querySelectorAll(
-    ".nav-item"
-  );
-
+const navItems = document.querySelectorAll(".nav-item");
 
 navItems.forEach((item) => {
 
   item.addEventListener("click", () => {
 
-    const page =
-      item.dataset.page;
+    const page = item.dataset.page;
 
 
-    // 首页
     if (page === "home") {
 
       navItems.forEach((nav) => {
@@ -630,63 +485,30 @@ navItems.forEach((item) => {
       goHome();
 
       return;
-
     }
 
 
-    // 疗愈师
     if (page === "therapists") {
 
-      if (
-        !homePage.classList.contains(
-          "active-page"
-        )
-      ) {
+      goHome();
 
-        goHome();
-
-        setTimeout(() => {
-
-          const therapistSection =
-            document.querySelector(
-              ".therapist-section"
-            );
-
-          if (therapistSection) {
-
-            therapistSection.scrollIntoView({
-              behavior: "smooth"
-            });
-
-          }
-
-        }, 100);
-
-      } else {
+      setTimeout(() => {
 
         const therapistSection =
-          document.querySelector(
-            ".therapist-section"
-          );
+          document.querySelector(".therapist-section");
 
-        if (therapistSection) {
+        therapistSection?.scrollIntoView({
+          behavior: "smooth"
+        });
 
-          therapistSection.scrollIntoView({
-            behavior: "smooth"
-          });
-
-        }
-
-      }
+      }, 100);
 
       showToast("推荐疗愈师");
 
       return;
-
     }
 
 
-    // 预约
     if (page === "booking") {
 
       navItems.forEach((nav) => {
@@ -698,31 +520,18 @@ navItems.forEach((item) => {
       openBookingPage();
 
       return;
-
     }
 
 
-    // 订单
     if (page === "orders") {
-
-      showToast(
-        "订单中心正在开发中"
-      );
-
+      showToast("订单中心正在开发中");
       return;
-
     }
 
 
-    // 我的
     if (page === "profile") {
-
-      showToast(
-        "个人中心正在开发中"
-      );
-
+      showToast("个人中心正在开发中");
       return;
-
     }
 
   });
@@ -734,53 +543,34 @@ navItems.forEach((item) => {
 // 城市
 // =========================
 
-const cityBtn =
-  document.querySelector(
-    ".city-btn"
-  );
+const cityBtn = document.querySelector(".city-btn");
 
 if (cityBtn) {
-
-  cityBtn.addEventListener(
-    "click",
-    () => {
-
-      showToast(
-        "当前服务城市：重庆"
-      );
-
-    }
-  );
-
+  cityBtn.addEventListener("click", () => {
+    showToast("当前服务城市：重庆");
+  });
 }
 
 
 // =========================
-// 查看更多疗愈师
+// 查看疗愈师
 // =========================
 
 const viewTherapistsBtn =
-  document.getElementById(
-    "viewTherapistsBtn"
-  );
+  document.getElementById("viewTherapistsBtn");
 
 if (viewTherapistsBtn) {
 
-  viewTherapistsBtn.addEventListener(
-    "click",
-    () => {
+  viewTherapistsBtn.addEventListener("click", () => {
 
-      const therapistSection =
-        document.querySelector(
-          ".therapist-section"
-        );
+    const therapistSection =
+      document.querySelector(".therapist-section");
 
-      therapistSection?.scrollIntoView({
-        behavior: "smooth"
-      });
+    therapistSection?.scrollIntoView({
+      behavior: "smooth"
+    });
 
-    }
-  );
+  });
 
 }
 
@@ -790,27 +580,20 @@ if (viewTherapistsBtn) {
 // =========================
 
 const viewServicesBtn =
-  document.getElementById(
-    "viewServicesBtn"
-  );
+  document.getElementById("viewServicesBtn");
 
 if (viewServicesBtn) {
 
-  viewServicesBtn.addEventListener(
-    "click",
-    () => {
+  viewServicesBtn.addEventListener("click", () => {
 
-      const serviceSection =
-        document.querySelector(
-          ".service-section"
-        );
+    const serviceSection =
+      document.querySelector(".service-section");
 
-      serviceSection?.scrollIntoView({
-        behavior: "smooth"
-      });
+    serviceSection?.scrollIntoView({
+      behavior: "smooth"
+    });
 
-    }
-  );
+  });
 
 }
 
@@ -819,15 +602,12 @@ if (viewServicesBtn) {
 // 初始化
 // =========================
 
-document.addEventListener(
-  "DOMContentLoaded",
-  () => {
+document.addEventListener("DOMContentLoaded", () => {
 
-    console.log(
-      "奕心疗愈舍预约系统 V1.0 已启动"
-    );
+  console.log(
+    "奕心疗愈舍真实预约系统已启动"
+  );
 
-    updateBookingSummary();
+  updateBookingSummary();
 
-  }
-);
+});
