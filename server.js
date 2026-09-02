@@ -2,6 +2,7 @@ import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
 import pg from "pg";
+import jwt from "jsonwebtoken";
 
 const { Pool } = pg;
 
@@ -12,12 +13,23 @@ const __dirname = path.dirname(__filename);
 
 const PORT = process.env.PORT || 3000;
 
+const ADMIN_USERNAME =
+process.env.ADMIN_USERNAME;
+
+const ADMIN_PASSWORD =
+process.env.ADMIN_PASSWORD;
+
+const JWT_SECRET =
+process.env.JWT_SECRET;
+
 // =========================
 // PostgreSQL 数据库
 // =========================
 
 const pool = new Pool({
-connectionString: process.env.DATABASE_URL,
+connectionString:
+process.env.DATABASE_URL,
+
 ssl: {
 rejectUnauthorized: false
 }
@@ -34,6 +46,73 @@ express.static(
 path.join(__dirname, "public")
 )
 );
+
+// =========================
+// 管理员验证中间件
+// =========================
+
+function requireAdmin(
+req,
+res,
+next
+) {
+
+const authHeader =
+req.headers.authorization;
+
+if (!authHeader) {
+
+return res.status(401).json({
+  success: false,
+  message:
+    "请先登录管理员账号"
+});
+
+}
+
+const token =
+authHeader.startsWith(
+"Bearer "
+)
+? authHeader.substring(7)
+: null;
+
+if (!token) {
+
+return res.status(401).json({
+  success: false,
+  message:
+    "登录凭证无效"
+});
+
+}
+
+try {
+
+const decoded =
+  jwt.verify(
+    token,
+    JWT_SECRET
+  );
+
+
+req.admin =
+  decoded;
+
+
+next();
+
+} catch (error) {
+
+return res.status(401).json({
+  success: false,
+  message:
+    "登录已过期，请重新登录"
+});
+
+}
+
+}
 
 // =========================
 // 初始化 PostgreSQL
@@ -59,19 +138,26 @@ const sql =
   "created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP" +
   ")";
 
+
 await pool.query(sql);
 
-console.log("PostgreSQL 数据库连接成功");
+
+console.log(
+  "PostgreSQL 数据库连接成功"
+);
+
 
 console.log(
   "orders 订单表已准备完成"
 );
+
 } catch (error) {
 
 console.error(
   "PostgreSQL 初始化失败：",
   error
 );
+
 
 process.exit(1);
 
@@ -93,6 +179,7 @@ try {
     "SELECT 1"
   );
 
+
   return res.json({
     success: true,
     message:
@@ -109,6 +196,101 @@ try {
       "数据库连接失败",
     database:
       "disconnected"
+  });
+
+}
+
+}
+);
+
+// =========================
+// 管理员登录
+// POST /api/admin/login
+// =========================
+
+app.post(
+"/api/admin/login",
+(req, res) => {
+
+try {
+
+  const {
+    username,
+    password
+  } = req.body;
+
+
+  if (
+    !ADMIN_USERNAME ||
+    !ADMIN_PASSWORD ||
+    !JWT_SECRET
+  ) {
+
+    console.error(
+      "管理员环境变量未设置"
+    );
+
+
+    return res.status(500).json({
+      success: false,
+      message:
+        "服务器管理员配置错误"
+    });
+
+  }
+
+
+  if (
+    username !==
+      ADMIN_USERNAME ||
+    password !==
+      ADMIN_PASSWORD
+  ) {
+
+    return res.status(401).json({
+      success: false,
+      message:
+        "账号或密码错误"
+    });
+
+  }
+
+
+  const token =
+    jwt.sign(
+      {
+        username:
+          ADMIN_USERNAME,
+        role:
+          "admin"
+      },
+      JWT_SECRET,
+      {
+        expiresIn:
+          "7d"
+      }
+    );
+
+
+  return res.json({
+    success: true,
+    message:
+      "登录成功",
+    token
+  });
+
+} catch (error) {
+
+  console.error(
+    "管理员登录失败：",
+    error
+  );
+
+
+  return res.status(500).json({
+    success: false,
+    message:
+      "登录失败"
   });
 
 }
@@ -138,8 +320,6 @@ try {
     address
   } = req.body;
 
-
-  // 基础验证
 
   if (!service) {
 
@@ -235,8 +415,6 @@ try {
   }
 
 
-  // 创建订单号
-
   const orderId =
     "YX" +
     Date.now() +
@@ -275,8 +453,6 @@ try {
   };
 
 
-  // 保存订单
-
   const insertSql =
     "INSERT INTO orders (" +
     "id, service, price, duration, therapist, " +
@@ -313,15 +489,10 @@ try {
 
 
   return res.json({
-
-    success:
-      true,
-
+    success: true,
     message:
       "预约提交成功",
-
     order
-
   });
 
 } catch (error) {
@@ -333,13 +504,9 @@ try {
 
 
   return res.status(500).json({
-
-    success:
-      false,
-
+    success: false,
     message:
       "服务器处理失败"
-
   });
 
 }
@@ -349,10 +516,12 @@ try {
 
 // =========================
 // 获取所有订单
+// 只有管理员可以访问
 // =========================
 
 app.get(
 "/api/orders",
+requireAdmin,
 async (req, res) => {
 
 try {
@@ -382,16 +551,11 @@ try {
 
 
   return res.json({
-
-    success:
-      true,
-
+    success: true,
     total:
       result.rows.length,
-
     orders:
       result.rows
-
   });
 
 } catch (error) {
@@ -403,13 +567,9 @@ try {
 
 
   return res.status(500).json({
-
-    success:
-      false,
-
+    success: false,
     message:
       "获取订单失败"
-
   });
 
 }
