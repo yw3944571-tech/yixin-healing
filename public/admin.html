@@ -481,6 +481,29 @@ content="width=device-width, initial-scale=1.0"
       }
 
     }
+.status-select {
+border: none;
+
+background: #fff4d6;
+
+color: #9a6a00;
+
+padding: 6px 10px;
+
+border-radius: 20px;
+
+font-size: 12px;
+
+cursor: pointer;
+
+outline: none;
+}
+
+.status-select:disabled {
+opacity: 0.6;
+
+cursor: wait;
+}
 
   </style>
 
@@ -1168,12 +1191,46 @@ content="width=device-width, initial-scale=1.0"
               "</td>" +
 
               "<td>" +
-              "<span class=\"status\">" +
-              escapeHtml(
-                order.status || "-"
-              ) +
-              "</span>" +
-              "</td>" +
+"<select " +
+"class="status-select" " +
+"data-order-id="" +
+escapeHtml(order.id) +
+"" " +
+"onchange="updateOrderStatus(this)">" +
+
+"<option value="待确认"" +
+((order.status === "待确认")
+? " selected"
+: "") +
+">待确认</option>" +
+
+"<option value="已确认"" +
+((order.status === "已确认")
+? " selected"
+: "") +
+">已确认</option>" +
+
+"<option value="服务中"" +
+((order.status === "服务中")
+? " selected"
+: "") +
+">服务中</option>" +
+
+"<option value="已完成"" +
+((order.status === "已完成")
+? " selected"
+: "") +
+">已完成</option>" +
+
+"<option value="已取消"" +
+((order.status === "已取消")
+? " selected"
+: "") +
+">已取消</option>" +
+
+"</select>" +
+"</td>" +
+
 
               "<td>" +
               escapeHtml(
@@ -1205,6 +1262,126 @@ content="width=device-width, initial-scale=1.0"
 
     }
 
+async function updateOrderStatus(
+selectElement
+) {
+
+const orderId =
+selectElement.dataset.orderId;
+
+const status =
+selectElement.value;
+
+const token =
+localStorage.getItem(
+"adminToken"
+);
+
+selectElement.disabled =
+true;
+
+try {
+
+```
+const response =
+  await fetch(
+    "/api/orders/" +
+    encodeURIComponent(
+      orderId
+    ) +
+    "/status",
+    {
+      method:
+        "PATCH",
+
+      headers: {
+        "Content-Type":
+          "application/json",
+
+        Authorization:
+          "Bearer " + token
+      },
+
+      body:
+        JSON.stringify({
+          status
+        })
+    }
+  );
+
+
+const data =
+  await response.json();
+
+
+if (
+  response.status ===
+  401
+) {
+
+  localStorage.removeItem(
+    "adminToken"
+  );
+
+
+  showLoginPage();
+
+
+  return;
+
+}
+
+
+if (
+  !data.success
+) {
+
+  throw new Error(
+    data.message ||
+    "修改失败"
+  );
+
+}
+
+
+alert(
+  "订单状态已更新为：" +
+  status
+);
+
+
+loadOrders();
+```
+
+} catch (
+error
+) {
+
+```
+console.error(
+  error
+);
+
+
+alert(
+  "订单状态修改失败：" +
+  error.message
+);
+
+
+loadOrders();
+```
+
+} finally {
+
+```
+selectElement.disabled =
+  false;
+```
+
+}
+
+}
 
     function escapeHtml(value) {
 
