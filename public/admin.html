@@ -1,1972 +1,2450 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
 
-  <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
-  <title>奕心疗愈舍｜订单管理</title>
-
-  <style>
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-
-      font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "PingFang SC",
-        "Microsoft YaHei",
-        sans-serif;
-
-      background: #f6f3ee;
-
-      color: #2d2926;
-    }
-
-
-    /* =========================
-       登录
-    ========================= */
-
-    #loginPage {
-      min-height: 100vh;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      padding: 20px;
-    }
-
-
-    .login-card {
-      width: 100%;
-
-      max-width: 400px;
-
-      background: white;
-
-      padding: 36px;
-
-      border-radius: 18px;
-
-      box-shadow:
-        0 10px 40px
-        rgba(0, 0, 0, 0.08);
-    }
-
-
-    .login-title {
-      margin: 0;
-
-      font-size: 26px;
-    }
-
-
-    .login-subtitle {
-      margin-top: 8px;
-
-      margin-bottom: 28px;
-
-      color: #999;
-
-      font-size: 13px;
-    }
-
-
-    .login-input {
-      width: 100%;
-
-      padding: 14px;
-
-      margin-bottom: 16px;
-
-      border:
-        1px solid #ddd;
-
-      border-radius: 9px;
-
-      font-size: 15px;
-    }
-
-
-    .login-btn {
-      width: 100%;
-
-      border: none;
-
-      background: #292421;
-
-      color: white;
-
-      padding: 14px;
-
-      border-radius: 9px;
-
-      cursor: pointer;
-
-      font-size: 15px;
-    }
-
-
-    .login-error {
-      min-height: 20px;
-
-      margin-top: 15px;
-
-      color: #c0392b;
-
-      text-align: center;
-
-      font-size: 14px;
-    }
-
-
-    /* =========================
-       后台
-    ========================= */
-
-    .header {
-      background: #292421;
-
-      color: white;
-
-      padding: 20px;
-    }
-
-
-    .header-inner {
-      max-width: 1200px;
-
-      margin: auto;
-
-      display: flex;
-
-      justify-content: space-between;
-
-      align-items: center;
-
-      gap: 20px;
-    }
-
-
-    .brand {
-      font-size: 20px;
-
-      font-weight: 600;
-    }
-
-
-    .subtitle {
-      font-size: 13px;
-
-      opacity: 0.7;
-
-      margin-top: 5px;
-    }
-
-
-    .header-actions {
-      display: flex;
-
-      gap: 10px;
-    }
-
-
-    .refresh-btn {
-      border: none;
-
-      background: #c6a56b;
-
-      color: white;
-
-      padding: 10px 18px;
-
-      border-radius: 8px;
-
-      cursor: pointer;
-
-      font-size: 14px;
-    }
-
-
-    .logout-btn {
-      border:
-        1px solid
-        rgba(255,255,255,0.3);
-
-      background: transparent;
-
-      color: white;
-
-      padding: 10px 18px;
-
-      border-radius: 8px;
-
-      cursor: pointer;
-
-      font-size: 14px;
-    }
-
-
-    .container {
-      max-width: 1200px;
-
-      margin: 30px auto;
-
-      padding: 0 20px;
-    }
-
-
-    /* =========================
-       数据统计
-    ========================= */
-
-    .stats {
-      display: grid;
-
-      grid-template-columns:
-        repeat(
-          auto-fit,
-          minmax(170px, 1fr)
-        );
-
-      gap: 18px;
-
-      margin-bottom: 25px;
-    }
-
-
-    .stat-card {
-      background: white;
-
-      padding: 20px;
-
-      border-radius: 12px;
-
-      box-shadow:
-        0 4px 20px
-        rgba(0,0,0,0.05);
-    }
-
-
-    .stat-label {
-      color: #888;
-
-      font-size: 13px;
-    }
-
-
-    .stat-number {
-      margin-top: 10px;
-
-      font-size: 30px;
-
-      font-weight: 600;
-    }
-
-
-    /* =========================
-       搜索和筛选
-    ========================= */
-
-    .toolbar {
-      background: white;
-
-      padding: 18px;
-
-      margin-bottom: 20px;
-
-      border-radius: 12px;
-
-      display: flex;
-
-      gap: 12px;
-
-      flex-wrap: wrap;
-
-      box-shadow:
-        0 4px 20px
-        rgba(0,0,0,0.05);
-    }
-
-
-    .search-input {
-      flex: 1;
-
-      min-width: 220px;
-
-      border:
-        1px solid #ddd;
-
-      border-radius: 8px;
-
-      padding: 12px 14px;
-
-      font-size: 14px;
-
-      outline: none;
-    }
-
-
-    .filter-select {
-      min-width: 150px;
-
-      border:
-        1px solid #ddd;
-
-      border-radius: 8px;
-
-      padding: 12px;
-
-      background: white;
-
-      font-size: 14px;
-    }
-
-
-    /* =========================
-       订单表格
-    ========================= */
-
-    .table-card {
-      background: white;
-
-      border-radius: 12px;
-
-      overflow: hidden;
-
-      box-shadow:
-        0 4px 20px
-        rgba(0,0,0,0.05);
-    }
-
-
-    .table-wrap {
-      overflow-x: auto;
-    }
-
-
-    table {
-      width: 100%;
-
-      min-width: 1100px;
-
-      border-collapse: collapse;
-    }
-
-
-    th {
-      background: #f1ece4;
-
-      text-align: left;
-
-      padding: 15px;
-
-      font-size: 13px;
-
-      white-space: nowrap;
-    }
-
-
-    td {
-      padding: 15px;
-
-      border-top:
-        1px solid #eee;
-
-      font-size: 14px;
-
-      vertical-align: top;
-    }
-
-
-    .status-select {
-      border: none;
-
-      background: #fff4d6;
-
-      color: #9a6a00;
-
-      padding: 6px 10px;
-
-      border-radius: 20px;
-
-      font-size: 12px;
-
-      cursor: pointer;
-    }
-
-
-    .delete-btn {
-      border: none;
-
-      background: #fff0f0;
-
-      color: #c0392b;
-
-      padding: 7px 12px;
-
-      border-radius: 7px;
-
-      cursor: pointer;
-
-      font-size: 12px;
-    }
-
-
-    .delete-btn:hover {
-      opacity: 0.8;
-    }
-
-
-    .empty {
-      padding: 80px 20px;
-
-      text-align: center;
-
-      color: #999;
-    }
-
-
-    .loading {
-      padding: 50px;
-
-      text-align: center;
-
-      color: #888;
-    }
-
-
-    /* =========================
-       手机端
-    ========================= */
-
-    @media (max-width: 600px) {
-
-      .header-inner {
-        flex-direction: column;
-
-        align-items: flex-start;
-      }
-
-
-      .header-actions {
-        width: 100%;
-      }
-
-
-      .refresh-btn,
-      .logout-btn {
-        flex: 1;
-      }
-
-
-      .container {
-        margin-top: 20px;
-      }
-
-
-      .toolbar {
-        flex-direction: column;
-      }
-
-
-      .search-input,
-      .filter-select {
-        width: 100%;
-      }
-
-    }
-
-  </style>
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<title>奕心疗愈舍｜订单管理后台</title>
+
+<style>
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "PingFang SC",
+    "Microsoft YaHei",
+    sans-serif;
+  background: #f6f5f2;
+  color: #222;
+}
+
+/* =========================
+   登录页面
+========================= */
+
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.login-box {
+  width: 100%;
+  max-width: 420px;
+  background: #fff;
+  padding: 42px 35px;
+  border-radius: 18px;
+  box-shadow:
+    0 15px 50px rgba(0,0,0,0.08);
+}
+
+.logo {
+  text-align: center;
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  margin-bottom: 8px;
+}
+
+.logo-sub {
+  text-align: center;
+  color: #999;
+  font-size: 13px;
+  margin-bottom: 35px;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #555;
+}
+
+.form-group input {
+  width: 100%;
+  height: 46px;
+  padding: 0 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+  outline: none;
+}
+
+.form-group input:focus {
+  border-color: #222;
+}
+
+.login-btn {
+  width: 100%;
+  height: 48px;
+  border: none;
+  border-radius: 8px;
+  background: #222;
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.login-btn:hover {
+  background: #000;
+}
+
+.login-message {
+  text-align: center;
+  color: #d33;
+  font-size: 13px;
+  margin-top: 15px;
+  min-height: 20px;
+}
+
+/* =========================
+   后台页面
+========================= */
+
+.admin-page {
+  display: none;
+  min-height: 100vh;
+}
+
+/* =========================
+   顶部
+========================= */
+
+.header {
+  height: 72px;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.header-title {
+  font-size: 21px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+.header-sub {
+  font-size: 13px;
+  color: #999;
+}
+
+.logout-btn {
+  border: 1px solid #ddd;
+  background: #fff;
+  padding: 8px 16px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.logout-btn:hover {
+  background: #f5f5f5;
+}
+
+/* =========================
+   主体
+========================= */
+
+.container {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 28px;
+}
+
+/* =========================
+   数据统计
+========================= */
+
+.stats {
+  display: grid;
+  grid-template-columns:
+    repeat(7, minmax(0, 1fr));
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.stat-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid #eee;
+}
+
+.stat-title {
+  color: #999;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.stat-number {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.stat-card.today {
+  background: #222;
+  color: #fff;
+}
+
+.stat-card.today .stat-title {
+  color: #ccc;
+}
+
+/* =========================
+   工具栏
+========================= */
+
+.toolbar {
+  background: #fff;
+  border-radius: 12px;
+  padding: 18px;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  border: 1px solid #eee;
+}
+
+.search-input {
+  height: 42px;
+  width: 280px;
+  padding: 0 13px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  font-size: 14px;
+}
+
+.search-input:focus {
+  border-color: #222;
+}
+
+.status-select {
+  height: 42px;
+  padding: 0 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.quick-btn {
+  height: 42px;
+  padding: 0 16px;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.quick-btn:hover {
+  background: #f5f5f5;
+}
+
+.quick-btn.active {
+  background: #222;
+  color: #fff;
+  border-color: #222;
+}
+
+/* =========================
+   当前筛选提示
+========================= */
+
+.filter-info {
+  display: none;
+  margin-bottom: 15px;
+  padding: 13px 16px;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #eee;
+  font-size: 14px;
+}
+
+.filter-info strong {
+  font-weight: 600;
+}
+
+/* =========================
+   表格
+========================= */
+
+.table-box {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  overflow: hidden;
+}
+
+.table-scroll {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1250px;
+}
+
+thead {
+  background: #fafafa;
+}
+
+th {
+  text-align: left;
+  padding: 15px 13px;
+  font-size: 13px;
+  color: #666;
+  font-weight: 500;
+  border-bottom: 1px solid #eee;
+  white-space: nowrap;
+}
+
+td {
+  padding: 15px 13px;
+  font-size: 13px;
+  border-bottom: 1px solid #f1f1f1;
+  vertical-align: middle;
+}
+
+tbody tr:hover {
+  background: #fcfcfc;
+}
+
+.order-id {
+  font-size: 12px;
+  color: #777;
+}
+
+.price {
+  font-weight: 600;
+}
+
+.customer-name {
+  font-weight: 500;
+}
+
+.phone {
+  white-space: nowrap;
+}
+
+.address {
+  max-width: 220px;
+  line-height: 1.5;
+}
+
+/* =========================
+   状态
+========================= */
+
+.status-select {
+  min-width: 90px;
+}
+
+.status-select.status-waiting {
+  color: #c77b00;
+}
+
+.status-select.status-confirmed {
+  color: #2878c8;
+}
+
+.status-select.status-working {
+  color: #8b55b5;
+}
+
+.status-select.status-finished {
+  color: #2d8a55;
+}
+
+.status-select.status-cancelled {
+  color: #999;
+}
+
+/* =========================
+   删除按钮
+========================= */
+
+.delete-btn {
+  border: 1px solid #e1e1e1;
+  background: #fff;
+  color: #d33;
+  padding: 7px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.delete-btn:hover {
+  background: #fff5f5;
+  border-color: #e2bcbc;
+}
+
+/* =========================
+   空状态
+========================= */
+
+.empty {
+  text-align: center;
+  padding: 70px 20px;
+  color: #aaa;
+  font-size: 14px;
+}
+
+.loading {
+  text-align: center;
+  padding: 60px;
+  color: #999;
+}
+
+/* =========================
+   Toast
+========================= */
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 35px;
+  transform: translateX(-50%);
+  background: #222;
+  color: #fff;
+  padding: 12px 22px;
+  border-radius: 8px;
+  font-size: 14px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s;
+  z-index: 9999;
+}
+
+.toast.show {
+  opacity: 1;
+}
+
+/* =========================
+   手机端
+========================= */
+
+@media (max-width: 1000px) {
+
+  .stats {
+    grid-template-columns:
+      repeat(3, 1fr);
+  }
+
+}
+
+@media (max-width: 700px) {
+
+  .header {
+    height: auto;
+    min-height: 68px;
+    padding: 15px;
+  }
+
+  .header-left {
+    gap: 8px;
+  }
+
+  .header-title {
+    font-size: 17px;
+  }
+
+  .header-sub {
+    display: none;
+  }
+
+  .container {
+    padding: 15px;
+  }
+
+  .stats {
+    grid-template-columns:
+      repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .stat-card {
+    padding: 15px;
+  }
+
+  .stat-number {
+    font-size: 23px;
+  }
+
+  .toolbar {
+    padding: 13px;
+  }
+
+  .search-input {
+    width: 100%;
+  }
+
+  .quick-btn {
+    flex: 1;
+    min-width: 90px;
+  }
+
+  .login-box {
+    padding: 32px 22px;
+  }
+
+}
+
+</style>
 
 </head>
 
-
 <body>
 
+<!-- =========================
+     登录页面
+========================= -->
 
-  <!-- =========================
-       登录页面
-  ========================= -->
+<div
+  id="loginPage"
+  class="login-page"
+>
 
-  <div id="loginPage">
+  <div class="login-box">
 
-    <div class="login-card">
+    <div class="logo">
+      奕心疗愈舍
+    </div>
 
-      <h1 class="login-title">
-        奕心疗愈舍
-      </h1>
+    <div class="logo-sub">
+      预约订单管理后台
+    </div>
 
+    <div class="form-group">
 
-      <div class="login-subtitle">
-        ADMIN LOGIN · 管理员登录
-      </div>
-
+      <label>
+        管理员账号
+      </label>
 
       <input
         id="username"
-        class="login-input"
         type="text"
-        placeholder="管理员账号"
+        placeholder="请输入管理员账号"
+        autocomplete="username"
       >
 
+    </div>
+
+    <div class="form-group">
+
+      <label>
+        管理员密码
+      </label>
 
       <input
         id="password"
-        class="login-input"
         type="password"
-        placeholder="管理员密码"
+        placeholder="请输入管理员密码"
+        autocomplete="current-password"
       >
+
+    </div>
+
+    <button
+      class="login-btn"
+      onclick="login()"
+    >
+      登录后台
+    </button>
+
+    <div
+      id="loginMessage"
+      class="login-message"
+    ></div>
+
+  </div>
+
+</div>
+
+
+<!-- =========================
+     管理后台
+========================= -->
+
+<div
+  id="adminPage"
+  class="admin-page"
+>
+
+  <!-- 顶部 -->
+
+  <div class="header">
+
+    <div class="header-left">
+
+      <div class="header-title">
+        奕心疗愈舍
+      </div>
+
+      <div class="header-sub">
+        预约订单管理后台
+      </div>
+
+    </div>
+
+    <button
+      class="logout-btn"
+      onclick="logout()"
+    >
+      退出登录
+    </button>
+
+  </div>
+
+
+  <!-- 主体 -->
+
+  <div class="container">
+
+    <!-- =========================
+         数据统计
+    ========================= -->
+
+    <div class="stats">
+
+      <div class="stat-card">
+
+        <div class="stat-title">
+          总订单
+        </div>
+
+        <div
+          id="totalCount"
+          class="stat-number"
+        >
+          0
+        </div>
+
+      </div>
+
+
+      <div class="stat-card">
+
+        <div class="stat-title">
+          待确认
+        </div>
+
+        <div
+          id="waitingCount"
+          class="stat-number"
+        >
+          0
+        </div>
+
+      </div>
+
+
+      <div class="stat-card">
+
+        <div class="stat-title">
+          已确认
+        </div>
+
+        <div
+          id="confirmedCount"
+          class="stat-number"
+        >
+          0
+        </div>
+
+      </div>
+
+
+      <div class="stat-card">
+
+        <div class="stat-title">
+          服务中
+        </div>
+
+        <div
+          id="workingCount"
+          class="stat-number"
+        >
+          0
+        </div>
+
+      </div>
+
+
+      <div class="stat-card">
+
+        <div class="stat-title">
+          已完成
+        </div>
+
+        <div
+          id="finishedCount"
+          class="stat-number"
+        >
+          0
+        </div>
+
+      </div>
+
+
+      <div class="stat-card today">
+
+        <div class="stat-title">
+          今日订单
+        </div>
+
+        <div
+          id="todayCount"
+          class="stat-number"
+        >
+          0
+        </div>
+
+      </div>
+
+
+      <div class="stat-card today">
+
+        <div class="stat-title">
+          今日营业额
+        </div>
+
+        <div
+          id="todayRevenue"
+          class="stat-number"
+        >
+          ¥0
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- =========================
+         工具栏
+    ========================= -->
+
+    <div class="toolbar">
+
+      <input
+        id="searchInput"
+        class="search-input"
+        type="text"
+        placeholder="搜索订单号 / 姓名 / 手机号"
+        oninput="renderOrders()"
+      >
+
+
+      <select
+        id="statusFilter"
+        class="status-select"
+        onchange="renderOrders()"
+      >
+
+        <option value="">
+          全部状态
+        </option>
+
+        <option value="待确认">
+          待确认
+        </option>
+
+        <option value="已确认">
+          已确认
+        </option>
+
+        <option value="服务中">
+          服务中
+        </option>
+
+        <option value="已完成">
+          已完成
+        </option>
+
+        <option value="已取消">
+          已取消
+        </option>
+
+      </select>
 
 
       <button
-        class="login-btn"
-        onclick="login()"
+        id="allBtn"
+        class="quick-btn active"
+        onclick="setDateFilter('')"
       >
-        登录后台
+        全部订单
       </button>
 
 
-      <div
-        id="loginError"
-        class="login-error"
-      ></div>
+      <button
+        id="todayBtn"
+        class="quick-btn"
+        onclick="setDateFilter('today')"
+      >
+        今天订单
+      </button>
+
+
+      <button
+        id="tomorrowBtn"
+        class="quick-btn"
+        onclick="setDateFilter('tomorrow')"
+      >
+        明天订单
+      </button>
+
+    </div>
+
+
+    <!-- =========================
+         筛选提示
+    ========================= -->
+
+    <div
+      id="filterInfo"
+      class="filter-info"
+    ></div>
+
+
+    <!-- =========================
+         订单表格
+    ========================= -->
+
+    <div class="table-box">
+
+      <div class="table-scroll">
+
+        <table>
+
+          <thead>
+
+            <tr>
+
+              <th>
+                订单号
+              </th>
+
+              <th>
+                服务
+              </th>
+
+              <th>
+                价格
+              </th>
+
+              <th>
+                时长
+              </th>
+
+              <th>
+                疗愈师
+              </th>
+
+              <th>
+                预约时间
+              </th>
+
+              <th>
+                客户
+              </th>
+
+              <th>
+                手机号
+              </th>
+
+              <th>
+                服务地址
+              </th>
+
+              <th>
+                状态
+              </th>
+
+              <th>
+                下单时间
+              </th>
+
+              <th>
+                操作
+              </th>
+
+            </tr>
+
+          </thead>
+
+
+          <tbody id="orderTableBody">
+
+            <tr>
+
+              <td
+                colspan="12"
+                class="loading"
+              >
+                正在加载订单...
+              </td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
 
     </div>
 
   </div>
 
+</div>
 
-  <!-- =========================
-       管理后台
-  ========================= -->
 
-  <div
-    id="adminPage"
-    style="display: none;"
-  >
+<!-- =========================
+     Toast
+========================= -->
 
+<div
+  id="toast"
+  class="toast"
+></div>
 
-    <header class="header">
 
-      <div class="header-inner">
+<script>
 
-        <div>
+/* =========================
+   全局变量
+========================= */
 
-          <div class="brand">
-            奕心疗愈舍 · 订单管理
-          </div>
+let token =
+  localStorage.getItem("adminToken");
 
-          <div class="subtitle">
-            YIXIN HEALING · APPOINTMENT SYSTEM
-          </div>
+let orders = [];
 
-        </div>
+let dateFilter = "";
 
 
-        <div class="header-actions">
+/* =========================
+   DOM
+========================= */
 
-          <button
-            class="refresh-btn"
-            onclick="loadOrders()"
-          >
-            刷新订单
-          </button>
+const loginPage =
+  document.getElementById(
+    "loginPage"
+  );
 
+const adminPage =
+  document.getElementById(
+    "adminPage"
+  );
 
-          <button
-            class="logout-btn"
-            onclick="logout()"
-          >
-            退出登录
-          </button>
 
-        </div>
+/* =========================
+   页面初始化
+========================= */
 
-      </div>
-
-    </header>
-
-
-    <main class="container">
-
-
-      <!-- =========================
-           数据统计
-      ========================= -->
-
-      <section class="stats">
-
-
-        <div class="stat-card">
-
-          <div class="stat-label">
-            总订单
-          </div>
-
-          <div
-            class="stat-number"
-            id="totalOrders"
-          >
-            0
-          </div>
-
-        </div>
-
-
-        <div class="stat-card">
-
-          <div class="stat-label">
-            今日订单
-          </div>
-
-          <div
-            class="stat-number"
-            id="todayOrders"
-          >
-            0
-          </div>
-
-        </div>
-
-
-        <div class="stat-card">
-
-          <div class="stat-label">
-            待确认
-          </div>
-
-          <div
-            class="stat-number"
-            id="pendingOrders"
-          >
-            0
-          </div>
-
-        </div>
-
-
-        <div class="stat-card">
-
-          <div class="stat-label">
-            已确认
-          </div>
-
-          <div
-            class="stat-number"
-            id="confirmedOrders"
-          >
-            0
-          </div>
-
-        </div>
-
-
-        <div class="stat-card">
-
-          <div class="stat-label">
-            服务中
-          </div>
-
-          <div
-            class="stat-number"
-            id="servingOrders"
-          >
-            0
-          </div>
-
-        </div>
-
-
-        <div class="stat-card">
-
-          <div class="stat-label">
-            已完成
-          </div>
-
-          <div
-            class="stat-number"
-            id="completedOrders"
-          >
-            0
-          </div>
-
-        </div>
-
-
-        <div class="stat-card">
-
-          <div class="stat-label">
-            已取消
-          </div>
-
-          <div
-            class="stat-number"
-            id="cancelledOrders"
-          >
-            0
-          </div>
-
-        </div>
-
-
-        <div class="stat-card">
-
-          <div class="stat-label">
-            今日预约金额
-          </div>
-
-          <div
-            class="stat-number"
-            id="todayRevenue"
-          >
-            ¥0
-          </div>
-
-        </div>
-
-
-      </section>
-
-
-      <!-- =========================
-           搜索筛选
-      ========================= -->
-
-      <section class="toolbar">
-
-
-        <input
-          id="searchInput"
-          class="search-input"
-          type="text"
-          placeholder="搜索订单号、客户姓名或手机号"
-          oninput="filterOrders()"
-        >
-
-
-        <select
-          id="statusFilter"
-          class="filter-select"
-          onchange="filterOrders()"
-        >
-
-          <option value="">
-            全部状态
-          </option>
-
-          <option value="待确认">
-            待确认
-          </option>
-
-          <option value="已确认">
-            已确认
-          </option>
-
-          <option value="服务中">
-            服务中
-          </option>
-
-          <option value="已完成">
-            已完成
-          </option>
-
-          <option value="已取消">
-            已取消
-          </option>
-
-        </select>
-
-
-      </section>
-
-
-      <!-- =========================
-           订单表格
-      ========================= -->
-
-      <section class="table-card">
-
-
-        <div
-          class="loading"
-          id="loading"
-        >
-          正在加载订单...
-        </div>
-
-
-        <div
-          class="empty"
-          id="empty"
-          style="display: none;"
-        >
-          暂时还没有预约订单
-        </div>
-
-
-        <div
-          class="table-wrap"
-          id="tableWrap"
-          style="display: none;"
-        >
-
-          <table>
-
-            <thead>
-
-              <tr>
-
-                <th>订单号</th>
-
-                <th>服务</th>
-
-                <th>价格</th>
-
-                <th>时长</th>
-
-                <th>疗愈师</th>
-
-                <th>预约时间</th>
-
-                <th>客户</th>
-
-                <th>手机号</th>
-
-                <th>服务地址</th>
-
-                <th>状态</th>
-
-                <th>下单时间</th>
-
-                <th>操作</th>
-
-              </tr>
-
-            </thead>
-
-
-            <tbody
-              id="ordersBody"
-            ></tbody>
-
-          </table>
-
-        </div>
-
-
-      </section>
-
-
-    </main>
-
-
-  </div>
-
-
-  <script>
-
-
-    let allOrders = [];
-
-
-    // =========================
-    // 登录
-    // =========================
-
-    async function login() {
-
-      const username =
-        document
-          .getElementById("username")
-          .value
-          .trim();
-
-
-      const password =
-        document
-          .getElementById("password")
-          .value;
-
-
-      const loginError =
-        document.getElementById(
-          "loginError"
-        );
-
-
-      loginError.textContent = "";
-
-
-      try {
-
-        const response =
-          await fetch(
-            "/api/admin/login",
-            {
-              method: "POST",
-
-              headers: {
-                "Content-Type":
-                  "application/json"
-              },
-
-              body:
-                JSON.stringify({
-                  username:
-                    username,
-
-                  password:
-                    password
-                })
-            }
-          );
-
-
-        const data =
-          await response.json();
-
-
-        if (!data.success) {
-
-          loginError.textContent =
-            data.message ||
-            "账号或密码错误";
-
-          return;
-
-        }
-
-
-        localStorage.setItem(
-          "adminToken",
-          data.token
-        );
-
-
-        showAdminPage();
-
-        loadOrders();
-
-      } catch (error) {
-
-        console.error(error);
-
-        loginError.textContent =
-          "登录失败，请检查网络";
-
-      }
-
-    }
-
-
-    // =========================
-    // 显示后台
-    // =========================
-
-    function showAdminPage() {
-
-      document
-        .getElementById("loginPage")
-        .style.display =
-          "none";
-
-
-      document
-        .getElementById("adminPage")
-        .style.display =
-          "block";
-
-    }
-
-
-    // =========================
-    // 显示登录
-    // =========================
-
-    function showLoginPage() {
-
-      document
-        .getElementById("adminPage")
-        .style.display =
-          "none";
-
-
-      document
-        .getElementById("loginPage")
-        .style.display =
-          "flex";
-
-    }
-
-
-    // =========================
-    // 退出登录
-    // =========================
-
-    function logout() {
-
-      localStorage.removeItem(
-        "adminToken"
-      );
-
-      showLoginPage();
-
-    }
-
-
-    // =========================
-    // 加载订单
-    // =========================
-
-    async function loadOrders() {
-
-      const loading =
-        document.getElementById(
-          "loading"
-        );
-
-
-      const empty =
-        document.getElementById(
-          "empty"
-        );
-
-
-      const tableWrap =
-        document.getElementById(
-          "tableWrap"
-        );
-
-
-      const token =
-        localStorage.getItem(
-          "adminToken"
-        );
-
-
-      if (!token) {
-
-        showLoginPage();
-
-        return;
-
-      }
-
-
-      loading.style.display =
-        "block";
-
-
-      loading.textContent =
-        "正在加载订单...";
-
-
-      empty.style.display =
-        "none";
-
-
-      tableWrap.style.display =
-        "none";
-
-
-      try {
-
-        const response =
-          await fetch(
-            "/api/orders",
-            {
-              headers: {
-                "Authorization":
-                  "Bearer " + token
-              }
-            }
-          );
-
-
-        if (
-          response.status === 401
-        ) {
-
-          localStorage.removeItem(
-            "adminToken"
-          );
-
-
-          showLoginPage();
-
-          return;
-
-        }
-
-
-        const data =
-          await response.json();
-
-
-        if (!data.success) {
-
-          throw new Error(
-            data.message ||
-            "获取订单失败"
-          );
-
-        }
-
-
-        allOrders =
-          data.orders || [];
-
-
-        updateStats();
-
-        filterOrders();
-
-
-        loading.style.display =
-          "none";
-
-
-      } catch (error) {
-
-        console.error(error);
-
-        loading.textContent =
-          "订单加载失败，请刷新重试";
-
-      }
-
-    }
-
-
-    // =========================
-    // 更新统计
-    // =========================
-
-    function updateStats() {
-
-      const total =
-        allOrders.length;
-
-
-      const pending =
-        allOrders.filter(
-          function(order) {
-
-            return (
-              order.status ===
-              "待确认"
-            );
-
-          }
-        ).length;
-
-
-      const confirmed =
-        allOrders.filter(
-          function(order) {
-
-            return (
-              order.status ===
-              "已确认"
-            );
-
-          }
-        ).length;
-
-
-      const serving =
-        allOrders.filter(
-          function(order) {
-
-            return (
-              order.status ===
-              "服务中"
-            );
-
-          }
-        ).length;
-
-
-      const completed =
-        allOrders.filter(
-          function(order) {
-
-            return (
-              order.status ===
-              "已完成"
-            );
-
-          }
-        ).length;
-
-
-      const cancelled =
-        allOrders.filter(
-          function(order) {
-
-            return (
-              order.status ===
-              "已取消"
-            );
-
-          }
-        ).length;
-
-
-      document
-        .getElementById(
-          "totalOrders"
-        )
-        .textContent =
-          total;
-
-
-      document
-        .getElementById(
-          "pendingOrders"
-        )
-        .textContent =
-          pending;
-
-
-      document
-        .getElementById(
-          "confirmedOrders"
-        )
-        .textContent =
-          confirmed;
-
-
-      document
-        .getElementById(
-          "servingOrders"
-        )
-        .textContent =
-          serving;
-
-
-      document
-        .getElementById(
-          "completedOrders"
-        )
-        .textContent =
-          completed;
-
-
-      document
-        .getElementById(
-          "cancelledOrders"
-        )
-        .textContent =
-          cancelled;
-
-
-      // =========================
-      // 今日订单
-      // =========================
-
-      const now =
-        new Date();
-
-
-      const year =
-        now.getFullYear();
-
-
-      const month =
-        String(
-          now.getMonth() + 1
-        ).padStart(
-          2,
-          "0"
-        );
-
-
-      const day =
-        String(
-          now.getDate()
-        ).padStart(
-          2,
-          "0"
-        );
-
-
-      const today =
-        year +
-        "-" +
-        month +
-        "-" +
-        day;
-
-
-      const todayOrderList =
-        allOrders.filter(
-          function(order) {
-
-            return (
-              order.date ===
-              today
-            );
-
-          }
-        );
-
-
-      document
-        .getElementById(
-          "todayOrders"
-        )
-        .textContent =
-          todayOrderList.length;
-
-
-      // =========================
-      // 今日预约金额
-      // =========================
-
-      const todayRevenue =
-        todayOrderList.reduce(
-          function(
-            total,
-            order
-          ) {
-
-            return (
-              total +
-              Number(
-                order.price || 0
-              )
-            );
-
-          },
-          0
-        );
-
-
-      document
-        .getElementById(
-          "todayRevenue"
-        )
-        .textContent =
-          "¥" +
-          todayRevenue.toFixed(0);
-
-    }
-
-
-    // =========================
-    // 搜索 + 筛选
-    // =========================
-
-    function filterOrders() {
-
-      const keyword =
-        document
-          .getElementById(
-            "searchInput"
-          )
-          .value
-          .trim()
-          .toLowerCase();
-
-
-      const status =
-        document
-          .getElementById(
-            "statusFilter"
-          )
-          .value;
-
-
-      const filteredOrders =
-        allOrders.filter(
-          function(order) {
-
-            const orderId =
-              String(
-                order.id || ""
-              ).toLowerCase();
-
-
-            const name =
-              String(
-                order.name || ""
-              ).toLowerCase();
-
-
-            const phone =
-              String(
-                order.phone || ""
-              ).toLowerCase();
-
-
-            const keywordMatch =
-              !keyword ||
-              orderId.includes(
-                keyword
-              ) ||
-              name.includes(
-                keyword
-              ) ||
-              phone.includes(
-                keyword
-              );
-
-
-            const statusMatch =
-              !status ||
-              order.status ===
-              status;
-
-
-            return (
-              keywordMatch &&
-              statusMatch
-            );
-
-          }
-        );
-
-
-      renderOrders(
-        filteredOrders
-      );
-
-    }
-
-
-    // =========================
-    // 渲染订单
-    // =========================
-
-    function renderOrders(
-      orders
-    ) {
-
-      const empty =
-        document.getElementById(
-          "empty"
-        );
-
-
-      const tableWrap =
-        document.getElementById(
-          "tableWrap"
-        );
-
-
-      const ordersBody =
-        document.getElementById(
-          "ordersBody"
-        );
-
-
-      ordersBody.innerHTML = "";
-
-
-      if (
-        orders.length === 0
-      ) {
-
-        empty.style.display =
-          "block";
-
-
-        tableWrap.style.display =
-          "none";
-
-        return;
-
-      }
-
-
-      empty.style.display =
-        "none";
-
-
-      tableWrap.style.display =
-        "block";
-
-
-      orders.forEach(
-        function(order) {
-
-          const row =
-            document.createElement(
-              "tr"
-            );
-
-
-          const createdAt =
-            order.createdAt
-              ? new Date(
-                  order.createdAt
-                ).toLocaleString(
-                  "zh-CN"
-                )
-              : "-";
-
-
-          const statusList = [
-            "待确认",
-            "已确认",
-            "服务中",
-            "已完成",
-            "已取消"
-          ];
-
-
-          let options = "";
-
-
-          statusList.forEach(
-            function(status) {
-
-              const selected =
-                order.status ===
-                status
-                  ? " selected"
-                  : "";
-
-
-              options +=
-                "<option value=\"" +
-                status +
-                "\"" +
-                selected +
-                ">" +
-                status +
-                "</option>";
-
-            }
-          );
-
-
-          row.innerHTML =
-            "<td>" +
-            escapeHtml(
-              order.id || "-"
-            ) +
-            "</td>" +
-
-            "<td>" +
-            escapeHtml(
-              order.service || "-"
-            ) +
-            "</td>" +
-
-            "<td>¥" +
-            escapeHtml(
-              String(
-                order.price || 0
-              )
-            ) +
-            "</td>" +
-
-            "<td>" +
-            escapeHtml(
-              order.duration || "-"
-            ) +
-            "</td>" +
-
-            "<td>" +
-            escapeHtml(
-              order.therapist || "-"
-            ) +
-            "</td>" +
-
-            "<td>" +
-            escapeHtml(
-              order.date || "-"
-            ) +
-            "<br>" +
-            escapeHtml(
-              order.time || "-"
-            ) +
-            "</td>" +
-
-            "<td>" +
-            escapeHtml(
-              order.name || "-"
-            ) +
-            "</td>" +
-
-            "<td>" +
-            escapeHtml(
-              order.phone || "-"
-            ) +
-            "</td>" +
-
-            "<td>" +
-            escapeHtml(
-              order.address || "-"
-            ) +
-            "</td>" +
-
-            "<td>" +
-            "<select " +
-            "class=\"status-select\" " +
-            "data-order-id=\"" +
-            escapeHtml(
-              order.id
-            ) +
-            "\">" +
-            options +
-            "</select>" +
-            "</td>" +
-
-            "<td>" +
-            escapeHtml(
-              createdAt
-            ) +
-            "</td>" +
-
-            "<td>" +
-            "<button " +
-            "class=\"delete-btn\" " +
-            "data-order-id=\"" +
-            escapeHtml(
-              order.id
-            ) +
-            "\">删除</button>" +
-            "</td>";
-
-
-          const statusSelect =
-            row.querySelector(
-              ".status-select"
-            );
-
-
-          statusSelect.addEventListener(
-            "change",
-            function() {
-
-              updateOrderStatus(
-                order.id,
-                statusSelect.value
-              );
-
-            }
-          );
-
-
-          const deleteButton =
-            row.querySelector(
-              ".delete-btn"
-            );
-
-
-          deleteButton.addEventListener(
-            "click",
-            function() {
-
-              deleteOrder(
-                order.id
-              );
-
-            }
-          );
-
-
-          ordersBody.appendChild(
-            row
-          );
-
-        }
-      );
-
-    }
-
-
-    // =========================
-    // 修改订单状态
-    // =========================
-
-    async function updateOrderStatus(
-      orderId,
-      status
-    ) {
-
-      const token =
-        localStorage.getItem(
-          "adminToken"
-        );
-
-
-      try {
-
-        const response =
-          await fetch(
-            "/api/orders/" +
-            encodeURIComponent(
-              orderId
-            ) +
-            "/status",
-            {
-              method:
-                "PATCH",
-
-              headers: {
-                "Content-Type":
-                  "application/json",
-
-                "Authorization":
-                  "Bearer " +
-                  token
-              },
-
-              body:
-                JSON.stringify({
-                  status:
-                    status
-                })
-            }
-          );
-
-
-        const data =
-          await response.json();
-
-
-        if (
-          response.status === 401
-        ) {
-
-          localStorage.removeItem(
-            "adminToken"
-          );
-
-
-          showLoginPage();
-
-          return;
-
-        }
-
-
-        if (
-          !data.success
-        ) {
-
-          throw new Error(
-            data.message ||
-            "修改订单状态失败"
-          );
-
-        }
-
-
-        alert(
-          "订单状态已更新为：" +
-          status
-        );
-
-
-        loadOrders();
-
-      } catch (error) {
-
-        console.error(error);
-
-
-        alert(
-          "订单状态修改失败"
-        );
-
-
-        loadOrders();
-
-      }
-
-    }
-
-
-    // =========================
-    // 删除订单
-    // =========================
-
-    async function deleteOrder(
-      orderId
-    ) {
-
-      const confirmed =
-        confirm(
-          "确定要删除这个订单吗？\n\n删除后无法恢复。"
-        );
-
-
-      if (!confirmed) {
-
-        return;
-
-      }
-
-
-      const token =
-        localStorage.getItem(
-          "adminToken"
-        );
-
-
-      try {
-
-        const response =
-          await fetch(
-            "/api/orders/" +
-            encodeURIComponent(
-              orderId
-            ),
-            {
-              method:
-                "DELETE",
-
-              headers: {
-                "Authorization":
-                  "Bearer " +
-                  token
-              }
-            }
-          );
-
-
-        if (
-          response.status === 401
-        ) {
-
-          localStorage.removeItem(
-            "adminToken"
-          );
-
-
-          showLoginPage();
-
-          return;
-
-        }
-
-
-        const data =
-          await response.json();
-
-
-        if (
-          !data.success
-        ) {
-
-          throw new Error(
-            data.message ||
-            "删除订单失败"
-          );
-
-        }
-
-
-        alert(
-          "订单已删除"
-        );
-
-
-        loadOrders();
-
-      } catch (error) {
-
-        console.error(error);
-
-
-        alert(
-          "删除订单失败，请重试"
-        );
-
-      }
-
-    }
-
-
-    // =========================
-    // 防止 HTML 注入
-    // =========================
-
-    function escapeHtml(
-      value
-    ) {
-
-      const div =
-        document.createElement(
-          "div"
-        );
-
-
-      div.textContent =
-        value;
-
-
-      return div.innerHTML;
-
-    }
-
-
-    // =========================
-    // 回车登录
-    // =========================
-
-    document
-      .getElementById(
-        "password"
-      )
-      .addEventListener(
-        "keydown",
-        function(event) {
-
-          if (
-            event.key ===
-            "Enter"
-          ) {
-
-            login();
-
-          }
-
-        }
-      );
-
-
-    // =========================
-    // 自动恢复登录
-    // =========================
-
-    const token =
-      localStorage.getItem(
-        "adminToken"
-      );
-
+window.addEventListener(
+  "load",
+  function() {
 
     if (token) {
 
       showAdminPage();
 
-      loadOrders();
+    }
+
+  }
+);
+
+
+/* =========================
+   登录
+========================= */
+
+async function login() {
+
+  const username =
+    document
+      .getElementById("username")
+      .value
+      .trim();
+
+  const password =
+    document
+      .getElementById("password")
+      .value;
+
+  const message =
+    document.getElementById(
+      "loginMessage"
+    );
+
+
+  if (!username) {
+
+    message.textContent =
+      "请输入管理员账号";
+
+    return;
+
+  }
+
+
+  if (!password) {
+
+    message.textContent =
+      "请输入管理员密码";
+
+    return;
+
+  }
+
+
+  message.textContent =
+    "正在登录...";
+
+
+  try {
+
+    const response =
+      await fetch(
+        "/api/admin/login",
+        {
+          method: "POST",
+
+          headers: {
+            "Content-Type":
+              "application/json"
+          },
+
+          body: JSON.stringify({
+            username,
+            password
+          })
+        }
+      );
+
+
+    const data =
+      await response.json();
+
+
+    if (!response.ok ||
+        !data.success) {
+
+      message.textContent =
+        data.message ||
+        "登录失败";
+
+      return;
 
     }
 
 
-  </script>
+    token =
+      data.token;
+
+    localStorage.setItem(
+      "adminToken",
+      token
+    );
+
+
+    message.textContent = "";
+
+    showAdminPage();
+
+
+  } catch (error) {
+
+    console.error(error);
+
+    message.textContent =
+      "网络连接失败，请稍后再试";
+
+  }
+
+}
+
+
+/* =========================
+   显示后台
+========================= */
+
+function showAdminPage() {
+
+  loginPage.style.display =
+    "none";
+
+  adminPage.style.display =
+    "block";
+
+  loadOrders();
+
+}
+
+
+/* =========================
+   退出登录
+========================= */
+
+function logout() {
+
+  localStorage.removeItem(
+    "adminToken"
+  );
+
+  token = "";
+
+  orders = [];
+
+  adminPage.style.display =
+    "none";
+
+  loginPage.style.display =
+    "flex";
+
+  document
+    .getElementById("username")
+    .value = "";
+
+  document
+    .getElementById("password")
+    .value = "";
+
+}
+
+
+/* =========================
+   加载订单
+========================= */
+
+async function loadOrders() {
+
+  const tbody =
+    document.getElementById(
+      "orderTableBody"
+    );
+
+
+  tbody.innerHTML =
+    '<tr><td colspan="12" class="loading">正在加载订单...</td></tr>';
+
+
+  try {
+
+    const response =
+      await fetch(
+        "/api/orders",
+        {
+          headers: {
+            Authorization:
+              "Bearer " + token
+          }
+        }
+      );
+
+
+    if (response.status === 401) {
+
+      logout();
+
+      return;
+
+    }
+
+
+    const data =
+      await response.json();
+
+
+    if (!response.ok ||
+        !data.success) {
+
+      tbody.innerHTML =
+        '<tr><td colspan="12" class="empty">订单加载失败</td></tr>';
+
+      showToast(
+        data.message ||
+        "订单加载失败"
+      );
+
+      return;
+
+    }
+
+
+    orders =
+      Array.isArray(data.orders)
+        ? data.orders
+        : [];
+
+
+    updateStats();
+
+    renderOrders();
+
+
+  } catch (error) {
+
+    console.error(error);
+
+    tbody.innerHTML =
+      '<tr><td colspan="12" class="empty">网络连接失败</td></tr>';
+
+    showToast(
+      "网络连接失败"
+    );
+
+  }
+
+}
+
+
+/* =========================
+   日期处理
+========================= */
+
+function getLocalDateString(
+  date
+) {
+
+  const year =
+    date.getFullYear();
+
+  const month =
+    String(
+      date.getMonth() + 1
+    ).padStart(2, "0");
+
+  const day =
+    String(
+      date.getDate()
+    ).padStart(2, "0");
+
+
+  return (
+    year +
+    "-" +
+    month +
+    "-" +
+    day
+  );
+
+}
+
+
+/* =========================
+   获取今天
+========================= */
+
+function getToday() {
+
+  return getLocalDateString(
+    new Date()
+  );
+
+}
+
+
+/* =========================
+   获取明天
+========================= */
+
+function getTomorrow() {
+
+  const tomorrow =
+    new Date();
+
+  tomorrow.setDate(
+    tomorrow.getDate() + 1
+  );
+
+
+  return getLocalDateString(
+    tomorrow
+  );
+
+}
+
+
+/* =========================
+   快速日期筛选
+========================= */
+
+function setDateFilter(
+  type
+) {
+
+  dateFilter =
+    type;
+
+
+  document
+    .getElementById("allBtn")
+    .classList.remove(
+      "active"
+    );
+
+  document
+    .getElementById("todayBtn")
+    .classList.remove(
+      "active"
+    );
+
+  document
+    .getElementById("tomorrowBtn")
+    .classList.remove(
+      "active"
+    );
+
+
+  if (type === "") {
+
+    document
+      .getElementById("allBtn")
+      .classList.add(
+        "active"
+      );
+
+  }
+
+
+  if (type === "today") {
+
+    document
+      .getElementById("todayBtn")
+      .classList.add(
+        "active"
+      );
+
+  }
+
+
+  if (type === "tomorrow") {
+
+    document
+      .getElementById("tomorrowBtn")
+      .classList.add(
+        "active"
+      );
+
+  }
+
+
+  renderOrders();
+
+}
+
+
+/* =========================
+   更新统计
+========================= */
+
+function updateStats() {
+
+  const total =
+    orders.length;
+
+
+  const waiting =
+    orders.filter(
+      order =>
+        order.status === "待确认"
+    ).length;
+
+
+  const confirmed =
+    orders.filter(
+      order =>
+        order.status === "已确认"
+    ).length;
+
+
+  const working =
+    orders.filter(
+      order =>
+        order.status === "服务中"
+    ).length;
+
+
+  const finished =
+    orders.filter(
+      order =>
+        order.status === "已完成"
+    ).length;
+
+
+  const today =
+    getToday();
+
+
+  const todayOrders =
+    orders.filter(
+      order =>
+        String(order.date || "") ===
+        today
+    );
+
+
+  let todayRevenue = 0;
+
+
+  todayOrders.forEach(
+    order => {
+
+      if (
+        order.status !==
+        "已取消"
+      ) {
+
+        todayRevenue +=
+          Number(order.price) || 0;
+
+      }
+
+    }
+  );
+
+
+  document
+    .getElementById(
+      "totalCount"
+    )
+    .textContent =
+      total;
+
+
+  document
+    .getElementById(
+      "waitingCount"
+    )
+    .textContent =
+      waiting;
+
+
+  document
+    .getElementById(
+      "confirmedCount"
+    )
+    .textContent =
+      confirmed;
+
+
+  document
+    .getElementById(
+      "workingCount"
+    )
+    .textContent =
+      working;
+
+
+  document
+    .getElementById(
+      "finishedCount"
+    )
+    .textContent =
+      finished;
+
+
+  document
+    .getElementById(
+      "todayCount"
+    )
+    .textContent =
+      todayOrders.length;
+
+
+  document
+    .getElementById(
+      "todayRevenue"
+    )
+    .textContent =
+      "¥" +
+      todayRevenue.toLocaleString();
+
+}
+
+
+/* =========================
+   渲染订单
+========================= */
+
+function renderOrders() {
+
+  const tbody =
+    document.getElementById(
+      "orderTableBody"
+    );
+
+
+  const search =
+    document
+      .getElementById(
+        "searchInput"
+      )
+      .value
+      .trim()
+      .toLowerCase();
+
+
+  const status =
+    document
+      .getElementById(
+        "statusFilter"
+      )
+      .value;
+
+
+  let targetDate = "";
+
+
+  if (
+    dateFilter ===
+    "today"
+  ) {
+
+    targetDate =
+      getToday();
+
+  }
+
+
+  if (
+    dateFilter ===
+    "tomorrow"
+  ) {
+
+    targetDate =
+      getTomorrow();
+
+  }
+
+
+  const filteredOrders =
+    orders.filter(
+      order => {
+
+        const matchSearch =
+          !search ||
+          String(
+            order.id || ""
+          )
+            .toLowerCase()
+            .includes(search) ||
+
+          String(
+            order.name || ""
+          )
+            .toLowerCase()
+            .includes(search) ||
+
+          String(
+            order.phone || ""
+          )
+            .toLowerCase()
+            .includes(search);
+
+
+        const matchStatus =
+          !status ||
+          order.status ===
+            status;
+
+
+        const matchDate =
+          !targetDate ||
+          String(
+            order.date || ""
+          ) === targetDate;
+
+
+        return (
+          matchSearch &&
+          matchStatus &&
+          matchDate
+        );
+
+      }
+    );
+
+
+  updateFilterInfo(
+    filteredOrders.length,
+    targetDate,
+    status
+  );
+
+
+  if (
+    filteredOrders.length ===
+    0
+  ) {
+
+    tbody.innerHTML =
+      '<tr><td colspan="12" class="empty">暂无符合条件的订单</td></tr>';
+
+    return;
+
+  }
+
+
+  tbody.innerHTML =
+    filteredOrders
+      .map(
+        order =>
+          createOrderRow(order)
+      )
+      .join("");
+
+}
+
+
+/* =========================
+   筛选提示
+========================= */
+
+function updateFilterInfo(
+  count,
+  targetDate,
+  status
+) {
+
+  const box =
+    document.getElementById(
+      "filterInfo"
+    );
+
+
+  const parts = [];
+
+
+  if (
+    dateFilter ===
+    "today"
+  ) {
+
+    parts.push(
+      "今天（" +
+      targetDate +
+      "）"
+    );
+
+  }
+
+
+  if (
+    dateFilter ===
+    "tomorrow"
+  ) {
+
+    parts.push(
+      "明天（" +
+      targetDate +
+      "）"
+    );
+
+  }
+
+
+  if (status) {
+
+    parts.push(
+      status
+    );
+
+  }
+
+
+  const search =
+    document
+      .getElementById(
+        "searchInput"
+      )
+      .value
+      .trim();
+
+
+  if (search) {
+
+    parts.push(
+      "搜索：" +
+      search
+    );
+
+  }
+
+
+  if (
+    parts.length === 0
+  ) {
+
+    box.style.display =
+      "none";
+
+    return;
+
+  }
+
+
+  box.style.display =
+    "block";
+
+
+  box.innerHTML =
+    "当前筛选：" +
+    parts.join(" + ") +
+    "　共 <strong>" +
+    count +
+    "</strong> 个订单";
+
+}
+
+
+/* =========================
+   创建订单行
+========================= */
+
+function createOrderRow(
+  order
+) {
+
+  const statusClass =
+    getStatusClass(
+      order.status
+    );
+
+
+  const createdAt =
+    formatDateTime(
+      order.createdAt
+    );
+
+
+  const serviceDate =
+    order.date || "-";
+
+
+  const serviceTime =
+    order.time || "-";
+
+
+  return `
+
+    <tr>
+
+      <td>
+
+        <div class="order-id">
+          ${escapeHtml(
+            order.id
+          )}
+        </div>
+
+      </td>
+
+
+      <td>
+
+        ${escapeHtml(
+          order.service || "-"
+        )}
+
+      </td>
+
+
+      <td>
+
+        <span class="price">
+          ¥${Number(
+            order.price || 0
+          ).toLocaleString()}
+        </span>
+
+      </td>
+
+
+      <td>
+
+        ${escapeHtml(
+          order.duration || "-"
+        )}
+
+      </td>
+
+
+      <td>
+
+        ${escapeHtml(
+          order.therapist || "-"
+        )}
+
+      </td>
+
+
+      <td>
+
+        <strong>
+          ${escapeHtml(
+            serviceDate
+          )}
+        </strong>
+
+        <br>
+
+        <span>
+          ${escapeHtml(
+            serviceTime
+          )}
+        </span>
+
+      </td>
+
+
+      <td>
+
+        <span class="customer-name">
+          ${escapeHtml(
+            order.name || "-"
+          )}
+        </span>
+
+      </td>
+
+
+      <td>
+
+        <span class="phone">
+          ${escapeHtml(
+            order.phone || "-"
+          )}
+        </span>
+
+      </td>
+
+
+      <td>
+
+        <div class="address">
+          ${escapeHtml(
+            order.address || "-"
+          )}
+        </div>
+
+      </td>
+
+
+      <td>
+
+        <select
+          class="status-select ${statusClass}"
+          onchange="updateOrderStatus(
+            '${escapeJs(order.id)}',
+            this.value
+          )"
+        >
+
+          <option
+            value="待确认"
+            ${
+              order.status ===
+              "待确认"
+                ? "selected"
+                : ""
+            }
+          >
+            待确认
+          </option>
+
+          <option
+            value="已确认"
+            ${
+              order.status ===
+              "已确认"
+                ? "selected"
+                : ""
+            }
+          >
+            已确认
+          </option>
+
+          <option
+            value="服务中"
+            ${
+              order.status ===
+              "服务中"
+                ? "selected"
+                : ""
+            }
+          >
+            服务中
+          </option>
+
+          <option
+            value="已完成"
+            ${
+              order.status ===
+              "已完成"
+                ? "selected"
+                : ""
+            }
+          >
+            已完成
+          </option>
+
+          <option
+            value="已取消"
+            ${
+              order.status ===
+              "已取消"
+                ? "selected"
+                : ""
+            }
+          >
+            已取消
+          </option>
+
+        </select>
+
+      </td>
+
+
+      <td>
+
+        ${escapeHtml(
+          createdAt
+        )}
+
+      </td>
+
+
+      <td>
+
+        <button
+          class="delete-btn"
+          onclick="deleteOrder(
+            '${escapeJs(order.id)}'
+          )"
+        >
+          删除
+        </button>
+
+      </td>
+
+    </tr>
+
+  `;
+
+}
+
+
+/* =========================
+   状态颜色
+========================= */
+
+function getStatusClass(
+  status
+) {
+
+  if (
+    status ===
+    "待确认"
+  ) {
+
+    return "status-waiting";
+
+  }
+
+
+  if (
+    status ===
+    "已确认"
+  ) {
+
+    return "status-confirmed";
+
+  }
+
+
+  if (
+    status ===
+    "服务中"
+  ) {
+
+    return "status-working";
+
+  }
+
+
+  if (
+    status ===
+    "已完成"
+  ) {
+
+    return "status-finished";
+
+  }
+
+
+  if (
+    status ===
+    "已取消"
+  ) {
+
+    return "status-cancelled";
+
+  }
+
+
+  return "";
+
+}
+
+
+/* =========================
+   修改订单状态
+========================= */
+
+async function updateOrderStatus(
+  orderId,
+  status
+) {
+
+  try {
+
+    const response =
+      await fetch(
+        "/api/orders/" +
+        encodeURIComponent(
+          orderId
+        ) +
+        "/status",
+        {
+          method: "PATCH",
+
+          headers: {
+            "Content-Type":
+              "application/json",
+
+            Authorization:
+              "Bearer " +
+              token
+          },
+
+          body:
+            JSON.stringify({
+              status
+            })
+        }
+      );
+
+
+    if (
+      response.status ===
+      401
+    ) {
+
+      logout();
+
+      return;
+
+    }
+
+
+    const data =
+      await response.json();
+
+
+    if (
+      !response.ok ||
+      !data.success
+    ) {
+
+      showToast(
+        data.message ||
+        "状态修改失败"
+      );
+
+      loadOrders();
+
+      return;
+
+    }
+
+
+    const order =
+      orders.find(
+        item =>
+          item.id ===
+          orderId
+      );
+
+
+    if (order) {
+
+      order.status =
+        status;
+
+    }
+
+
+    updateStats();
+
+    renderOrders();
+
+
+    showToast(
+      "订单状态已更新为：" +
+      status
+    );
+
+
+  } catch (error) {
+
+    console.error(error);
+
+    showToast(
+      "网络连接失败"
+    );
+
+  }
+
+}
+
+
+/* =========================
+   删除订单
+========================= */
+
+async function deleteOrder(
+  orderId
+) {
+
+  const order =
+    orders.find(
+      item =>
+        item.id ===
+        orderId
+    );
+
+
+  const customerName =
+    order
+      ? order.name
+      : "";
+
+
+  const confirmed =
+    window.confirm(
+      "确定要删除这个订单吗？\n\n" +
+      "订单号：" +
+      orderId +
+      "\n" +
+      "客户：" +
+      customerName +
+      "\n\n" +
+      "删除后无法恢复。"
+    );
+
+
+  if (!confirmed) {
+
+    return;
+
+  }
+
+
+  try {
+
+    const response =
+      await fetch(
+        "/api/orders/" +
+        encodeURIComponent(
+          orderId
+        ),
+        {
+          method: "DELETE",
+
+          headers: {
+            Authorization:
+              "Bearer " +
+              token
+          }
+        }
+      );
+
+
+    if (
+      response.status ===
+      401
+    ) {
+
+      logout();
+
+      return;
+
+    }
+
+
+    const data =
+      await response.json();
+
+
+    if (
+      !response.ok ||
+      !data.success
+    ) {
+
+      showToast(
+        data.message ||
+        "删除失败"
+      );
+
+      return;
+
+    }
+
+
+    orders =
+      orders.filter(
+        item =>
+          item.id !==
+          orderId
+      );
+
+
+    updateStats();
+
+    renderOrders();
+
+
+    showToast(
+      "订单已删除"
+    );
+
+
+  } catch (error) {
+
+    console.error(error);
+
+    showToast(
+      "网络连接失败"
+    );
+
+  }
+
+}
+
+
+/* =========================
+   时间格式
+========================= */
+
+function formatDateTime(
+  value
+) {
+
+  if (!value) {
+
+    return "-";
+
+  }
+
+
+  const date =
+    new Date(value);
+
+
+  if (
+    Number.isNaN(
+      date.getTime()
+    )
+  ) {
+
+    return String(value);
+
+  }
+
+
+  const year =
+    date.getFullYear();
+
+  const month =
+    String(
+      date.getMonth() + 1
+    ).padStart(2, "0");
+
+  const day =
+    String(
+      date.getDate()
+    ).padStart(2, "0");
+
+  const hours =
+    String(
+      date.getHours()
+    ).padStart(2, "0");
+
+  const minutes =
+    String(
+      date.getMinutes()
+    ).padStart(2, "0");
+
+
+  return (
+    year +
+    "-" +
+    month +
+    "-" +
+    day +
+    " " +
+    hours +
+    ":" +
+    minutes
+  );
+
+}
+
+
+/* =========================
+   HTML 安全处理
+========================= */
+
+function escapeHtml(
+  value
+) {
+
+  return String(
+    value ?? ""
+  )
+    .replace(
+      /&/g,
+      "&amp;"
+    )
+    .replace(
+      /</g,
+      "&lt;"
+    )
+    .replace(
+      />/g,
+      "&gt;"
+    )
+    .replace(
+      /"/g,
+      "&quot;"
+    )
+    .replace(
+      /'/g,
+      "&#039;"
+    );
+
+}
+
+
+/* =========================
+   JS 安全处理
+========================= */
+
+function escapeJs(
+  value
+) {
+
+  return String(
+    value ?? ""
+  )
+    .replace(
+      /\\/g,
+      "\\\\"
+    )
+    .replace(
+      /'/g,
+      "\\'"
+    )
+    .replace(
+      /"/g,
+      '\\"'
+    );
+
+}
+
+
+/* =========================
+   Toast
+========================= */
+
+let toastTimer = null;
+
+
+function showToast(
+  message
+) {
+
+  const toast =
+    document.getElementById(
+      "toast"
+    );
+
+
+  toast.textContent =
+    message;
+
+
+  toast.classList.add(
+    "show"
+  );
+
+
+  clearTimeout(
+    toastTimer
+  );
+
+
+  toastTimer =
+    setTimeout(
+      function() {
+
+        toast.classList.remove(
+          "show"
+        );
+
+      },
+      2500
+    );
+
+}
+
+</script>
 
 </body>
-
 </html>
