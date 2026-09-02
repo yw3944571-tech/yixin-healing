@@ -1,0 +1,13 @@
+{
+  "name": "yixin-healing",
+  "version": "1.0.0",
+  "description": "奕心疗愈舍 V1.0 身心疗愈预约平台",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
