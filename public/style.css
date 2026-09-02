@@ -16,6 +16,7 @@
   --gold: #aa8a62;
   --dark: #2b2723;
   --line: #e8dfd4;
+  --success: #6d9872;
 }
 
 html {
@@ -36,29 +37,39 @@ body {
   padding-bottom: 90px;
 }
 
-button {
+button,
+input {
   font-family: inherit;
-  cursor: pointer;
 }
 
-
-/* =========================
-   App
-========================= */
+button {
+  cursor: pointer;
+}
 
 .app {
   width: 100%;
   min-height: 100vh;
 }
 
+/* =========================
+   页面切换
+========================= */
+
+.page {
+  display: none;
+  min-height: 100vh;
+}
+
+.page.active-page {
+  display: block;
+}
 
 /* =========================
-   顶部
+   首页顶部
 ========================= */
 
 .top-header {
   height: 72px;
-
   padding: 0 20px;
 
   display: flex;
@@ -67,16 +78,12 @@ button {
 
   position: sticky;
   top: 0;
-
   z-index: 50;
 
-  background:
-    rgba(245, 241, 233, 0.96);
-
+  background: rgba(245, 241, 233, 0.96);
   backdrop-filter: blur(15px);
 
-  border-bottom:
-    1px solid rgba(0, 0, 0, 0.04);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
 }
 
 .brand-name {
@@ -87,67 +94,42 @@ button {
 
 .brand-subtitle {
   margin-top: 4px;
-
   font-size: 10px;
-
   color: var(--muted);
-
   letter-spacing: 1px;
 }
 
 .city-btn {
   border: 0;
-
   padding: 9px 12px;
-
   border-radius: 999px;
-
   background: var(--paper);
-
   color: var(--text);
-
   font-size: 13px;
-
-  box-shadow:
-    0 5px 15px rgba(0, 0, 0, 0.04);
 }
-
-.location-icon {
-  margin-right: 3px;
-}
-
-.arrow {
-  margin-left: 3px;
-  color: var(--muted);
-}
-
 
 /* =========================
-   主视觉
+   首页主视觉
 ========================= */
 
 .hero-section {
   min-height: 500px;
-
   padding: 42px 24px 56px;
 
   display: flex;
   align-items: flex-end;
 
   background:
-
     linear-gradient(
       180deg,
       rgba(37, 32, 28, 0.06),
       rgba(37, 32, 28, 0.72)
     ),
-
     radial-gradient(
       circle at 75% 20%,
       rgba(255, 255, 255, 0.5),
       transparent 35%
     ),
-
     linear-gradient(
       135deg,
       #d5c2ae,
@@ -164,109 +146,77 @@ button {
 
 .hero-tag {
   display: inline-block;
-
   padding: 8px 13px;
-
   margin-bottom: 20px;
 
   border-radius: 999px;
-
-  border:
-    1px solid rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.35);
 
   font-size: 11px;
-
   letter-spacing: 1px;
 }
 
 .hero-section h1 {
   font-size: 46px;
-
   line-height: 1.18;
-
   letter-spacing: 2px;
-
-  font-weight: 700;
 }
 
 .hero-section p {
   margin-top: 20px;
-
   font-size: 15px;
-
   line-height: 1.8;
-
-  color:
-    rgba(255, 255, 255, 0.82);
+  color: rgba(255, 255, 255, 0.82);
 }
 
 .hero-btn {
   margin-top: 30px;
-
   padding: 14px 30px;
 
   border: 0;
-
   border-radius: 999px;
 
   background: white;
-
   color: var(--dark);
 
   font-size: 15px;
-
   font-weight: 600;
-
-  box-shadow:
-    0 10px 30px rgba(0, 0, 0, 0.12);
 }
 
-
 /* =========================
-   通用区域
+   首页通用区域
 ========================= */
 
 .quick-section,
 .service-section,
 .therapist-section {
-  padding:
-    46px 20px 10px;
+  padding: 46px 20px 10px;
 }
 
 .section-title-row {
   display: flex;
-
   align-items: center;
-
   justify-content: space-between;
 
   gap: 15px;
-
   margin-bottom: 22px;
 }
 
 .section-title-row h2 {
   font-size: 22px;
-
-  letter-spacing: 0.5px;
 }
 
 .section-title-row > span {
   font-size: 11px;
-
   color: var(--muted);
 }
 
 .more-btn {
   border: 0;
-
   background: transparent;
-
   color: var(--muted);
-
   font-size: 12px;
 }
-
 
 /* =========================
    快捷服务
@@ -274,43 +224,30 @@ button {
 
 .quick-grid {
   display: grid;
-
-  grid-template-columns:
-    repeat(4, 1fr);
-
+  grid-template-columns: repeat(4, 1fr);
   gap: 10px;
 }
 
 .quick-item {
-  padding:
-    16px 6px;
+  padding: 16px 6px;
 
   border: 0;
-
   border-radius: 16px;
 
   background: var(--paper);
 
   display: flex;
-
   flex-direction: column;
-
   align-items: center;
-
   gap: 8px;
 
   color: var(--text);
-
   font-size: 11px;
-
-  box-shadow:
-    0 8px 25px rgba(63, 49, 37, 0.05);
 }
 
 .quick-icon {
   font-size: 25px;
 }
-
 
 /* =========================
    服务项目
@@ -318,63 +255,36 @@ button {
 
 .service-card {
   overflow: hidden;
-
   margin-bottom: 20px;
 
   background: var(--paper);
-
   border-radius: 22px;
 
-  box-shadow:
-    0 12px 35px rgba(66, 52, 38, 0.08);
+  box-shadow: 0 12px 35px rgba(66, 52, 38, 0.08);
 }
 
 .service-image {
   height: 180px;
-
-  display: flex;
-
-  align-items: flex-end;
-
   padding: 18px;
 
+  display: flex;
+  align-items: flex-end;
+
   color: white;
-
   font-size: 12px;
-
   letter-spacing: 2px;
 }
 
 .service-image-1 {
   background:
-
-    linear-gradient(
-      180deg,
-      transparent,
-      rgba(0, 0, 0, 0.4)
-    ),
-
-    linear-gradient(
-      135deg,
-      #cdb7a2,
-      #8e705a
-    );
+    linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.4)),
+    linear-gradient(135deg, #cdb7a2, #8e705a);
 }
 
 .service-image-2 {
   background:
-
-    linear-gradient(
-      180deg,
-      transparent,
-      rgba(0, 0, 0, 0.45)
-    ),
-
-    linear-gradient(
-      135deg,
-      #928176,
-      #443a34
-    );
+    linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.45)),
+    linear-gradient(135deg, #928176, #443a34);
 }
 
 .service-info {
@@ -383,9 +293,7 @@ button {
 
 .service-top {
   display: flex;
-
   justify-content: space-between;
-
   gap: 15px;
 }
 
@@ -395,58 +303,41 @@ button {
 
 .service-top p {
   margin-top: 7px;
-
   color: var(--muted);
-
   font-size: 12px;
-
   line-height: 1.6;
 }
 
 .service-price {
   color: var(--gold);
-
   font-size: 21px;
-
   font-weight: 700;
-
   white-space: nowrap;
 }
 
 .service-bottom {
   margin-top: 20px;
-
   padding-top: 15px;
 
-  border-top:
-    1px solid var(--line);
+  border-top: 1px solid var(--line);
 
   display: flex;
-
   align-items: center;
-
   justify-content: space-between;
 
   color: var(--muted);
-
   font-size: 12px;
 }
 
 .book-btn {
-  padding:
-    9px 18px;
-
+  padding: 9px 18px;
   border: 0;
-
   border-radius: 999px;
 
   background: var(--dark);
-
   color: white;
-
   font-size: 12px;
 }
-
 
 /* =========================
    疗愈师
@@ -454,11 +345,9 @@ button {
 
 .therapist-scroll {
   display: flex;
-
   gap: 14px;
 
   overflow-x: auto;
-
   padding-bottom: 8px;
 
   scrollbar-width: none;
@@ -470,24 +359,18 @@ button {
 
 .therapist-card {
   min-width: 270px;
-
   padding: 16px;
 
   border-radius: 20px;
-
   background: var(--paper);
 
   display: flex;
-
   align-items: center;
-
   gap: 14px;
-
-  box-shadow:
-    0 10px 28px rgba(60, 46, 34, 0.06);
 }
 
-.therapist-avatar {
+.therapist-avatar,
+.booking-avatar {
   width: 62px;
   height: 62px;
 
@@ -496,47 +379,24 @@ button {
   border-radius: 50%;
 
   display: flex;
-
   align-items: center;
-
   justify-content: center;
 
   color: white;
-
   font-size: 21px;
-
   font-weight: 600;
 }
 
 .avatar-1 {
-  background:
-    linear-gradient(
-      135deg,
-      #bca28a,
-      #806552
-    );
+  background: linear-gradient(135deg, #bca28a, #806552);
 }
 
 .avatar-2 {
-  background:
-    linear-gradient(
-      135deg,
-      #8c7769,
-      #50443b
-    );
+  background: linear-gradient(135deg, #8c7769, #50443b);
 }
 
 .avatar-3 {
-  background:
-    linear-gradient(
-      135deg,
-      #c0a98f,
-      #786452
-    );
-}
-
-.therapist-info {
-  min-width: 0;
+  background: linear-gradient(135deg, #c0a98f, #786452);
 }
 
 .therapist-info h3 {
@@ -545,21 +405,16 @@ button {
 
 .therapist-info p {
   margin-top: 6px;
-
   color: var(--muted);
-
   font-size: 11px;
 }
 
 .therapist-meta {
   margin-top: 8px;
-
   display: flex;
-
   gap: 10px;
 
   color: var(--muted);
-
   font-size: 10px;
 }
 
@@ -572,67 +427,317 @@ button {
   margin-left: 4px;
 
   border-radius: 50%;
-
-  background: #75a875;
+  background: var(--success);
 }
-
 
 /* =========================
    品牌理念
 ========================= */
 
 .brand-section {
-  padding:
-    50px 20px 35px;
+  padding: 50px 20px 35px;
 }
 
 .brand-card {
-  padding:
-    40px 28px;
-
+  padding: 40px 28px;
   border-radius: 26px;
 
-  background:
-
-    linear-gradient(
-      135deg,
-      #302b27,
-      #51463d
-    );
-
+  background: linear-gradient(135deg, #302b27, #51463d);
   color: white;
 }
 
 .brand-card-small {
-  color:
-    rgba(255, 255, 255, 0.55);
-
+  color: rgba(255, 255, 255, 0.55);
   font-size: 10px;
-
   letter-spacing: 2px;
 }
 
 .brand-card h2 {
   margin-top: 16px;
-
   font-size: 31px;
-
   line-height: 1.3;
-
-  letter-spacing: 1px;
 }
 
 .brand-card p {
   margin-top: 18px;
-
-  color:
-    rgba(255, 255, 255, 0.68);
-
+  color: rgba(255, 255, 255, 0.68);
   font-size: 13px;
-
   line-height: 1.8;
 }
 
+/* =========================
+   预约页面顶部
+========================= */
+
+.page-header {
+  padding: 22px 20px;
+
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  background: var(--paper);
+
+  border-bottom: 1px solid var(--line);
+}
+
+.back-btn {
+  width: 40px;
+  height: 40px;
+
+  border: 0;
+  border-radius: 50%;
+
+  background: var(--bg);
+  color: var(--text);
+
+  font-size: 24px;
+}
+
+.page-header h2 {
+  font-size: 20px;
+}
+
+.page-header p {
+  margin-top: 4px;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+/* =========================
+   预约内容
+========================= */
+
+.booking-page-content {
+  padding: 20px 20px 120px;
+}
+
+.booking-block {
+  margin-bottom: 28px;
+}
+
+.booking-block-title {
+  margin-bottom: 15px;
+
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.step-number {
+  width: 25px;
+  height: 25px;
+
+  border-radius: 50%;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--dark);
+  color: white;
+
+  font-size: 10px;
+}
+
+/* =========================
+   选择服务
+========================= */
+
+.booking-service-options {
+  display: grid;
+  gap: 12px;
+}
+
+.booking-service-option {
+  width: 100%;
+  padding: 18px;
+
+  border: 1px solid var(--line);
+  border-radius: 16px;
+
+  background: var(--paper);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  text-align: left;
+}
+
+.booking-service-option h3 {
+  font-size: 16px;
+}
+
+.booking-service-option p {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.booking-service-option strong {
+  color: var(--gold);
+  font-size: 18px;
+}
+
+.booking-service-option.selected {
+  border-color: var(--dark);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* =========================
+   选择疗愈师
+========================= */
+
+.booking-therapist-options {
+  display: grid;
+  gap: 12px;
+}
+
+.booking-therapist-option {
+  width: 100%;
+  padding: 13px;
+
+  border: 1px solid var(--line);
+  border-radius: 16px;
+
+  background: var(--paper);
+
+  display: flex;
+  align-items: center;
+  gap: 13px;
+
+  text-align: left;
+}
+
+.booking-therapist-option.selected {
+  border-color: var(--dark);
+}
+
+.booking-therapist-option strong,
+.booking-therapist-option small {
+  display: block;
+}
+
+.booking-therapist-option small {
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+/* =========================
+   输入框
+========================= */
+
+.booking-input {
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 15px;
+
+  border: 1px solid var(--line);
+  border-radius: 14px;
+
+  background: var(--paper);
+  color: var(--text);
+
+  outline: none;
+}
+
+.booking-input:focus {
+  border-color: var(--gold);
+}
+
+/* =========================
+   时间选择
+========================= */
+
+.time-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.time-option {
+  padding: 13px 6px;
+
+  border: 1px solid var(--line);
+  border-radius: 12px;
+
+  background: var(--paper);
+  color: var(--text);
+}
+
+.time-option.selected {
+  background: var(--dark);
+  border-color: var(--dark);
+  color: white;
+}
+
+/* =========================
+   订单确认
+========================= */
+
+.booking-summary {
+  padding: 20px;
+
+  background: var(--paper);
+  border-radius: 18px;
+
+  border: 1px solid var(--line);
+}
+
+.summary-row,
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.summary-row {
+  margin-bottom: 14px;
+  font-size: 13px;
+}
+
+.summary-row span {
+  color: var(--muted);
+}
+
+.summary-total {
+  margin-top: 16px;
+  padding-top: 16px;
+
+  border-top: 1px solid var(--line);
+
+  font-size: 16px;
+}
+
+.summary-total strong {
+  color: var(--gold);
+  font-size: 22px;
+}
+
+/* =========================
+   提交按钮
+========================= */
+
+.submit-order-btn {
+  width: 100%;
+  margin-top: 22px;
+
+  padding: 17px;
+
+  border: 0;
+  border-radius: 16px;
+
+  background: var(--dark);
+  color: white;
+
+  font-size: 16px;
+  font-weight: 600;
+}
 
 /* =========================
    底部导航
@@ -650,50 +755,35 @@ button {
   z-index: 100;
 
   display: grid;
+  grid-template-columns: repeat(5, 1fr);
 
-  grid-template-columns:
-    repeat(5, 1fr);
+  background: rgba(255, 253, 249, 0.97);
+  backdrop-filter: blur(16px);
 
-  background:
-    rgba(255, 253, 249, 0.97);
-
-  backdrop-filter:
-    blur(16px);
-
-  border-top:
-    1px solid var(--line);
+  border-top: 1px solid var(--line);
 }
 
 .nav-item {
   border: 0;
-
   background: transparent;
 
   display: flex;
-
   flex-direction: column;
-
   align-items: center;
-
   justify-content: center;
 
   gap: 5px;
 
   color: var(--muted);
-
   font-size: 10px;
-}
-
-.nav-icon {
-  font-size: 19px;
 }
 
 .nav-item.active {
   color: var(--dark);
 }
 
-.booking-main {
-  color: var(--dark);
+.nav-icon {
+  font-size: 19px;
 }
 
 .booking-icon {
@@ -705,21 +795,16 @@ button {
   border-radius: 50%;
 
   display: flex;
-
   align-items: center;
-
   justify-content: center;
 
   background: var(--dark);
-
   color: white;
 
   font-size: 23px;
 
-  box-shadow:
-    0 8px 25px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
 }
-
 
 /* =========================
    Toast
@@ -731,26 +816,20 @@ button {
   left: 50%;
   bottom: 100px;
 
-  transform:
-    translateX(-50%)
-    translateY(20px);
+  transform: translateX(-50%) translateY(20px);
 
   z-index: 200;
 
-  padding:
-    12px 18px;
+  padding: 12px 18px;
 
   border-radius: 999px;
 
-  background:
-    rgba(43, 39, 35, 0.94);
-
+  background: rgba(43, 39, 35, 0.94);
   color: white;
 
   font-size: 13px;
 
   opacity: 0;
-
   pointer-events: none;
 
   transition: 0.25s;
@@ -758,37 +837,29 @@ button {
 
 .toast.show {
   opacity: 1;
-
-  transform:
-    translateX(-50%)
-    translateY(0);
+  transform: translateX(-50%) translateY(0);
 }
 
-
 /* =========================
-   电脑端居中模拟手机
+   电脑端模拟 App
 ========================= */
 
 @media (min-width: 768px) {
 
   body {
     max-width: 500px;
-
     margin: 0 auto;
 
-    box-shadow:
-      0 0 60px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.08);
   }
 
   .bottom-nav {
     width: 500px;
 
     left: 50%;
-
     right: auto;
 
-    transform:
-      translateX(-50%);
+    transform: translateX(-50%);
   }
 
 }
