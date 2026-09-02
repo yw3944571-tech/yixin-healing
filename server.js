@@ -454,7 +454,18 @@ async function getAllTherapists() {
 
 const result =
 await pool.query(
-SELECT id, name, avatar, bio, experience, specialties, is_active, created_at FROM therapists ORDER BY id DESC
+`       SELECT
+        id,
+        name,
+        avatar,
+        bio,
+        experience,
+        specialties,
+        is_active,
+        created_at
+      FROM therapists
+      ORDER BY id DESC
+      `
 );
 
 return result.rows.map(
@@ -867,13 +878,13 @@ return res.status(500).json({
 // 两套 API
 
 app.put(
-"/api/admin/therapists/",
+"/api/admin/therapists/:id",
 requireAdmin,
 updateTherapist
 );
 
 app.put(
-"/api/therapists/",
+"/api/therapists/:id",
 requireAdmin,
 updateTherapist
 );
@@ -966,13 +977,13 @@ return res.status(500).json({
 // 两套 API
 
 app.delete(
-"/api/admin/therapists/",
+"/api/admin/therapists/:id",
 requireAdmin,
 removeTherapist
 );
 
 app.delete(
-"/api/therapists/",
+"/api/therapists/:id",
 requireAdmin,
 removeTherapist
 );
@@ -1612,7 +1623,7 @@ try {
 // =================================================
 
 app.patch(
-"/api/orders//status",
+"/api/orders/:id/status",
 requireAdmin,
 async (
 req,
@@ -1729,7 +1740,7 @@ try {
 // =================================================
 
 app.delete(
-"/api/orders/",
+"/api/orders/:id",
 requireAdmin,
 async (
 req,
