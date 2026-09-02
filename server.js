@@ -43,7 +43,6 @@ async function initDatabase() {
 
 try {
 
-```
 const sql =
   "CREATE TABLE IF NOT EXISTS orders (" +
   "id VARCHAR(100) PRIMARY KEY," +
@@ -67,18 +66,14 @@ console.log("PostgreSQL 数据库连接成功");
 console.log(
   "orders 订单表已准备完成"
 );
-```
-
 } catch (error) {
 
-```
 console.error(
   "PostgreSQL 初始化失败：",
   error
 );
 
 process.exit(1);
-```
 
 }
 
@@ -92,7 +87,6 @@ app.get(
 "/api/health",
 async (req, res) => {
 
-```
 try {
 
   await pool.query(
@@ -118,7 +112,6 @@ try {
   });
 
 }
-```
 
 }
 );
@@ -131,7 +124,6 @@ app.post(
 "/api/orders",
 async (req, res) => {
 
-```
 try {
 
   const {
@@ -351,7 +343,6 @@ try {
   });
 
 }
-```
 
 }
 );
@@ -364,7 +355,6 @@ app.get(
 "/api/orders",
 async (req, res) => {
 
-```
 try {
 
   const selectSql =
@@ -423,7 +413,6 @@ try {
   });
 
 }
-```
 
 }
 );
@@ -440,14 +429,12 @@ app.listen(
 PORT,
 () => {
 
-```
   console.log(
     "奕心疗愈舍服务器运行在端口 " +
     PORT
   );
 
 }
-```
 
 );
 
