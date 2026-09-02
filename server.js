@@ -32,19 +32,12 @@ rejectUnauthorized: false
 // 中间件
 // =========================
 
-// 接收 JSON 数据
 app.use(express.json());
 
-// 静态网站
-app.use(
-express.static(
-path.join(__dirname, "public")
-)
-);
+app.use(express.static(path.join(__dirname, "public")));
 
 // =========================
 // 初始化数据库
-// 自动创建 orders 表
 // =========================
 
 async function initDatabase() {
@@ -52,28 +45,24 @@ async function initDatabase() {
 try {
 
 ```
-await pool.query(`
+const createTableQuery = `
   CREATE TABLE IF NOT EXISTS orders (
     id VARCHAR(100) PRIMARY KEY,
-
     service VARCHAR(255) NOT NULL,
     price NUMERIC DEFAULT 0,
     duration VARCHAR(100),
-
     therapist VARCHAR(255) NOT NULL,
-
     service_date VARCHAR(50) NOT NULL,
     service_time VARCHAR(50) NOT NULL,
-
     customer_name VARCHAR(255) NOT NULL,
     phone VARCHAR(50) NOT NULL,
     address TEXT NOT NULL,
-
     status VARCHAR(50) DEFAULT '待确认',
-
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
   )
-`);
+`;
+
+await pool.query(createTableQuery);
 
 console.log("✅ PostgreSQL 数据库连接成功");
 console.log("✅ orders 订单表已准备完成");
@@ -82,10 +71,7 @@ console.log("✅ orders 订单表已准备完成");
 } catch (error) {
 
 ```
-console.error(
-  "❌ PostgreSQL 初始化失败：",
-  error
-);
+console.error("❌ PostgreSQL 初始化失败：", error);
 
 process.exit(1);
 ```
@@ -105,7 +91,7 @@ try {
 ```
 await pool.query("SELECT 1");
 
-res.json({
+return res.json({
   success: true,
   message: "奕心疗愈舍服务器正常运行",
   database: "connected"
@@ -115,7 +101,7 @@ res.json({
 } catch (error) {
 
 ```
-res.status(500).json({
+return res.status(500).json({
   success: false,
   message: "服务器运行中，但数据库连接失败",
   database: "disconnected"
@@ -128,7 +114,6 @@ res.status(500).json({
 
 // =========================
 // 创建订单
-// POST /api/orders
 // =========================
 
 app.post("/api/orders", async (req, res) => {
@@ -148,10 +133,6 @@ const {
   address
 } = req.body;
 
-
-// =====================
-// 基础验证
-// =====================
 
 if (!service) {
   return res.status(400).json({
@@ -212,63 +193,51 @@ if (!address) {
 }
 
 
-// =====================
-// 创建订单 ID
-// =====================
-
 const orderId =
-  `YX${Date.now()}${Math.floor(
-    Math.random() * 1000
-  )}`;
+  "YX" +
+  Date.now() +
+  Math.floor(Math.random() * 1000);
 
 
 const order = {
   id: orderId,
-
   service,
   price: Number(price) || 0,
   duration,
-
   therapist,
-
   date,
   time,
-
   name,
   phone,
   address,
-
   status: "待确认",
-
-  createdAt:
-    new Date().toISOString()
+  createdAt: new Date().toISOString()
 };
 
 
-// =====================
-// 保存到 PostgreSQL
-// =====================
+const insertQuery = `
+  INSERT INTO orders (
+    id,
+    service,
+    price,
+    duration,
+    therapist,
+    service_date,
+    service_time,
+    customer_name,
+    phone,
+    address,
+    status
+  )
+  VALUES (
+    $1, $2, $3, $4, $5,
+    $6, $7, $8, $9, $10, $11
+  )
+`;
+
 
 await pool.query(
-  `
-    INSERT INTO orders (
-      id,
-      service,
-      price,
-      duration,
-      therapist,
-      service_date,
-      service_time,
-      customer_name,
-      phone,
-      address,
-      status
-    )
-    VALUES (
-      $1, $2, $3, $4, $5,
-      $6, $7, $8, $9, $10, $11
-    )
-  `,
+  insertQuery,
   [
     order.id,
     order.service,
@@ -285,13 +254,9 @@ await pool.query(
 );
 
 
-console.log(
-  "收到新预约订单：",
-  order
-);
+console.log("收到新预约订单：", order);
 
 
-// 返回结果
 return res.json({
   success: true,
   message: "预约提交成功",
@@ -302,10 +267,7 @@ return res.json({
 } catch (error) {
 
 ```
-console.error(
-  "创建订单失败：",
-  error
-);
+console.error("创建订单失败：", error);
 
 return res.status(500).json({
   success: false,
@@ -319,8 +281,6 @@ return res.status(500).json({
 
 // =========================
 // 获取所有订单
-// GET /api/orders
-// 管理后台使用
 // =========================
 
 app.get("/api/orders", async (req, res) => {
@@ -328,31 +288,23 @@ app.get("/api/orders", async (req, res) => {
 try {
 
 ```
-const result = await pool.query(
-  `
-    SELECT
-      id,
-      service,
-      price,
-      duration,
-      therapist,
-
-      service_date AS "date",
-      service_time AS "time",
-
-      customer_name AS "name",
-      phone,
-      address,
-
-      status,
-
-      created_at AS "createdAt"
-
-    FROM orders
-
-    ORDER BY created_at DESC
-  `
-);
+const result = await pool.query(`
+  SELECT
+    id,
+    service,
+    price,
+    duration,
+    therapist,
+    service_date AS "date",
+    service_time AS "time",
+    customer_name AS "name",
+    phone,
+    address,
+    status,
+    created_at AS "createdAt"
+  FROM orders
+  ORDER BY created_at DESC
+`);
 
 
 return res.json({
@@ -365,10 +317,7 @@ return res.json({
 } catch (error) {
 
 ```
-console.error(
-  "获取订单失败：",
-  error
-);
+console.error("获取订单失败：", error);
 
 return res.status(500).json({
   success: false,
