@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta
     name="viewport"
-    content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
   />
 
   <title>奕心疗愈舍</title>
@@ -14,97 +14,110 @@
 
 <body>
 
-  <!-- 顶部导航 -->
-  <header class="top-header">
-    <div class="brand">
-      <div class="brand-logo">奕</div>
+  <!-- App 主容器 -->
+  <div class="app">
 
-      <div class="brand-text">
+    <!-- 顶部导航 -->
+    <header class="top-header">
+
+      <div class="brand-area">
         <div class="brand-name">奕心疗愈舍</div>
-        <div class="brand-subtitle">身心同调 · 医心疗愈</div>
+        <div class="brand-subtitle">
+          身心同调 · 医心疗愈 · 回归本真
+        </div>
       </div>
-    </div>
 
-    <button class="city-button" id="cityButton">
-      北京
-      <span>⌄</span>
-    </button>
-  </header>
+      <button class="city-btn" type="button">
+        <span class="location-icon">📍</span>
+        <span>重庆</span>
+        <span class="arrow">⌄</span>
+      </button>
+
+    </header>
 
 
-  <main>
+    <!-- 页面内容 -->
+    <main class="main-content">
 
-    <!-- 首页主视觉 -->
-    <section class="hero">
-      <div class="hero-content">
+      <!-- 欢迎 Banner -->
+      <section class="hero-section">
 
-        <div class="hero-tag">
-          医学理念 · 专业疗愈
+        <div class="hero-content">
+
+          <div class="hero-tag">
+            医学理念 · 专业疗愈
+          </div>
+
+          <h1>
+            给身体一次<br />
+            真正的放松
+          </h1>
+
+          <p>
+            从身体舒缓到内心放松<br />
+            让疗愈回归最自然的状态
+          </p>
+
+          <button class="hero-btn" id="startBookingBtn">
+            立即预约
+          </button>
+
         </div>
 
-        <h1>
-          让身体放松<br />
-          让心慢下来
-        </h1>
-
-        <p>
-          基于医学理念的身心疗愈体验<br />
-          为你留出一段真正属于自己的时间
-        </p>
-
-        <button class="hero-button" id="bookingButton">
-          立即预约
-        </button>
-
-      </div>
-    </section>
+      </section>
 
 
-    <!-- 品牌理念 -->
-    <section class="section intro-section">
+      <!-- 快捷功能 -->
+      <section class="quick-section">
 
-      <div class="section-label">
-        YIXIN HEALING
-      </div>
-
-      <h2>
-        不只是放松<br />
-        更是一次回归自己
-      </h2>
-
-      <p class="section-description">
-        奕心疗愈舍以医学理念为基础，
-        结合身体放松、情绪舒缓与沉浸式疗愈体验，
-        为现代人提供更专业、更安心的身心放松服务。
-      </p>
-
-    </section>
-
-
-    <!-- 服务项目 -->
-    <section class="section service-section">
-
-      <div class="section-title-row">
-        <div>
-          <div class="section-label">HEALING SERVICE</div>
-          <h2>精选疗愈服务</h2>
+        <div class="section-title-row">
+          <h2>疗愈服务</h2>
+          <span>专业 · 舒适 · 私密</span>
         </div>
 
-        <button class="more-button">
-          查看全部 →
-        </button>
-      </div>
+        <div class="quick-grid">
+
+          <button class="quick-item" type="button">
+            <div class="quick-icon">💆</div>
+            <span>全身放松</span>
+          </button>
+
+          <button class="quick-item" type="button">
+            <div class="quick-icon">🧠</div>
+            <span>头部减压</span>
+          </button>
+
+          <button class="quick-item" type="button">
+            <div class="quick-icon">🌿</div>
+            <span>身心疗愈</span>
+          </button>
+
+          <button class="quick-item" type="button">
+            <div class="quick-icon">✨</div>
+            <span>定制方案</span>
+          </button>
+
+        </div>
+
+      </section>
 
 
-      <div class="service-list">
+      <!-- 推荐项目 -->
+      <section class="service-section">
 
-        <!-- 298 -->
-        <article class="service-card">
+        <div class="section-title-row">
+          <h2>推荐疗愈项目</h2>
+          <button class="more-btn" type="button">
+            查看全部 →
+          </button>
+        </div>
 
-          <div class="service-image service-image-one">
-            <div class="service-badge">
-              轻享疗愈
-            </div>
+
+        <!-- 项目 1 -->
+        <div class="service-card">
+
+          <div class="service-image service-image-1">
+            <span>SPA</span>
           </div>
 
           <div class="service-info">
@@ -112,35 +125,40 @@
             <div class="service-top">
 
               <div>
-                <h3>轻享疗愈</h3>
-                <p>90分钟 · 身心放松体验</p>
+                <h3>深度舒缓疗愈</h3>
+                <p>全身放松 · 深度舒缓 · 身心调节</p>
               </div>
 
-              <div class="price">
+              <div class="service-price">
                 ¥298
               </div>
 
             </div>
 
-            <button
-              class="service-button"
-              onclick="selectService('轻享疗愈', 298)"
-            >
-              选择服务
-            </button>
+            <div class="service-bottom">
+
+              <span>90分钟</span>
+
+              <button
+                class="book-btn"
+                type="button"
+                data-service="深度舒缓疗愈"
+              >
+                预约
+              </button>
+
+            </div>
 
           </div>
 
-        </article>
+        </div>
 
 
-        <!-- 398 -->
-        <article class="service-card">
+        <!-- 项目 2 -->
+        <div class="service-card">
 
-          <div class="service-image service-image-two">
-            <div class="service-badge">
-              臻享疗愈
-            </div>
+          <div class="service-image service-image-2">
+            <span>RELAX</span>
           </div>
 
           <div class="service-info">
@@ -148,247 +166,204 @@
             <div class="service-top">
 
               <div>
-                <h3>臻享疗愈</h3>
-                <p>120分钟 · 深度疗愈体验</p>
+                <h3>臻享深度疗愈</h3>
+                <p>全身放松 · 深度疗愈 · 定制护理</p>
               </div>
 
-              <div class="price">
+              <div class="service-price">
                 ¥398
               </div>
 
             </div>
 
-            <button
-              class="service-button"
-              onclick="selectService('臻享疗愈', 398)"
-            >
-              选择服务
-            </button>
+            <div class="service-bottom">
+
+              <span>120分钟</span>
+
+              <button
+                class="book-btn"
+                type="button"
+                data-service="臻享深度疗愈"
+              >
+                预约
+              </button>
+
+            </div>
 
           </div>
 
-        </article>
-
-      </div>
-
-    </section>
-
-
-    <!-- 疗愈理念 -->
-    <section class="concept-section">
-
-      <div class="concept-card">
-
-        <div class="concept-number">
-          01
         </div>
 
-        <h3>
-          专业
-        </h3>
-
-        <p>
-          以医学理念为基础，
-          更关注身体状态与真实需求。
-        </p>
-
-      </div>
+      </section>
 
 
-      <div class="concept-card">
+      <!-- 推荐疗愈师 -->
+      <section class="therapist-section">
 
-        <div class="concept-number">
-          02
+        <div class="section-title-row">
+          <h2>推荐疗愈师</h2>
+
+          <button
+            class="more-btn"
+            id="viewTherapistsBtn"
+            type="button"
+          >
+            查看更多 →
+          </button>
+
         </div>
 
-        <h3>
-          安心
-        </h3>
 
-        <p>
-          严格筛选疗愈师，
-          为每一次服务提供安心保障。
-        </p>
+        <div class="therapist-scroll">
 
-      </div>
+          <!-- 疗愈师 1 -->
+          <div class="therapist-card">
+
+            <div class="therapist-avatar avatar-1">
+              奕
+            </div>
+
+            <div class="therapist-info">
+
+              <h3>
+                安然
+                <span class="online-dot"></span>
+              </h3>
+
+              <p>擅长 · 全身舒缓</p>
+
+              <div class="therapist-meta">
+                <span>⭐ 4.9</span>
+                <span>已服务 326 次</span>
+              </div>
+
+            </div>
+
+          </div>
 
 
-      <div class="concept-card">
+          <!-- 疗愈师 2 -->
+          <div class="therapist-card">
 
-        <div class="concept-number">
-          03
+            <div class="therapist-avatar avatar-2">
+              心
+            </div>
+
+            <div class="therapist-info">
+
+              <h3>
+                小雅
+                <span class="online-dot"></span>
+              </h3>
+
+              <p>擅长 · 头部减压</p>
+
+              <div class="therapist-meta">
+                <span>⭐ 4.9</span>
+                <span>已服务 218 次</span>
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- 疗愈师 3 -->
+          <div class="therapist-card">
+
+            <div class="therapist-avatar avatar-3">
+              疗
+            </div>
+
+            <div class="therapist-info">
+
+              <h3>
+                安宁
+                <span class="online-dot"></span>
+              </h3>
+
+              <p>擅长 · 身心放松</p>
+
+              <div class="therapist-meta">
+                <span>⭐ 5.0</span>
+                <span>已服务 156 次</span>
+              </div>
+
+            </div>
+
+          </div>
+
         </div>
 
-        <h3>
-          回归本真
-        </h3>
-
-        <p>
-          在忙碌的生活里，
-          重新找到属于自己的平静。
-        </p>
-
-      </div>
-
-    </section>
+      </section>
 
 
-    <!-- 底部预约引导 -->
-    <section class="bottom-cta">
+      <!-- 品牌理念 -->
+      <section class="brand-section">
 
-      <div>
-        <div class="section-label">
-          BEGIN YOUR HEALING
+        <div class="brand-card">
+
+          <div class="brand-card-small">
+            YIXIN HEALING
+          </div>
+
+          <h2>
+            懂身体<br />
+            也懂人心
+          </h2>
+
+          <p>
+            奕心疗愈舍以医学理念为基础，<br />
+            专注于 SPA、身体放松与身心疗愈。
+          </p>
+
         </div>
 
-        <h2>
-          从一次放松开始
-        </h2>
+      </section>
 
-        <p>
-          给身体一点空间，也给心一点时间。
-        </p>
-      </div>
+    </main>
 
-      <button id="bottomBookingButton">
-        立即预约
+
+    <!-- 底部导航 -->
+    <nav class="bottom-nav">
+
+      <button class="nav-item active" data-page="home">
+        <span class="nav-icon">⌂</span>
+        <span>首页</span>
       </button>
 
-    </section>
-
-  </main>
-
-
-  <!-- 底部导航 -->
-
-  <nav class="bottom-nav">
-
-    <button
-      class="nav-item active"
-      data-page="home"
-    >
-      <span class="nav-icon">⌂</span>
-      <span>首页</span>
-    </button>
-
-
-    <button
-      class="nav-item"
-      data-page="booking"
-    >
-      <span class="nav-icon">◷</span>
-      <span>预约</span>
-    </button>
-
-
-    <button
-      class="nav-item"
-      data-page="orders"
-    >
-      <span class="nav-icon">▣</span>
-      <span>订单</span>
-    </button>
-
-
-    <button
-      class="nav-item"
-      data-page="profile"
-    >
-      <span class="nav-icon">◯</span>
-      <span>我的</span>
-    </button>
-
-  </nav>
-
-
-  <!-- 预约弹窗 -->
-
-  <div
-    class="modal-overlay"
-    id="bookingModal"
-  >
-
-    <div class="booking-modal">
-
-      <button
-        class="modal-close"
-        id="modalClose"
-      >
-        ×
+      <button class="nav-item" data-page="therapists">
+        <span class="nav-icon">♧</span>
+        <span>疗愈师</span>
       </button>
 
-      <div class="section-label">
-        ONLINE BOOKING
-      </div>
+      <button class="nav-item booking-main" data-page="booking">
+        <span class="booking-icon">＋</span>
+        <span>预约</span>
+      </button>
 
-      <h2>
-        开始预约
-      </h2>
+      <button class="nav-item" data-page="orders">
+        <span class="nav-icon">▣</span>
+        <span>订单</span>
+      </button>
 
-      <p class="modal-description">
-        奕心疗愈舍将为你安排合适的疗愈服务。
-      </p>
+      <button class="nav-item" data-page="profile">
+        <span class="nav-icon">◉</span>
+        <span>我的</span>
+      </button>
 
-
-      <div class="booking-form">
-
-        <label>
-          服务项目
-        </label>
-
-        <select id="serviceSelect">
-
-          <option value="">
-            请选择服务
-          </option>
-
-          <option value="轻享疗愈">
-            轻享疗愈 · ¥298 · 90分钟
-          </option>
-
-          <option value="臻享疗愈">
-            臻享疗愈 · ¥398 · 120分钟
-          </option>
-
-        </select>
+    </nav>
 
 
-        <label>
-          联系方式
-        </label>
-
-        <input
-          id="phoneInput"
-          type="tel"
-          placeholder="请输入手机号"
-        />
-
-
-        <label>
-          服务地址
-        </label>
-
-        <input
-          id="addressInput"
-          type="text"
-          placeholder="请输入服务地址"
-        />
-
-
-        <button
-          class="submit-booking"
-          id="submitBooking"
-        >
-          提交预约
-        </button>
-
-      </div>
-
+    <!-- Toast 提示 -->
+    <div class="toast" id="toast">
+      <span id="toastText"></span>
     </div>
 
   </div>
 
 
+  <!-- 引入 JS -->
   <script src="./app.js"></script>
 
 </body>
