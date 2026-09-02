@@ -34,9 +34,7 @@ content="width=device-width, initial-scale=1.0"
     }
 
 
-    /* =====================
-       登录页面
-    ===================== */
+    /* 登录 */
 
     #loginPage {
       min-height: 100vh;
@@ -71,8 +69,6 @@ content="width=device-width, initial-scale=1.0"
     .login-title {
       margin: 0;
 
-      color: #292421;
-
       font-size: 26px;
     }
 
@@ -85,8 +81,6 @@ content="width=device-width, initial-scale=1.0"
       color: #999;
 
       font-size: 13px;
-
-      letter-spacing: 0.5px;
     }
 
 
@@ -103,14 +97,6 @@ content="width=device-width, initial-scale=1.0"
       border-radius: 9px;
 
       font-size: 15px;
-
-      outline: none;
-    }
-
-
-    .login-input:focus {
-      border-color:
-        #c6a56b;
     }
 
 
@@ -119,8 +105,7 @@ content="width=device-width, initial-scale=1.0"
 
       border: none;
 
-      background:
-        #292421;
+      background: #292421;
 
       color: white;
 
@@ -128,14 +113,9 @@ content="width=device-width, initial-scale=1.0"
 
       border-radius: 9px;
 
-      font-size: 15px;
-
       cursor: pointer;
-    }
 
-
-    .login-btn:hover {
-      opacity: 0.9;
+      font-size: 15px;
     }
 
 
@@ -144,21 +124,18 @@ content="width=device-width, initial-scale=1.0"
 
       margin-top: 15px;
 
-      text-align: center;
-
       color: #c0392b;
+
+      text-align: center;
 
       font-size: 14px;
     }
 
 
-    /* =====================
-       管理后台
-    ===================== */
+    /* 后台 */
 
     .header {
-      background:
-        #292421;
+      background: #292421;
 
       color: white;
 
@@ -173,9 +150,9 @@ content="width=device-width, initial-scale=1.0"
 
       display: flex;
 
-      align-items: center;
-
       justify-content: space-between;
+
+      align-items: center;
 
       gap: 20px;
     }
@@ -201,28 +178,21 @@ content="width=device-width, initial-scale=1.0"
       display: flex;
 
       gap: 10px;
-
-      align-items: center;
     }
 
 
     .refresh-btn {
       border: none;
 
-      background:
-        #c6a56b;
+      background: #c6a56b;
 
       color: white;
 
-      padding:
-        10px 18px;
+      padding: 10px 18px;
 
-      border-radius:
-        8px;
+      border-radius: 8px;
 
       cursor: pointer;
-
-      font-size: 14px;
     }
 
 
@@ -231,38 +201,24 @@ content="width=device-width, initial-scale=1.0"
         1px solid
         rgba(255,255,255,0.3);
 
-      background:
-        transparent;
+      background: transparent;
 
       color: white;
 
-      padding:
-        10px 18px;
+      padding: 10px 18px;
 
-      border-radius:
-        8px;
+      border-radius: 8px;
 
       cursor: pointer;
-
-      font-size: 14px;
-    }
-
-
-    .refresh-btn:hover,
-    .logout-btn:hover {
-      opacity: 0.9;
     }
 
 
     .container {
-      max-width:
-        1200px;
+      max-width: 1200px;
 
-      margin:
-        30px auto;
+      margin: 30px auto;
 
-      padding:
-        0 20px;
+      padding: 0 20px;
     }
 
 
@@ -272,238 +228,143 @@ content="width=device-width, initial-scale=1.0"
       grid-template-columns:
         repeat(
           auto-fit,
-          minmax(
-            180px,
-            1fr
-          )
+          minmax(180px, 1fr)
         );
 
-      gap:
-        18px;
+      gap: 18px;
 
-      margin-bottom:
-        25px;
+      margin-bottom: 25px;
     }
 
 
     .stat-card {
-      background:
-        white;
+      background: white;
 
-      padding:
-        20px;
+      padding: 20px;
 
-      border-radius:
-        12px;
+      border-radius: 12px;
 
       box-shadow:
         0 4px 20px
-        rgba(
-          0,
-          0,
-          0,
-          0.05
-        );
+        rgba(0,0,0,0.05);
     }
 
 
     .stat-label {
-      font-size:
-        13px;
+      color: #888;
 
-      color:
-        #888;
+      font-size: 13px;
     }
 
 
     .stat-number {
-      font-size:
-        30px;
+      margin-top: 10px;
 
-      margin-top:
-        10px;
+      font-size: 30px;
 
-      font-weight:
-        600;
-
-      color:
-        #2d2926;
+      font-weight: 600;
     }
 
 
     .table-card {
-      background:
-        white;
+      background: white;
 
-      border-radius:
-        12px;
+      border-radius: 12px;
 
-      overflow:
-        hidden;
+      overflow: hidden;
 
       box-shadow:
         0 4px 20px
-        rgba(
-          0,
-          0,
-          0,
-          0.05
-        );
+        rgba(0,0,0,0.05);
     }
 
 
     .table-wrap {
-      overflow-x:
-        auto;
+      overflow-x: auto;
     }
 
 
     table {
-      width:
-        100%;
+      width: 100%;
 
-      border-collapse:
-        collapse;
+      min-width: 1000px;
 
-      min-width:
-        1000px;
+      border-collapse: collapse;
     }
 
 
     th {
-      background:
-        #f1ece4;
+      background: #f1ece4;
 
-      text-align:
-        left;
+      text-align: left;
 
-      padding:
-        15px;
+      padding: 15px;
 
-      font-size:
-        13px;
-
-      white-space:
-        nowrap;
+      font-size: 13px;
     }
 
 
     td {
-      padding:
-        15px;
+      padding: 15px;
 
       border-top:
         1px solid #eee;
 
-      font-size:
-        14px;
+      font-size: 14px;
 
-      vertical-align:
-        top;
+      vertical-align: top;
     }
 
 
-    .status {
-      display:
-        inline-block;
+    .status-select {
+      border: none;
 
-      padding:
-        5px 10px;
+      background: #fff4d6;
 
-      border-radius:
-        20px;
+      color: #9a6a00;
 
-      font-size:
-        12px;
+      padding: 6px 10px;
 
-      background:
-        #fff4d6;
+      border-radius: 20px;
 
-      color:
-        #9a6a00;
+      font-size: 12px;
+
+      cursor: pointer;
     }
 
 
     .empty {
-      padding:
-        80px 20px;
+      padding: 80px 20px;
 
-      text-align:
-        center;
+      text-align: center;
 
-      color:
-        #999;
+      color: #999;
     }
 
 
     .loading {
-      padding:
-        50px;
+      padding: 50px;
 
-      text-align:
-        center;
+      text-align: center;
 
-      color:
-        #888;
+      color: #888;
     }
 
 
-    @media (
-      max-width:
-      600px
-    ) {
+    @media (max-width: 600px) {
 
       .header-inner {
-        align-items:
-          flex-start;
+        flex-direction: column;
 
-        flex-direction:
-          column;
-      }
-
-
-      .header-actions {
-        width:
-          100%;
-      }
-
-
-      .refresh-btn,
-      .logout-btn {
-        flex:
-          1;
+        align-items: flex-start;
       }
 
 
       .container {
-        margin-top:
-          20px;
+        margin-top: 20px;
       }
 
     }
-.status-select {
-border: none;
-
-background: #fff4d6;
-
-color: #9a6a00;
-
-padding: 6px 10px;
-
-border-radius: 20px;
-
-font-size: 12px;
-
-cursor: pointer;
-
-outline: none;
-}
-
-.status-select:disabled {
-opacity: 0.6;
-
-cursor: wait;
-}
 
   </style>
 
@@ -511,28 +372,18 @@ cursor: wait;
 
 <body>
 
-  <!-- =====================
-       登录页面
-  ====================== -->
+  <!-- 登录 -->
 
-  <div
-    id="loginPage"
-  >
+  <div id="loginPage">
 
-<div
-  class="login-card"
->
+<div class="login-card">
 
-  <h1
-    class="login-title"
-  >
+  <h1 class="login-title">
     奕心疗愈舍
   </h1>
 
 
-  <div
-    class="login-subtitle"
-  >
+  <div class="login-subtitle">
     ADMIN LOGIN · 管理员登录
   </div>
 
@@ -542,7 +393,6 @@ cursor: wait;
     class="login-input"
     type="text"
     placeholder="管理员账号"
-    autocomplete="username"
   >
 
 
@@ -551,7 +401,6 @@ cursor: wait;
     class="login-input"
     type="password"
     placeholder="管理员密码"
-    autocomplete="current-password"
   >
 
 
@@ -566,51 +415,37 @@ cursor: wait;
   <div
     id="loginError"
     class="login-error"
-  >
-  </div>
+  ></div>
 
 </div>
 
   </div>
 
-  <!-- =====================
-       管理后台
-  ====================== -->
+  <!-- 后台 -->
 
   <div
     id="adminPage"
     style="display: none;"
   >
 
-<header
-  class="header"
->
+<header class="header">
 
-  <div
-    class="header-inner"
-  >
+  <div class="header-inner">
 
     <div>
 
-      <div
-        class="brand"
-      >
+      <div class="brand">
         奕心疗愈舍 · 订单管理
       </div>
 
-
-      <div
-        class="subtitle"
-      >
+      <div class="subtitle">
         YIXIN HEALING · APPOINTMENT SYSTEM
       </div>
 
     </div>
 
 
-    <div
-      class="header-actions"
-    >
+    <div class="header-actions">
 
       <button
         class="refresh-btn"
@@ -634,25 +469,16 @@ cursor: wait;
 </header>
 
 
-<main
-  class="container"
->
+<main class="container">
 
 
-  <section
-    class="stats"
-  >
+  <section class="stats">
 
-    <div
-      class="stat-card"
-    >
+    <div class="stat-card">
 
-      <div
-        class="stat-label"
-      >
+      <div class="stat-label">
         总订单
       </div>
-
 
       <div
         class="stat-number"
@@ -664,16 +490,11 @@ cursor: wait;
     </div>
 
 
-    <div
-      class="stat-card"
-    >
+    <div class="stat-card">
 
-      <div
-        class="stat-label"
-      >
+      <div class="stat-label">
         待确认
       </div>
-
 
       <div
         class="stat-number"
@@ -687,9 +508,8 @@ cursor: wait;
   </section>
 
 
-  <section
-    class="table-card"
-  >
+  <section class="table-card">
+
 
     <div
       class="loading"
@@ -702,7 +522,7 @@ cursor: wait;
     <div
       class="empty"
       id="empty"
-      style="display: none"
+      style="display: none;"
     >
       暂时还没有预约订单
     </div>
@@ -711,7 +531,7 @@ cursor: wait;
     <div
       class="table-wrap"
       id="tableWrap"
-      style="display: none"
+      style="display: none;"
     >
 
       <table>
@@ -749,12 +569,12 @@ cursor: wait;
 
         <tbody
           id="ordersBody"
-        >
-        </tbody>
+        ></tbody>
 
       </table>
 
     </div>
+
 
   </section>
 
@@ -770,18 +590,14 @@ cursor: wait;
 
       const username =
         document
-          .getElementById(
-            "username"
-          )
+          .getElementById("username")
           .value
           .trim();
 
 
       const password =
         document
-          .getElementById(
-            "password"
-          )
+          .getElementById("password")
           .value;
 
 
@@ -791,21 +607,7 @@ cursor: wait;
         );
 
 
-      loginError.textContent =
-        "";
-
-
-      if (
-        !username ||
-        !password
-      ) {
-
-        loginError.textContent =
-          "请输入管理员账号和密码";
-
-        return;
-
-      }
+      loginError.textContent = "";
 
 
       try {
@@ -814,8 +616,7 @@ cursor: wait;
           await fetch(
             "/api/admin/login",
             {
-              method:
-                "POST",
+              method: "POST",
 
               headers: {
                 "Content-Type":
@@ -823,12 +624,10 @@ cursor: wait;
               },
 
               body:
-                JSON.stringify(
-                  {
-                    username,
-                    password
-                  }
-                )
+                JSON.stringify({
+                  username: username,
+                  password: password
+                })
             }
           );
 
@@ -837,9 +636,7 @@ cursor: wait;
           await response.json();
 
 
-        if (
-          !data.success
-        ) {
+        if (!data.success) {
 
           loginError.textContent =
             data.message ||
@@ -858,17 +655,11 @@ cursor: wait;
 
         showAdminPage();
 
-
         loadOrders();
 
-      } catch (
-        error
-      ) {
+      } catch (error) {
 
-        console.error(
-          error
-        );
-
+        console.error(error);
 
         loginError.textContent =
           "登录失败，请检查网络";
@@ -881,17 +672,13 @@ cursor: wait;
     function showAdminPage() {
 
       document
-        .getElementById(
-          "loginPage"
-        )
+        .getElementById("loginPage")
         .style.display =
           "none";
 
 
       document
-        .getElementById(
-          "adminPage"
-        )
+        .getElementById("adminPage")
         .style.display =
           "block";
 
@@ -901,17 +688,13 @@ cursor: wait;
     function showLoginPage() {
 
       document
-        .getElementById(
-          "adminPage"
-        )
+        .getElementById("adminPage")
         .style.display =
           "none";
 
 
       document
-        .getElementById(
-          "loginPage"
-        )
+        .getElementById("loginPage")
         .style.display =
           "flex";
 
@@ -923,31 +706,6 @@ cursor: wait;
       localStorage.removeItem(
         "adminToken"
       );
-
-
-      document
-        .getElementById(
-          "username"
-        )
-        .value =
-          "";
-
-
-      document
-        .getElementById(
-          "password"
-        )
-        .value =
-          "";
-
-
-      document
-        .getElementById(
-          "loginError"
-        )
-        .textContent =
-          "";
-
 
       showLoginPage();
 
@@ -986,9 +744,7 @@ cursor: wait;
         );
 
 
-      if (
-        !token
-      ) {
+      if (!token) {
 
         showLoginPage();
 
@@ -1020,7 +776,7 @@ cursor: wait;
             "/api/orders",
             {
               headers: {
-                Authorization:
+                "Authorization":
                   "Bearer " + token
               }
             }
@@ -1028,8 +784,7 @@ cursor: wait;
 
 
         if (
-          response.status ===
-          401
+          response.status === 401
         ) {
 
           localStorage.removeItem(
@@ -1038,7 +793,6 @@ cursor: wait;
 
 
           showLoginPage();
-
 
           return;
 
@@ -1049,9 +803,7 @@ cursor: wait;
           await response.json();
 
 
-        if (
-          !data.success
-        ) {
+        if (!data.success) {
 
           throw new Error(
             data.message ||
@@ -1066,27 +818,28 @@ cursor: wait;
 
 
         document
-          .getElementById(
-            "totalOrders"
-          )
+          .getElementById("totalOrders")
           .textContent =
             orders.length;
 
 
         document
-          .getElementById(
-            "pendingOrders"
-          )
+          .getElementById("pendingOrders")
           .textContent =
             orders.filter(
-              order =>
-                order.status ===
-                "待确认"
-            ).length;
+              function(order) {
+
+                return (
+                  order.status ===
+                  "待确认"
+                );
+
+              }
+            )
+            .length;
 
 
-        ordersBody.innerHTML =
-          "";
+        ordersBody.innerHTML = "";
 
 
         loading.style.display =
@@ -1094,8 +847,7 @@ cursor: wait;
 
 
         if (
-          orders.length ===
-          0
+          orders.length === 0
         ) {
 
           empty.style.display =
@@ -1111,7 +863,7 @@ cursor: wait;
 
 
         orders.forEach(
-          order => {
+          function(order) {
 
             const row =
               document.createElement(
@@ -1127,6 +879,40 @@ cursor: wait;
                     "zh-CN"
                   )
                 : "-";
+
+
+            const statusList = [
+              "待确认",
+              "已确认",
+              "服务中",
+              "已完成",
+              "已取消"
+            ];
+
+
+            let options = "";
+
+
+            statusList.forEach(
+              function(status) {
+
+                const selected =
+                  order.status === status
+                    ? " selected"
+                    : "";
+
+
+                options +=
+                  "<option value=\"" +
+                  status +
+                  "\"" +
+                  selected +
+                  ">" +
+                  status +
+                  "</option>";
+
+              }
+            );
 
 
             row.innerHTML =
@@ -1191,52 +977,41 @@ cursor: wait;
               "</td>" +
 
               "<td>" +
-"<select " +
-"class="status-select" " +
-"data-order-id="" +
-escapeHtml(order.id) +
-"" " +
-"onchange="updateOrderStatus(this)">" +
-
-"<option value="待确认"" +
-((order.status === "待确认")
-? " selected"
-: "") +
-">待确认</option>" +
-
-"<option value="已确认"" +
-((order.status === "已确认")
-? " selected"
-: "") +
-">已确认</option>" +
-
-"<option value="服务中"" +
-((order.status === "服务中")
-? " selected"
-: "") +
-">服务中</option>" +
-
-"<option value="已完成"" +
-((order.status === "已完成")
-? " selected"
-: "") +
-">已完成</option>" +
-
-"<option value="已取消"" +
-((order.status === "已取消")
-? " selected"
-: "") +
-">已取消</option>" +
-
-"</select>" +
-"</td>" +
-
+              "<select " +
+              "class=\"status-select\" " +
+              "data-order-id=\"" +
+              escapeHtml(
+                order.id
+              ) +
+              "\">" +
+              options +
+              "</select>" +
+              "</td>" +
 
               "<td>" +
               escapeHtml(
                 createdAt
               ) +
               "</td>";
+
+
+            const statusSelect =
+              row.querySelector(
+                ".status-select"
+              );
+
+
+            statusSelect.addEventListener(
+              "change",
+              function() {
+
+                updateOrderStatus(
+                  order.id,
+                  statusSelect.value
+                );
+
+              }
+            );
 
 
             ordersBody.appendChild(
@@ -1246,14 +1021,9 @@ escapeHtml(order.id) +
           }
         );
 
-      } catch (
-        error
-      ) {
+      } catch (error) {
 
-        console.error(
-          error
-        );
-
+        console.error(error);
 
         loading.textContent =
           "订单加载失败，请刷新重试";
@@ -1262,133 +1032,103 @@ escapeHtml(order.id) +
 
     }
 
-async function updateOrderStatus(
-selectElement
-) {
 
-const orderId =
-selectElement.dataset.orderId;
+    async function updateOrderStatus(
+      orderId,
+      status
+    ) {
 
-const status =
-selectElement.value;
+      const token =
+        localStorage.getItem(
+          "adminToken"
+        );
 
-const token =
-localStorage.getItem(
-"adminToken"
-);
 
-selectElement.disabled =
-true;
+      try {
 
-try {
+        const response =
+          await fetch(
+            "/api/orders/" +
+            encodeURIComponent(
+              orderId
+            ) +
+            "/status",
+            {
+              method: "PATCH",
 
-```
-const response =
-  await fetch(
-    "/api/orders/" +
-    encodeURIComponent(
-      orderId
-    ) +
-    "/status",
-    {
-      method:
-        "PATCH",
+              headers: {
+                "Content-Type":
+                  "application/json",
 
-      headers: {
-        "Content-Type":
-          "application/json",
+                "Authorization":
+                  "Bearer " + token
+              },
 
-        Authorization:
-          "Bearer " + token
-      },
+              body:
+                JSON.stringify({
+                  status: status
+                })
+            }
+          );
 
-      body:
-        JSON.stringify({
+
+        const data =
+          await response.json();
+
+
+        if (
+          response.status === 401
+        ) {
+
+          localStorage.removeItem(
+            "adminToken"
+          );
+
+          showLoginPage();
+
+          return;
+
+        }
+
+
+        if (!data.success) {
+
+          throw new Error(
+            data.message ||
+            "修改订单状态失败"
+          );
+
+        }
+
+
+        alert(
+          "订单状态已更新为：" +
           status
-        })
+        );
+
+
+        loadOrders();
+
+      } catch (error) {
+
+        console.error(error);
+
+        alert(
+          "订单状态修改失败"
+        );
+
+
+        loadOrders();
+
+      }
+
     }
-  );
 
-
-const data =
-  await response.json();
-
-
-if (
-  response.status ===
-  401
-) {
-
-  localStorage.removeItem(
-    "adminToken"
-  );
-
-
-  showLoginPage();
-
-
-  return;
-
-}
-
-
-if (
-  !data.success
-) {
-
-  throw new Error(
-    data.message ||
-    "修改失败"
-  );
-
-}
-
-
-alert(
-  "订单状态已更新为：" +
-  status
-);
-
-
-loadOrders();
-```
-
-} catch (
-error
-) {
-
-```
-console.error(
-  error
-);
-
-
-alert(
-  "订单状态修改失败：" +
-  error.message
-);
-
-
-loadOrders();
-```
-
-} finally {
-
-```
-selectElement.disabled =
-  false;
-```
-
-}
-
-}
 
     function escapeHtml(value) {
 
       const div =
-        document.createElement(
-          "div"
-        );
+        document.createElement("div");
 
 
       div.textContent =
@@ -1401,16 +1141,13 @@ selectElement.disabled =
 
 
     document
-      .getElementById(
-        "password"
-      )
+      .getElementById("password")
       .addEventListener(
         "keydown",
         function(event) {
 
           if (
-            event.key ===
-            "Enter"
+            event.key === "Enter"
           ) {
 
             login();
@@ -1427,9 +1164,7 @@ selectElement.disabled =
       );
 
 
-    if (
-      token
-    ) {
+    if (token) {
 
       showAdminPage();
 
