@@ -20,1201 +20,599 @@ content="width=device-width, initial-scale=1.0"
 
 body {
   margin: 0;
-
   font-family:
     -apple-system,
     BlinkMacSystemFont,
     "PingFang SC",
     "Microsoft YaHei",
     sans-serif;
-
-  background:
-    #f6f3ee;
-
-  color:
-    #2d2926;
+  background: #f6f3ee;
+  color: #2d2926;
 }
-
 
 /* =========================
    登录
 ========================= */
 
 #loginPage {
-  min-height:
-    100vh;
-
-  display:
-    flex;
-
-  align-items:
-    center;
-
-  justify-content:
-    center;
-
-  padding:
-    20px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
 }
-
 
 .login-card {
-  width:
-    100%;
-
-  max-width:
-    400px;
-
-  background:
-    white;
-
-  padding:
-    38px;
-
-  border-radius:
-    20px;
-
-  box-shadow:
-    0 15px 50px
-    rgba(
-      0,
-      0,
-      0,
-      0.08
-    );
+  width: 100%;
+  max-width: 400px;
+  background: white;
+  padding: 38px;
+  border-radius: 20px;
+  box-shadow: 0 15px 50px rgba(0,0,0,.08);
 }
-
 
 .login-title {
-  margin:
-    0;
-
-  font-size:
-    27px;
-
-  letter-spacing:
-    2px;
+  margin: 0;
+  font-size: 27px;
+  letter-spacing: 2px;
 }
-
 
 .login-subtitle {
-  margin-top:
-    10px;
-
-  margin-bottom:
-    30px;
-
-  color:
-    #999;
-
-  font-size:
-    12px;
-
-  letter-spacing:
-    1px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  color: #999;
+  font-size: 12px;
+  letter-spacing: 1px;
 }
-
 
 .login-input {
-  width:
-    100%;
-
-  padding:
-    14px;
-
-  margin-bottom:
-    15px;
-
-  border:
-    1px solid
-    #ddd;
-
-  border-radius:
-    10px;
-
-  font-size:
-    15px;
-
-  outline:
-    none;
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 15px;
+  outline: none;
 }
-
 
 .login-input:focus {
-  border-color:
-    #b99b6b;
+  border-color: #b99b6b;
 }
-
 
 .login-btn {
-  width:
-    100%;
-
-  border:
-    none;
-
-  background:
-    #292421;
-
-  color:
-    white;
-
-  padding:
-    14px;
-
-  border-radius:
-    10px;
-
-  cursor:
-    pointer;
-
-  font-size:
-    15px;
+  width: 100%;
+  border: none;
+  background: #292421;
+  color: white;
+  padding: 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 15px;
 }
 
+.login-btn:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+}
 
 .login-error {
-  min-height:
-    20px;
-
-  margin-top:
-    15px;
-
-  color:
-    #c0392b;
-
-  text-align:
-    center;
-
-  font-size:
-    14px;
+  min-height: 20px;
+  margin-top: 15px;
+  color: #c0392b;
+  text-align: center;
+  font-size: 14px;
 }
-
 
 /* =========================
    后台
 ========================= */
 
 .header {
-  background:
-    #292421;
-
-  color:
-    white;
-
-  padding:
-    18px 20px;
+  background: #292421;
+  color: white;
+  padding: 18px 20px;
 }
-
 
 .header-inner {
-  max-width:
-    1250px;
-
-  margin:
-    auto;
-
-  display:
-    flex;
-
-  justify-content:
-    space-between;
-
-  align-items:
-    center;
-
-  gap:
-    20px;
+  max-width: 1250px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
 }
-
 
 .brand {
-  font-size:
-    21px;
-
-  font-weight:
-    600;
+  font-size: 21px;
+  font-weight: 600;
 }
-
 
 .subtitle {
-  margin-top:
-    5px;
-
-  font-size:
-    11px;
-
-  opacity:
-    0.65;
-
-  letter-spacing:
-    1px;
+  margin-top: 5px;
+  font-size: 11px;
+  opacity: .65;
+  letter-spacing: 1px;
 }
-
 
 .header-actions {
-  display:
-    flex;
-
-  gap:
-    10px;
+  display: flex;
+  gap: 10px;
 }
-
 
 .header-btn {
-  border:
-    none;
-
-  padding:
-    10px 16px;
-
-  border-radius:
-    8px;
-
-  cursor:
-    pointer;
-
-  font-size:
-    14px;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
 }
-
 
 .refresh-btn {
-  background:
-    #c6a56b;
-
-  color:
-    white;
+  background: #c6a56b;
+  color: white;
 }
-
 
 .logout-btn {
-  background:
-    transparent;
-
-  color:
-    white;
-
-  border:
-    1px solid
-    rgba(
-      255,
-      255,
-      255,
-      0.3
-    );
+  background: transparent;
+  color: white;
+  border: 1px solid rgba(255,255,255,.3);
 }
-
 
 .container {
-  max-width:
-    1250px;
-
-  margin:
-    30px auto;
-
-  padding:
-    0 20px;
+  max-width: 1250px;
+  margin: 30px auto;
+  padding: 0 20px;
 }
-
 
 /* =========================
    导航
 ========================= */
 
 .admin-nav {
-  display:
-    flex;
-
-  gap:
-    10px;
-
-  margin-bottom:
-    22px;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 22px;
 }
-
 
 .nav-btn {
-  border:
-    none;
-
-  background:
-    white;
-
-  color:
-    #655f57;
-
-  padding:
-    12px 22px;
-
-  border-radius:
-    10px;
-
-  cursor:
-    pointer;
-
-  font-size:
-    14px;
-
-  box-shadow:
-    0 4px 15px
-    rgba(
-      0,
-      0,
-      0,
-      0.04
-    );
+  border: none;
+  background: white;
+  color: #655f57;
+  padding: 12px 22px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  box-shadow: 0 4px 15px rgba(0,0,0,.04);
 }
-
 
 .nav-btn.active {
-  background:
-    #292421;
-
-  color:
-    white;
+  background: #292421;
+  color: white;
 }
-
 
 /* =========================
    页面
 ========================= */
 
 .admin-section {
-  display:
-    none;
+  display: none;
 }
-
 
 .admin-section.active {
-  display:
-    block;
+  display: block;
 }
-
 
 /* =========================
    数据统计
 ========================= */
 
 .stats {
-  display:
-    grid;
-
+  display: grid;
   grid-template-columns:
-    repeat(
-      auto-fit,
-      minmax(
-        180px,
-        1fr
-      )
-    );
-
-  gap:
-    18px;
-
-  margin-bottom:
-    22px;
+    repeat(auto-fit,minmax(180px,1fr));
+  gap: 18px;
+  margin-bottom: 22px;
 }
-
 
 .stat-card {
-  background:
-    white;
-
-  padding:
-    20px;
-
-  border-radius:
-    14px;
-
-  box-shadow:
-    0 4px 20px
-    rgba(
-      0,
-      0,
-      0,
-      0.05
-    );
+  background: white;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 4px 20px rgba(0,0,0,.05);
 }
-
 
 .stat-label {
-  color:
-    #888;
-
-  font-size:
-    13px;
+  color: #888;
+  font-size: 13px;
 }
-
 
 .stat-number {
-  margin-top:
-    9px;
-
-  font-size:
-    30px;
-
-  font-weight:
-    600;
+  margin-top: 9px;
+  font-size: 30px;
+  font-weight: 600;
 }
-
 
 /* =========================
    工具栏
 ========================= */
 
 .toolbar {
-  background:
-    white;
-
-  padding:
-    18px;
-
-  margin-bottom:
-    20px;
-
-  border-radius:
-    14px;
-
-  display:
-    flex;
-
-  gap:
-    12px;
-
-  flex-wrap:
-    wrap;
-
-  box-shadow:
-    0 4px 20px
-    rgba(
-      0,
-      0,
-      0,
-      0.05
-    );
+  background: white;
+  padding: 18px;
+  margin-bottom: 20px;
+  border-radius: 14px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  box-shadow: 0 4px 20px rgba(0,0,0,.05);
 }
-
 
 .search-input {
-  flex:
-    1;
-
-  min-width:
-    220px;
-
-  border:
-    1px solid
-    #ddd;
-
-  border-radius:
-    9px;
-
-  padding:
-    12px 14px;
-
-  outline:
-    none;
+  flex: 1;
+  min-width: 220px;
+  border: 1px solid #ddd;
+  border-radius: 9px;
+  padding: 12px 14px;
+  outline: none;
 }
-
 
 .filter-select {
-  min-width:
-    150px;
-
-  border:
-    1px solid
-    #ddd;
-
-  border-radius:
-    9px;
-
-  padding:
-    12px;
-
-  background:
-    white;
+  min-width: 150px;
+  border: 1px solid #ddd;
+  border-radius: 9px;
+  padding: 12px;
+  background: white;
 }
-
 
 .quick-btn {
-  border:
-    none;
-
-  background:
-    #eee8de;
-
-  color:
-    #675c50;
-
-  padding:
-    10px 15px;
-
-  border-radius:
-    8px;
-
-  cursor:
-    pointer;
+  border: none;
+  background: #eee8de;
+  color: #675c50;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
 }
-
 
 .quick-btn.active {
-  background:
-    #b99b6b;
-
-  color:
-    white;
+  background: #b99b6b;
+  color: white;
 }
-
 
 /* =========================
    表格
 ========================= */
 
 .table-card {
-  background:
-    white;
-
-  border-radius:
-    14px;
-
-  overflow:
-    hidden;
-
-  box-shadow:
-    0 4px 20px
-    rgba(
-      0,
-      0,
-      0,
-      0.05
-    );
+  background: white;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,.05);
 }
-
 
 .table-wrap {
-  overflow-x:
-    auto;
+  overflow-x: auto;
 }
-
 
 table {
-  width:
-    100%;
-
-  min-width:
-    1100px;
-
-  border-collapse:
-    collapse;
+  width: 100%;
+  min-width: 1100px;
+  border-collapse: collapse;
 }
-
 
 th {
-  background:
-    #f1ece4;
-
-  text-align:
-    left;
-
-  padding:
-    15px;
-
-  font-size:
-    13px;
-
-  white-space:
-    nowrap;
+  background: #f1ece4;
+  text-align: left;
+  padding: 15px;
+  font-size: 13px;
+  white-space: nowrap;
 }
-
 
 td {
-  padding:
-    15px;
-
-  border-top:
-    1px solid
-    #eee;
-
-  font-size:
-    13px;
-
-  vertical-align:
-    top;
+  padding: 15px;
+  border-top: 1px solid #eee;
+  font-size: 13px;
+  vertical-align: top;
 }
-
 
 .status-select {
-  border:
-    none;
-
-  background:
-    #fff4d6;
-
-  color:
-    #9a6a00;
-
-  padding:
-    7px 10px;
-
-  border-radius:
-    20px;
-
-  cursor:
-    pointer;
+  border: none;
+  background: #fff4d6;
+  color: #9a6a00;
+  padding: 7px 10px;
+  border-radius: 20px;
+  cursor: pointer;
 }
-
 
 .delete-btn {
-  border:
-    none;
-
-  background:
-    #fff0f0;
-
-  color:
-    #c0392b;
-
-  padding:
-    7px 12px;
-
-  border-radius:
-    7px;
-
-  cursor:
-    pointer;
+  border: none;
+  background: #fff0f0;
+  color: #c0392b;
+  padding: 7px 12px;
+  border-radius: 7px;
+  cursor: pointer;
 }
-
 
 .loading {
-  padding:
-    50px;
-
-  text-align:
-    center;
-
-  color:
-    #888;
+  padding: 50px;
+  text-align: center;
+  color: #888;
 }
-
 
 .empty {
-  padding:
-    70px 20px;
-
-  text-align:
-    center;
-
-  color:
-    #999;
+  padding: 70px 20px;
+  text-align: center;
+  color: #999;
 }
-
 
 /* =========================
    疗愈师
 ========================= */
 
 .therapist-toolbar {
-  display:
-    flex;
-
-  justify-content:
-    space-between;
-
-  align-items:
-    center;
-
-  margin-bottom:
-    20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 15px;
 }
-
 
 .add-btn {
-  border:
-    none;
-
-  background:
-    #292421;
-
-  color:
-    white;
-
-  padding:
-    12px 20px;
-
-  border-radius:
-    9px;
-
-  cursor:
-    pointer;
-
-  font-size:
-    14px;
+  border: none;
+  background: #292421;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 9px;
+  cursor: pointer;
+  font-size: 14px;
 }
-
 
 .therapist-grid {
-  display:
-    grid;
-
+  display: grid;
   grid-template-columns:
-    repeat(
-      auto-fit,
-      minmax(
-        280px,
-        1fr
-      )
-    );
-
-  gap:
-    20px;
+    repeat(auto-fit,minmax(280px,1fr));
+  gap: 20px;
 }
-
 
 .therapist-card {
-  background:
-    white;
-
-  border-radius:
-    16px;
-
-  overflow:
-    hidden;
-
-  box-shadow:
-    0 5px 25px
-    rgba(
-      0,
-      0,
-      0,
-      0.06
-    );
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 5px 25px rgba(0,0,0,.06);
 }
-
 
 .therapist-image {
-  width:
-    100%;
-
-  height:
-    230px;
-
-  object-fit:
-    cover;
-
-  background:
-    #eee8de;
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  background: #eee8de;
+  display: block;
 }
 
+.therapist-placeholder {
+  width: 100%;
+  height: 230px;
+  background: #eee8de;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #aaa;
+  font-size: 13px;
+}
 
 .therapist-content {
-  padding:
-    18px;
+  padding: 18px;
 }
-
 
 .therapist-name {
-  font-size:
-    20px;
-
-  font-weight:
-    600;
-
-  margin-bottom:
-    8px;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 8px;
 }
-
 
 .therapist-meta {
-  color:
-    #9a9187;
-
-  font-size:
-    13px;
-
-  margin-bottom:
-    12px;
+  color: #9a9187;
+  font-size: 13px;
+  margin-bottom: 12px;
 }
-
 
 .therapist-desc {
-  color:
-    #625b53;
-
-  font-size:
-    13px;
-
-  line-height:
-    1.7;
-
-  min-height:
-    45px;
+  color: #625b53;
+  font-size: 13px;
+  line-height: 1.7;
+  min-height: 45px;
 }
-
 
 .therapist-tags {
-  display:
-    flex;
-
-  flex-wrap:
-    wrap;
-
-  gap:
-    7px;
-
-  margin-top:
-    14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 14px;
 }
-
 
 .tag {
-  background:
-    #f2ede5;
-
-  color:
-    #806b4f;
-
-  padding:
-    5px 9px;
-
-  border-radius:
-    20px;
-
-  font-size:
-    11px;
+  background: #f2ede5;
+  color: #806b4f;
+  padding: 5px 9px;
+  border-radius: 20px;
+  font-size: 11px;
 }
-
 
 .therapist-actions {
-  display:
-    flex;
-
-  gap:
-    10px;
-
-  margin-top:
-    18px;
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
 }
-
 
 .edit-btn {
-  flex:
-    1;
-
-  border:
-    none;
-
-  background:
-    #eee8de;
-
-  color:
-    #655c52;
-
-  padding:
-    10px;
-
-  border-radius:
-    8px;
-
-  cursor:
-    pointer;
+  flex: 1;
+  border: none;
+  background: #eee8de;
+  color: #655c52;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
 }
-
 
 .card-delete-btn {
-  flex:
-    1;
-
-  border:
-    none;
-
-  background:
-    #fff0f0;
-
-  color:
-    #c0392b;
-
-  padding:
-    10px;
-
-  border-radius:
-    8px;
-
-  cursor:
-    pointer;
+  flex: 1;
+  border: none;
+  background: #fff0f0;
+  color: #c0392b;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
 }
-
 
 .status-badge {
-  display:
-    inline-block;
-
-  margin-top:
-    12px;
-
-  padding:
-    5px 10px;
-
-  border-radius:
-    20px;
-
-  font-size:
-    11px;
+  display: inline-block;
+  margin-top: 12px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 11px;
 }
-
 
 .status-active {
-  background:
-    #e8f5eb;
-
-  color:
-    #438354;
+  background: #e8f5eb;
+  color: #438354;
 }
-
 
 .status-inactive {
-  background:
-    #f4eeee;
-
-  color:
-    #a06464;
+  background: #f4eeee;
+  color: #a06464;
 }
-
 
 /* =========================
    弹窗
 ========================= */
 
 .modal-mask {
-  position:
-    fixed;
-
-  inset:
-    0;
-
-  display:
-    none;
-
-  align-items:
-    center;
-
-  justify-content:
-    center;
-
-  background:
-    rgba(
-      0,
-      0,
-      0,
-      0.45
-    );
-
-  padding:
-    20px;
-
-  z-index:
-    999;
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,.45);
+  padding: 20px;
+  z-index: 999;
 }
-
 
 .modal-mask.show {
-  display:
-    flex;
+  display: flex;
 }
-
 
 .modal {
-  width:
-    100%;
-
-  max-width:
-    560px;
-
-  max-height:
-    90vh;
-
-  overflow-y:
-    auto;
-
-  background:
-    white;
-
-  border-radius:
-    18px;
-
-  padding:
-    25px;
+  width: 100%;
+  max-width: 560px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: white;
+  border-radius: 18px;
+  padding: 25px;
 }
-
 
 .modal-title {
-  margin:
-    0 0 22px;
-
-  font-size:
-    21px;
+  margin: 0 0 22px;
+  font-size: 21px;
 }
-
 
 .form-group {
-  margin-bottom:
-    16px;
+  margin-bottom: 16px;
 }
-
 
 .form-label {
-  display:
-    block;
-
-  margin-bottom:
-    7px;
-
-  font-size:
-    13px;
-
-  color:
-    #655d55;
+  display: block;
+  margin-bottom: 7px;
+  font-size: 13px;
+  color: #655d55;
 }
-
 
 .form-input,
 .form-textarea,
 .form-select {
-  width:
-    100%;
-
-  border:
-    1px solid
-    #ddd;
-
-  border-radius:
-    9px;
-
-  padding:
-    12px;
-
-  font-size:
-    14px;
-
-  outline:
-    none;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 9px;
+  padding: 12px;
+  font-size: 14px;
+  outline: none;
 }
 
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+  border-color: #b99b6b;
+}
 
 .form-textarea {
-  min-height:
-    100px;
-
-  resize:
-    vertical;
+  min-height: 100px;
+  resize: vertical;
 }
-
 
 .modal-actions {
-  display:
-    flex;
-
-  gap:
-    12px;
-
-  margin-top:
-    22px;
+  display: flex;
+  gap: 12px;
+  margin-top: 22px;
 }
-
 
 .cancel-btn {
-  flex:
-    1;
-
-  border:
-    none;
-
-  background:
-    #eee;
-
-  padding:
-    13px;
-
-  border-radius:
-    9px;
-
-  cursor:
-    pointer;
+  flex: 1;
+  border: none;
+  background: #eee;
+  padding: 13px;
+  border-radius: 9px;
+  cursor: pointer;
 }
-
 
 .save-btn {
-  flex:
-    1;
-
-  border:
-    none;
-
-  background:
-    #292421;
-
-  color:
-    white;
-
-  padding:
-    13px;
-
-  border-radius:
-    9px;
-
-  cursor:
-    pointer;
+  flex: 1;
+  border: none;
+  background: #292421;
+  color: white;
+  padding: 13px;
+  border-radius: 9px;
+  cursor: pointer;
 }
 
+.save-btn:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+}
 
-@media (
-  max-width:
-  700px
-) {
+@media (max-width:700px) {
 
   .header-inner {
-    flex-direction:
-      column;
-
-    align-items:
-      flex-start;
+    flex-direction: column;
+    align-items: flex-start;
   }
-
 
   .header-actions {
-    width:
-      100%;
+    width: 100%;
   }
-
 
   .header-btn {
-    flex:
-      1;
+    flex: 1;
   }
-
 
   .toolbar {
-    flex-direction:
-      column;
+    flex-direction: column;
   }
-
 
   .search-input,
   .filter-select {
-    width:
-      100%;
+    width: 100%;
   }
-
 
   .admin-nav {
-    overflow-x:
-      auto;
+    overflow-x: auto;
   }
 
-
   .nav-btn {
-    white-space:
-      nowrap;
+    white-space: nowrap;
+  }
+
+  .therapist-toolbar {
+    align-items: flex-start;
+    flex-direction: column;
   }
 
 }
@@ -1231,45 +629,43 @@ td {
 
 <div id="loginPage">
 
-<div class="login-card">
+  <div class="login-card">
 
-<h1 class="login-title">
-奕心疗愈舍
-</h1>
+<h1 class="login-title">奕心疗愈舍</h1>
 
 <div class="login-subtitle">
-YIXIN HEALING · ADMIN SYSTEM
+  YIXIN HEALING · ADMIN SYSTEM
 </div>
 
 <input
-id="username"
-class="login-input"
-placeholder="管理员账号"
-
+  id="username"
+  class="login-input"
+  placeholder="管理员账号"
+  autocomplete="username"
 >
 
 <input
-id="password"
-class="login-input"
-type="password"
-placeholder="管理员密码"
-
+  id="password"
+  class="login-input"
+  type="password"
+  placeholder="管理员密码"
+  autocomplete="current-password"
 >
 
 <button
-class="login-btn"
-onclick="login()"
-
+  id="loginBtn"
+  class="login-btn"
+  onclick="login()"
 >
-
-登录后台 </button>
+  登录后台
+</button>
 
 <div
-id="loginError"
-class="login-error"
+  id="loginError"
+  class="login-error"
 ></div>
 
-</div>
+  </div>
 
 </div>
 
@@ -1277,48 +673,43 @@ class="login-error"
      管理后台
 ========================= -->
 
-<div
-id="adminPage"
-style="display:none;"
->
+<div id="adminPage" style="display:none;">
 
 <header class="header">
 
-<div class="header-inner">
+  <div class="header-inner">
 
 <div>
 
-<div class="brand">
-奕心疗愈舍 · 管理后台
-</div>
+  <div class="brand">
+    奕心疗愈舍 · 管理后台
+  </div>
 
-<div class="subtitle">
-YIXIN HEALING · APPOINTMENT MANAGEMENT
-</div>
+  <div class="subtitle">
+    YIXIN HEALING · APPOINTMENT MANAGEMENT
+  </div>
 
 </div>
 
 <div class="header-actions">
 
-<button
-class="header-btn refresh-btn"
-onclick="refreshCurrentPage()"
+  <button
+    class="header-btn refresh-btn"
+    onclick="refreshCurrentPage()"
+  >
+    刷新
+  </button>
 
->
-
-刷新 </button>
-
-<button
-class="header-btn logout-btn"
-onclick="logout()"
-
->
-
-退出登录 </button>
+  <button
+    class="header-btn logout-btn"
+    onclick="logout()"
+  >
+    退出登录
+  </button>
 
 </div>
 
-</div>
+  </div>
 
 </header>
 
@@ -1337,7 +728,9 @@ id="ordersNav"
 
 >
 
-订单管理 </button>
+订单管理
+
+  </button>
 
 <button
 class="nav-btn"
@@ -1346,7 +739,9 @@ id="therapistsNav"
 
 >
 
-疗愈师管理 </button>
+疗愈师管理
+
+  </button>
 
 </div>
 
@@ -1355,209 +750,129 @@ id="therapistsNav"
 ========================= -->
 
 <section
-id="ordersPage"
-class="admin-section active"
+  id="ordersPage"
+  class="admin-section active"
 >
 
-<div class="stats">
+  <div class="stats">
 
 <div class="stat-card">
-
-<div class="stat-label">
-总订单
-</div>
-
-<div
-id="totalOrders"
-class="stat-number"
->
-0
-</div>
-
+  <div class="stat-label">总订单</div>
+  <div id="totalOrders" class="stat-number">0</div>
 </div>
 
 <div class="stat-card">
-
-<div class="stat-label">
-待确认
-</div>
-
-<div
-id="pendingOrders"
-class="stat-number"
->
-0
-</div>
-
+  <div class="stat-label">待确认</div>
+  <div id="pendingOrders" class="stat-number">0</div>
 </div>
 
 <div class="stat-card">
-
-<div class="stat-label">
-今天预约
-</div>
-
-<div
-id="todayOrders"
-class="stat-number"
->
-0
-</div>
-
+  <div class="stat-label">今天预约</div>
+  <div id="todayOrders" class="stat-number">0</div>
 </div>
 
 <div class="stat-card">
-
-<div class="stat-label">
-已完成
+  <div class="stat-label">已完成</div>
+  <div id="completedOrders" class="stat-number">0</div>
 </div>
 
-<div
-id="completedOrders"
-class="stat-number"
->
-0
-</div>
+  </div>
 
-</div>
-
-</div>
-
-<div class="toolbar">
+  <div class="toolbar">
 
 <input
-id="searchInput"
-class="search-input"
-placeholder="搜索订单号、姓名、手机号"
-oninput="filterOrders()"
-
+  id="searchInput"
+  class="search-input"
+  placeholder="搜索订单号、姓名、手机号"
+  oninput="filterOrders()"
 >
 
 <select
-id="statusFilter"
-class="filter-select"
-onchange="filterOrders()"
-
+  id="statusFilter"
+  class="filter-select"
+  onchange="filterOrders()"
 >
 
-<option value="">
-全部状态
-</option>
-
-<option value="待确认">
-待确认
-</option>
-
-<option value="已确认">
-已确认
-</option>
-
-<option value="服务中">
-服务中
-</option>
-
-<option value="已完成">
-已完成
-</option>
-
-<option value="已取消">
-已取消
-</option>
+  <option value="">全部状态</option>
+  <option value="待确认">待确认</option>
+  <option value="已确认">已确认</option>
+  <option value="服务中">服务中</option>
+  <option value="已完成">已完成</option>
+  <option value="已取消">已取消</option>
 
 </select>
 
 <button
-class="quick-btn active"
-onclick="setDateFilter('all', this)"
-
+  class="quick-btn active"
+  onclick="setDateFilter('all',this)"
 >
-
-全部 </button>
+  全部
+</button>
 
 <button
-class="quick-btn"
-onclick="setDateFilter('today', this)"
-
+  class="quick-btn"
+  onclick="setDateFilter('today',this)"
 >
-
-今天 </button>
+  今天
+</button>
 
 <button
-class="quick-btn"
-onclick="setDateFilter('tomorrow', this)"
-
+  class="quick-btn"
+  onclick="setDateFilter('tomorrow',this)"
 >
+  明天
+</button>
 
-明天 </button>
+  </div>
 
-</div>
+  <div class="table-card">
 
-<div class="table-card">
-
-<div
-id="loading"
-class="loading"
->
-正在加载订单...
+<div id="loading" class="loading">
+  正在加载订单...
 </div>
 
 <div
-id="empty"
-class="empty"
-style="display:none;"
+  id="empty"
+  class="empty"
+  style="display:none;"
 >
-暂无订单
+  暂无订单
 </div>
 
 <div
-id="tableWrap"
-class="table-wrap"
-style="display:none;"
+  id="tableWrap"
+  class="table-wrap"
+  style="display:none;"
 >
 
-<table>
+  <table>
 
-<thead>
+    <thead>
 
-<tr>
+      <tr>
+        <th>订单号</th>
+        <th>服务</th>
+        <th>价格</th>
+        <th>时长</th>
+        <th>疗愈师</th>
+        <th>预约时间</th>
+        <th>客户</th>
+        <th>手机号</th>
+        <th>地址</th>
+        <th>状态</th>
+        <th>下单时间</th>
+        <th>操作</th>
+      </tr>
 
-<th>订单号</th>
+    </thead>
 
-<th>服务</th>
+    <tbody id="ordersBody"></tbody>
 
-<th>价格</th>
-
-<th>时长</th>
-
-<th>疗愈师</th>
-
-<th>预约时间</th>
-
-<th>客户</th>
-
-<th>手机号</th>
-
-<th>地址</th>
-
-<th>状态</th>
-
-<th>下单时间</th>
-
-<th>操作</th>
-
-</tr>
-
-</thead>
-
-<tbody
-id="ordersBody"
-></tbody>
-
-</table>
+  </table>
 
 </div>
 
-</div>
+  </div>
 
 </section>
 
@@ -1566,53 +881,50 @@ id="ordersBody"
 ========================= -->
 
 <section
-id="therapistsPage"
-class="admin-section"
+  id="therapistsPage"
+  class="admin-section"
 >
 
-<div class="therapist-toolbar">
+  <div class="therapist-toolbar">
 
 <div>
 
-<h2
-style="margin:0;"
->
-疗愈师管理
-</h2>
+  <h2 style="margin:0;">
+    疗愈师管理
+  </h2>
 
-<div
-style="
-margin-top:6px;
-font-size:13px;
-color:#999;
-"
->
-添加、编辑疗愈师资料，预约页面将自动更新
-</div>
+  <div
+    style="
+      margin-top:6px;
+      font-size:13px;
+      color:#999;
+    "
+  >
+    添加、编辑疗愈师资料，预约页面将自动更新
+  </div>
 
 </div>
 
 <button
-class="add-btn"
-onclick="openTherapistModal()"
-
+  class="add-btn"
+  onclick="openTherapistModal()"
 >
+  ＋ 添加疗愈师
+</button>
 
-＋ 添加疗愈师 </button>
+  </div>
 
-</div>
+  <div
+    id="therapistLoading"
+    class="loading"
+  >
+    正在加载疗愈师...
+  </div>
 
-<div
-id="therapistLoading"
-class="loading"
->
-正在加载疗愈师...
-</div>
-
-<div
-id="therapistGrid"
-class="therapist-grid"
-></div>
+  <div
+    id="therapistGrid"
+    class="therapist-grid"
+  ></div>
 
 </section>
 
@@ -1625,149 +937,153 @@ class="therapist-grid"
 ========================= -->
 
 <div
-id="therapistModalMask"
-class="modal-mask"
+  id="therapistModalMask"
+  class="modal-mask"
 >
 
-<div class="modal">
+  <div class="modal">
 
 <h2
-id="therapistModalTitle"
-class="modal-title"
+  id="therapistModalTitle"
+  class="modal-title"
 >
-添加疗愈师
+  添加疗愈师
 </h2>
 
-<input
-id="therapistEditId"
-type="hidden"
-
->
-
-<div class="form-group">
-
-<label class="form-label">
-疗愈师姓名
-</label>
 
 <input
-id="therapistName"
-class="form-input"
-placeholder="例如：安然"
-
+  id="therapistEditId"
+  type="hidden"
 >
 
-</div>
 
 <div class="form-group">
 
-<label class="form-label">
-头像图片地址
-</label>
+  <label class="form-label">
+    疗愈师姓名
+  </label>
 
-<input
-id="therapistImage"
-class="form-input"
-placeholder="例如：https://..."
-
->
+  <input
+    id="therapistName"
+    class="form-input"
+    placeholder="例如：安然"
+  >
 
 </div>
+
 
 <div class="form-group">
 
-<label class="form-label">
-个人简介
-</label>
+  <label class="form-label">
+    头像图片地址
+  </label>
 
-<textarea
-id="therapistIntro"
-class="form-textarea"
-placeholder="介绍疗愈师的风格、理念和特点"
-></textarea>
+  <input
+    id="therapistAvatar"
+    class="form-input"
+    placeholder="例如：https://..."
+  >
 
 </div>
+
 
 <div class="form-group">
 
-<label class="form-label">
-从业经验
-</label>
+  <label class="form-label">
+    个人简介
+  </label>
 
-<input
-id="therapistExperience"
-class="form-input"
-placeholder="例如：6年疗愈服务经验"
-
->
+  <textarea
+    id="therapistBio"
+    class="form-textarea"
+    placeholder="介绍疗愈师的风格、理念和特点"
+  ></textarea>
 
 </div>
+
 
 <div class="form-group">
 
-<label class="form-label">
-擅长项目
-</label>
+  <label class="form-label">
+    从业经验
+  </label>
 
-<input
-id="therapistSpecialty"
-class="form-input"
-placeholder="例如：深度放松、肩颈舒缓、身心疗愈"
-
->
+  <input
+    id="therapistExperience"
+    class="form-input"
+    placeholder="例如：6年疗愈服务经验"
+  >
 
 </div>
+
 
 <div class="form-group">
 
-<label class="form-label">
-服务状态
-</label>
+  <label class="form-label">
+    擅长项目
+  </label>
 
-<select
-id="therapistActive"
-class="form-select"
-
->
-
-<option value="true">
-上架 / 可预约
-</option>
-
-<option value="false">
-下架 / 暂不可预约
-</option>
-
-</select>
+  <input
+    id="therapistSpecialties"
+    class="form-input"
+    placeholder="例如：深度放松、肩颈舒缓、身心疗愈"
+  >
 
 </div>
+
+
+<div class="form-group">
+
+  <label class="form-label">
+    服务状态
+  </label>
+
+  <select
+    id="therapistIsActive"
+    class="form-select"
+  >
+
+    <option value="true">
+      上架 / 可预约
+    </option>
+
+    <option value="false">
+      下架 / 暂不可预约
+    </option>
+
+  </select>
+
+</div>
+
 
 <div class="modal-actions">
 
-<button
-class="cancel-btn"
-onclick="closeTherapistModal()"
+  <button
+    class="cancel-btn"
+    onclick="closeTherapistModal()"
+  >
+    取消
+  </button>
 
->
-
-取消 </button>
-
-<button
-class="save-btn"
-onclick="saveTherapist()"
-
->
-
-保存疗愈师 </button>
-
-</div>
+  <button
+    id="saveTherapistBtn"
+    class="save-btn"
+    onclick="saveTherapist()"
+  >
+    保存疗愈师
+  </button>
 
 </div>
+
+  </div>
 
 </div>
 
 <script>
 
+/* =========================
+   全局变量
+========================= */
 
 let allOrders = [];
 
@@ -1776,1912 +1092,1839 @@ let dateFilter = "all";
 let currentPage = "orders";
 
 
-// =========================
-// 登录
-// =========================
-
-async function login() {
-
-const username =
-document
-.getElementById(
-"username"
-)
-.value
-.trim();
-
-
-const password =
-document
-.getElementById(
-"password"
-)
-.value;
-
-
-const loginError =
-document
-.getElementById(
-"loginError"
-);
-
-
-loginError.textContent =
-"";
-
-
-try {
-
-const response =
-await fetch(
-"/api/admin/login",
-{
-method:
-"POST",
-
-headers: {
-"Content-Type":
-"application/json"
-},
-
-body:
-JSON.stringify({
-username,
-password
-})
-}
-);
-
-
-const data =
-await response.json();
-
-
-if (
-!data.success
-) {
-
-loginError.textContent =
-data.message ||
-"账号或密码错误";
-
-return;
-
-}
-
-
-localStorage.setItem(
-"adminToken",
-data.token
-);
-
-
-showAdminPage();
-
-
-loadOrders();
-
-
-} catch (
-error
-) {
-
-console.error(
-error
-);
-
-
-loginError.textContent =
-"登录失败，请检查网络";
-
-}
-
-}
-
-
-// =========================
-// 显示后台
-// =========================
-
-function showAdminPage() {
-
-document
-.getElementById(
-"loginPage"
-)
-.style.display =
-"none";
-
-
-document
-.getElementById(
-"adminPage"
-)
-.style.display =
-"block";
-
-}
-
-
-// =========================
-// 退出
-// =========================
-
-function logout() {
-
-localStorage.removeItem(
-"adminToken"
-);
-
-
-document
-.getElementById(
-"adminPage"
-)
-.style.display =
-"none";
-
-
-document
-.getElementById(
-"loginPage"
-)
-.style.display =
-"flex";
-
-}
-
-
-// =========================
-// 切换页面
-// =========================
-
-function switchPage(
-page
-) {
-
-currentPage =
-page;
-
-
-document
-.querySelectorAll(
-".admin-section"
-)
-.forEach(
-item => {
-
-item.classList.remove(
-"active"
-);
-
-}
-);
-
-
-document
-.querySelectorAll(
-".nav-btn"
-)
-.forEach(
-item => {
-
-item.classList.remove(
-"active"
-);
-
-}
-);
-
-
-if (
-page === "orders"
-) {
-
-document
-.getElementById(
-"ordersPage"
-)
-.classList.add(
-"active"
-);
-
-
-document
-.getElementById(
-"ordersNav"
-)
-.classList.add(
-"active"
-);
-
-
-loadOrders();
-
-}
-
-
-if (
-page === "therapists"
-) {
-
-document
-.getElementById(
-"therapistsPage"
-)
-.classList.add(
-"active"
-);
-
-
-document
-.getElementById(
-"therapistsNav"
-)
-.classList.add(
-"active"
-);
-
-
-loadTherapists();
-
-}
-
-}
-
-
-// =========================
-// 刷新当前页面
-// =========================
-
-function refreshCurrentPage() {
-
-if (
-currentPage === "orders"
-) {
-
-loadOrders();
-
-} else {
-
-loadTherapists();
-
-}
-
-}
-
-
-// =========================
-// 获取 Token
-// =========================
+/* =========================
+   获取 Token
+========================= */
 
 function getToken() {
 
-return localStorage.getItem(
-"adminToken"
-);
+  return localStorage.getItem(
+    "adminToken"
+  );
 
 }
 
 
-// =========================
-// 加载订单
-// =========================
+/* =========================
+   统一 API 请求
+========================= */
+
+async function apiFetch(
+  url,
+  options = {}
+) {
+
+  const token = getToken();
+
+  const headers = {
+    ...(options.headers || {})
+  };
+
+  if (token) {
+    headers.Authorization =
+      "Bearer " + token;
+  }
+
+  const response =
+    await fetch(
+      url,
+      {
+        ...options,
+        headers
+      }
+    );
+
+  if (
+    response.status === 401
+  ) {
+
+    localStorage.removeItem(
+      "adminToken"
+    );
+
+    logout();
+
+    throw new Error(
+      "登录已过期，请重新登录"
+    );
+
+  }
+
+  const contentType =
+    response.headers.get(
+      "content-type"
+    ) || "";
+
+  let data;
+
+  if (
+    contentType.includes(
+      "application/json"
+    )
+  ) {
+
+    data =
+      await response.json();
+
+  } else {
+
+    const text =
+      await response.text();
+
+    throw new Error(
+      "服务器返回异常：" +
+      text.substring(0,100)
+    );
+
+  }
+
+  if (
+    !response.ok ||
+    data.success === false
+  ) {
+
+    throw new Error(
+      data.message ||
+      "请求失败"
+    );
+
+  }
+
+  return data;
+
+}
+
+
+/* =========================
+   登录
+========================= */
+
+async function login() {
+
+  const username =
+    document
+      .getElementById(
+        "username"
+      )
+      .value
+      .trim();
+
+
+  const password =
+    document
+      .getElementById(
+        "password"
+      )
+      .value;
+
+
+  const loginError =
+    document.getElementById(
+      "loginError"
+    );
+
+
+  const loginBtn =
+    document.getElementById(
+      "loginBtn"
+    );
+
+
+  loginError.textContent = "";
+
+
+  if (!username || !password) {
+
+    loginError.textContent =
+      "请输入管理员账号和密码";
+
+    return;
+
+  }
+
+
+  loginBtn.disabled = true;
+
+  loginBtn.textContent =
+    "正在登录...";
+
+
+  try {
+
+    const response =
+      await fetch(
+        "/api/admin/login",
+        {
+          method: "POST",
+
+          headers: {
+            "Content-Type":
+              "application/json"
+          },
+
+          body:
+            JSON.stringify({
+              username,
+              password
+            })
+        }
+      );
+
+
+    const contentType =
+      response.headers.get(
+        "content-type"
+      ) || "";
+
+
+    if (
+      !contentType.includes(
+        "application/json"
+      )
+    ) {
+
+      throw new Error(
+        "登录接口返回异常"
+      );
+
+    }
+
+
+    const data =
+      await response.json();
+
+
+    if (
+      !response.ok ||
+      !data.success
+    ) {
+
+      loginError.textContent =
+        data.message ||
+        "账号或密码错误";
+
+      return;
+
+    }
+
+
+    localStorage.setItem(
+      "adminToken",
+      data.token
+    );
+
+
+    showAdminPage();
+
+
+    loadOrders();
+
+
+  } catch (error) {
+
+    console.error(error);
+
+    loginError.textContent =
+      error.message ||
+      "登录失败，请检查网络";
+
+  } finally {
+
+    loginBtn.disabled = false;
+
+    loginBtn.textContent =
+      "登录后台";
+
+  }
+
+}
+
+
+/* =========================
+   显示后台
+========================= */
+
+function showAdminPage() {
+
+  document
+    .getElementById(
+      "loginPage"
+    )
+    .style.display =
+    "none";
+
+
+  document
+    .getElementById(
+      "adminPage"
+    )
+    .style.display =
+    "block";
+
+}
+
+
+/* =========================
+   退出
+========================= */
+
+function logout() {
+
+  localStorage.removeItem(
+    "adminToken"
+  );
+
+
+  document
+    .getElementById(
+      "adminPage"
+    )
+    .style.display =
+    "none";
+
+
+  document
+    .getElementById(
+      "loginPage"
+    )
+    .style.display =
+    "flex";
+
+
+  document
+    .getElementById(
+      "password"
+    )
+    .value =
+    "";
+
+}
+
+
+/* =========================
+   切换页面
+========================= */
+
+function switchPage(page) {
+
+  currentPage = page;
+
+
+  document
+    .querySelectorAll(
+      ".admin-section"
+    )
+    .forEach(
+      item => {
+
+        item.classList.remove(
+          "active"
+        );
+
+      }
+    );
+
+
+  document
+    .querySelectorAll(
+      ".nav-btn"
+    )
+    .forEach(
+      item => {
+
+        item.classList.remove(
+          "active"
+        );
+
+      }
+    );
+
+
+  if (
+    page === "orders"
+  ) {
+
+    document
+      .getElementById(
+        "ordersPage"
+      )
+      .classList.add(
+        "active"
+      );
+
+
+    document
+      .getElementById(
+        "ordersNav"
+      )
+      .classList.add(
+        "active"
+      );
+
+
+    loadOrders();
+
+  }
+
+
+  if (
+    page === "therapists"
+  ) {
+
+    document
+      .getElementById(
+        "therapistsPage"
+      )
+      .classList.add(
+        "active"
+      );
+
+
+    document
+      .getElementById(
+        "therapistsNav"
+      )
+      .classList.add(
+        "active"
+      );
+
+
+    loadTherapists();
+
+  }
+
+}
+
+
+/* =========================
+   刷新
+========================= */
+
+function refreshCurrentPage() {
+
+  if (
+    currentPage === "orders"
+  ) {
+
+    loadOrders();
+
+  } else {
+
+    loadTherapists();
+
+  }
+
+}
+
+
+/* =========================
+   加载订单
+========================= */
 
 async function loadOrders() {
 
-const loading =
-document.getElementById(
-"loading"
-);
+  const loading =
+    document.getElementById(
+      "loading"
+    );
 
 
-const empty =
-document.getElementById(
-"empty"
-);
+  const empty =
+    document.getElementById(
+      "empty"
+    );
 
 
-const tableWrap =
-document.getElementById(
-"tableWrap"
-);
+  const tableWrap =
+    document.getElementById(
+      "tableWrap"
+    );
 
 
-const token =
-getToken();
+  if (!getToken()) {
+
+    logout();
+
+    return;
+
+  }
 
 
-if (
-!token
+  loading.style.display =
+    "block";
+
+  loading.textContent =
+    "正在加载订单...";
+
+  empty.style.display =
+    "none";
+
+  tableWrap.style.display =
+    "none";
+
+
+  try {
+
+    const data =
+      await apiFetch(
+        "/api/orders"
+      );
+
+
+    allOrders =
+      data.orders || [];
+
+
+    updateStats();
+
+    filterOrders();
+
+
+    loading.style.display =
+      "none";
+
+
+  } catch (error) {
+
+    console.error(error);
+
+    loading.textContent =
+      error.message ||
+      "订单加载失败，请刷新重试";
+
+  }
+
+}
+
+
+/* =========================
+   日期辅助
+========================= */
+
+function localDateString(
+  date
 ) {
 
-logout();
+  const year =
+    date.getFullYear();
 
-return;
+  const month =
+    String(
+      date.getMonth() + 1
+    ).padStart(
+      2,
+      "0"
+    );
 
-}
+  const day =
+    String(
+      date.getDate()
+    ).padStart(
+      2,
+      "0"
+    );
 
-
-loading.style.display =
-"block";
-
-
-empty.style.display =
-"none";
-
-
-tableWrap.style.display =
-"none";
-
-
-try {
-
-const response =
-await fetch(
-"/api/orders",
-{
-headers: {
-"Authorization":
-"Bearer " +
-token
-}
-}
-);
-
-
-if (
-response.status === 401
-) {
-
-logout();
-
-return;
+  return (
+    year +
+    "-" +
+    month +
+    "-" +
+    day
+  );
 
 }
 
 
-const data =
-await response.json();
-
-
-if (
-!data.success
-) {
-
-throw new Error(
-data.message ||
-"获取订单失败"
-);
-
-}
-
-
-allOrders =
-data.orders ||
-[];
-
-
-updateStats();
-
-
-filterOrders();
-
-
-loading.style.display =
-"none";
-
-
-} catch (
-error
-) {
-
-console.error(
-error
-);
-
-
-loading.textContent =
-"订单加载失败，请刷新重试";
-
-}
-
-}
-
-
-// =========================
-// 统计
-// =========================
+/* =========================
+   统计
+========================= */
 
 function updateStats() {
 
-document
-.getElementById(
-"totalOrders"
-)
-.textContent =
-allOrders.length;
+  document
+    .getElementById(
+      "totalOrders"
+    )
+    .textContent =
+    allOrders.length;
 
 
-document
-.getElementById(
-"pendingOrders"
-)
-.textContent =
-allOrders.filter(
-order =>
-order.status ===
-"待确认"
-)
-.length;
+  document
+    .getElementById(
+      "pendingOrders"
+    )
+    .textContent =
+    allOrders.filter(
+      order =>
+        order.status ===
+        "待确认"
+    ).length;
 
 
-const today =
-new Date()
-.toISOString()
-.slice(
-0,
-10
-);
+  const today =
+    localDateString(
+      new Date()
+    );
 
 
-document
-.getElementById(
-"todayOrders"
-)
-.textContent =
-allOrders.filter(
-order =>
-order.date ===
-today
-)
-.length;
+  document
+    .getElementById(
+      "todayOrders"
+    )
+    .textContent =
+    allOrders.filter(
+      order =>
+        order.date ===
+        today
+    ).length;
 
 
-document
-.getElementById(
-"completedOrders"
-)
-.textContent =
-allOrders.filter(
-order =>
-order.status ===
-"已完成"
-)
-.length;
+  document
+    .getElementById(
+      "completedOrders"
+    )
+    .textContent =
+    allOrders.filter(
+      order =>
+        order.status ===
+        "已完成"
+    ).length;
 
 }
 
 
-// =========================
-// 日期筛选
-// =========================
+/* =========================
+   日期筛选
+========================= */
 
 function setDateFilter(
-type,
-button
+  type,
+  button
 ) {
 
-dateFilter =
-type;
+  dateFilter = type;
 
 
-document
-.querySelectorAll(
-".quick-btn"
-)
-.forEach(
-btn =>
-btn.classList.remove(
-"active"
-)
-);
+  document
+    .querySelectorAll(
+      ".quick-btn"
+    )
+    .forEach(
+      btn =>
+        btn.classList.remove(
+          "active"
+        )
+    );
 
 
-button.classList.add(
-"active"
-);
+  button.classList.add(
+    "active"
+  );
 
 
-filterOrders();
+  filterOrders();
 
 }
 
 
-// =========================
-// 搜索筛选
-// =========================
+/* =========================
+   订单搜索
+========================= */
 
 function filterOrders() {
 
-const keyword =
-document
-.getElementById(
-"searchInput"
-)
-.value
-.trim()
-.toLowerCase();
+  const keyword =
+    document
+      .getElementById(
+        "searchInput"
+      )
+      .value
+      .trim()
+      .toLowerCase();
 
 
-const status =
-document
-.getElementById(
-"statusFilter"
-)
-.value;
+  const status =
+    document
+      .getElementById(
+        "statusFilter"
+      )
+      .value;
 
 
-const today =
-new Date();
+  const today =
+    new Date();
 
 
-const todayString =
-today
-.toISOString()
-.slice(
-0,
-10
-);
+  const todayString =
+    localDateString(
+      today
+    );
 
 
-const tomorrow =
-new Date(
-today
-);
+  const tomorrow =
+    new Date();
+
+  tomorrow.setDate(
+    tomorrow.getDate() + 1
+  );
 
 
-tomorrow.setDate(
-today.getDate() +
-1
-);
+  const tomorrowString =
+    localDateString(
+      tomorrow
+    );
 
 
-const tomorrowString =
-tomorrow
-.toISOString()
-.slice(
-0,
-10
-);
+  const filtered =
+    allOrders.filter(
+      order => {
+
+        const keywordMatch =
+          !keyword ||
+
+          String(
+            order.id || ""
+          )
+            .toLowerCase()
+            .includes(
+              keyword
+            ) ||
+
+          String(
+            order.name || ""
+          )
+            .toLowerCase()
+            .includes(
+              keyword
+            ) ||
+
+          String(
+            order.phone || ""
+          )
+            .includes(
+              keyword
+            );
 
 
-const filtered =
-allOrders.filter(
-order => {
-
-const keywordMatch =
-!keyword ||
-
-String(
-order.id ||
-""
-)
-.toLowerCase()
-.includes(
-keyword
-) ||
-
-String(
-order.name ||
-""
-)
-.toLowerCase()
-.includes(
-keyword
-) ||
-
-String(
-order.phone ||
-""
-)
-.includes(
-keyword
-);
+        const statusMatch =
+          !status ||
+          order.status ===
+          status;
 
 
-const statusMatch =
-!status ||
-order.status ===
-status;
+        let dateMatch =
+          true;
 
 
-let dateMatch =
-true;
+        if (
+          dateFilter ===
+          "today"
+        ) {
+
+          dateMatch =
+            order.date ===
+            todayString;
+
+        }
 
 
-if (
-dateFilter ===
-"today"
-) {
+        if (
+          dateFilter ===
+          "tomorrow"
+        ) {
 
-dateMatch =
-order.date ===
-todayString;
+          dateMatch =
+            order.date ===
+            tomorrowString;
 
-}
-
-
-if (
-dateFilter ===
-"tomorrow"
-) {
-
-dateMatch =
-order.date ===
-tomorrowString;
-
-}
+        }
 
 
-return (
-keywordMatch &&
-statusMatch &&
-dateMatch
-);
+        return (
+          keywordMatch &&
+          statusMatch &&
+          dateMatch
+        );
 
-}
-);
+      }
+    );
 
 
-renderOrders(
-filtered
-);
+  renderOrders(
+    filtered
+  );
 
 }
 
 
-// =========================
-// 渲染订单
-// =========================
+/* =========================
+   渲染订单
+========================= */
 
 function renderOrders(
-orders
+  orders
 ) {
 
-const empty =
-document.getElementById(
-"empty"
-);
+  const empty =
+    document.getElementById(
+      "empty"
+    );
 
 
-const tableWrap =
-document.getElementById(
-"tableWrap"
-);
+  const tableWrap =
+    document.getElementById(
+      "tableWrap"
+    );
 
 
-const ordersBody =
-document.getElementById(
-"ordersBody"
-);
+  const ordersBody =
+    document.getElementById(
+      "ordersBody"
+    );
 
 
-ordersBody.innerHTML =
-"";
+  ordersBody.innerHTML =
+    "";
 
 
-if (
-orders.length === 0
-) {
+  if (
+    orders.length === 0
+  ) {
 
-empty.style.display =
-"block";
+    empty.style.display =
+      "block";
+
+    tableWrap.style.display =
+      "none";
+
+    return;
+
+  }
 
 
-tableWrap.style.display =
-"none";
+  empty.style.display =
+    "none";
 
-return;
+  tableWrap.style.display =
+    "block";
+
+
+  orders.forEach(
+    order => {
+
+      const row =
+        document.createElement(
+          "tr"
+        );
+
+
+      const createdAt =
+        order.createdAt
+          ? new Date(
+              order.createdAt
+            ).toLocaleString(
+              "zh-CN"
+            )
+          : "-";
+
+
+      const statusList = [
+        "待确认",
+        "已确认",
+        "服务中",
+        "已完成",
+        "已取消"
+      ];
+
+
+      let options =
+        "";
+
+
+      statusList.forEach(
+        status => {
+
+          const selected =
+            order.status === status
+              ? " selected"
+              : "";
+
+
+          options +=
+            "<option value=\"" +
+            escapeHtml(
+              status
+            ) +
+            "\"" +
+            selected +
+            ">" +
+            escapeHtml(
+              status
+            ) +
+            "</option>";
+
+        }
+      );
+
+
+      row.innerHTML =
+
+        "<td>" +
+        escapeHtml(
+          order.id || "-"
+        ) +
+        "</td>" +
+
+        "<td>" +
+        escapeHtml(
+          order.service || "-"
+        ) +
+        "</td>" +
+
+        "<td>¥" +
+        escapeHtml(
+          String(
+            order.price || 0
+          )
+        ) +
+        "</td>" +
+
+        "<td>" +
+        escapeHtml(
+          order.duration || "-"
+        ) +
+        "</td>" +
+
+        "<td>" +
+        escapeHtml(
+          order.therapist || "-"
+        ) +
+        "</td>" +
+
+        "<td>" +
+        escapeHtml(
+          order.date || "-"
+        ) +
+        "<br>" +
+        escapeHtml(
+          order.time || "-"
+        ) +
+        "</td>" +
+
+        "<td>" +
+        escapeHtml(
+          order.name || "-"
+        ) +
+        "</td>" +
+
+        "<td>" +
+        escapeHtml(
+          order.phone || "-"
+        ) +
+        "</td>" +
+
+        "<td>" +
+        escapeHtml(
+          order.address || "-"
+        ) +
+        "</td>" +
+
+        "<td>" +
+
+        "<select class=\"status-select\">" +
+
+        options +
+
+        "</select>" +
+
+        "</td>" +
+
+        "<td>" +
+        escapeHtml(
+          createdAt
+        ) +
+        "</td>" +
+
+        "<td>" +
+
+        "<button class=\"delete-btn\">" +
+        "删除" +
+        "</button>" +
+
+        "</td>";
+
+
+      const statusSelect =
+        row.querySelector(
+          ".status-select"
+        );
+
+
+      statusSelect.addEventListener(
+        "change",
+        function() {
+
+          updateOrderStatus(
+            order.id,
+            statusSelect.value
+          );
+
+        }
+      );
+
+
+      const deleteButton =
+        row.querySelector(
+          ".delete-btn"
+        );
+
+
+      deleteButton.addEventListener(
+        "click",
+        function() {
+
+          deleteOrder(
+            order.id
+          );
+
+        }
+      );
+
+
+      ordersBody.appendChild(
+        row
+      );
+
+    }
+  );
 
 }
 
 
-empty.style.display =
-"none";
-
-
-tableWrap.style.display =
-"block";
-
-
-orders.forEach(
-order => {
-
-const row =
-document.createElement(
-"tr"
-);
-
-
-const createdAt =
-order.createdAt
-? new Date(
-order.createdAt
-).toLocaleString(
-"zh-CN"
-)
-: "-";
-
-
-const statusList = [
-"待确认",
-"已确认",
-"服务中",
-"已完成",
-"已取消"
-];
-
-
-let options =
-"";
-
-
-statusList.forEach(
-status => {
-
-const selected =
-order.status ===
-status
-? " selected"
-: "";
-
-
-options +=
-"<option value=\"" +
-status +
-"\"" +
-selected +
-">" +
-status +
-"</option>";
-
-}
-);
-
-
-row.innerHTML =
-
-"<td>" +
-escapeHtml(
-order.id ||
-"-"
-) +
-"</td>" +
-
-"<td>" +
-escapeHtml(
-order.service ||
-"-"
-) +
-"</td>" +
-
-"<td>¥" +
-escapeHtml(
-String(
-order.price ||
-0
-)
-) +
-"</td>" +
-
-"<td>" +
-escapeHtml(
-order.duration ||
-"-"
-) +
-"</td>" +
-
-"<td>" +
-escapeHtml(
-order.therapist ||
-"-"
-) +
-"</td>" +
-
-"<td>" +
-escapeHtml(
-order.date ||
-"-"
-) +
-"<br>" +
-escapeHtml(
-order.time ||
-"-"
-) +
-"</td>" +
-
-"<td>" +
-escapeHtml(
-order.name ||
-"-"
-) +
-"</td>" +
-
-"<td>" +
-escapeHtml(
-order.phone ||
-"-"
-) +
-"</td>" +
-
-"<td>" +
-escapeHtml(
-order.address ||
-"-"
-) +
-"</td>" +
-
-"<td>" +
-
-"<select " +
-
-"class=\"status-select\" " +
-
-">" +
-
-options +
-
-"</select>" +
-
-"</td>" +
-
-"<td>" +
-escapeHtml(
-createdAt
-) +
-"</td>" +
-
-"<td>" +
-
-"<button " +
-
-"class=\"delete-btn\"" +
-
-">删除</button>" +
-
-"</td>";
-
-
-const statusSelect =
-row.querySelector(
-".status-select"
-);
-
-
-statusSelect.addEventListener(
-"change",
-function() {
-
-updateOrderStatus(
-order.id,
-statusSelect.value
-);
-
-}
-);
-
-
-const deleteButton =
-row.querySelector(
-".delete-btn"
-);
-
-
-deleteButton.addEventListener(
-"click",
-function() {
-
-deleteOrder(
-order.id
-);
-
-}
-);
-
-
-ordersBody.appendChild(
-row
-);
-
-}
-);
-
-}
-
-
-// =========================
-// 修改订单状态
-// =========================
+/* =========================
+   修改订单状态
+========================= */
 
 async function updateOrderStatus(
-orderId,
-status
+  orderId,
+  status
 ) {
 
-const token =
-getToken();
+  try {
+
+    await apiFetch(
+      "/api/orders/" +
+      encodeURIComponent(
+        orderId
+      ) +
+      "/status",
+      {
+        method: "PATCH",
+
+        headers: {
+          "Content-Type":
+            "application/json"
+        },
+
+        body:
+          JSON.stringify({
+            status
+          })
+      }
+    );
 
 
-try {
-
-const response =
-await fetch(
-"/api/orders/" +
-encodeURIComponent(
-orderId
-) +
-"/status",
-{
-method:
-"PATCH",
-
-headers: {
-
-"Content-Type":
-"application/json",
-
-"Authorization":
-"Bearer " +
-token
-
-},
-
-body:
-JSON.stringify({
-status
-})
-
-}
-);
+    loadOrders();
 
 
-const data =
-await response.json();
+  } catch (error) {
 
+    console.error(error);
 
-if (
-response.status ===
-401
-) {
+    alert(
+      error.message ||
+      "订单状态修改失败"
+    );
 
-logout();
+    loadOrders();
 
-return;
+  }
 
 }
 
 
-if (
-!data.success
-) {
-
-throw new Error(
-data.message ||
-"修改订单状态失败"
-);
-
-}
-
-
-loadOrders();
-
-
-} catch (
-error
-) {
-
-console.error(
-error
-);
-
-
-alert(
-"订单状态修改失败"
-);
-
-
-loadOrders();
-
-}
-
-}
-
-
-// =========================
-// 删除订单
-// =========================
+/* =========================
+   删除订单
+========================= */
 
 async function deleteOrder(
-orderId
+  orderId
 ) {
 
-const confirmed =
-confirm(
-"确定删除这个订单吗？\n删除后无法恢复。"
-);
+  const confirmed =
+    confirm(
+      "确定删除这个订单吗？\n删除后无法恢复。"
+    );
 
 
-if (
-!confirmed
-) {
+  if (!confirmed) {
 
-return;
+    return;
 
-}
+  }
 
 
-const token =
-getToken();
+  try {
+
+    await apiFetch(
+      "/api/orders/" +
+      encodeURIComponent(
+        orderId
+      ),
+      {
+        method:
+          "DELETE"
+      }
+    );
 
 
-try {
-
-const response =
-await fetch(
-"/api/orders/" +
-encodeURIComponent(
-orderId
-),
-{
-method:
-"DELETE",
-
-headers: {
-
-"Authorization":
-"Bearer " +
-token
-
-}
-
-}
-);
+    alert(
+      "订单已删除"
+    );
 
 
-const data =
-await response.json();
+    loadOrders();
 
 
-if (
-!data.success
-) {
+  } catch (error) {
 
-throw new Error(
-data.message ||
-"删除失败"
-);
+    console.error(error);
+
+    alert(
+      error.message ||
+      "删除订单失败"
+    );
+
+  }
 
 }
 
 
-alert(
-"订单已删除"
-);
+/* =================================================
+   疗愈师管理
+================================================= */
 
 
-loadOrders();
-
-
-} catch (
-error
-) {
-
-alert(
-"删除订单失败"
-);
-
-}
-
-}
-
-
-// =========================
-// 加载疗愈师
-// =========================
+/* =========================
+   加载疗愈师
+========================= */
 
 async function loadTherapists() {
 
-const loading =
-document.getElementById(
-"therapistLoading"
-);
+  const loading =
+    document.getElementById(
+      "therapistLoading"
+    );
 
 
-const grid =
-document.getElementById(
-"therapistGrid"
-);
+  const grid =
+    document.getElementById(
+      "therapistGrid"
+    );
 
 
-loading.style.display =
-"block";
+  loading.style.display =
+    "block";
 
+  loading.textContent =
+    "正在加载疗愈师...";
 
-grid.innerHTML =
-"";
+  grid.innerHTML =
+    "";
 
 
-const token =
-getToken();
+  try {
 
+    const data =
+      await apiFetch(
+        "/api/therapists"
+      );
 
-try {
 
-const response =
-await fetch(
-"/api/admin/therapists",
-{
-headers: {
+    const therapists =
+      data.therapists || [];
 
-"Authorization":
-"Bearer " +
-token
 
-}
-}
-);
+    loading.style.display =
+      "none";
 
 
-if (
-response.status ===
-401
-) {
+    if (
+      therapists.length === 0
+    ) {
 
-logout();
+      grid.innerHTML =
+        "<div class=\"empty\">" +
+        "暂时还没有疗愈师，请点击右上角添加。" +
+        "</div>";
 
-return;
+      return;
 
-}
+    }
 
 
-const data =
-await response.json();
+    therapists.forEach(
+      therapist => {
 
+        const card =
+          document.createElement(
+            "div"
+          );
 
-const therapists =
-Array.isArray(
-data
-)
-? data
-: (
-data.therapists ||
-[]
-);
 
+        card.className =
+          "therapist-card";
 
-loading.style.display =
-"none";
 
+        const avatar =
+          therapist.avatar || "";
 
-if (
-therapists.length ===
-0
-) {
 
-grid.innerHTML =
-"<div class=\"empty\">暂时还没有疗愈师，请点击右上角添加。</div>";
+        const specialties =
+          therapist.specialties || "";
 
-return;
 
-}
+        const tags =
+          String(
+            specialties
+          )
+          .split(
+            /[,，、]/
+          )
+          .map(
+            item =>
+              item.trim()
+          )
+          .filter(
+            Boolean
+          );
 
 
-therapists.forEach(
-therapist => {
+        let tagsHtml =
+          "";
 
-const card =
-document.createElement(
-"div"
-);
 
+        tags.forEach(
+          tag => {
 
-card.className =
-"therapist-card";
+            tagsHtml +=
+              "<span class=\"tag\">" +
+              escapeHtml(
+                tag
+              ) +
+              "</span>";
 
+          }
+        );
 
-const image =
-therapist.image ||
-therapist.avatar ||
-"";
-
-
-const specialties =
-therapist.specialty ||
-therapist.specialties ||
-"";
-
-
-let tags =
-[];
-
-
-if (
-Array.isArray(
-specialties
-)
-) {
-
-tags =
-specialties;
-
-} else {
-
-tags =
-String(
-specialties
-)
-.split(
-/[,，、]/
-)
-.map(
-item =>
-item.trim()
-)
-.filter(
-Boolean
-);
-
-}
-
-
-let tagsHtml =
-"";
-
-
-tags.forEach(
-tag => {
-
-tagsHtml +=
-"<span class=\"tag\">" +
-escapeHtml(
-tag
-) +
-"</span>";
 
-}
-);
+        const isActive =
+          therapist.isActive !== false;
 
 
-const active =
-therapist.active ===
-false
-? false
-: (
-therapist.is_active ===
-false
-? false
-: true
-);
+        const imageHtml =
+          avatar
+            ? "<img " +
+              "class=\"therapist-image\" " +
+              "src=\"" +
+              escapeHtml(
+                avatar
+              ) +
+              "\" " +
+              "alt=\"" +
+              escapeHtml(
+                therapist.name ||
+                "疗愈师"
+              ) +
+              "\">"
+            : "<div " +
+              "class=\"therapist-placeholder\">" +
+              "暂无照片" +
+              "</div>";
 
 
-card.innerHTML =
+        card.innerHTML =
 
-image
-? "<img class=\"therapist-image\" src=\"" +
-escapeHtml(
-image
-) +
-"\">"
-: "<div class=\"therapist-image\"></div>" +
+          imageHtml +
 
-"<div class=\"therapist-content\">" +
+          "<div class=\"therapist-content\">" +
 
-"<div class=\"therapist-name\">" +
-escapeHtml(
-therapist.name ||
-"未命名"
-) +
-"</div>" +
+          "<div class=\"therapist-name\">" +
+          escapeHtml(
+            therapist.name ||
+            "未命名"
+          ) +
+          "</div>" +
 
-"<div class=\"therapist-meta\">" +
-escapeHtml(
-therapist.experience ||
-therapist.years ||
-""
-) +
-"</div>" +
+          "<div class=\"therapist-meta\">" +
+          escapeHtml(
+            therapist.experience ||
+            "暂无经验资料"
+          ) +
+          "</div>" +
 
-"<div class=\"therapist-desc\">" +
-escapeHtml(
-therapist.intro ||
-therapist.description ||
-"暂无简介"
-) +
-"</div>" +
+          "<div class=\"therapist-desc\">" +
+          escapeHtml(
+            therapist.bio ||
+            "暂无简介"
+          ) +
+          "</div>" +
 
-"<div class=\"therapist-tags\">" +
-tagsHtml +
-"</div>" +
+          "<div class=\"therapist-tags\">" +
 
-"<div class=\"" +
-(
-active
-? "status-badge status-active"
-: "status-badge status-inactive"
-) +
-"\">" +
-(
-active
-? "● 可预约"
-: "● 暂停预约"
-) +
-"</div>" +
+          tagsHtml +
 
-"<div class=\"therapist-actions\">" +
+          "</div>" +
 
-"<button class=\"edit-btn\">编辑资料</button>" +
+          "<div class=\"" +
 
-"<button class=\"card-delete-btn\">删除</button>" +
+          (
+            isActive
+              ? "status-badge status-active"
+              : "status-badge status-inactive"
+          ) +
 
-"</div>" +
+          "\">" +
 
-"</div>";
+          (
+            isActive
+              ? "● 可预约"
+              : "● 暂停预约"
+          ) +
 
+          "</div>" +
 
-const editBtn =
-card.querySelector(
-".edit-btn"
-);
+          "<div class=\"therapist-actions\">" +
 
+          "<button class=\"edit-btn\">" +
+          "编辑资料" +
+          "</button>" +
 
-editBtn.addEventListener(
-"click",
-function() {
+          "<button class=\"card-delete-btn\">" +
+          "删除" +
+          "</button>" +
 
-openTherapistModal(
-therapist
-);
+          "</div>" +
 
-}
-);
+          "</div>";
 
 
-const deleteBtn =
-card.querySelector(
-".card-delete-btn"
-);
+        const editBtn =
+          card.querySelector(
+            ".edit-btn"
+          );
 
 
-deleteBtn.addEventListener(
-"click",
-function() {
+        editBtn.addEventListener(
+          "click",
+          function() {
 
-deleteTherapist(
-therapist.id
-);
+            openTherapistModal(
+              therapist
+            );
 
-}
-);
+          }
+        );
 
 
-grid.appendChild(
-card
-);
+        const deleteBtn =
+          card.querySelector(
+            ".card-delete-btn"
+          );
 
-}
-);
 
+        deleteBtn.addEventListener(
+          "click",
+          function() {
 
-} catch (
-error
-) {
+            deleteTherapist(
+              therapist.id
+            );
 
-console.error(
-error
-);
+          }
+        );
 
 
-loading.textContent =
-"疗愈师加载失败，请刷新重试";
+        grid.appendChild(
+          card
+        );
 
-}
+      }
+    );
+
+
+  } catch (error) {
+
+    console.error(error);
+
+    loading.textContent =
+      error.message ||
+      "疗愈师加载失败，请刷新重试";
+
+  }
 
 }
 
 
-// =========================
-// 打开疗愈师弹窗
-// =========================
+/* =========================
+   打开疗愈师弹窗
+========================= */
 
 function openTherapistModal(
-therapist = null
+  therapist = null
 ) {
 
-document
-.getElementById(
-"therapistModalMask"
-)
-.classList.add(
-"show"
-);
+  document
+    .getElementById(
+      "therapistModalMask"
+    )
+    .classList.add(
+      "show"
+    );
 
 
-document
-.getElementById(
-"therapistEditId"
-)
-.value =
-therapist
-? therapist.id
-: "";
+  document
+    .getElementById(
+      "therapistEditId"
+    )
+    .value =
+    therapist
+      ? therapist.id
+      : "";
 
 
-document
-.getElementById(
-"therapistModalTitle"
-)
-.textContent =
-therapist
-? "编辑疗愈师"
-: "添加疗愈师";
+  document
+    .getElementById(
+      "therapistModalTitle"
+    )
+    .textContent =
+    therapist
+      ? "编辑疗愈师"
+      : "添加疗愈师";
 
 
-document
-.getElementById(
-"therapistName"
-)
-.value =
-therapist
-? therapist.name || ""
-: "";
+  document
+    .getElementById(
+      "therapistName"
+    )
+    .value =
+    therapist
+      ? therapist.name || ""
+      : "";
 
 
-document
-.getElementById(
-"therapistImage"
-)
-.value =
-therapist
-? (
-therapist.image ||
-therapist.avatar ||
-""
-)
-: "";
+  document
+    .getElementById(
+      "therapistAvatar"
+    )
+    .value =
+    therapist
+      ? therapist.avatar || ""
+      : "";
 
 
-document
-.getElementById(
-"therapistIntro"
-)
-.value =
-therapist
-? (
-therapist.intro ||
-therapist.description ||
-""
-)
-: "";
+  document
+    .getElementById(
+      "therapistBio"
+    )
+    .value =
+    therapist
+      ? therapist.bio || ""
+      : "";
 
 
-document
-.getElementById(
-"therapistExperience"
-)
-.value =
-therapist
-? (
-therapist.experience ||
-therapist.years ||
-""
-)
-: "";
+  document
+    .getElementById(
+      "therapistExperience"
+    )
+    .value =
+    therapist
+      ? therapist.experience || ""
+      : "";
 
 
-document
-.getElementById(
-"therapistSpecialty"
-)
-.value =
-therapist
-? (
-Array.isArray(
-therapist.specialty
-)
-? therapist.specialty.join(
-"、"
-)
-: (
-therapist.specialty ||
-therapist.specialties ||
-""
-)
-)
-: "";
+  document
+    .getElementById(
+      "therapistSpecialties"
+    )
+    .value =
+    therapist
+      ? therapist.specialties || ""
+      : "";
 
 
-const active =
-therapist
-? (
-therapist.active === false ||
-therapist.is_active === false
-? false
-: true
-)
-: true;
-
-
-document
-.getElementById(
-"therapistActive"
-)
-.value =
-active
-? "true"
-: "false";
+  document
+    .getElementById(
+      "therapistIsActive"
+    )
+    .value =
+    therapist &&
+    therapist.isActive === false
+      ? "false"
+      : "true";
 
 }
 
 
-// =========================
-// 关闭弹窗
-// =========================
+/* =========================
+   关闭弹窗
+========================= */
 
 function closeTherapistModal() {
 
-document
-.getElementById(
-"therapistModalMask"
-)
-.classList.remove(
-"show"
-);
+  document
+    .getElementById(
+      "therapistModalMask"
+    )
+    .classList.remove(
+      "show"
+    );
 
 }
 
 
-// =========================
-// 保存疗愈师
-// =========================
+/* =========================
+   保存疗愈师
+========================= */
 
 async function saveTherapist() {
 
-const id =
-document
-.getElementById(
-"therapistEditId"
-)
-.value;
+  const id =
+    document
+      .getElementById(
+        "therapistEditId"
+      )
+      .value;
 
 
-const name =
-document
-.getElementById(
-"therapistName"
-)
-.value
-.trim();
+  const name =
+    document
+      .getElementById(
+        "therapistName"
+      )
+      .value
+      .trim();
 
 
-const image =
-document
-.getElementById(
-"therapistImage"
-)
-.value
-.trim();
+  const avatar =
+    document
+      .getElementById(
+        "therapistAvatar"
+      )
+      .value
+      .trim();
 
 
-const intro =
-document
-.getElementById(
-"therapistIntro"
-)
-.value
-.trim();
+  const bio =
+    document
+      .getElementById(
+        "therapistBio"
+      )
+      .value
+      .trim();
 
 
-const experience =
-document
-.getElementById(
-"therapistExperience"
-)
-.value
-.trim();
+  const experience =
+    document
+      .getElementById(
+        "therapistExperience"
+      )
+      .value
+      .trim();
 
 
-const specialty =
-document
-.getElementById(
-"therapistSpecialty"
-)
-.value
-.trim();
+  const specialties =
+    document
+      .getElementById(
+        "therapistSpecialties"
+      )
+      .value
+      .trim();
 
 
-const active =
-document
-.getElementById(
-"therapistActive"
-)
-.value ===
-"true";
+  const isActive =
+    document
+      .getElementById(
+        "therapistIsActive"
+      )
+      .value ===
+    "true";
 
 
-if (
-!name
-) {
-
-alert(
-"请输入疗愈师姓名"
-);
-
-return;
-
-}
+  const saveBtn =
+    document.getElementById(
+      "saveTherapistBtn"
+    );
 
 
-const payload = {
+  if (!name) {
 
-name,
-image,
-intro,
-experience,
-specialty,
-active
+    alert(
+      "请输入疗愈师姓名"
+    );
 
-};
+    return;
 
-
-const token =
-getToken();
+  }
 
 
-try {
+  const payload = {
 
-let url =
-"/api/admin/therapists";
+    name,
+    avatar,
+    bio,
+    experience,
+    specialties,
+    isActive
 
-
-let method =
-"POST";
-
-
-if (
-id
-) {
-
-url =
-"/api/admin/therapists/" +
-encodeURIComponent(
-id
-);
+  };
 
 
-method =
-"PUT";
-
-}
+  let url =
+    "/api/therapists";
 
 
-const response =
-await fetch(
-url,
-{
-method,
-
-headers: {
-
-"Content-Type":
-"application/json",
-
-"Authorization":
-"Bearer " +
-token
-
-},
-
-body:
-JSON.stringify(
-payload
-)
-
-}
-);
+  let method =
+    "POST";
 
 
-const data =
-await response.json();
+  if (id) {
+
+    url =
+      "/api/therapists/" +
+      encodeURIComponent(
+        id
+      );
 
 
-if (
-!response.ok ||
-data.success === false
-) {
+    method =
+      "PUT";
 
-throw new Error(
-data.message ||
-"保存失败"
-);
-
-}
+  }
 
 
-closeTherapistModal();
+  saveBtn.disabled =
+    true;
+
+  saveBtn.textContent =
+    "正在保存...";
 
 
-loadTherapists();
+  try {
+
+    await apiFetch(
+      url,
+      {
+        method,
+
+        headers: {
+          "Content-Type":
+            "application/json"
+        },
+
+        body:
+          JSON.stringify(
+            payload
+          )
+      }
+    );
 
 
-alert(
-"疗愈师资料已保存"
-);
+    closeTherapistModal();
 
 
-} catch (
-error
-) {
-
-console.error(
-error
-);
+    await loadTherapists();
 
 
-alert(
-error.message ||
-"保存失败"
-);
+    alert(
+      id
+        ? "疗愈师资料已更新"
+        : "疗愈师添加成功"
+    );
 
-}
+
+  } catch (error) {
+
+    console.error(error);
+
+    alert(
+      error.message ||
+      "保存失败"
+    );
+
+  } finally {
+
+    saveBtn.disabled =
+      false;
+
+    saveBtn.textContent =
+      "保存疗愈师";
+
+  }
 
 }
 
 
-// =========================
-// 删除疗愈师
-// =========================
+/* =========================
+   删除疗愈师
+========================= */
 
 async function deleteTherapist(
-id
+  id
 ) {
 
-if (
-!confirm(
-"确定删除这位疗愈师吗？\n删除后预约页面将不再显示。"
-)
-) {
-
-return;
-
-}
+  const confirmed =
+    confirm(
+      "确定删除这位疗愈师吗？\n删除后预约页面将不再显示。"
+    );
 
 
-const token =
-getToken();
+  if (!confirmed) {
+
+    return;
+
+  }
 
 
-try {
+  try {
 
-const response =
-await fetch(
-"/api/admin/therapists/" +
-encodeURIComponent(
-id
-),
-{
-method:
-"DELETE",
-
-headers: {
-
-"Authorization":
-"Bearer " +
-token
-
-}
-
-}
-);
+    await apiFetch(
+      "/api/therapists/" +
+      encodeURIComponent(
+        id
+      ),
+      {
+        method:
+          "DELETE"
+      }
+    );
 
 
-const data =
-await response.json();
+    alert(
+      "疗愈师已删除"
+    );
 
 
-if (
-!response.ok ||
-data.success === false
-) {
+    loadTherapists();
 
-throw new Error(
-data.message ||
-"删除失败"
-);
+
+  } catch (error) {
+
+    console.error(error);
+
+    alert(
+      error.message ||
+      "删除失败"
+    );
+
+  }
 
 }
 
 
-alert(
-"疗愈师已删除"
-);
-
-
-loadTherapists();
-
-
-} catch (
-error
-) {
-
-alert(
-error.message ||
-"删除失败"
-);
-
-}
-
-}
-
-
-// =========================
-// HTML 转义
-// =========================
+/* =========================
+   HTML 转义
+========================= */
 
 function escapeHtml(
-value
+  value
 ) {
 
-const div =
-document.createElement(
-"div"
-);
+  const div =
+    document.createElement(
+      "div"
+    );
 
 
-div.textContent =
-value;
+  div.textContent =
+    value === undefined ||
+    value === null
+      ? ""
+      : String(
+          value
+        );
 
 
-return div.innerHTML;
+  return div.innerHTML;
 
 }
 
 
-// =========================
-// 回车登录
-// =========================
+/* =========================
+   回车登录
+========================= */
 
 document
-.getElementById(
-"password"
-)
-.addEventListener(
-"keydown",
-function(
-event
-) {
+  .getElementById(
+    "password"
+  )
+  .addEventListener(
+    "keydown",
+    function(event) {
 
-if (
-event.key ===
-"Enter"
-) {
+      if (
+        event.key ===
+        "Enter"
+      ) {
 
-login();
+        login();
 
-}
+      }
 
-}
-);
+    }
+  );
 
 
-// =========================
-// 自动登录
-// =========================
+/* =========================
+   点击遮罩关闭弹窗
+========================= */
+
+document
+  .getElementById(
+    "therapistModalMask"
+  )
+  .addEventListener(
+    "click",
+    function(event) {
+
+      if (
+        event.target ===
+        this
+      ) {
+
+        closeTherapistModal();
+
+      }
+
+    }
+  );
+
+
+/* =========================
+   自动登录
+========================= */
 
 const savedToken =
-getToken();
+  getToken();
 
 
-if (
-savedToken
-) {
+if (savedToken) {
 
-showAdminPage();
+  showAdminPage();
 
-loadOrders();
+  loadOrders();
 
 }
-
 
 </script>
 
