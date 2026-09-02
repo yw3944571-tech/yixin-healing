@@ -124,6 +124,10 @@ async function initDatabase() {
 
   try {
 
+    // =========================
+    // 订单表
+    // =========================
+
     const ordersSql =
       "CREATE TABLE IF NOT EXISTS orders (" +
       "id VARCHAR(100) PRIMARY KEY," +
@@ -162,6 +166,26 @@ async function initDatabase() {
     );
 
 
+    // =========================
+    // 疗愈师排班表
+    // =========================
+
+    const schedulesSql =
+      "CREATE TABLE IF NOT EXISTS therapist_schedules (" +
+      "id SERIAL PRIMARY KEY," +
+      "therapist_id INTEGER NOT NULL REFERENCES therapists(id) ON DELETE CASCADE," +
+      "work_date VARCHAR(50) NOT NULL," +
+      "start_time VARCHAR(20) NOT NULL," +
+      "end_time VARCHAR(20) NOT NULL," +
+      "created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP," +
+      "UNIQUE (therapist_id, work_date)" +
+      ")";
+
+    await pool.query(
+      schedulesSql
+    );
+
+
     console.log(
       "PostgreSQL 数据库连接成功"
     );
@@ -172,6 +196,10 @@ async function initDatabase() {
 
     console.log(
       "therapists 疗愈师表已准备完成"
+    );
+
+    console.log(
+      "therapist_schedules 排班表已准备完成"
     );
 
 
@@ -325,8 +353,7 @@ app.post(
 
 
 // =========================
-// 获取启用中的疗愈师
-// 客户预约页面使用
+// 客户端：获取启用中的疗愈师
 // =========================
 
 app.get(
@@ -567,6 +594,802 @@ app.patch(
 );
 
 
+// ======================================================
+// 排班系统
+// ======================================================
+
+
+// =========================
+// 管理员：获取全部排班
+// =========================
+
+app.get(
+  "/api/admin/schedules",
+  requireAdmin,
+  async (req, res) => {
+
+    try {
+
+      const result =
+        await pool.query(
+          "SELECT " +
+          "s.id, " +
+          "s.therapist_id AS \"therapistId\", " +
+          "t.name AS \"therapistName\", " +
+          "s.work_date AS \"workDate\", " +
+          "s.start_time AS \"startTime\", " +
+          "s.end_time AS \"endTime\", " +
+          "s.created_at AS \"createdAt\" " +
+          "FROM therapist_schedules s " +
+          "INNER JOIN therapists t " +
+          "ON s.therapist_id = t.id " +
+          "ORDER BY s.work_date ASC, s.start_time ASC, t.id ASC"
+        );
+
+
+      return res.json({
+        success: true,
+        schedules:
+          result.rows
+      });
+
+
+    } catch (error) {
+
+      console.error(
+        "获取排班失败：",
+        error
+      );
+
+      return res.status(500).json({
+        success: false,
+        message:
+          "获取排班失败"
+      });
+
+    }
+
+  }
+);
+
+
+// =========================
+// 管理员：新增排班
+// =========================
+
+app.post(
+  "/api/admin/schedules",
+  requireAdmin,
+  async (req, res) => {
+
+    try {
+
+      const {
+        therapistId,
+        workDate,
+        startTime,
+        endTime
+      } = req.body;
+
+
+      if (!therapistId) {
+
+        return res.status(400).json({
+          success: false,
+          message:
+            "请选择疗愈师"
+        });
+
+      }
+
+
+      if (!workDate) {
+
+        return res.status(400).json({
+          success: false,
+          message:
+            "请选择工作日期"
+        });
+
+      }
+
+
+      if (!startTime) {
+
+        return res.status(400).json({
+          success: false,
+          message:
+            "请选择上班时间"
+        });
+
+      }
+
+
+      if (!endTime) {
+
+        return res.status(400).json({
+          success: false,
+          message:
+            "请选择下班时间"
+        });
+
+      }
+
+
+      if (
+        startTime >=
+        endTime
+      ) {
+
+        return res.status(400).json({
+          success: false,
+          message:
+            "下班时间必须晚于上班时间"
+        });
+
+      }
+
+
+      const therapistResult =
+        await pool.query(
+          "SELECT id, name, active " +
+          "FROM therapists " +
+          "WHERE id = $1",
+          [therapistId]
+        );
+
+
+      if (
+        therapistResult.rows.length === 0
+      ) {
+
+        return res.status(404).json({
+          success: false,
+          message:
+            "疗愈师不存在"
+        });
+
+      }
+
+
+      if (
+        therapistResult.rows[0].active !== true
+      ) {
+
+        return res.status(400).json({
+          success: false,
+          message:
+            "该疗愈师目前已停用"
+        });
+
+      }
+
+
+      const result =
+        await pool.query(
+          "INSERT INTO therapist_schedules " +
+          "(therapist_id, work_date, start_time, end_time) " +
+          "VALUES ($1, $2, $3, $4) " +
+          "RETURNING id, therapist_id AS \"therapistId\", " +
+          "work_date AS \"workDate\", " +
+          "start_time AS \"startTime\", " +
+          "end_time AS \"endTime\"",
+          [
+            therapistId,
+            workDate,
+            startTime,
+            endTime
+          ]
+        );
+
+
+      return res.json({
+        success: true,
+        message:
+          "排班添加成功",
+        schedule:
+          result.rows[0]
+      });
+
+
+    } catch (error) {
+
+      if (
+        error.code ===
+        "23505"
+      ) {
+
+        return res.status(400).json({
+          success: false,
+          message:
+            "该疗愈师当天已经有排班，请修改原排班"
+        });
+
+      }
+
+
+      console.error(
+        "新增排班失败：",
+        error
+      );
+
+      return res.status(500).json({
+        success: false,
+        message:
+          "新增排班失败"
+      });
+
+    }
+
+  }
+);
+
+
+// =========================
+// 管理员：修改排班
+// =========================
+
+app.patch(
+  "/api/admin/schedules/:id",
+  requireAdmin,
+  async (req, res) => {
+
+    try {
+
+      const scheduleId =
+        req.params.id;
+
+      const {
+        therapistId,
+        workDate,
+        startTime,
+        endTime
+      } = req.body;
+
+
+      if (!therapistId) {
+
+        return res.status(400).json({
+          success: false,
+          message:
+            "请选择疗愈师"
+        });
+
+      }
+
+
+      if (!workDate) {
+
+        return res.status(400).json({
+          success: false,
+          message:
+            "请选择工作日期"
+        });
+
+      }
+
+
+      if (!startTime) {
+
+        return res.status(400).json({
+          success: false,
+          message:
+            "请选择上班时间"
+        });
+
+      }
+
+
+      if (!endTime) {
+
+        return res.status(400).json({
+          success: false,
+          message:
+            "请选择下班时间"
+        });
+
+      }
+
+
+      if (
+        startTime >=
+        endTime
+      ) {
+
+        return res.status(400).json({
+          success: false,
+          message:
+            "下班时间必须晚于上班时间"
+        });
+
+      }
+
+
+      const result =
+        await pool.query(
+          "UPDATE therapist_schedules " +
+          "SET therapist_id = $1, " +
+          "work_date = $2, " +
+          "start_time = $3, " +
+          "end_time = $4 " +
+          "WHERE id = $5 " +
+          "RETURNING id, " +
+          "therapist_id AS \"therapistId\", " +
+          "work_date AS \"workDate\", " +
+          "start_time AS \"startTime\", " +
+          "end_time AS \"endTime\"",
+          [
+            therapistId,
+            workDate,
+            startTime,
+            endTime,
+            scheduleId
+          ]
+        );
+
+
+      if (
+        result.rows.length === 0
+      ) {
+
+        return res.status(404).json({
+          success: false,
+          message:
+            "排班不存在"
+        });
+
+      }
+
+
+      return res.json({
+        success: true,
+        message:
+          "排班修改成功",
+        schedule:
+          result.rows[0]
+      });
+
+
+    } catch (error) {
+
+      if (
+        error.code ===
+        "23505"
+      ) {
+
+        return res.status(400).json({
+          success: false,
+          message:
+            "该疗愈师当天已经有排班"
+        });
+
+      }
+
+
+      console.error(
+        "修改排班失败：",
+        error
+      );
+
+      return res.status(500).json({
+        success: false,
+        message:
+          "修改排班失败"
+      });
+
+    }
+
+  }
+);
+
+
+// =========================
+// 管理员：删除排班
+// =========================
+
+app.delete(
+  "/api/admin/schedules/:id",
+  requireAdmin,
+  async (req, res) => {
+
+    try {
+
+      const scheduleId =
+        req.params.id;
+
+
+      const result =
+        await pool.query(
+          "DELETE FROM therapist_schedules " +
+          "WHERE id = $1 " +
+          "RETURNING id",
+          [scheduleId]
+        );
+
+
+      if (
+        result.rows.length === 0
+      ) {
+
+        return res.status(404).json({
+          success: false,
+          message:
+            "排班不存在"
+        });
+
+      }
+
+
+      return res.json({
+        success: true,
+        message:
+          "排班删除成功"
+      });
+
+
+    } catch (error) {
+
+      console.error(
+        "删除排班失败：",
+        error
+      );
+
+      return res.status(500).json({
+        success: false,
+        message:
+          "删除排班失败"
+      });
+
+    }
+
+  }
+);
+
+
+// =========================
+// 客户端：查询某天工作的疗愈师
+// =========================
+
+app.get(
+  "/api/available-therapists",
+  async (req, res) => {
+
+    try {
+
+      const {
+        date
+      } = req.query;
+
+
+      if (!date) {
+
+        return res.status(400).json({
+          success: false,
+          message:
+            "请选择日期"
+        });
+
+      }
+
+
+      const result =
+        await pool.query(
+          "SELECT DISTINCT " +
+          "t.id, " +
+          "t.name, " +
+          "s.start_time AS \"startTime\", " +
+          "s.end_time AS \"endTime\" " +
+          "FROM therapists t " +
+          "INNER JOIN therapist_schedules s " +
+          "ON t.id = s.therapist_id " +
+          "WHERE t.active = TRUE " +
+          "AND s.work_date = $1 " +
+          "ORDER BY t.id ASC",
+          [date]
+        );
+
+
+      return res.json({
+        success: true,
+        date,
+        therapists:
+          result.rows
+      });
+
+
+    } catch (error) {
+
+      console.error(
+        "查询可用疗愈师失败：",
+        error
+      );
+
+      return res.status(500).json({
+        success: false,
+        message:
+          "查询可用疗愈师失败"
+      });
+
+    }
+
+  }
+);
+
+
+// =========================
+// 客户端：查询疗愈师可预约时间
+// =========================
+
+app.get(
+  "/api/available-slots",
+  async (req, res) => {
+
+    try {
+
+      const {
+        therapistId,
+        date,
+        duration
+      } = req.query;
+
+
+      if (!therapistId) {
+
+        return res.status(400).json({
+          success: false,
+          message:
+            "请选择疗愈师"
+        });
+
+      }
+
+
+      if (!date) {
+
+        return res.status(400).json({
+          success: false,
+          message:
+            "请选择日期"
+        });
+
+      }
+
+
+      const serviceDuration =
+        Number(duration) || 90;
+
+
+      if (
+        serviceDuration !== 90 &&
+        serviceDuration !== 120
+      ) {
+
+        return res.status(400).json({
+          success: false,
+          message:
+            "服务时长只能是90分钟或120分钟"
+        });
+
+      }
+
+
+      // 获取当天排班
+
+      const scheduleResult =
+        await pool.query(
+          "SELECT start_time AS \"startTime\", " +
+          "end_time AS \"endTime\" " +
+          "FROM therapist_schedules " +
+          "WHERE therapist_id = $1 " +
+          "AND work_date = $2 " +
+          "LIMIT 1",
+          [
+            therapistId,
+            date
+          ]
+        );
+
+
+      if (
+        scheduleResult.rows.length === 0
+      ) {
+
+        return res.json({
+          success: true,
+          slots: []
+        });
+
+      }
+
+
+      const schedule =
+        scheduleResult.rows[0];
+
+
+      // 获取当天已经预约的时间
+
+      const ordersResult =
+        await pool.query(
+          "SELECT service_time AS \"serviceTime\", " +
+          "duration, status " +
+          "FROM orders " +
+          "WHERE therapist = (" +
+          "SELECT name FROM therapists WHERE id = $1" +
+          ") " +
+          "AND service_date = $2 " +
+          "AND status <> '已取消'",
+          [
+            therapistId,
+            date
+          ]
+        );
+
+
+      const bookedOrders =
+        ordersResult.rows;
+
+
+      function timeToMinutes(
+        time
+      ) {
+
+        const parts =
+          String(time)
+            .split(":")
+            .map(Number);
+
+        return (
+          parts[0] * 60 +
+          parts[1]
+        );
+
+      }
+
+
+      function minutesToTime(
+        minutes
+      ) {
+
+        const hour =
+          Math.floor(
+            minutes / 60
+          );
+
+        const minute =
+          minutes % 60;
+
+        return (
+          String(hour).padStart(2, "0") +
+          ":" +
+          String(minute).padStart(2, "0")
+        );
+
+      }
+
+
+      const startMinutes =
+        timeToMinutes(
+          schedule.startTime
+        );
+
+      const endMinutes =
+        timeToMinutes(
+          schedule.endTime
+        );
+
+
+      const slots = [];
+
+      // 默认每30分钟一个预约起点
+
+      for (
+        let current = startMinutes;
+        current + serviceDuration <= endMinutes;
+        current += 30
+      ) {
+
+        const slotStart =
+          current;
+
+        const slotEnd =
+          current +
+          serviceDuration;
+
+
+        let available = true;
+
+
+        // 检查是否与已有订单冲突
+
+        for (
+          const order
+          of bookedOrders
+        ) {
+
+          const bookedStart =
+            timeToMinutes(
+              order.serviceTime
+            );
+
+          const bookedDuration =
+            Number(
+              String(
+                order.duration || "90"
+              )
+                .replace(
+                  /[^0-9]/g,
+                  ""
+                )
+            ) || 90;
+
+          const bookedEnd =
+            bookedStart +
+            bookedDuration;
+
+
+          if (
+            slotStart < bookedEnd &&
+            slotEnd > bookedStart
+          ) {
+
+            available = false;
+
+            break;
+
+          }
+
+        }
+
+
+        if (available) {
+
+          slots.push({
+            time:
+              minutesToTime(
+                slotStart
+              ),
+
+            duration:
+              serviceDuration,
+
+            available:
+              true
+          });
+
+        }
+
+      }
+
+
+      return res.json({
+        success: true,
+        therapistId,
+        date,
+        duration:
+          serviceDuration,
+        slots
+      });
+
+
+    } catch (error) {
+
+      console.error(
+        "查询可预约时间失败：",
+        error
+      );
+
+      return res.status(500).json({
+        success: false,
+        message:
+          "查询可预约时间失败"
+      });
+
+    }
+
+  }
+);
+
+
 // =========================
 // 创建订单
 // =========================
@@ -590,16 +1413,11 @@ app.post(
       } = req.body;
 
 
-      // =========================
-      // 基础验证
-      // =========================
-
       if (!service) {
 
         return res.status(400).json({
-          success: false,
-          message:
-            "请选择疗愈服务"
+          success:false,
+          message:"请选择疗愈服务"
         });
 
       }
@@ -608,9 +1426,8 @@ app.post(
       if (!therapist) {
 
         return res.status(400).json({
-          success: false,
-          message:
-            "请选择疗愈师"
+          success:false,
+          message:"请选择疗愈师"
         });
 
       }
@@ -619,9 +1436,8 @@ app.post(
       if (!date) {
 
         return res.status(400).json({
-          success: false,
-          message:
-            "请选择服务日期"
+          success:false,
+          message:"请选择服务日期"
         });
 
       }
@@ -630,9 +1446,8 @@ app.post(
       if (!time) {
 
         return res.status(400).json({
-          success: false,
-          message:
-            "请选择服务时间"
+          success:false,
+          message:"请选择服务时间"
         });
 
       }
@@ -641,9 +1456,8 @@ app.post(
       if (!name) {
 
         return res.status(400).json({
-          success: false,
-          message:
-            "请输入姓名"
+          success:false,
+          message:"请输入姓名"
         });
 
       }
@@ -652,9 +1466,8 @@ app.post(
       if (!phone) {
 
         return res.status(400).json({
-          success: false,
-          message:
-            "请输入手机号"
+          success:false,
+          message:"请输入手机号"
         });
 
       }
@@ -665,15 +1478,12 @@ app.post(
 
 
       if (
-        !phoneRegex.test(
-          phone
-        )
+        !phoneRegex.test(phone)
       ) {
 
         return res.status(400).json({
-          success: false,
-          message:
-            "手机号格式不正确"
+          success:false,
+          message:"手机号格式不正确"
         });
 
       }
@@ -682,16 +1492,15 @@ app.post(
       if (!address) {
 
         return res.status(400).json({
-          success: false,
-          message:
-            "请输入服务地址"
+          success:false,
+          message:"请输入服务地址"
         });
 
       }
 
 
       // =========================
-      // 检查疗愈师是否存在
+      // 检查疗愈师
       // =========================
 
       const therapistResult =
@@ -708,21 +1517,19 @@ app.post(
       ) {
 
         return res.status(400).json({
-          success: false,
-          message:
-            "该疗愈师不存在"
+          success:false,
+          message:"该疗愈师不存在"
         });
 
       }
 
 
       if (
-        therapistResult.rows[0]
-          .active !== true
+        therapistResult.rows[0].active !== true
       ) {
 
         return res.status(400).json({
-          success: false,
+          success:false,
           message:
             "该疗愈师目前暂停接单，请选择其他疗愈师"
         });
@@ -730,44 +1537,169 @@ app.post(
       }
 
 
+      const therapistId =
+        therapistResult.rows[0].id;
+
+
       // =========================
-      // 检查重复预约
-      //
-      // 只有非取消订单占用时间
+      // 检查当天是否排班
       // =========================
 
-      const conflictResult =
+      const scheduleResult =
         await pool.query(
-          "SELECT id " +
-          "FROM orders " +
-          "WHERE therapist = $1 " +
-          "AND service_date = $2 " +
-          "AND service_time = $3 " +
-          "AND status <> '已取消' " +
+          "SELECT start_time, end_time " +
+          "FROM therapist_schedules " +
+          "WHERE therapist_id = $1 " +
+          "AND work_date = $2 " +
           "LIMIT 1",
           [
-            therapist,
-            date,
-            time
+            therapistId,
+            date
           ]
         );
 
 
       if (
-        conflictResult.rows.length > 0
+        scheduleResult.rows.length === 0
       ) {
 
-        return res.status(409).json({
-          success: false,
+        return res.status(400).json({
+          success:false,
           message:
-            "该疗愈师这个时间已经被预约，请重新选择其他时间"
+            "该疗愈师当天没有排班"
+        });
+
+      }
+
+
+      const schedule =
+        scheduleResult.rows[0];
+
+
+      function timeToMinutes(
+        value
+      ) {
+
+        const parts =
+          String(value)
+            .split(":")
+            .map(Number);
+
+        return (
+          parts[0] * 60 +
+          parts[1]
+        );
+
+      }
+
+
+      const startMinutes =
+        timeToMinutes(
+          schedule.start_time
+        );
+
+      const endMinutes =
+        timeToMinutes(
+          schedule.end_time
+        );
+
+      const orderStart =
+        timeToMinutes(
+          time
+        );
+
+
+      const serviceDuration =
+        Number(duration) || 90;
+
+
+      const orderEnd =
+        orderStart +
+        serviceDuration;
+
+
+      // 检查预约是否在工作时间内
+
+      if (
+        orderStart <
+        startMinutes ||
+        orderEnd >
+        endMinutes
+      ) {
+
+        return res.status(400).json({
+          success:false,
+          message:
+            "该预约时间超出疗愈师当天工作时间"
         });
 
       }
 
 
       // =========================
-      // 创建订单号
+      // 检查重复预约
+      // =========================
+
+      const conflictResult =
+        await pool.query(
+          "SELECT id, service_time, duration " +
+          "FROM orders " +
+          "WHERE therapist = $1 " +
+          "AND service_date = $2 " +
+          "AND status <> '已取消'",
+          [
+            therapist,
+            date
+          ]
+        );
+
+
+      for (
+        const order
+        of conflictResult.rows
+      ) {
+
+        const existingStart =
+          timeToMinutes(
+            order.service_time
+          );
+
+        const existingDuration =
+          Number(
+            String(
+              order.duration || "90"
+            )
+              .replace(
+                /[^0-9]/g,
+                ""
+              )
+          ) || 90;
+
+        const existingEnd =
+          existingStart +
+          existingDuration;
+
+
+        if (
+          orderStart <
+          existingEnd &&
+          orderEnd >
+          existingStart
+        ) {
+
+          return res.status(409).json({
+            success:false,
+            message:
+              "该疗愈师这个时间已经被预约，请重新选择其他时间"
+          });
+
+        }
+
+      }
+
+
+      // =========================
+      // 创建订单
       // =========================
 
       const orderId =
@@ -777,40 +1709,6 @@ app.post(
           Math.random() * 1000
         );
 
-
-      const order = {
-
-        id:
-          orderId,
-
-        service,
-
-        price:
-          Number(price) || 0,
-
-        duration,
-
-        therapist,
-
-        date,
-
-        time,
-
-        name,
-
-        phone,
-
-        address,
-
-        status:
-          "待确认"
-
-      };
-
-
-      // =========================
-      // 写入数据库
-      // =========================
 
       const insertSql =
         "INSERT INTO orders (" +
@@ -826,32 +1724,25 @@ app.post(
       await pool.query(
         insertSql,
         [
-          order.id,
-          order.service,
-          order.price,
-          order.duration,
-          order.therapist,
-          order.date,
-          order.time,
-          order.name,
-          order.phone,
-          order.address,
-          order.status
+          orderId,
+          service,
+          Number(price) || 0,
+          duration || "90",
+          therapist,
+          date,
+          time,
+          name,
+          phone,
+          address,
+          "待确认"
         ]
       );
 
 
-      console.log(
-        "收到新预约订单：",
-        order
-      );
-
-
       return res.json({
-        success: true,
-        message:
-          "预约提交成功",
-        order
+        success:true,
+        message:"预约成功",
+        orderId
       });
 
 
@@ -864,9 +1755,9 @@ app.post(
 
 
       return res.status(500).json({
-        success: false,
+        success:false,
         message:
-          "服务器处理失败"
+          "预约失败，请稍后再试"
       });
 
     }
@@ -876,7 +1767,7 @@ app.post(
 
 
 // =========================
-// 获取所有订单
+// 获取订单
 // =========================
 
 app.get(
@@ -886,34 +1777,22 @@ app.get(
 
     try {
 
-      const selectSql =
-        "SELECT " +
-        "id, " +
-        "service, " +
-        "price, " +
-        "duration, " +
-        "therapist, " +
-        "service_date AS \"date\", " +
-        "service_time AS \"time\", " +
-        "customer_name AS \"name\", " +
-        "phone, " +
-        "address, " +
-        "status, " +
-        "created_at AS \"createdAt\" " +
-        "FROM orders " +
-        "ORDER BY created_at DESC";
-
-
       const result =
         await pool.query(
-          selectSql
+          "SELECT " +
+          "id, service, price, duration, therapist, " +
+          "service_date AS date, " +
+          "service_time AS time, " +
+          "customer_name AS name, " +
+          "phone, address, status, " +
+          "created_at AS \"createdAt\" " +
+          "FROM orders " +
+          "ORDER BY service_date ASC, service_time ASC, created_at DESC"
         );
 
 
       return res.json({
-        success: true,
-        total:
-          result.rows.length,
+        success:true,
         orders:
           result.rows
       });
@@ -928,7 +1807,7 @@ app.get(
 
 
       return res.status(500).json({
-        success: false,
+        success:false,
         message:
           "获取订单失败"
       });
@@ -957,7 +1836,7 @@ app.patch(
         req.body.status;
 
 
-      const allowedStatus = [
+      const allowedStatuses = [
         "待确认",
         "已确认",
         "服务中",
@@ -967,30 +1846,26 @@ app.patch(
 
 
       if (
-        !allowedStatus.includes(
+        !allowedStatuses.includes(
           status
         )
       ) {
 
         return res.status(400).json({
-          success: false,
+          success:false,
           message:
-            "订单状态不合法"
+            "无效的订单状态"
         });
 
       }
 
 
-      const updateSql =
-        "UPDATE orders " +
-        "SET status = $1 " +
-        "WHERE id = $2 " +
-        "RETURNING id, status";
-
-
       const result =
         await pool.query(
-          updateSql,
+          "UPDATE orders " +
+          "SET status = $1 " +
+          "WHERE id = $2 " +
+          "RETURNING id, status",
           [
             status,
             orderId
@@ -1003,7 +1878,7 @@ app.patch(
       ) {
 
         return res.status(404).json({
-          success: false,
+          success:false,
           message:
             "订单不存在"
         });
@@ -1011,15 +1886,8 @@ app.patch(
       }
 
 
-      console.log(
-        "订单状态已更新：",
-        orderId,
-        status
-      );
-
-
       return res.json({
-        success: true,
+        success:true,
         message:
           "订单状态更新成功",
         order:
@@ -1036,7 +1904,7 @@ app.patch(
 
 
       return res.status(500).json({
-        success: false,
+        success:false,
         message:
           "修改订单状态失败"
       });
@@ -1076,7 +1944,7 @@ app.delete(
       ) {
 
         return res.status(404).json({
-          success: false,
+          success:false,
           message:
             "订单不存在"
         });
@@ -1085,9 +1953,9 @@ app.delete(
 
 
       return res.json({
-        success: true,
+        success:true,
         message:
-          "订单已删除"
+          "订单删除成功"
       });
 
 
@@ -1100,7 +1968,7 @@ app.delete(
 
 
       return res.status(500).json({
-        success: false,
+        success:false,
         message:
           "删除订单失败"
       });
@@ -1112,7 +1980,27 @@ app.delete(
 
 
 // =========================
-// 启动服务器
+// 页面
+// =========================
+
+app.get(
+  "*",
+  (req, res) => {
+
+    res.sendFile(
+      path.join(
+        __dirname,
+        "public",
+        "index.html"
+      )
+    );
+
+  }
+);
+
+
+// =========================
+// 启动
 // =========================
 
 async function startServer() {
@@ -1125,7 +2013,7 @@ async function startServer() {
     () => {
 
       console.log(
-        "奕心疗愈舍服务器运行在端口 " +
+        "奕心疗愈舍服务器已启动，端口：" +
         PORT
       );
 
