@@ -1,10 +1,13 @@
 // =========================
 // 奕心疗愈舍 V1.0
-// 前端交互逻辑
+// 预约系统前端逻辑
 // =========================
 
 
-// Toast 提示
+// =========================
+// Toast
+// =========================
+
 const toast = document.getElementById("toast");
 const toastText = document.getElementById("toastText");
 
@@ -25,60 +28,137 @@ function showToast(message) {
 }
 
 
-// 当前选择的服务
-let selectedService = "";
+// =========================
+// 页面元素
+// =========================
+
+const homePage = document.getElementById("homePage");
+const bookingPage = document.getElementById("bookingPage");
+
+const startBookingBtn =
+  document.getElementById("startBookingBtn");
+
+const bookingBackBtn =
+  document.getElementById("bookingBackBtn");
+
+const submitOrderBtn =
+  document.getElementById("submitOrderBtn");
 
 
 // =========================
-// 立即预约
+// 预约数据
 // =========================
 
-function startBooking(serviceName = "") {
-  selectedService = serviceName;
+const bookingData = {
+  service: "",
+  price: 0,
+  duration: "",
+  therapist: "",
+  date: "",
+  time: "",
+  name: "",
+  phone: "",
+  address: ""
+};
 
-  if (selectedService) {
-    showToast(`已选择：${selectedService}`);
-  } else {
-    showToast("请选择一项疗愈服务");
-  }
 
-  // 暂时滚动到推荐服务区域
-  const serviceSection = document.querySelector(".service-section");
+// =========================
+// 打开预约页面
+// =========================
 
-  if (serviceSection) {
-    setTimeout(() => {
-      serviceSection.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
-    }, 300);
-  }
+function openBookingPage() {
+
+  homePage.classList.remove("active-page");
+
+  bookingPage.classList.add("active-page");
+
+  window.scrollTo({
+    top: 0,
+    behavior: "instant"
+  });
+
+  updateBookingSummary();
+
 }
 
 
+// =========================
+// 返回首页
+// =========================
+
+function goHome() {
+
+  bookingPage.classList.remove("active-page");
+
+  homePage.classList.add("active-page");
+
+  window.scrollTo({
+    top: 0,
+    behavior: "instant"
+  });
+
+}
+
+
+// =========================
 // 首页立即预约
-const startBookingBtn = document.getElementById("startBookingBtn");
+// =========================
 
 if (startBookingBtn) {
+
   startBookingBtn.addEventListener("click", () => {
-    startBooking();
+
+    openBookingPage();
+
+    showToast("请选择疗愈服务");
+
   });
+
 }
 
 
 // =========================
-// 服务项目预约
+// 返回按钮
 // =========================
 
-const bookButtons = document.querySelectorAll(".book-btn");
+if (bookingBackBtn) {
 
-bookButtons.forEach((button) => {
+  bookingBackBtn.addEventListener("click", () => {
+
+    goHome();
+
+  });
+
+}
+
+
+// =========================
+// 首页项目预约
+// =========================
+
+const homeBookButtons =
+  document.querySelectorAll(".book-btn");
+
+homeBookButtons.forEach((button) => {
 
   button.addEventListener("click", () => {
 
-    const serviceName = button.dataset.service;
+    bookingData.service =
+      button.dataset.service;
 
-    startBooking(serviceName);
+    bookingData.price =
+      Number(button.dataset.price);
+
+    bookingData.duration =
+      button.dataset.duration;
+
+    selectBookingServiceButton();
+
+    openBookingPage();
+
+    showToast(
+      `已选择：${bookingData.service}`
+    );
 
   });
 
@@ -86,29 +166,436 @@ bookButtons.forEach((button) => {
 
 
 // =========================
-// 查看疗愈师
+// 预约页面服务选择
 // =========================
 
-const viewTherapistsBtn =
-  document.getElementById("viewTherapistsBtn");
+const serviceOptions =
+  document.querySelectorAll(
+    ".booking-service-option"
+  );
 
-if (viewTherapistsBtn) {
+serviceOptions.forEach((button) => {
 
-  viewTherapistsBtn.addEventListener("click", () => {
+  button.addEventListener("click", () => {
 
-    const therapistSection =
-      document.querySelector(".therapist-section");
+    bookingData.service =
+      button.dataset.service;
 
-    if (therapistSection) {
+    bookingData.price =
+      Number(button.dataset.price);
 
-      therapistSection.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
+    bookingData.duration =
+      button.dataset.duration;
+
+    serviceOptions.forEach((item) => {
+      item.classList.remove("selected");
+    });
+
+    button.classList.add("selected");
+
+    updateBookingSummary();
+
+  });
+
+});
+
+
+function selectBookingServiceButton() {
+
+  serviceOptions.forEach((button) => {
+
+    const serviceName =
+      button.dataset.service;
+
+    if (
+      serviceName === bookingData.service
+    ) {
+
+      button.classList.add("selected");
+
+    } else {
+
+      button.classList.remove("selected");
 
     }
 
   });
+
+}
+
+
+// =========================
+// 选择疗愈师
+// =========================
+
+const therapistOptions =
+  document.querySelectorAll(
+    ".booking-therapist-option"
+  );
+
+therapistOptions.forEach((button) => {
+
+  button.addEventListener("click", () => {
+
+    bookingData.therapist =
+      button.dataset.therapist;
+
+    therapistOptions.forEach((item) => {
+      item.classList.remove("selected");
+    });
+
+    button.classList.add("selected");
+
+    updateBookingSummary();
+
+  });
+
+});
+
+
+// =========================
+// 日期
+// =========================
+
+const bookingDate =
+  document.getElementById("bookingDate");
+
+if (bookingDate) {
+
+  const today =
+    new Date().toISOString().split("T")[0];
+
+  bookingDate.min = today;
+
+  bookingDate.addEventListener(
+    "change",
+    () => {
+
+      bookingData.date =
+        bookingDate.value;
+
+      updateBookingSummary();
+
+    }
+  );
+
+}
+
+
+// =========================
+// 时间
+// =========================
+
+const timeOptions =
+  document.querySelectorAll(
+    ".time-option"
+  );
+
+timeOptions.forEach((button) => {
+
+  button.addEventListener("click", () => {
+
+    bookingData.time =
+      button.dataset.time;
+
+    timeOptions.forEach((item) => {
+      item.classList.remove("selected");
+    });
+
+    button.classList.add("selected");
+
+    updateBookingSummary();
+
+  });
+
+});
+
+
+// =========================
+// 输入信息
+// =========================
+
+const bookingName =
+  document.getElementById("bookingName");
+
+const bookingPhone =
+  document.getElementById("bookingPhone");
+
+const bookingAddress =
+  document.getElementById("bookingAddress");
+
+
+if (bookingName) {
+
+  bookingName.addEventListener(
+    "input",
+    () => {
+
+      bookingData.name =
+        bookingName.value.trim();
+
+    }
+  );
+
+}
+
+
+if (bookingPhone) {
+
+  bookingPhone.addEventListener(
+    "input",
+    () => {
+
+      bookingData.phone =
+        bookingPhone.value.trim();
+
+    }
+  );
+
+}
+
+
+if (bookingAddress) {
+
+  bookingAddress.addEventListener(
+    "input",
+    () => {
+
+      bookingData.address =
+        bookingAddress.value.trim();
+
+    }
+  );
+
+}
+
+
+// =========================
+// 更新订单信息
+// =========================
+
+function updateBookingSummary() {
+
+  const summaryService =
+    document.getElementById(
+      "summaryService"
+    );
+
+  const summaryTherapist =
+    document.getElementById(
+      "summaryTherapist"
+    );
+
+  const summaryTime =
+    document.getElementById(
+      "summaryTime"
+    );
+
+  const summaryPrice =
+    document.getElementById(
+      "summaryPrice"
+    );
+
+
+  if (summaryService) {
+
+    summaryService.textContent =
+      bookingData.service
+        ? `${bookingData.service} · ${bookingData.duration}`
+        : "暂未选择";
+
+  }
+
+
+  if (summaryTherapist) {
+
+    summaryTherapist.textContent =
+      bookingData.therapist ||
+      "暂未选择";
+
+  }
+
+
+  if (summaryTime) {
+
+    if (
+      bookingData.date &&
+      bookingData.time
+    ) {
+
+      summaryTime.textContent =
+        `${bookingData.date} ${bookingData.time}`;
+
+    } else {
+
+      summaryTime.textContent =
+        "暂未选择";
+
+    }
+
+  }
+
+
+  if (summaryPrice) {
+
+    summaryPrice.textContent =
+      `¥${bookingData.price}`;
+
+  }
+
+}
+
+
+// =========================
+// 手机号验证
+// =========================
+
+function isValidPhone(phone) {
+
+  const phoneRegex =
+    /^1[3-9]\d{9}$/;
+
+  return phoneRegex.test(phone);
+
+}
+
+
+// =========================
+// 提交预约
+// =========================
+
+if (submitOrderBtn) {
+
+  submitOrderBtn.addEventListener(
+    "click",
+    () => {
+
+      // 服务
+      if (!bookingData.service) {
+
+        showToast("请选择疗愈服务");
+        return;
+
+      }
+
+
+      // 疗愈师
+      if (!bookingData.therapist) {
+
+        showToast("请选择疗愈师");
+        return;
+
+      }
+
+
+      // 日期
+      if (!bookingData.date) {
+
+        showToast("请选择服务日期");
+        return;
+
+      }
+
+
+      // 时间
+      if (!bookingData.time) {
+
+        showToast("请选择服务时间");
+        return;
+
+      }
+
+
+      // 姓名
+      if (!bookingData.name) {
+
+        showToast("请输入姓名");
+        return;
+
+      }
+
+
+      // 手机号
+      if (!bookingData.phone) {
+
+        showToast("请输入手机号");
+        return;
+
+      }
+
+
+      if (
+        !isValidPhone(
+          bookingData.phone
+        )
+      ) {
+
+        showToast(
+          "请输入正确的手机号"
+        );
+
+        return;
+
+      }
+
+
+      // 地址
+      if (!bookingData.address) {
+
+        showToast("请输入服务地址");
+        return;
+
+      }
+
+
+      // 防止重复点击
+      submitOrderBtn.disabled = true;
+
+      const originalText =
+        submitOrderBtn.textContent;
+
+      submitOrderBtn.textContent =
+        "正在提交...";
+
+
+      // 模拟提交
+      setTimeout(() => {
+
+        const orderId =
+          `YX${Date.now()}`;
+
+        console.log(
+          "预约订单：",
+          {
+            orderId,
+            ...bookingData
+          }
+        );
+
+
+        showToast(
+          `预约成功，订单号：${orderId}`
+        );
+
+
+        submitOrderBtn.disabled =
+          false;
+
+        submitOrderBtn.textContent =
+          originalText;
+
+
+        // 暂时 2 秒后回首页
+        setTimeout(() => {
+
+          goHome();
+
+        }, 2000);
+
+      }, 800);
+
+    }
+  );
 
 }
 
@@ -118,58 +605,99 @@ if (viewTherapistsBtn) {
 // =========================
 
 const navItems =
-  document.querySelectorAll(".nav-item");
+  document.querySelectorAll(
+    ".nav-item"
+  );
+
 
 navItems.forEach((item) => {
 
   item.addEventListener("click", () => {
 
-    // 清除当前选中状态
-    navItems.forEach((nav) => {
-      nav.classList.remove("active");
-    });
-
-    // 当前按钮选中
-    item.classList.add("active");
-
     const page =
       item.dataset.page;
+
 
     // 首页
     if (page === "home") {
 
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
+      navItems.forEach((nav) => {
+        nav.classList.remove("active");
       });
 
-      showToast("已回到首页");
+      item.classList.add("active");
+
+      goHome();
+
+      return;
+
     }
 
 
     // 疗愈师
     if (page === "therapists") {
 
-      const therapistSection =
-        document.querySelector(".therapist-section");
+      if (
+        !homePage.classList.contains(
+          "active-page"
+        )
+      ) {
 
-      if (therapistSection) {
+        goHome();
 
-        therapistSection.scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
+        setTimeout(() => {
+
+          const therapistSection =
+            document.querySelector(
+              ".therapist-section"
+            );
+
+          if (therapistSection) {
+
+            therapistSection.scrollIntoView({
+              behavior: "smooth"
+            });
+
+          }
+
+        }, 100);
+
+      } else {
+
+        const therapistSection =
+          document.querySelector(
+            ".therapist-section"
+          );
+
+        if (therapistSection) {
+
+          therapistSection.scrollIntoView({
+            behavior: "smooth"
+          });
+
+        }
 
       }
 
-      showToast("查看推荐疗愈师");
+      showToast("推荐疗愈师");
+
+      return;
+
     }
 
 
     // 预约
     if (page === "booking") {
 
-      startBooking();
+      navItems.forEach((nav) => {
+        nav.classList.remove("active");
+      });
+
+      item.classList.add("active");
+
+      openBookingPage();
+
+      return;
 
     }
 
@@ -177,7 +705,11 @@ navItems.forEach((item) => {
     // 订单
     if (page === "orders") {
 
-      showToast("订单功能即将上线");
+      showToast(
+        "订单中心正在开发中"
+      );
+
+      return;
 
     }
 
@@ -185,7 +717,11 @@ navItems.forEach((item) => {
     // 我的
     if (page === "profile") {
 
-      showToast("个人中心即将上线");
+      showToast(
+        "个人中心正在开发中"
+      );
+
+      return;
 
     }
 
@@ -195,19 +731,56 @@ navItems.forEach((item) => {
 
 
 // =========================
-// 城市按钮
+// 城市
 // =========================
 
 const cityBtn =
-  document.querySelector(".city-btn");
+  document.querySelector(
+    ".city-btn"
+  );
 
 if (cityBtn) {
 
-  cityBtn.addEventListener("click", () => {
+  cityBtn.addEventListener(
+    "click",
+    () => {
 
-    showToast("当前服务城市：重庆");
+      showToast(
+        "当前服务城市：重庆"
+      );
 
-  });
+    }
+  );
+
+}
+
+
+// =========================
+// 查看更多疗愈师
+// =========================
+
+const viewTherapistsBtn =
+  document.getElementById(
+    "viewTherapistsBtn"
+  );
+
+if (viewTherapistsBtn) {
+
+  viewTherapistsBtn.addEventListener(
+    "click",
+    () => {
+
+      const therapistSection =
+        document.querySelector(
+          ".therapist-section"
+        );
+
+      therapistSection?.scrollIntoView({
+        behavior: "smooth"
+      });
+
+    }
+  );
 
 }
 
@@ -216,30 +789,45 @@ if (cityBtn) {
 // 查看全部服务
 // =========================
 
-const moreButtons =
-  document.querySelectorAll(".more-btn");
+const viewServicesBtn =
+  document.getElementById(
+    "viewServicesBtn"
+  );
 
-moreButtons.forEach((button) => {
+if (viewServicesBtn) {
 
-  if (button.id === "viewTherapistsBtn") {
-    return;
+  viewServicesBtn.addEventListener(
+    "click",
+    () => {
+
+      const serviceSection =
+        document.querySelector(
+          ".service-section"
+        );
+
+      serviceSection?.scrollIntoView({
+        behavior: "smooth"
+      });
+
+    }
+  );
+
+}
+
+
+// =========================
+// 初始化
+// =========================
+
+document.addEventListener(
+  "DOMContentLoaded",
+  () => {
+
+    console.log(
+      "奕心疗愈舍预约系统 V1.0 已启动"
+    );
+
+    updateBookingSummary();
+
   }
-
-  button.addEventListener("click", () => {
-
-    showToast("更多疗愈服务正在规划中");
-
-  });
-
-});
-
-
-// =========================
-// 页面加载完成
-// =========================
-
-document.addEventListener("DOMContentLoaded", () => {
-
-  console.log("奕心疗愈舍 V1.0 已启动");
-
-});
+);
