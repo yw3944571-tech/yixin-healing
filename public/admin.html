@@ -34,7 +34,9 @@ content="width=device-width, initial-scale=1.0"
     }
 
 
-    /* 登录 */
+    /* =========================
+       登录
+    ========================= */
 
     #loginPage {
       min-height: 100vh;
@@ -132,7 +134,9 @@ content="width=device-width, initial-scale=1.0"
     }
 
 
-    /* 后台 */
+    /* =========================
+       后台
+    ========================= */
 
     .header {
       background: #292421;
@@ -193,6 +197,8 @@ content="width=device-width, initial-scale=1.0"
       border-radius: 8px;
 
       cursor: pointer;
+
+      font-size: 14px;
     }
 
 
@@ -210,6 +216,8 @@ content="width=device-width, initial-scale=1.0"
       border-radius: 8px;
 
       cursor: pointer;
+
+      font-size: 14px;
     }
 
 
@@ -221,6 +229,10 @@ content="width=device-width, initial-scale=1.0"
       padding: 0 20px;
     }
 
+
+    /* =========================
+       数据统计
+    ========================= */
 
     .stats {
       display: grid;
@@ -266,6 +278,69 @@ content="width=device-width, initial-scale=1.0"
     }
 
 
+    /* =========================
+       搜索和筛选
+    ========================= */
+
+    .toolbar {
+      background: white;
+
+      padding: 18px;
+
+      margin-bottom: 20px;
+
+      border-radius: 12px;
+
+      display: flex;
+
+      gap: 12px;
+
+      flex-wrap: wrap;
+
+      box-shadow:
+        0 4px 20px
+        rgba(0,0,0,0.05);
+    }
+
+
+    .search-input {
+      flex: 1;
+
+      min-width: 220px;
+
+      border:
+        1px solid #ddd;
+
+      border-radius: 8px;
+
+      padding: 12px 14px;
+
+      font-size: 14px;
+
+      outline: none;
+    }
+
+
+    .filter-select {
+      min-width: 150px;
+
+      border:
+        1px solid #ddd;
+
+      border-radius: 8px;
+
+      padding: 12px;
+
+      background: white;
+
+      font-size: 14px;
+    }
+
+
+    /* =========================
+       订单表格
+    ========================= */
+
     .table-card {
       background: white;
 
@@ -287,7 +362,7 @@ content="width=device-width, initial-scale=1.0"
     table {
       width: 100%;
 
-      min-width: 1000px;
+      min-width: 1100px;
 
       border-collapse: collapse;
     }
@@ -301,6 +376,8 @@ content="width=device-width, initial-scale=1.0"
       padding: 15px;
 
       font-size: 13px;
+
+      white-space: nowrap;
     }
 
 
@@ -333,6 +410,28 @@ content="width=device-width, initial-scale=1.0"
     }
 
 
+    .delete-btn {
+      border: none;
+
+      background: #fff0f0;
+
+      color: #c0392b;
+
+      padding: 7px 12px;
+
+      border-radius: 7px;
+
+      cursor: pointer;
+
+      font-size: 12px;
+    }
+
+
+    .delete-btn:hover {
+      opacity: 0.8;
+    }
+
+
     .empty {
       padding: 80px 20px;
 
@@ -351,6 +450,10 @@ content="width=device-width, initial-scale=1.0"
     }
 
 
+    /* =========================
+       手机端
+    ========================= */
+
     @media (max-width: 600px) {
 
       .header-inner {
@@ -360,8 +463,30 @@ content="width=device-width, initial-scale=1.0"
       }
 
 
+      .header-actions {
+        width: 100%;
+      }
+
+
+      .refresh-btn,
+      .logout-btn {
+        flex: 1;
+      }
+
+
       .container {
         margin-top: 20px;
+      }
+
+
+      .toolbar {
+        flex-direction: column;
+      }
+
+
+      .search-input,
+      .filter-select {
+        width: 100%;
       }
 
     }
@@ -372,7 +497,9 @@ content="width=device-width, initial-scale=1.0"
 
 <body>
 
-  <!-- 登录 -->
+  <!-- =========================
+       登录页面
+  ========================= -->
 
   <div id="loginPage">
 
@@ -421,7 +548,9 @@ content="width=device-width, initial-scale=1.0"
 
   </div>
 
-  <!-- 后台 -->
+  <!-- =========================
+       管理后台
+  ========================= -->
 
   <div
     id="adminPage"
@@ -472,6 +601,8 @@ content="width=device-width, initial-scale=1.0"
 <main class="container">
 
 
+  <!-- 数据统计 -->
+
   <section class="stats">
 
     <div class="stat-card">
@@ -507,6 +638,56 @@ content="width=device-width, initial-scale=1.0"
 
   </section>
 
+
+  <!-- 搜索筛选 -->
+
+  <section class="toolbar">
+
+    <input
+      id="searchInput"
+      class="search-input"
+      type="text"
+      placeholder="搜索订单号、客户姓名或手机号"
+      oninput="filterOrders()"
+    >
+
+
+    <select
+      id="statusFilter"
+      class="filter-select"
+      onchange="filterOrders()"
+    >
+
+      <option value="">
+        全部状态
+      </option>
+
+      <option value="待确认">
+        待确认
+      </option>
+
+      <option value="已确认">
+        已确认
+      </option>
+
+      <option value="服务中">
+        服务中
+      </option>
+
+      <option value="已完成">
+        已完成
+      </option>
+
+      <option value="已取消">
+        已取消
+      </option>
+
+    </select>
+
+  </section>
+
+
+  <!-- 订单表格 -->
 
   <section class="table-card">
 
@@ -562,6 +743,8 @@ content="width=device-width, initial-scale=1.0"
 
             <th>下单时间</th>
 
+            <th>操作</th>
+
           </tr>
 
         </thead>
@@ -585,6 +768,13 @@ content="width=device-width, initial-scale=1.0"
 
   <script>
 
+
+    let allOrders = [];
+
+
+    // =========================
+    // 登录
+    // =========================
 
     async function login() {
 
@@ -669,6 +859,10 @@ content="width=device-width, initial-scale=1.0"
     }
 
 
+    // =========================
+    // 显示后台
+    // =========================
+
     function showAdminPage() {
 
       document
@@ -684,6 +878,10 @@ content="width=device-width, initial-scale=1.0"
 
     }
 
+
+    // =========================
+    // 显示登录
+    // =========================
 
     function showLoginPage() {
 
@@ -701,6 +899,10 @@ content="width=device-width, initial-scale=1.0"
     }
 
 
+    // =========================
+    // 退出登录
+    // =========================
+
     function logout() {
 
       localStorage.removeItem(
@@ -711,6 +913,10 @@ content="width=device-width, initial-scale=1.0"
 
     }
 
+
+    // =========================
+    // 加载订单
+    // =========================
 
     async function loadOrders() {
 
@@ -729,12 +935,6 @@ content="width=device-width, initial-scale=1.0"
       const tableWrap =
         document.getElementById(
           "tableWrap"
-        );
-
-
-      const ordersBody =
-        document.getElementById(
-          "ordersBody"
         );
 
 
@@ -813,213 +1013,18 @@ content="width=device-width, initial-scale=1.0"
         }
 
 
-        const orders =
+        allOrders =
           data.orders || [];
 
 
-        document
-          .getElementById("totalOrders")
-          .textContent =
-            orders.length;
+        updateStats();
 
-
-        document
-          .getElementById("pendingOrders")
-          .textContent =
-            orders.filter(
-              function(order) {
-
-                return (
-                  order.status ===
-                  "待确认"
-                );
-
-              }
-            )
-            .length;
-
-
-        ordersBody.innerHTML = "";
+        filterOrders();
 
 
         loading.style.display =
           "none";
 
-
-        if (
-          orders.length === 0
-        ) {
-
-          empty.style.display =
-            "block";
-
-          return;
-
-        }
-
-
-        tableWrap.style.display =
-          "block";
-
-
-        orders.forEach(
-          function(order) {
-
-            const row =
-              document.createElement(
-                "tr"
-              );
-
-
-            const createdAt =
-              order.createdAt
-                ? new Date(
-                    order.createdAt
-                  ).toLocaleString(
-                    "zh-CN"
-                  )
-                : "-";
-
-
-            const statusList = [
-              "待确认",
-              "已确认",
-              "服务中",
-              "已完成",
-              "已取消"
-            ];
-
-
-            let options = "";
-
-
-            statusList.forEach(
-              function(status) {
-
-                const selected =
-                  order.status === status
-                    ? " selected"
-                    : "";
-
-
-                options +=
-                  "<option value=\"" +
-                  status +
-                  "\"" +
-                  selected +
-                  ">" +
-                  status +
-                  "</option>";
-
-              }
-            );
-
-
-            row.innerHTML =
-              "<td>" +
-              escapeHtml(
-                order.id || "-"
-              ) +
-              "</td>" +
-
-              "<td>" +
-              escapeHtml(
-                order.service || "-"
-              ) +
-              "</td>" +
-
-              "<td>¥" +
-              escapeHtml(
-                String(
-                  order.price || 0
-                )
-              ) +
-              "</td>" +
-
-              "<td>" +
-              escapeHtml(
-                order.duration || "-"
-              ) +
-              "</td>" +
-
-              "<td>" +
-              escapeHtml(
-                order.therapist || "-"
-              ) +
-              "</td>" +
-
-              "<td>" +
-              escapeHtml(
-                order.date || "-"
-              ) +
-              "<br>" +
-              escapeHtml(
-                order.time || "-"
-              ) +
-              "</td>" +
-
-              "<td>" +
-              escapeHtml(
-                order.name || "-"
-              ) +
-              "</td>" +
-
-              "<td>" +
-              escapeHtml(
-                order.phone || "-"
-              ) +
-              "</td>" +
-
-              "<td>" +
-              escapeHtml(
-                order.address || "-"
-              ) +
-              "</td>" +
-
-              "<td>" +
-              "<select " +
-              "class=\"status-select\" " +
-              "data-order-id=\"" +
-              escapeHtml(
-                order.id
-              ) +
-              "\">" +
-              options +
-              "</select>" +
-              "</td>" +
-
-              "<td>" +
-              escapeHtml(
-                createdAt
-              ) +
-              "</td>";
-
-
-            const statusSelect =
-              row.querySelector(
-                ".status-select"
-              );
-
-
-            statusSelect.addEventListener(
-              "change",
-              function() {
-
-                updateOrderStatus(
-                  order.id,
-                  statusSelect.value
-                );
-
-              }
-            );
-
-
-            ordersBody.appendChild(
-              row
-            );
-
-          }
-        );
 
       } catch (error) {
 
@@ -1032,6 +1037,368 @@ content="width=device-width, initial-scale=1.0"
 
     }
 
+
+    // =========================
+    // 更新统计
+    // =========================
+
+    function updateStats() {
+
+      document
+        .getElementById(
+          "totalOrders"
+        )
+        .textContent =
+          allOrders.length;
+
+
+      document
+        .getElementById(
+          "pendingOrders"
+        )
+        .textContent =
+          allOrders.filter(
+            function(order) {
+
+              return (
+                order.status ===
+                "待确认"
+              );
+
+            }
+          )
+          .length;
+
+    }
+
+
+    // =========================
+    // 搜索 + 筛选
+    // =========================
+
+    function filterOrders() {
+
+      const keyword =
+        document
+          .getElementById(
+            "searchInput"
+          )
+          .value
+          .trim()
+          .toLowerCase();
+
+
+      const status =
+        document
+          .getElementById(
+            "statusFilter"
+          )
+          .value;
+
+
+      const filteredOrders =
+        allOrders.filter(
+          function(order) {
+
+            const orderId =
+              String(
+                order.id || ""
+              ).toLowerCase();
+
+
+            const name =
+              String(
+                order.name || ""
+              ).toLowerCase();
+
+
+            const phone =
+              String(
+                order.phone || ""
+              ).toLowerCase();
+
+
+            const keywordMatch =
+              !keyword ||
+              orderId.includes(
+                keyword
+              ) ||
+              name.includes(
+                keyword
+              ) ||
+              phone.includes(
+                keyword
+              );
+
+
+            const statusMatch =
+              !status ||
+              order.status ===
+              status;
+
+
+            return (
+              keywordMatch &&
+              statusMatch
+            );
+
+          }
+        );
+
+
+      renderOrders(
+        filteredOrders
+      );
+
+    }
+
+
+    // =========================
+    // 渲染订单
+    // =========================
+
+    function renderOrders(
+      orders
+    ) {
+
+      const empty =
+        document.getElementById(
+          "empty"
+        );
+
+
+      const tableWrap =
+        document.getElementById(
+          "tableWrap"
+        );
+
+
+      const ordersBody =
+        document.getElementById(
+          "ordersBody"
+        );
+
+
+      ordersBody.innerHTML = "";
+
+
+      if (
+        orders.length === 0
+      ) {
+
+        empty.style.display =
+          "block";
+
+
+        tableWrap.style.display =
+          "none";
+
+        return;
+
+      }
+
+
+      empty.style.display =
+        "none";
+
+
+      tableWrap.style.display =
+        "block";
+
+
+      orders.forEach(
+        function(order) {
+
+          const row =
+            document.createElement(
+              "tr"
+            );
+
+
+          const createdAt =
+            order.createdAt
+              ? new Date(
+                  order.createdAt
+                ).toLocaleString(
+                  "zh-CN"
+                )
+              : "-";
+
+
+          const statusList = [
+            "待确认",
+            "已确认",
+            "服务中",
+            "已完成",
+            "已取消"
+          ];
+
+
+          let options = "";
+
+
+          statusList.forEach(
+            function(status) {
+
+              const selected =
+                order.status === status
+                  ? " selected"
+                  : "";
+
+
+              options +=
+                "<option value=\"" +
+                status +
+                "\"" +
+                selected +
+                ">" +
+                status +
+                "</option>";
+
+            }
+          );
+
+
+          row.innerHTML =
+            "<td>" +
+            escapeHtml(
+              order.id || "-"
+            ) +
+            "</td>" +
+
+            "<td>" +
+            escapeHtml(
+              order.service || "-"
+            ) +
+            "</td>" +
+
+            "<td>¥" +
+            escapeHtml(
+              String(
+                order.price || 0
+              )
+            ) +
+            "</td>" +
+
+            "<td>" +
+            escapeHtml(
+              order.duration || "-"
+            ) +
+            "</td>" +
+
+            "<td>" +
+            escapeHtml(
+              order.therapist || "-"
+            ) +
+            "</td>" +
+
+            "<td>" +
+            escapeHtml(
+              order.date || "-"
+            ) +
+            "<br>" +
+            escapeHtml(
+              order.time || "-"
+            ) +
+            "</td>" +
+
+            "<td>" +
+            escapeHtml(
+              order.name || "-"
+            ) +
+            "</td>" +
+
+            "<td>" +
+            escapeHtml(
+              order.phone || "-"
+            ) +
+            "</td>" +
+
+            "<td>" +
+            escapeHtml(
+              order.address || "-"
+            ) +
+            "</td>" +
+
+            "<td>" +
+            "<select " +
+            "class=\"status-select\" " +
+            "data-order-id=\"" +
+            escapeHtml(
+              order.id
+            ) +
+            "\">" +
+            options +
+            "</select>" +
+            "</td>" +
+
+            "<td>" +
+            escapeHtml(
+              createdAt
+            ) +
+            "</td>" +
+
+            "<td>" +
+            "<button " +
+            "class=\"delete-btn\" " +
+            "data-order-id=\"" +
+            escapeHtml(
+              order.id
+            ) +
+            "\">删除</button>" +
+            "</td>";
+
+
+          const statusSelect =
+            row.querySelector(
+              ".status-select"
+            );
+
+
+          statusSelect.addEventListener(
+            "change",
+            function() {
+
+              updateOrderStatus(
+                order.id,
+                statusSelect.value
+              );
+
+            }
+          );
+
+
+          const deleteButton =
+            row.querySelector(
+              ".delete-btn"
+            );
+
+
+          deleteButton.addEventListener(
+            "click",
+            function() {
+
+              deleteOrder(
+                order.id
+              );
+
+            }
+          );
+
+
+          ordersBody.appendChild(
+            row
+          );
+
+        }
+      );
+
+    }
+
+
+    // =========================
+    // 修改订单状态
+    // =========================
 
     async function updateOrderStatus(
       orderId,
@@ -1054,19 +1421,22 @@ content="width=device-width, initial-scale=1.0"
             ) +
             "/status",
             {
-              method: "PATCH",
+              method:
+                "PATCH",
 
               headers: {
                 "Content-Type":
                   "application/json",
 
                 "Authorization":
-                  "Bearer " + token
+                  "Bearer " +
+                  token
               },
 
               body:
                 JSON.stringify({
-                  status: status
+                  status:
+                    status
                 })
             }
           );
@@ -1084,6 +1454,7 @@ content="width=device-width, initial-scale=1.0"
             "adminToken"
           );
 
+
           showLoginPage();
 
           return;
@@ -1091,7 +1462,9 @@ content="width=device-width, initial-scale=1.0"
         }
 
 
-        if (!data.success) {
+        if (
+          !data.success
+        ) {
 
           throw new Error(
             data.message ||
@@ -1113,6 +1486,7 @@ content="width=device-width, initial-scale=1.0"
 
         console.error(error);
 
+
         alert(
           "订单状态修改失败"
         );
@@ -1125,10 +1499,119 @@ content="width=device-width, initial-scale=1.0"
     }
 
 
-    function escapeHtml(value) {
+    // =========================
+    // 删除订单
+    // =========================
+
+    async function deleteOrder(
+      orderId
+    ) {
+
+      const confirmed =
+        confirm(
+          "确定要删除这个订单吗？\n\n删除后无法恢复。"
+        );
+
+
+      if (!confirmed) {
+
+        return;
+
+      }
+
+
+      const token =
+        localStorage.getItem(
+          "adminToken"
+        );
+
+
+      try {
+
+        const response =
+          await fetch(
+            "/api/orders/" +
+            encodeURIComponent(
+              orderId
+            ),
+            {
+              method:
+                "DELETE",
+
+              headers: {
+                "Authorization":
+                  "Bearer " +
+                  token
+              }
+            }
+          );
+
+
+        if (
+          response.status === 401
+        ) {
+
+          localStorage.removeItem(
+            "adminToken"
+          );
+
+
+          showLoginPage();
+
+          return;
+
+        }
+
+
+        const data =
+          await response.json();
+
+
+        if (
+          !data.success
+        ) {
+
+          throw new Error(
+            data.message ||
+            "删除订单失败"
+          );
+
+        }
+
+
+        alert(
+          "订单已删除"
+        );
+
+
+        loadOrders();
+
+      } catch (error) {
+
+        console.error(error);
+
+
+        alert(
+          "删除订单失败，请重试"
+        );
+
+      }
+
+    }
+
+
+    // =========================
+    // 防止 HTML 注入
+    // =========================
+
+    function escapeHtml(
+      value
+    ) {
 
       const div =
-        document.createElement("div");
+        document.createElement(
+          "div"
+        );
 
 
       div.textContent =
@@ -1140,14 +1623,21 @@ content="width=device-width, initial-scale=1.0"
     }
 
 
+    // =========================
+    // 回车登录
+    // =========================
+
     document
-      .getElementById("password")
+      .getElementById(
+        "password"
+      )
       .addEventListener(
         "keydown",
         function(event) {
 
           if (
-            event.key === "Enter"
+            event.key ===
+            "Enter"
           ) {
 
             login();
@@ -1157,6 +1647,10 @@ content="width=device-width, initial-scale=1.0"
         }
       );
 
+
+    // =========================
+    // 自动恢复登录
+    // =========================
 
     const token =
       localStorage.getItem(
