@@ -578,6 +578,114 @@ try {
 );
 
 // =========================
+// 修改订单状态
+// PATCH /api/orders/:id/status
+// =========================
+
+app.patch(
+"/api/orders/:id/status",
+requireAdmin,
+async (req, res) => {
+
+```
+try {
+
+  const orderId =
+    req.params.id;
+
+  const status =
+    req.body.status;
+
+
+  const allowedStatus = [
+    "待确认",
+    "已确认",
+    "服务中",
+    "已完成",
+    "已取消"
+  ];
+
+
+  if (
+    !allowedStatus.includes(
+      status
+    )
+  ) {
+
+    return res.status(400).json({
+      success: false,
+      message: "订单状态不合法"
+    });
+
+  }
+
+
+  const updateSql =
+    "UPDATE orders " +
+    "SET status = $1 " +
+    "WHERE id = $2 " +
+    "RETURNING " +
+    "id, status";
+
+
+  const result =
+    await pool.query(
+      updateSql,
+      [
+        status,
+        orderId
+      ]
+    );
+
+
+  if (
+    result.rows.length === 0
+  ) {
+
+    return res.status(404).json({
+      success: false,
+      message: "订单不存在"
+    });
+
+  }
+
+
+  console.log(
+    "订单状态已更新：",
+    orderId,
+    status
+  );
+
+
+  return res.json({
+    success: true,
+    message: "订单状态更新成功",
+    order:
+      result.rows[0]
+  });
+
+} catch (
+  error
+) {
+
+  console.error(
+    "修改订单状态失败：",
+    error
+  );
+
+
+  return res.status(500).json({
+    success: false,
+    message: "修改订单状态失败"
+  });
+
+}
+```
+
+}
+);
+
+// =========================
 // 启动服务器
 // =========================
 
