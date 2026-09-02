@@ -1,26 +1,48 @@
 <!DOCTYPE html>
 
 <html lang="zh-CN">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <meta name="theme-color" content="#f7f4ef" />
-  <title>奕心疗愈舍｜预约</title>
+
+  <meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+
+>
+
+<meta
+name="theme-color"
+content="#f7f4ef"
+
+>
+
+  <title>奕心疗愈舍｜预约疗愈</title>
 
   <style>
+
     * {
       box-sizing: border-box;
       -webkit-tap-highlight-color: transparent;
     }
 
+
     html {
       scroll-behavior: smooth;
     }
 
+
     body {
+
       margin: 0;
-      background: #f7f4ef;
-      color: #292621;
+
+      background:
+        #f7f4ef;
+
+      color:
+        #292621;
+
       font-family:
         -apple-system,
         BlinkMacSystemFont,
@@ -28,7 +50,9 @@
         "Hiragino Sans GB",
         "Microsoft YaHei",
         sans-serif;
+
     }
+
 
     button,
     input,
@@ -37,717 +61,1558 @@
       font: inherit;
     }
 
-    .page {
-      width: 100%;
-      max-width: 760px;
-      margin: 0 auto;
-      padding-bottom: 60px;
+
+    button {
+      -webkit-appearance: none;
     }
 
+
     /* =========================
-       首页主视觉
+       页面
+    ========================= */
+
+    .page {
+
+      width:
+        100%;
+
+      max-width:
+        760px;
+
+      margin:
+        0 auto;
+
+      padding:
+        0 16px 60px;
+
+    }
+
+
+    /* =========================
+       首页品牌视觉
     ========================= */
 
     .hero {
-      position: relative;
-      min-height: 620px;
-      display: flex;
-      align-items: flex-end;
-      overflow: hidden;
+
+      position:
+        relative;
+
+      overflow:
+        hidden;
+
+      min-height:
+        430px;
+
+      margin:
+        0 -16px 28px;
+
+      display:
+        flex;
+
+      align-items:
+        flex-end;
+
+      padding:
+        42px 28px;
+
+      background-image:
+        linear-gradient(
+          180deg,
+          rgba(35,30,25,0.05),
+          rgba(35,30,25,0.70)
+        ),
+        url("https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=85");
+
+      background-size:
+        cover;
+
+      background-position:
+        center;
+
+    }
+
+
+    .hero::before {
+
+      content:
+        "";
+
+      position:
+        absolute;
+
+      inset:
+        0;
+
       background:
         linear-gradient(
-          rgba(25, 23, 20, 0.08),
-          rgba(25, 23, 20, 0.58)
-        ),
-        url("/images/yixin-healing-hero.png")
-        center center / cover no-repeat;
+          135deg,
+          rgba(76,62,48,0.05),
+          rgba(40,32,26,0.18)
+        );
+
     }
+
 
     .hero-content {
-      width: 100%;
-      padding: 80px 28px 45px;
-      color: white;
-      text-align: center;
-      background:
-        linear-gradient(
-          transparent,
-          rgba(0, 0, 0, 0.28)
-        );
+
+      position:
+        relative;
+
+      z-index:
+        2;
+
+      color:
+        white;
+
+      width:
+        100%;
+
     }
 
-    .hero-brand {
+
+    .hero-label {
+
+      display:
+        inline-flex;
+
+      align-items:
+        center;
+
+      gap:
+        8px;
+
+      font-size:
+        11px;
+
+      letter-spacing:
+        3px;
+
+      color:
+        rgba(255,255,255,0.85);
+
+      margin-bottom:
+        18px;
+
+    }
+
+
+    .hero-label::before {
+
+      content:
+        "";
+
+      width:
+        26px;
+
+      height:
+        1px;
+
+      background:
+        #d7bd91;
+
+    }
+
+
+    .hero-title {
+
+      margin:
+        0;
+
       font-family:
         "Songti SC",
         "STSong",
         "SimSun",
         serif;
-      font-size: 42px;
-      font-weight: 500;
-      letter-spacing: 10px;
-      margin-left: 10px;
+
+      font-size:
+        40px;
+
+      font-weight:
+        500;
+
+      letter-spacing:
+        8px;
+
+      line-height:
+        1.3;
+
     }
+
 
     .hero-line {
-      width: 42px;
-      height: 1px;
-      background: rgba(255, 255, 255, 0.8);
-      margin: 22px auto 16px;
+
+      width:
+        42px;
+
+      height:
+        1px;
+
+      background:
+        #d4b98c;
+
+      margin:
+        20px 0;
+
     }
+
 
     .hero-slogan {
-      font-size: 13px;
-      letter-spacing: 3px;
-      opacity: 0.9;
+
+      margin:
+        0;
+
+      font-size:
+        13px;
+
+      letter-spacing:
+        3px;
+
+      line-height:
+        1.8;
+
+      color:
+        rgba(255,255,255,0.88);
+
     }
 
-    .hero-desc {
-      max-width: 430px;
-      margin: 25px auto 0;
-      font-size: 13px;
-      line-height: 1.9;
-      opacity: 0.88;
-    }
-
-    .start-btn {
-      margin-top: 30px;
-      min-width: 180px;
-      height: 50px;
-      padding: 0 28px;
-      border: 1px solid rgba(255, 255, 255, 0.8);
-      border-radius: 30px;
-      background: rgba(255, 255, 255, 0.12);
-      color: white;
-      cursor: pointer;
-      letter-spacing: 2px;
-      backdrop-filter: blur(8px);
-    }
-
-    .start-btn:active {
-      transform: scale(0.98);
-    }
-
-    /* =========================
-       预约区域
-    ========================= */
-
-    .booking-area {
-      padding: 30px 18px 0;
-    }
-
-    .booking-title {
-      text-align: center;
-      margin: 8px 0 25px;
-    }
-
-    .booking-title h1 {
-      margin: 0;
-      font-family:
-        "Songti SC",
-        "STSong",
-        serif;
-      font-size: 26px;
-      font-weight: 500;
-      letter-spacing: 4px;
-    }
-
-    .booking-title p {
-      margin: 12px 0 0;
-      color: #998f83;
-      font-size: 12px;
-      letter-spacing: 1px;
-    }
 
     /* =========================
        卡片
     ========================= */
 
     .card {
-      background: rgba(255, 255, 255, 0.95);
-      border-radius: 20px;
-      padding: 22px;
-      margin-bottom: 16px;
-      border: 1px solid rgba(65, 55, 45, 0.06);
+
+      background:
+        rgba(255,255,255,0.95);
+
+      border-radius:
+        20px;
+
+      padding:
+        22px;
+
+      margin-bottom:
+        16px;
+
+      border:
+        1px solid
+        rgba(65,55,45,0.06);
+
       box-shadow:
-        0 10px 35px
-        rgba(75, 63, 48, 0.05);
+        0 12px 35px
+        rgba(75,63,48,0.05);
+
     }
 
-    .section-title {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      margin-bottom: 18px;
-    }
-
-    .section-number {
-      width: 25px;
-      height: 25px;
-      border-radius: 50%;
-      background: #eee8de;
-      color: #8b7556;
-      font-size: 11px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .section-title h2 {
-      margin: 0;
-      font-size: 17px;
-      font-weight: 600;
-      letter-spacing: 1px;
-    }
-
-    .section-desc {
-      margin: -8px 0 18px 34px;
-      color: #a0988d;
-      font-size: 12px;
-      line-height: 1.7;
-    }
 
     /* =========================
-       服务
+       标题
+    ========================= */
+
+    .section-title {
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      gap:
+        10px;
+
+      margin-bottom:
+        18px;
+
+    }
+
+
+    .section-number {
+
+      width:
+        26px;
+
+      height:
+        26px;
+
+      border-radius:
+        50%;
+
+      background:
+        #eee8de;
+
+      color:
+        #8b7556;
+
+      font-size:
+        11px;
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        center;
+
+    }
+
+
+    .section-title h2 {
+
+      margin:
+        0;
+
+      font-size:
+        17px;
+
+      font-weight:
+        600;
+
+      letter-spacing:
+        1px;
+
+    }
+
+
+    .section-desc {
+
+      margin:
+        -7px 0 18px 36px;
+
+      color:
+        #a0988d;
+
+      font-size:
+        12px;
+
+      line-height:
+        1.7;
+
+    }
+
+
+    /* =========================
+       服务选择
     ========================= */
 
     .service-list {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
+
+      display:
+        grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap:
+        12px;
+
     }
+
 
     .service-item {
-      position: relative;
-      padding: 19px 15px;
-      border: 1px solid #e5dfd5;
-      border-radius: 15px;
-      background: #fff;
-      cursor: pointer;
-      transition: all 0.2s ease;
+
+      position:
+        relative;
+
+      padding:
+        19px 15px;
+
+      border:
+        1px solid #e5dfd5;
+
+      border-radius:
+        15px;
+
+      background:
+        #fff;
+
+      cursor:
+        pointer;
+
+      transition:
+        all 0.25s ease;
+
     }
+
 
     .service-item:hover {
-      border-color: #cdbb9d;
+
+      transform:
+        translateY(-2px);
+
+      border-color:
+        #cdbb9d;
+
     }
+
 
     .service-item.active {
-      border-color: #b49a72;
-      background: #fbf8f3;
+
+      border-color:
+        #b49a72;
+
+      background:
+        #fbf8f3;
+
       box-shadow:
         inset 0 0 0 1px
-        rgba(180, 154, 114, 0.12);
+        rgba(180,154,114,0.10);
+
     }
+
 
     .service-item.active::after {
-      content: "✓";
-      position: absolute;
-      right: 12px;
-      top: 11px;
-      width: 21px;
-      height: 21px;
-      border-radius: 50%;
-      background: #b49a72;
-      color: white;
-      font-size: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+
+      content:
+        "✓";
+
+      position:
+        absolute;
+
+      right:
+        12px;
+
+      top:
+        11px;
+
+      width:
+        21px;
+
+      height:
+        21px;
+
+      border-radius:
+        50%;
+
+      background:
+        #b49a72;
+
+      color:
+        white;
+
+      font-size:
+        12px;
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        center;
+
     }
+
 
     .service-name {
-      font-size: 16px;
-      font-weight: 600;
-      margin-bottom: 7px;
+
+      font-size:
+        16px;
+
+      font-weight:
+        600;
+
+      margin-bottom:
+        8px;
+
     }
+
 
     .service-time {
-      font-size: 12px;
-      color: #958d83;
-      margin-bottom: 12px;
+
+      font-size:
+        12px;
+
+      color:
+        #958d83;
+
+      margin-bottom:
+        12px;
+
     }
 
+
     .service-price {
+
       font-family:
         Georgia,
         "Times New Roman",
         serif;
-      font-size: 25px;
-      color: #876e4d;
+
+      font-size:
+        25px;
+
+      color:
+        #876e4d;
+
     }
 
+
     .service-price span {
-      font-size: 12px;
-      margin-left: 2px;
+
+      font-size:
+        12px;
+
+      margin-left:
+        2px;
+
     }
+
 
     /* =========================
        表单
     ========================= */
 
-    .two-col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
+    .form-group {
+
+      margin-bottom:
+        16px;
+
     }
 
-    .form-group {
-      margin-bottom: 16px;
-    }
 
     .form-group:last-child {
-      margin-bottom: 0;
+
+      margin-bottom:
+        0;
+
     }
+
 
     .form-label {
-      display: block;
-      font-size: 13px;
-      color: #625b53;
-      margin-bottom: 8px;
+
+      display:
+        block;
+
+      font-size:
+        13px;
+
+      color:
+        #625b53;
+
+      margin-bottom:
+        8px;
+
     }
+
 
     .required {
-      color: #b28c61;
-      margin-left: 3px;
+
+      color:
+        #b28c61;
+
+      margin-left:
+        3px;
+
     }
+
 
     input,
+    select,
     textarea {
-      width: 100%;
-      border: 1px solid #e3ddd3;
-      background: #fcfbf9;
-      border-radius: 11px;
-      min-height: 48px;
-      padding: 0 14px;
-      outline: none;
-      color: #302d29;
-      font-size: 14px;
+
+      width:
+        100%;
+
+      border:
+        1px solid #e3ddd3;
+
+      background:
+        #fcfbf9;
+
+      border-radius:
+        11px;
+
+      min-height:
+        48px;
+
+      padding:
+        0 14px;
+
+      outline:
+        none;
+
+      color:
+        #302d29;
+
+      font-size:
+        14px;
+
+      transition:
+        0.2s;
+
     }
 
+
     textarea {
-      min-height: 90px;
-      padding: 13px 14px;
-      resize: vertical;
+
+      min-height:
+        90px;
+
+      padding:
+        13px 14px;
+
+      resize:
+        vertical;
+
     }
+
 
     input:focus,
+    select:focus,
     textarea:focus {
-      border-color: #c5aa82;
+
+      border-color:
+        #c5aa82;
+
       box-shadow:
         0 0 0 3px
-        rgba(197, 170, 130, 0.10);
-      background: white;
+        rgba(197,170,130,0.10);
+
+      background:
+        #fff;
+
     }
+
 
     input::placeholder,
     textarea::placeholder {
-      color: #b7b0a8;
+
+      color:
+        #b7b0a8;
+
     }
+
+
+    .two-col {
+
+      display:
+        grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap:
+        12px;
+
+    }
+
 
     .date-tip {
-      margin-top: 7px;
-      font-size: 11px;
-      color: #a39a90;
+
+      font-size:
+        11px;
+
+      color:
+        #a39a90;
+
+      margin-top:
+        7px;
+
+      line-height:
+        1.6;
+
     }
 
+
     /* =========================
-       疗愈师卡片
+       疗愈师
     ========================= */
 
     .therapist-list {
-      display: grid;
+
+      display:
+        grid;
+
       grid-template-columns:
-        repeat(
-          auto-fit,
-          minmax(145px, 1fr)
-        );
-      gap: 13px;
+        1fr 1fr;
+
+      gap:
+        13px;
+
     }
+
 
     .therapist-card {
-      position: relative;
-      overflow: hidden;
-      border: 1px solid #e6e0d7;
-      border-radius: 16px;
-      background: #fff;
-      cursor: pointer;
-      transition: all 0.22s ease;
+
+      position:
+        relative;
+
+      overflow:
+        hidden;
+
+      border:
+        1px solid #e6dfd6;
+
+      border-radius:
+        16px;
+
+      background:
+        #fff;
+
+      cursor:
+        pointer;
+
+      transition:
+        all 0.25s ease;
+
     }
+
 
     .therapist-card:hover {
-      transform: translateY(-2px);
+
+      transform:
+        translateY(-3px);
+
       box-shadow:
-        0 10px 25px
-        rgba(60, 50, 40, 0.08);
+        0 12px 30px
+        rgba(80,65,50,0.10);
+
     }
+
 
     .therapist-card.active {
-      border-color: #b49a72;
+
+      border:
+        1px solid #b49a72;
+
       box-shadow:
         0 0 0 2px
-        rgba(180, 154, 114, 0.13);
+        rgba(180,154,114,0.10);
+
     }
+
 
     .therapist-card.active::after {
-      content: "已选择";
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      padding: 4px 8px;
-      border-radius: 20px;
-      background: #b49a72;
-      color: white;
-      font-size: 10px;
+
+      content:
+        "已选择";
+
+      position:
+        absolute;
+
+      top:
+        12px;
+
+      right:
+        12px;
+
+      z-index:
+        5;
+
+      padding:
+        5px 9px;
+
+      border-radius:
+        20px;
+
+      background:
+        #b49a72;
+
+      color:
+        white;
+
+      font-size:
+        11px;
+
     }
+
 
     .therapist-photo {
-      height: 165px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+
+      width:
+        100%;
+
+      aspect-ratio:
+        4 / 3;
+
+      object-fit:
+        cover;
+
+      display:
+        block;
+
       background:
-        linear-gradient(
-          135deg,
-          #eee7dd,
-          #d9cfc0
-        );
-      overflow: hidden;
+        #eee9e2;
+
     }
 
-    .therapist-photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .therapist-avatar {
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      background:
-        rgba(255, 255, 255, 0.5);
-      color: #8c7555;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 28px;
-      font-family:
-        "Songti SC",
-        serif;
-    }
 
     .therapist-info {
-      padding: 13px;
+
+      padding:
+        14px;
+
     }
+
 
     .therapist-name {
-      font-size: 16px;
-      font-weight: 600;
+
+      display:
+        flex;
+
+      align-items:
+        baseline;
+
+      justify-content:
+        space-between;
+
+      gap:
+        8px;
+
+      margin-bottom:
+        8px;
+
     }
 
-    .therapist-title {
-      margin-top: 5px;
-      font-size: 11px;
-      color: #a09588;
+
+    .therapist-name strong {
+
+      font-size:
+        17px;
+
+      font-weight:
+        600;
+
     }
+
+
+    .therapist-years {
+
+      color:
+        #a08765;
+
+      font-size:
+        11px;
+
+      white-space:
+        nowrap;
+
+    }
+
+
+    .therapist-specialty {
+
+      font-size:
+        12px;
+
+      color:
+        #7e756b;
+
+      line-height:
+        1.7;
+
+      min-height:
+        40px;
+
+    }
+
 
     .therapist-tags {
-      margin-top: 10px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 5px;
+
+      display:
+        flex;
+
+      flex-wrap:
+        wrap;
+
+      gap:
+        6px;
+
+      margin-top:
+        10px;
+
     }
+
 
     .therapist-tag {
-      padding: 4px 7px;
-      border-radius: 20px;
-      background: #f5f1eb;
-      color: #8c806f;
-      font-size: 10px;
+
+      padding:
+        4px 8px;
+
+      border-radius:
+        20px;
+
+      background:
+        #f5f0e9;
+
+      color:
+        #927a5a;
+
+      font-size:
+        10px;
+
     }
 
-    .therapist-intro {
-      margin-top: 9px;
-      color: #857d74;
-      font-size: 11px;
-      line-height: 1.7;
+
+    .therapist-empty {
+
+      grid-column:
+        1 / -1;
+
+      padding:
+        25px 15px;
+
+      text-align:
+        center;
+
+      background:
+        #f8f5f0;
+
+      border-radius:
+        12px;
+
+      color:
+        #a49b90;
+
+      font-size:
+        13px;
+
     }
 
-    .therapist-loading {
-      grid-column: 1 / -1;
-      padding: 25px 10px;
-      text-align: center;
-      color: #a0988d;
-      font-size: 13px;
-      background: #faf8f4;
-      border-radius: 12px;
-    }
 
     /* =========================
        时间
     ========================= */
 
     .time-box {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 9px;
+
+      display:
+        grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap:
+        9px;
+
     }
+
 
     .time-option {
-      min-height: 45px;
-      border: 1px solid #e4ddd3;
-      border-radius: 10px;
-      background: white;
-      color: #5c554d;
-      cursor: pointer;
+
+      min-height:
+        46px;
+
+      border:
+        1px solid #e4ddd3;
+
+      border-radius:
+        10px;
+
+      background:
+        #fff;
+
+      color:
+        #5c554d;
+
+      cursor:
+        pointer;
+
+      transition:
+        all 0.2s;
+
     }
+
+
+    .time-option:hover {
+
+      border-color:
+        #cbb28e;
+
+    }
+
 
     .time-option.active {
-      background: #b49a72;
-      border-color: #b49a72;
-      color: white;
+
+      background:
+        #b49a72;
+
+      border-color:
+        #b49a72;
+
+      color:
+        #fff;
+
     }
+
 
     .time-option.disabled {
-      color: #c9c3bc;
-      background: #f7f5f2;
-      cursor: not-allowed;
-      text-decoration: line-through;
+
+      color:
+        #c9c3bc;
+
+      background:
+        #f7f5f2;
+
+      cursor:
+        not-allowed;
+
+      text-decoration:
+        line-through;
+
     }
+
 
     .empty-tip {
-      padding: 16px;
-      text-align: center;
-      background: #f8f5f0;
-      border-radius: 10px;
-      color: #a49b90;
-      font-size: 13px;
+
+      padding:
+        15px;
+
+      text-align:
+        center;
+
+      background:
+        #f8f5f0;
+
+      border-radius:
+        10px;
+
+      color:
+        #a49b90;
+
+      font-size:
+        13px;
+
     }
 
+
     /* =========================
-       摘要
+       预约摘要
     ========================= */
 
     .summary {
-      background: #f8f5ef;
-      border-radius: 14px;
-      padding: 17px;
+
+      background:
+        #f8f5ef;
+
+      border-radius:
+        14px;
+
+      padding:
+        17px;
+
     }
+
 
     .summary-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      padding: 8px 0;
-      font-size: 13px;
+
+      display:
+        flex;
+
+      justify-content:
+        space-between;
+
+      align-items:
+        center;
+
+      padding:
+        8px 0;
+
+      font-size:
+        13px;
+
+      gap:
+        15px;
+
     }
+
 
     .summary-row .label {
-      color: #938a80;
-      flex-shrink: 0;
+
+      color:
+        #938a80;
+
+      white-space:
+        nowrap;
+
     }
+
 
     .summary-row .value {
-      color: #3d3832;
-      text-align: right;
+
+      color:
+        #3d3832;
+
+      text-align:
+        right;
+
+      max-width:
+        68%;
+
     }
+
 
     .summary-price {
-      margin-top: 10px;
-      padding-top: 14px;
-      border-top: 1px solid #e4ddd3;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+
+      margin-top:
+        10px;
+
+      padding-top:
+        14px;
+
+      border-top:
+        1px solid #e4ddd3;
+
+      display:
+        flex;
+
+      justify-content:
+        space-between;
+
+      align-items:
+        center;
+
     }
+
 
     .summary-price span:first-child {
-      color: #71695f;
-      font-size: 13px;
+
+      color:
+        #71695f;
+
+      font-size:
+        13px;
+
     }
 
+
     .price-number {
-      color: #876e4d;
+
+      color:
+        #876e4d;
+
       font-family:
         Georgia,
         "Times New Roman",
         serif;
-      font-size: 27px;
+
+      font-size:
+        27px;
+
     }
+
 
     /* =========================
        提交
     ========================= */
 
     .submit-btn {
-      width: 100%;
-      height: 54px;
-      border: none;
-      border-radius: 14px;
-      background: #403b35;
-      color: white;
-      font-size: 15px;
-      letter-spacing: 2px;
-      cursor: pointer;
-      margin-top: 18px;
+
+      width:
+        100%;
+
+      height:
+        55px;
+
+      border:
+        none;
+
+      border-radius:
+        14px;
+
+      background:
+        #403b35;
+
+      color:
+        #fff;
+
+      font-size:
+        15px;
+
+      letter-spacing:
+        3px;
+
+      cursor:
+        pointer;
+
+      transition:
+        all 0.2s;
+
+      margin-top:
+        18px;
+
     }
+
 
     .submit-btn:hover {
-      background: #514a42;
+
+      background:
+        #514a42;
+
     }
+
+
+    .submit-btn:active {
+
+      transform:
+        scale(0.985);
+
+    }
+
 
     .submit-btn:disabled {
-      background: #b8b1a8;
-      cursor: not-allowed;
+
+      background:
+        #b8b1a8;
+
+      cursor:
+        not-allowed;
+
     }
+
 
     .notice {
-      text-align: center;
-      color: #a29a91;
-      font-size: 11px;
-      line-height: 1.8;
-      margin-top: 14px;
+
+      text-align:
+        center;
+
+      color:
+        #a29a91;
+
+      font-size:
+        11px;
+
+      line-height:
+        1.9;
+
+      margin-top:
+        14px;
+
     }
 
-    .loading-spinner {
-      display: inline-block;
-      width: 15px;
-      height: 15px;
+
+    .loading {
+
+      display:
+        inline-block;
+
+      width:
+        15px;
+
+      height:
+        15px;
+
       border:
         2px solid
-        rgba(255, 255, 255, 0.35);
-      border-top-color: white;
-      border-radius: 50%;
-      animation: spin 0.7s linear infinite;
-      vertical-align: -3px;
-      margin-right: 6px;
+        rgba(255,255,255,.35);
+
+      border-top-color:
+        #fff;
+
+      border-radius:
+        50%;
+
+      animation:
+        spin .7s linear infinite;
+
+      vertical-align:
+        -3px;
+
+      margin-right:
+        7px;
+
     }
 
+
     @keyframes spin {
+
       to {
-        transform: rotate(360deg);
+
+        transform:
+          rotate(360deg);
+
       }
+
     }
+
 
     /* =========================
        弹窗
     ========================= */
 
     .modal-mask {
-      position: fixed;
-      inset: 0;
-      background: rgba(32, 29, 25, 0.48);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      z-index: 999;
+
+      position:
+        fixed;
+
+      inset:
+        0;
+
+      background:
+        rgba(32,29,25,0.48);
+
+      display:
+        none;
+
+      align-items:
+        center;
+
+      justify-content:
+        center;
+
+      padding:
+        20px;
+
+      z-index:
+        999;
+
     }
+
 
     .modal-mask.show {
-      display: flex;
+
+      display:
+        flex;
+
     }
+
 
     .modal {
-      width: 100%;
-      max-width: 390px;
-      background: white;
-      border-radius: 20px;
-      padding: 29px 23px 23px;
-      text-align: center;
+
+      width:
+        100%;
+
+      max-width:
+        390px;
+
+      background:
+        #fff;
+
+      border-radius:
+        20px;
+
+      padding:
+        30px 24px 23px;
+
+      text-align:
+        center;
+
       box-shadow:
         0 20px 60px
-        rgba(0, 0, 0, 0.15);
+        rgba(0,0,0,.15);
+
     }
+
 
     .modal-icon {
-      width: 50px;
-      height: 50px;
-      margin: 0 auto 15px;
-      border-radius: 50%;
-      background: #eee7dc;
-      color: #9a805d;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 23px;
+
+      width:
+        50px;
+
+      height:
+        50px;
+
+      margin:
+        0 auto 15px;
+
+      border-radius:
+        50%;
+
+      background:
+        #eee7dc;
+
+      color:
+        #9a805d;
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        center;
+
+      font-size:
+        23px;
+
     }
+
 
     .modal h3 {
-      margin: 0 0 10px;
-      font-size: 19px;
+
+      margin:
+        0 0 10px;
+
+      font-size:
+        19px;
+
     }
+
 
     .modal p {
-      margin: 0;
-      color: #817970;
-      font-size: 13px;
-      line-height: 1.8;
+
+      margin:
+        0;
+
+      color:
+        #817970;
+
+      font-size:
+        13px;
+
+      line-height:
+        1.8;
+
     }
+
 
     .modal-btn {
-      width: 100%;
-      height: 46px;
-      margin-top: 21px;
-      border: none;
-      border-radius: 11px;
-      background: #403b35;
-      color: white;
-      cursor: pointer;
+
+      width:
+        100%;
+
+      height:
+        46px;
+
+      margin-top:
+        22px;
+
+      border:
+        none;
+
+      border-radius:
+        11px;
+
+      background:
+        #403b35;
+
+      color:
+        #fff;
+
+      cursor:
+        pointer;
+
     }
 
-    @media (max-width: 600px) {
+
+    /* =========================
+       手机端
+    ========================= */
+
+    @media (
+      max-width: 520px
+    ) {
+
+      .page {
+
+        padding:
+          0 13px 45px;
+
+      }
+
 
       .hero {
-        min-height: 560px;
+
+        min-height:
+          360px;
+
+        margin:
+          0 -13px 20px;
+
+        padding:
+          30px 22px;
+
       }
 
-      .hero-brand {
-        font-size: 34px;
+
+      .hero-title {
+
+        font-size:
+          31px;
+
+        letter-spacing:
+          6px;
+
       }
 
-      .hero-content {
-        padding-bottom: 38px;
+
+      .hero-slogan {
+
+        font-size:
+          11px;
+
+        letter-spacing:
+          2px;
+
       }
 
-      .booking-area {
-        padding: 25px 14px 0;
-      }
 
       .card {
-        padding: 18px;
-        border-radius: 17px;
+
+        padding:
+          18px;
+
+        border-radius:
+          17px;
+
       }
 
-      .therapist-photo {
-        height: 150px;
-      }
-
-    }
-
-    @media (max-width: 480px) {
-
-      .two-col {
-        grid-template-columns: 1fr;
-      }
-
-      .service-list {
-        gap: 9px;
-      }
 
       .service-item {
-        padding: 16px 12px;
+
+        padding:
+          16px 12px;
+
       }
 
-      .time-box {
-        grid-template-columns: repeat(3, 1fr);
+
+      .service-price {
+
+        font-size:
+          22px;
+
       }
+
 
       .therapist-list {
-        grid-template-columns: 1fr 1fr;
+
+        gap:
+          10px;
+
       }
 
-      .therapist-photo {
-        height: 145px;
+
+      .therapist-info {
+
+        padding:
+          12px;
+
+      }
+
+
+      .therapist-name strong {
+
+        font-size:
+          15px;
+
+      }
+
+
+      .therapist-specialty {
+
+        font-size:
+          11px;
+
+      }
+
+
+      .two-col {
+
+        grid-template-columns:
+          1fr;
+
+      }
+
+
+      .time-box {
+
+        grid-template-columns:
+          repeat(3, 1fr);
+
       }
 
     }
@@ -760,450 +1625,504 @@
 
 <div class="page">
 
+  <!-- =========================
+       首页品牌视觉
+  ========================= -->
+
   <section class="hero">
 
 <div class="hero-content">
 
-  <div class="hero-brand">
-    奕心疗愈舍
+  <div class="hero-label">
+    YIXIN HEALING
   </div>
+
+
+  <h1 class="hero-title">
+    奕心疗愈舍
+  </h1>
+
 
   <div class="hero-line"></div>
 
-  <div class="hero-slogan">
+
+  <p class="hero-slogan">
     身心同调 · 医心疗愈 · 回归本真
-  </div>
-
-  <div class="hero-desc">
-    在忙碌的生活之外，
-    为身体与内心留下一段真正属于自己的放松时间。
-  </div>
-
-  <button
-    class="start-btn"
-    onclick="startBooking()"
-  >
-    开始预约
-  </button>
+  </p>
 
 </div>
 
   </section>
 
-  <main
-    id="booking"
-    class="booking-area"
-  >
+  <!-- =========================
+       服务选择
+  ========================= -->
 
-<div class="booking-title">
+  <section class="card">
 
-  <h1>
-    预约疗愈服务
-  </h1>
+<div class="section-title">
 
-  <p>
-    YIXIN HEALING · APPOINTMENT
-  </p>
+  <div class="section-number">
+    01
+  </div>
+
+  <h2>
+    选择疗愈服务
+  </h2>
 
 </div>
 
 
-<!-- 01 服务 -->
-
-<section class="card">
-
-  <div class="section-title">
-
-    <div class="section-number">
-      01
-    </div>
-
-    <h2>
-      选择疗愈服务
-    </h2>
-
-  </div>
-
-  <div class="section-desc">
-    选择适合自己的疗愈时长
-  </div>
+<div class="section-desc">
+  给自己一段安静而完整的放松时间
+</div>
 
 
-  <div class="service-list">
-
-    <div
-      class="service-item active"
-      data-service="舒缓疗愈"
-      data-price="298"
-      data-duration="90"
-    >
-
-      <div class="service-name">
-        舒缓疗愈
-      </div>
-
-      <div class="service-time">
-        90分钟 · 深度放松
-      </div>
-
-      <div class="service-price">
-        298<span>元</span>
-      </div>
-
-    </div>
-
-
-    <div
-      class="service-item"
-      data-service="深度疗愈"
-      data-price="398"
-      data-duration="120"
-    >
-
-      <div class="service-name">
-        深度疗愈
-      </div>
-
-      <div class="service-time">
-        120分钟 · 深度舒缓
-      </div>
-
-      <div class="service-price">
-        398<span>元</span>
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- 02 日期 -->
-
-<section class="card">
-
-  <div class="section-title">
-
-    <div class="section-number">
-      02
-    </div>
-
-    <h2>
-      选择预约日期
-    </h2>
-
-  </div>
-
-
-  <div class="form-group">
-
-    <label class="form-label">
-      预约日期
-      <span class="required">*</span>
-    </label>
-
-    <input
-      id="date"
-      type="date"
-    >
-
-    <div class="date-tip">
-      请选择需要服务的日期
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- 03 疗愈师 -->
-
-<section class="card">
-
-  <div class="section-title">
-
-    <div class="section-number">
-      03
-    </div>
-
-    <h2>
-      选择您的疗愈师
-    </h2>
-
-  </div>
-
-  <div class="section-desc">
-    根据当天排班选择可预约疗愈师
-  </div>
+<div class="service-list">
 
 
   <div
-    id="therapistList"
-    class="therapist-list"
+    class="service-item active"
+    data-service="轻享疗愈"
+    data-price="298"
+    data-duration="90"
   >
 
-    <div class="therapist-loading">
-      正在加载疗愈师...
+    <div class="service-name">
+      轻享疗愈
     </div>
 
-  </div>
-
-</section>
-
-
-<!-- 04 时间 -->
-
-<section class="card">
-
-  <div class="section-title">
-
-    <div class="section-number">
-      04
+    <div class="service-time">
+      90分钟 · 深度放松
     </div>
 
-    <h2>
-      选择预约时间
-    </h2>
-
-  </div>
-
-
-  <div class="form-group">
-
-    <label class="form-label">
-      可预约时间
-      <span class="required">*</span>
-    </label>
-
-
-    <div
-      id="timeBox"
-      class="time-box"
-    >
-
-      <div
-        class="empty-tip"
-        style="grid-column:1/-1;"
-      >
-        请先选择疗愈师
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- 05 信息 -->
-
-<section class="card">
-
-  <div class="section-title">
-
-    <div class="section-number">
-      05
-    </div>
-
-    <h2>
-      填写预约信息
-    </h2>
-
-  </div>
-
-  <div class="section-desc">
-    我们会根据您填写的信息与您确认预约
-  </div>
-
-
-  <div class="form-group">
-
-    <label class="form-label">
-      姓名
-      <span class="required">*</span>
-    </label>
-
-    <input
-      id="customerName"
-      type="text"
-      maxlength="30"
-      placeholder="请输入您的姓名"
-    >
-
-  </div>
-
-
-  <div class="form-group">
-
-    <label class="form-label">
-      手机号码
-      <span class="required">*</span>
-    </label>
-
-    <input
-      id="phone"
-      type="tel"
-      inputmode="numeric"
-      maxlength="11"
-      placeholder="请输入11位手机号码"
-    >
-
-  </div>
-
-
-  <div class="form-group">
-
-    <label class="form-label">
-      服务地址
-      <span class="required">*</span>
-    </label>
-
-    <textarea
-      id="address"
-      maxlength="200"
-      placeholder="请输入详细服务地址"
-    ></textarea>
-
-  </div>
-
-</section>
-
-
-<!-- 06 确认 -->
-
-<section class="card">
-
-  <div class="section-title">
-
-    <div class="section-number">
-      06
-    </div>
-
-    <h2>
-      预约确认
-    </h2>
-
-  </div>
-
-
-  <div class="summary">
-
-    <div class="summary-row">
-
-      <span class="label">
-        服务项目
-      </span>
-
-      <span
-        class="value"
-        id="summaryService"
-      >
-        舒缓疗愈
-      </span>
-
-    </div>
-
-
-    <div class="summary-row">
-
-      <span class="label">
-        服务时长
-      </span>
-
-      <span
-        class="value"
-        id="summaryDuration"
-      >
-        90分钟
-      </span>
-
-    </div>
-
-
-    <div class="summary-row">
-
-      <span class="label">
-        预约日期
-      </span>
-
-      <span
-        class="value"
-        id="summaryDate"
-      >
-        —
-      </span>
-
-    </div>
-
-
-    <div class="summary-row">
-
-      <span class="label">
-        疗愈师
-      </span>
-
-      <span
-        class="value"
-        id="summaryTherapist"
-      >
-        —
-      </span>
-
-    </div>
-
-
-    <div class="summary-row">
-
-      <span class="label">
-        预约时间
-      </span>
-
-      <span
-        class="value"
-        id="summaryTime"
-      >
-        —
-      </span>
-
-    </div>
-
-
-    <div class="summary-price">
-
-      <span>
-        预约金额
-      </span>
-
-      <span class="price-number">
-        ¥<span id="summaryPrice">298</span>
-      </span>
-
+    <div class="service-price">
+      298<span>元</span>
     </div>
 
   </div>
 
 
-  <button
-    id="submitBtn"
-    class="submit-btn"
+
+  <div
+    class="service-item"
+    data-service="臻享疗愈"
+    data-price="398"
+    data-duration="120"
   >
-    确认预约
-  </button>
 
+    <div class="service-name">
+      臻享疗愈
+    </div>
 
-  <div class="notice">
-    提交预约后，我们会尽快与您联系确认<br>
-    您的个人信息仅用于本次预约服务
+    <div class="service-time">
+      120分钟 · 深度舒缓
+    </div>
+
+    <div class="service-price">
+      398<span>元</span>
+    </div>
+
   </div>
 
-</section>
-
-  </main>
 
 </div>
 
-<!-- 弹窗 -->
+  </section>
+
+  <!-- =========================
+       日期
+  ========================= -->
+
+  <section class="card">
+
+<div class="section-title">
+
+  <div class="section-number">
+    02
+  </div>
+
+  <h2>
+    选择预约日期
+  </h2>
+
+</div>
+
+
+<div class="section-desc">
+  不同日期可预约的疗愈师可能不同
+</div>
+
+
+<div class="form-group">
+
+  <label class="form-label">
+
+    预约日期
+
+    <span class="required">
+      *
+    </span>
+
+  </label>
+
+
+  <input
+    id="date"
+    type="date"
+  >
+
+
+  <div class="date-tip">
+    请选择您需要疗愈服务的日期
+  </div>
+
+</div>
+
+  </section>
+
+  <!-- =========================
+       疗愈师
+  ========================= -->
+
+  <section class="card">
+
+<div class="section-title">
+
+  <div class="section-number">
+    03
+  </div>
+
+  <h2>
+    选择疗愈师
+  </h2>
+
+</div>
+
+
+<div class="section-desc">
+  每一位疗愈师都有不同的服务风格与擅长方向
+</div>
+
+
+<div
+  id="therapistList"
+  class="therapist-list"
+>
+
+  <div class="therapist-empty">
+    正在加载疗愈师...
+  </div>
+
+</div>
+
+  </section>
+
+  <!-- =========================
+       时间
+  ========================= -->
+
+  <section class="card">
+
+<div class="section-title">
+
+  <div class="section-number">
+    04
+  </div>
+
+  <h2>
+    选择预约时间
+  </h2>
+
+</div>
+
+
+<div class="section-desc">
+  系统将根据疗愈师当前预约情况显示可选时间
+</div>
+
+
+<div class="form-group">
+
+  <label class="form-label">
+
+    可预约时间
+
+    <span class="required">
+      *
+    </span>
+
+  </label>
+
+
+  <div
+    id="timeBox"
+    class="time-box"
+  >
+
+    <div
+      class="empty-tip"
+      style="grid-column:1/-1;"
+    >
+      请先选择疗愈师
+    </div>
+
+  </div>
+
+</div>
+
+  </section>
+
+  <!-- =========================
+       预约信息
+  ========================= -->
+
+  <section class="card">
+
+<div class="section-title">
+
+  <div class="section-number">
+    05
+  </div>
+
+  <h2>
+    填写预约信息
+  </h2>
+
+</div>
+
+
+<div class="section-desc">
+  我们会根据您填写的信息确认本次预约
+</div>
+
+
+<div class="form-group">
+
+  <label class="form-label">
+
+    姓名
+
+    <span class="required">
+      *
+    </span>
+
+  </label>
+
+
+  <input
+    id="customerName"
+    type="text"
+    maxlength="30"
+    placeholder="请输入您的姓名"
+  >
+
+</div>
+
+
+
+<div class="form-group">
+
+  <label class="form-label">
+
+    手机号码
+
+    <span class="required">
+      *
+    </span>
+
+  </label>
+
+
+  <input
+    id="phone"
+    type="tel"
+    inputmode="numeric"
+    maxlength="11"
+    placeholder="请输入11位手机号码"
+  >
+
+</div>
+
+
+
+<div class="form-group">
+
+  <label class="form-label">
+
+    服务地址
+
+    <span class="required">
+      *
+    </span>
+
+  </label>
+
+
+  <textarea
+    id="address"
+    maxlength="200"
+    placeholder="请输入详细服务地址"
+  ></textarea>
+
+</div>
+
+  </section>
+
+  <!-- =========================
+       预约确认
+  ========================= -->
+
+  <section class="card">
+
+<div class="section-title">
+
+  <div class="section-number">
+    06
+  </div>
+
+  <h2>
+    确认预约
+  </h2>
+
+</div>
+
+
+<div class="summary">
+
+
+  <div class="summary-row">
+
+    <span class="label">
+      服务项目
+    </span>
+
+    <span
+      class="value"
+      id="summaryService"
+    >
+      轻享疗愈
+    </span>
+
+  </div>
+
+
+
+  <div class="summary-row">
+
+    <span class="label">
+      服务时长
+    </span>
+
+    <span
+      class="value"
+      id="summaryDuration"
+    >
+      90分钟
+    </span>
+
+  </div>
+
+
+
+  <div class="summary-row">
+
+    <span class="label">
+      预约日期
+    </span>
+
+    <span
+      class="value"
+      id="summaryDate"
+    >
+      —
+    </span>
+
+  </div>
+
+
+
+  <div class="summary-row">
+
+    <span class="label">
+      疗愈师
+    </span>
+
+    <span
+      class="value"
+      id="summaryTherapist"
+    >
+      —
+    </span>
+
+  </div>
+
+
+
+  <div class="summary-row">
+
+    <span class="label">
+      预约时间
+    </span>
+
+    <span
+      class="value"
+      id="summaryTime"
+    >
+      —
+    </span>
+
+  </div>
+
+
+
+  <div class="summary-price">
+
+    <span>
+      预约金额
+    </span>
+
+
+    <span class="price-number">
+
+      ¥<span id="summaryPrice">
+        298
+      </span>
+
+    </span>
+
+  </div>
+
+
+</div>
+
+
+
+<button
+  id="submitBtn"
+  class="submit-btn"
+>
+  确认预约
+</button>
+
+
+<div class="notice">
+
+  提交预约后，我们会尽快与您联系确认
+
+  <br>
+
+  您的个人信息仅用于本次预约服务
+
+</div>
+
+  </section>
+
+</div>
+
+<!-- =========================
+     弹窗
+========================= -->
 
 <div
   id="modalMask"
@@ -1213,19 +2132,26 @@
   <div class="modal">
 
 <div
-  id="modalIcon"
   class="modal-icon"
+  id="modalIcon"
 >
   ✓
 </div>
 
-<h3 id="modalTitle">
+
+<h3
+  id="modalTitle"
+>
   预约成功
 </h3>
 
-<p id="modalText">
+
+<p
+  id="modalText"
+>
   您的预约已提交。
 </p>
+
 
 <button
   class="modal-btn"
@@ -1240,15 +2166,132 @@
 
 <script>
 
+
+  /* =========================
+     全局预约状态
+  ========================= */
+
   const state = {
-    service: "舒缓疗愈",
-    price: 298,
-    duration: 90,
-    date: "",
-    therapistId: "",
-    therapistName: "",
-    time: ""
+
+    service:
+      "轻享疗愈",
+
+    price:
+      298,
+
+    duration:
+      90,
+
+    date:
+      "",
+
+    therapistId:
+      "",
+
+    therapistName:
+      "",
+
+    therapist:
+      null,
+
+    time:
+      ""
+
   };
+
+
+
+  /* =========================
+     固定疗愈师资料
+  ========================= */
+
+  const therapistProfiles = {
+
+    "安然": {
+
+      image:
+        "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=700&q=85",
+
+      years:
+        "6年经验",
+
+      intro:
+        "专注身体舒缓与深度放松，服务风格细腻温和。",
+
+      tags:
+        [
+          "深度放松",
+          "肩颈舒缓",
+          "身心平衡"
+        ]
+
+    },
+
+
+    "若溪": {
+
+      image:
+        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=700&q=85",
+
+      years:
+        "5年经验",
+
+      intro:
+        "注重节奏与身体感受，让疗愈过程更加自然舒适。",
+
+      tags:
+        [
+          "轻柔舒缓",
+          "压力释放",
+          "情绪放松"
+        ]
+
+    },
+
+
+    "舒宁": {
+
+      image:
+        "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=700&q=85",
+
+      years:
+        "7年经验",
+
+      intro:
+        "擅长深层放松与整体节奏调理，服务体验稳定细致。",
+
+      tags:
+        [
+          "深度舒缓",
+          "全身放松",
+          "静心疗愈"
+        ]
+
+    },
+
+
+    "静宜": {
+
+      image:
+        "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=700&q=85",
+
+      years:
+        "4年经验",
+
+      intro:
+        "温和细致的服务风格，为忙碌生活带来安静的放松时刻。",
+
+      tags:
+        [
+          "轻享放松",
+          "身心舒缓",
+          "睡眠放松"
+        ]
+
+    }
+
+  };
+
 
 
   const serviceItems =
@@ -1293,25 +2336,52 @@
     );
 
 
+  const summaryService =
+    document.getElementById(
+      "summaryService"
+    );
+
+
+  const summaryDuration =
+    document.getElementById(
+      "summaryDuration"
+    );
+
+
+  const summaryDate =
+    document.getElementById(
+      "summaryDate"
+    );
+
+
+  const summaryTherapist =
+    document.getElementById(
+      "summaryTherapist"
+    );
+
+
+  const summaryTime =
+    document.getElementById(
+      "summaryTime"
+    );
+
+
+  const summaryPrice =
+    document.getElementById(
+      "summaryPrice"
+    );
+
+
   const submitBtn =
     document.getElementById(
       "submitBtn"
     );
 
 
-  function startBooking() {
 
-    document
-      .getElementById(
-        "booking"
-      )
-      .scrollIntoView({
-        behavior:
-          "smooth"
-      });
-
-  }
-
+  /* =========================
+     日期工具
+  ========================= */
 
   function todayString() {
 
@@ -1326,8 +2396,7 @@
     const m =
       String(
         d.getMonth() + 1
-      )
-      .padStart(
+      ).padStart(
         2,
         "0"
       );
@@ -1336,8 +2405,7 @@
     const day =
       String(
         d.getDate()
-      )
-      .padStart(
+      ).padStart(
         2,
         "0"
       );
@@ -1354,12 +2422,15 @@
   }
 
 
+
   function formatDate(
     date
   ) {
 
     if (!date) {
+
       return "—";
+
     }
 
 
@@ -1372,7 +2443,9 @@
     if (
       parts.length !== 3
     ) {
+
       return date;
+
     }
 
 
@@ -1392,10 +2465,15 @@
   }
 
 
+
+  /* =========================
+     弹窗
+  ========================= */
+
   function showModal(
     title,
     text,
-    success
+    success = true
   ) {
 
     document
@@ -1428,11 +2506,13 @@
       .getElementById(
         "modalMask"
       )
-      .classList.add(
+      .classList
+      .add(
         "show"
       );
 
   }
+
 
 
   function closeModal() {
@@ -1441,73 +2521,60 @@
       .getElementById(
         "modalMask"
       )
-      .classList.remove(
+      .classList
+      .remove(
         "show"
       );
 
   }
 
 
+
+  /* =========================
+     更新预约摘要
+  ========================= */
+
   function updateSummary() {
 
-    document
-      .getElementById(
-        "summaryService"
-      )
-      .textContent =
-        state.service ||
-        "—";
+    summaryService.textContent =
+      state.service ||
+      "—";
 
 
-    document
-      .getElementById(
-        "summaryDuration"
-      )
-      .textContent =
-        state.duration
-          ? state.duration +
-            "分钟"
-          : "—";
+    summaryDuration.textContent =
+      state.duration
+        ? state.duration +
+          "分钟"
+        : "—";
 
 
-    document
-      .getElementById(
-        "summaryDate"
-      )
-      .textContent =
-        formatDate(
-          state.date
-        );
+    summaryDate.textContent =
+      formatDate(
+        state.date
+      );
 
 
-    document
-      .getElementById(
-        "summaryTherapist"
-      )
-      .textContent =
-        state.therapistName ||
-        "—";
+    summaryTherapist.textContent =
+      state.therapistName ||
+      "—";
 
 
-    document
-      .getElementById(
-        "summaryTime"
-      )
-      .textContent =
-        state.time ||
-        "—";
+    summaryTime.textContent =
+      state.time ||
+      "—";
 
 
-    document
-      .getElementById(
-        "summaryPrice"
-      )
-      .textContent =
-        state.price ||
-        "0";
+    summaryPrice.textContent =
+      state.price ||
+      "0";
 
   }
 
+
+
+  /* =========================
+     服务选择
+  ========================= */
 
   serviceItems.forEach(
     function(item) {
@@ -1555,17 +2622,18 @@
           updateSummary();
 
 
-          renderTime(
-            []
-          );
-
-
           if (
             state.date &&
             state.therapistId
           ) {
 
             loadAvailableSlots();
+
+          } else {
+
+            renderTime(
+              []
+            );
 
           }
 
@@ -1575,6 +2643,11 @@
     }
   );
 
+
+
+  /* =========================
+     初始化日期
+  ========================= */
 
   function initDate() {
 
@@ -1596,15 +2669,20 @@
   }
 
 
+
+  /* =========================
+     加载疗愈师
+  ========================= */
+
   async function loadTherapists() {
 
     therapistList.innerHTML =
-      '<div class="therapist-loading">正在加载疗愈师...</div>';
+      '<div class="therapist-empty">正在加载疗愈师...</div>';
 
 
     try {
 
-      const res =
+      const response =
         await fetch(
           "/api/available-therapists?date=" +
           encodeURIComponent(
@@ -1614,10 +2692,12 @@
 
 
       const data =
-        await res.json();
+        await response.json();
 
 
-      if (!res.ok) {
+      if (
+        !response.ok
+      ) {
 
         throw new Error(
           data.message ||
@@ -1643,6 +2723,7 @@
         list
       );
 
+
     } catch (
       error
     ) {
@@ -1653,12 +2734,17 @@
 
 
       therapistList.innerHTML =
-        '<div class="therapist-loading">暂时无法加载疗愈师，请稍后刷新重试</div>';
+        '<div class="therapist-empty">疗愈师加载失败，请稍后重试</div>';
 
     }
 
   }
 
+
+
+  /* =========================
+     渲染疗愈师
+  ========================= */
 
   function renderTherapists(
     list
@@ -1674,7 +2760,8 @@
     ) {
 
       therapistList.innerHTML =
-        '<div class="therapist-loading">当天暂无可预约疗愈师</div>';
+        '<div class="therapist-empty">当天暂无可预约疗愈师</div>';
+
 
       return;
 
@@ -1695,45 +2782,32 @@
           "疗愈师";
 
 
-        /*
-          后续可以在数据库增加：
-
-          photo
-          title
-          experience
-          specialties
-          introduction
-
-          页面会自动读取
-        */
+        const profile =
+          therapistProfiles[
+            name
+          ] ||
+          {
 
 
-        const photo =
-          item.photo ||
-          item.avatar ||
-          "";
+            image:
+              "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=700&q=85",
 
 
-        const title =
-          item.title ||
-          "专业疗愈师";
+            years:
+              "专业疗愈师",
 
 
-        const experience =
-          item.experience ||
-          "";
+            intro:
+              "专注身心放松与舒缓体验，为您提供专业细致的疗愈服务。",
 
 
-        const specialties =
-          item.specialties ||
-          item.specialty ||
-          "";
+            tags:
+              [
+                "身心放松",
+                "舒缓疗愈"
+              ]
 
-
-        const introduction =
-          item.introduction ||
-          item.intro ||
-          "专注于身心放松与舒缓，为您提供专业、细致的疗愈服务。";
+          };
 
 
         const card =
@@ -1746,138 +2820,81 @@
           "therapist-card";
 
 
-        card.dataset.id =
-          id;
-
-
-        let photoHtml =
-          "";
-
-
-        if (photo) {
-
-          photoHtml =
-            '<div class="therapist-photo">' +
-            '<img src="' +
-            escapeHtml(
-              photo
-            ) +
-            '" alt="' +
-            escapeHtml(
-              name
-            ) +
-            '">' +
-            '</div>';
-
-        } else {
-
-          photoHtml =
-            '<div class="therapist-photo">' +
-            '<div class="therapist-avatar">' +
-            escapeHtml(
-              name.charAt(
-                0
-              )
-            ) +
-            '</div>' +
-            '</div>';
-
-        }
-
-
-        let tagsHtml =
-          "";
-
-
         if (
-          specialties
+          String(
+            state.therapistId
+          ) ===
+          String(
+            id
+          )
         ) {
 
-          const tags =
-            Array.isArray(
-              specialties
-            )
-              ? specialties
-              : String(
-                  specialties
-                )
-                .split(
-                  /[,，、]/ 
-                );
-
-
-          tags.forEach(
-            function(tag) {
-
-              const value =
-                String(
-                  tag
-                )
-                .trim();
-
-
-              if (
-                value
-              ) {
-
-                tagsHtml +=
-                  '<span class="therapist-tag">' +
-                  escapeHtml(
-                    value
-                  ) +
-                  '</span>';
-
-              }
-
-            }
+          card.classList.add(
+            "active"
           );
 
         }
 
 
         card.innerHTML =
-          photoHtml +
+          '<img class="therapist-photo" src="' +
+          profile.image +
+          '" alt="' +
+          name +
+          '">' +
+
 
           '<div class="therapist-info">' +
 
+
           '<div class="therapist-name">' +
-          escapeHtml(
-            name
-          ) +
+
+
+          '<strong>' +
+          name +
+          '</strong>' +
+
+
+          '<span class="therapist-years">' +
+          profile.years +
+          '</span>' +
+
+
           '</div>' +
 
-          '<div class="therapist-title">' +
-          escapeHtml(
-            title +
-            (
-              experience
-                ? " · " +
-                  experience
-                : ""
-            )
-          ) +
+
+          '<div class="therapist-specialty">' +
+          profile.intro +
           '</div>' +
+
 
           '<div class="therapist-tags">' +
-          (
-            tagsHtml ||
-            '<span class="therapist-tag">身心放松</span>' +
-            '<span class="therapist-tag">专业舒缓</span>'
+
+
+          profile.tags.map(
+            function(tag) {
+
+              return (
+                '<span class="therapist-tag">' +
+                tag +
+                '</span>'
+              );
+
+            }
+          ).join(
+            ""
           ) +
+
+
           '</div>' +
 
-          '<div class="therapist-intro">' +
-          escapeHtml(
-            introduction
-          ) +
-          '</div>' +
 
           '</div>';
 
 
         card.addEventListener(
           "click",
-          function() {
+          async function() {
 
             document
               .querySelectorAll(
@@ -1907,6 +2924,10 @@
               name;
 
 
+            state.therapist =
+              item;
+
+
             state.time =
               "";
 
@@ -1914,7 +2935,7 @@
             updateSummary();
 
 
-            loadAvailableSlots();
+            await loadAvailableSlots();
 
           }
         );
@@ -1929,6 +2950,11 @@
 
   }
 
+
+
+  /* =========================
+     加载可预约时间
+  ========================= */
 
   async function loadAvailableSlots() {
 
@@ -1975,17 +3001,19 @@
         );
 
 
-      const res =
+      const response =
         await fetch(
           url
         );
 
 
       const data =
-        await res.json();
+        await response.json();
 
 
-      if (!res.ok) {
+      if (
+        !response.ok
+      ) {
 
         throw new Error(
           data.message ||
@@ -2011,6 +3039,7 @@
         list
       );
 
+
     } catch (
       error
     ) {
@@ -2028,6 +3057,11 @@
   }
 
 
+
+  /* =========================
+     渲染时间
+  ========================= */
+
   function renderTime(
     list
   ) {
@@ -2042,7 +3076,8 @@
     ) {
 
       timeBox.innerHTML =
-        '<div class="empty-tip" style="grid-column:1/-1;">当天暂无可预约时间</div>';
+        '<div class="empty-tip" style="grid-column:1/-1;">请先选择疗愈师</div>';
+
 
       return;
 
@@ -2079,10 +3114,8 @@
 
 
           disabled =
-            item.disabled ===
-              true ||
-            item.available ===
-              false;
+            item.disabled === true ||
+            item.available === false;
 
         }
 
@@ -2173,6 +3206,11 @@
   }
 
 
+
+  /* =========================
+     日期改变
+  ========================= */
+
   dateInput.addEventListener(
     "change",
     async function() {
@@ -2187,6 +3225,10 @@
 
       state.therapistName =
         "";
+
+
+      state.therapist =
+        null;
 
 
       state.time =
@@ -2207,39 +3249,53 @@
   );
 
 
+
+  /* =========================
+     手机号限制数字
+  ========================= */
+
   phone.addEventListener(
     "input",
     function() {
 
       phone.value =
         phone.value
-          .replace(
-            /\D/g,
-            ""
-          )
-          .slice(
-            0,
-            11
-          );
+        .replace(
+          /\D/g,
+          ""
+        )
+        .slice(
+          0,
+          11
+        );
 
     }
   );
 
 
+
+  /* =========================
+     提交预约
+  ========================= */
+
   submitBtn.addEventListener(
     "click",
     async function() {
 
+
       const name =
-        customerName.value.trim();
+        customerName.value
+        .trim();
 
 
       const phoneNumber =
-        phone.value.trim();
+        phone.value
+        .trim();
 
 
       const addressValue =
-        address.value.trim();
+        address.value
+        .trim();
 
 
       if (
@@ -2278,7 +3334,7 @@
 
         showModal(
           "请选择疗愈师",
-          "请选择一位可预约的疗愈师。",
+          "请选择一位疗愈师。",
           false
         );
 
@@ -2293,7 +3349,7 @@
 
         showModal(
           "请选择时间",
-          "请选择一个可预约的时间段。",
+          "请选择一个可预约的时间。",
           false
         );
 
@@ -2363,41 +3419,51 @@
 
 
       submitBtn.innerHTML =
-        '<span class="loading-spinner"></span>正在提交预约';
+        '<span class="loading"></span>正在提交预约';
 
 
       try {
 
         const payload = {
 
+
           service:
             state.service,
+
 
           price:
             state.price,
 
+
           duration:
             state.duration,
 
+
           therapist:
             state.therapistName,
+
 
           therapistId:
             Number(
               state.therapistId
             ),
 
+
           date:
             state.date,
+
 
           time:
             state.time,
 
+
           name:
             name,
 
+
           phone:
             phoneNumber,
+
 
           address:
             addressValue
@@ -2405,7 +3471,7 @@
         };
 
 
-        const res =
+        const response =
           await fetch(
             "/api/orders",
             {
@@ -2426,16 +3492,15 @@
 
 
         const data =
-          await res.json();
+          await response.json();
 
 
         if (
-          !res.ok
+          !response.ok
         ) {
 
           throw new Error(
             data.message ||
-            data.error ||
             "预约提交失败"
           );
 
@@ -2470,6 +3535,7 @@
 
         await loadAvailableSlots();
 
+
       } catch (
         error
       ) {
@@ -2501,30 +3567,18 @@
   );
 
 
-  function escapeHtml(
-    value
-  ) {
 
-    const div =
-      document.createElement(
-        "div"
-      );
-
-
-    div.textContent =
-      value;
-
-
-    return div.innerHTML;
-
-  }
-
+  /* =========================
+     初始化
+  ========================= */
 
   async function init() {
 
     initDate();
 
+
     updateSummary();
+
 
     await loadTherapists();
 
@@ -2533,7 +3587,9 @@
 
   init();
 
+
 </script>
 
 </body>
+
 </html>
