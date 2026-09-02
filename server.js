@@ -13,6 +13,10 @@ const __dirname = path.dirname(__filename);
 
 const PORT = process.env.PORT || 3000;
 
+// =========================
+// 管理员环境变量
+// =========================
+
 const ADMIN_USERNAME =
 process.env.ADMIN_USERNAME;
 
@@ -139,7 +143,9 @@ const sql =
   ")";
 
 
-await pool.query(sql);
+await pool.query(
+  sql
+);
 
 
 console.log(
@@ -205,7 +211,6 @@ try {
 
 // =========================
 // 管理员登录
-// POST /api/admin/login
 // =========================
 
 app.post(
@@ -392,7 +397,9 @@ try {
 
 
   if (
-    !phoneRegex.test(phone)
+    !phoneRegex.test(
+      phone
+    )
   ) {
 
     return res.status(400).json({
@@ -579,7 +586,6 @@ try {
 
 // =========================
 // 修改订单状态
-// PATCH /api/orders/:id/status
 // =========================
 
 app.patch(
@@ -587,7 +593,6 @@ app.patch(
 requireAdmin,
 async (req, res) => {
 
-```
 try {
 
   const orderId =
@@ -597,7 +602,7 @@ try {
     req.body.status;
 
 
-  const allowedStatus = [
+  const allowedStatuses = [
     "待确认",
     "已确认",
     "服务中",
@@ -607,30 +612,26 @@ try {
 
 
   if (
-    !allowedStatus.includes(
+    !allowedStatuses.includes(
       status
     )
   ) {
 
     return res.status(400).json({
       success: false,
-      message: "订单状态不合法"
+      message:
+        "订单状态不合法"
     });
 
   }
 
 
-  const updateSql =
-    "UPDATE orders " +
-    "SET status = $1 " +
-    "WHERE id = $2 " +
-    "RETURNING " +
-    "id, status";
-
-
   const result =
     await pool.query(
-      updateSql,
+      "UPDATE orders " +
+      "SET status = $1 " +
+      "WHERE id = $2 " +
+      "RETURNING id, status",
       [
         status,
         orderId
@@ -644,7 +645,8 @@ try {
 
     return res.status(404).json({
       success: false,
-      message: "订单不存在"
+      message:
+        "订单不存在"
     });
 
   }
@@ -659,14 +661,13 @@ try {
 
   return res.json({
     success: true,
-    message: "订单状态更新成功",
+    message:
+      "订单状态修改成功",
     order:
       result.rows[0]
   });
 
-} catch (
-  error
-) {
+} catch (error) {
 
   console.error(
     "修改订单状态失败：",
@@ -676,72 +677,85 @@ try {
 
   return res.status(500).json({
     success: false,
-    message: "修改订单状态失败"
+    message:
+      "订单状态修改失败"
   });
 
 }
-```
 
 }
 );
 
 // =========================
 // 删除订单
-// DELETE /api/orders/:id
 // =========================
 
 app.delete(
-  "/api/orders/:id",
-  requireAdmin,
-  async (req, res) => {
+"/api/orders/:id",
+requireAdmin,
+async (req, res) => {
 
-    try {
+try {
 
-      const orderId =
-        req.params.id;
-
-
-      const result =
-        await pool.query(
-          "DELETE FROM orders WHERE id = $1 RETURNING id",
-          [orderId]
-        );
+  const orderId =
+    req.params.id;
 
 
-      if (
-        result.rows.length === 0
-      ) {
-
-        return res.status(404).json({
-          success: false,
-          message: "订单不存在"
-        });
-
-      }
-
-
-      return res.json({
-        success: true,
-        message: "订单已删除"
-      });
-
-    } catch (error) {
-
-      console.error(
-        "删除订单失败：",
-        error
-      );
+  const result =
+    await pool.query(
+      "DELETE FROM orders " +
+      "WHERE id = $1 " +
+      "RETURNING id",
+      [
+        orderId
+      ]
+    );
 
 
-      return res.status(500).json({
-        success: false,
-        message: "删除订单失败"
-      });
+  if (
+    result.rows.length === 0
+  ) {
 
-    }
+    return res.status(404).json({
+      success: false,
+      message:
+        "订单不存在"
+    });
 
   }
+
+
+  console.log(
+    "订单已删除：",
+    orderId
+  );
+
+
+  return res.json({
+    success: true,
+    message:
+      "订单已删除"
+  });
+
+} catch (error) {
+
+  console.error(
+    "删除订单失败：",
+    error
+  );
+
+
+  return res.status(500).json({
+    success: false,
+    message:
+      "删除订单失败"
+  });
+
+}
+
+}
 );
+
 // =========================
 // 启动服务器
 // =========================
