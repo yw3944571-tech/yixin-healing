@@ -686,6 +686,63 @@ try {
 );
 
 // =========================
+// 删除订单
+// DELETE /api/orders/:id
+// =========================
+
+app.delete(
+  "/api/orders/:id",
+  requireAdmin,
+  async (req, res) => {
+
+    try {
+
+      const orderId =
+        req.params.id;
+
+
+      const result =
+        await pool.query(
+          "DELETE FROM orders WHERE id = $1 RETURNING id",
+          [orderId]
+        );
+
+
+      if (
+        result.rows.length === 0
+      ) {
+
+        return res.status(404).json({
+          success: false,
+          message: "订单不存在"
+        });
+
+      }
+
+
+      return res.json({
+        success: true,
+        message: "订单已删除"
+      });
+
+    } catch (error) {
+
+      console.error(
+        "删除订单失败：",
+        error
+      );
+
+
+      return res.status(500).json({
+        success: false,
+        message: "删除订单失败"
+      });
+
+    }
+
+  }
+);
+// =========================
 // 启动服务器
 // =========================
 
