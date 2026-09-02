@@ -1,10 +1,395 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+  />
+
   <title>奕心疗愈舍</title>
+
+  <link rel="stylesheet" href="./style.css" />
 </head>
+
 <body>
-  <h1>奕心疗愈舍</h1>
+
+  <!-- 顶部导航 -->
+  <header class="top-header">
+    <div class="brand">
+      <div class="brand-logo">奕</div>
+
+      <div class="brand-text">
+        <div class="brand-name">奕心疗愈舍</div>
+        <div class="brand-subtitle">身心同调 · 医心疗愈</div>
+      </div>
+    </div>
+
+    <button class="city-button" id="cityButton">
+      北京
+      <span>⌄</span>
+    </button>
+  </header>
+
+
+  <main>
+
+    <!-- 首页主视觉 -->
+    <section class="hero">
+      <div class="hero-content">
+
+        <div class="hero-tag">
+          医学理念 · 专业疗愈
+        </div>
+
+        <h1>
+          让身体放松<br />
+          让心慢下来
+        </h1>
+
+        <p>
+          基于医学理念的身心疗愈体验<br />
+          为你留出一段真正属于自己的时间
+        </p>
+
+        <button class="hero-button" id="bookingButton">
+          立即预约
+        </button>
+
+      </div>
+    </section>
+
+
+    <!-- 品牌理念 -->
+    <section class="section intro-section">
+
+      <div class="section-label">
+        YIXIN HEALING
+      </div>
+
+      <h2>
+        不只是放松<br />
+        更是一次回归自己
+      </h2>
+
+      <p class="section-description">
+        奕心疗愈舍以医学理念为基础，
+        结合身体放松、情绪舒缓与沉浸式疗愈体验，
+        为现代人提供更专业、更安心的身心放松服务。
+      </p>
+
+    </section>
+
+
+    <!-- 服务项目 -->
+    <section class="section service-section">
+
+      <div class="section-title-row">
+        <div>
+          <div class="section-label">HEALING SERVICE</div>
+          <h2>精选疗愈服务</h2>
+        </div>
+
+        <button class="more-button">
+          查看全部 →
+        </button>
+      </div>
+
+
+      <div class="service-list">
+
+        <!-- 298 -->
+        <article class="service-card">
+
+          <div class="service-image service-image-one">
+            <div class="service-badge">
+              轻享疗愈
+            </div>
+          </div>
+
+          <div class="service-info">
+
+            <div class="service-top">
+
+              <div>
+                <h3>轻享疗愈</h3>
+                <p>90分钟 · 身心放松体验</p>
+              </div>
+
+              <div class="price">
+                ¥298
+              </div>
+
+            </div>
+
+            <button
+              class="service-button"
+              onclick="selectService('轻享疗愈', 298)"
+            >
+              选择服务
+            </button>
+
+          </div>
+
+        </article>
+
+
+        <!-- 398 -->
+        <article class="service-card">
+
+          <div class="service-image service-image-two">
+            <div class="service-badge">
+              臻享疗愈
+            </div>
+          </div>
+
+          <div class="service-info">
+
+            <div class="service-top">
+
+              <div>
+                <h3>臻享疗愈</h3>
+                <p>120分钟 · 深度疗愈体验</p>
+              </div>
+
+              <div class="price">
+                ¥398
+              </div>
+
+            </div>
+
+            <button
+              class="service-button"
+              onclick="selectService('臻享疗愈', 398)"
+            >
+              选择服务
+            </button>
+
+          </div>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- 疗愈理念 -->
+    <section class="concept-section">
+
+      <div class="concept-card">
+
+        <div class="concept-number">
+          01
+        </div>
+
+        <h3>
+          专业
+        </h3>
+
+        <p>
+          以医学理念为基础，
+          更关注身体状态与真实需求。
+        </p>
+
+      </div>
+
+
+      <div class="concept-card">
+
+        <div class="concept-number">
+          02
+        </div>
+
+        <h3>
+          安心
+        </h3>
+
+        <p>
+          严格筛选疗愈师，
+          为每一次服务提供安心保障。
+        </p>
+
+      </div>
+
+
+      <div class="concept-card">
+
+        <div class="concept-number">
+          03
+        </div>
+
+        <h3>
+          回归本真
+        </h3>
+
+        <p>
+          在忙碌的生活里，
+          重新找到属于自己的平静。
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- 底部预约引导 -->
+    <section class="bottom-cta">
+
+      <div>
+        <div class="section-label">
+          BEGIN YOUR HEALING
+        </div>
+
+        <h2>
+          从一次放松开始
+        </h2>
+
+        <p>
+          给身体一点空间，也给心一点时间。
+        </p>
+      </div>
+
+      <button id="bottomBookingButton">
+        立即预约
+      </button>
+
+    </section>
+
+  </main>
+
+
+  <!-- 底部导航 -->
+
+  <nav class="bottom-nav">
+
+    <button
+      class="nav-item active"
+      data-page="home"
+    >
+      <span class="nav-icon">⌂</span>
+      <span>首页</span>
+    </button>
+
+
+    <button
+      class="nav-item"
+      data-page="booking"
+    >
+      <span class="nav-icon">◷</span>
+      <span>预约</span>
+    </button>
+
+
+    <button
+      class="nav-item"
+      data-page="orders"
+    >
+      <span class="nav-icon">▣</span>
+      <span>订单</span>
+    </button>
+
+
+    <button
+      class="nav-item"
+      data-page="profile"
+    >
+      <span class="nav-icon">◯</span>
+      <span>我的</span>
+    </button>
+
+  </nav>
+
+
+  <!-- 预约弹窗 -->
+
+  <div
+    class="modal-overlay"
+    id="bookingModal"
+  >
+
+    <div class="booking-modal">
+
+      <button
+        class="modal-close"
+        id="modalClose"
+      >
+        ×
+      </button>
+
+      <div class="section-label">
+        ONLINE BOOKING
+      </div>
+
+      <h2>
+        开始预约
+      </h2>
+
+      <p class="modal-description">
+        奕心疗愈舍将为你安排合适的疗愈服务。
+      </p>
+
+
+      <div class="booking-form">
+
+        <label>
+          服务项目
+        </label>
+
+        <select id="serviceSelect">
+
+          <option value="">
+            请选择服务
+          </option>
+
+          <option value="轻享疗愈">
+            轻享疗愈 · ¥298 · 90分钟
+          </option>
+
+          <option value="臻享疗愈">
+            臻享疗愈 · ¥398 · 120分钟
+          </option>
+
+        </select>
+
+
+        <label>
+          联系方式
+        </label>
+
+        <input
+          id="phoneInput"
+          type="tel"
+          placeholder="请输入手机号"
+        />
+
+
+        <label>
+          服务地址
+        </label>
+
+        <input
+          id="addressInput"
+          type="text"
+          placeholder="请输入服务地址"
+        />
+
+
+        <button
+          class="submit-booking"
+          id="submitBooking"
+        >
+          提交预约
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <script src="./app.js"></script>
+
 </body>
 </html>
