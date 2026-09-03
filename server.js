@@ -154,7 +154,45 @@ await pool.query(
   )
   `
 );
+// =============================================
+// 兼容旧 therapists 数据表
+// 自动补充旧数据库缺少的字段
+// =============================================
 
+await pool.query(
+  `
+  ALTER TABLE therapists
+  ADD COLUMN IF NOT EXISTS avatar TEXT
+  `
+);
+
+await pool.query(
+  `
+  ALTER TABLE therapists
+  ADD COLUMN IF NOT EXISTS bio TEXT
+  `
+);
+
+await pool.query(
+  `
+  ALTER TABLE therapists
+  ADD COLUMN IF NOT EXISTS experience VARCHAR(255)
+  `
+);
+
+await pool.query(
+  `
+  ALTER TABLE therapists
+  ADD COLUMN IF NOT EXISTS specialties TEXT
+  `
+);
+
+await pool.query(
+  `
+  ALTER TABLE therapists
+  ADD COLUMN IF NOT EXISTS is_active BOOLEAN DEFAULT TRUE
+  `
+);
 
 await pool.query(
   `
