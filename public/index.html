@@ -2782,33 +2782,49 @@ content="#f7f4ef"
           "疗愈师";
 
 
-        const profile =
-          therapistProfiles[
-            name
-          ] ||
-          {
+       const defaultProfile =
+  therapistProfiles[name] ||
+  {
+    image:
+      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=700&q=85",
+
+    years:
+      "专业疗愈师",
+
+    intro:
+      "专注身心放松与舒缓体验，为您提供专业细致的疗愈服务。",
+
+    tags:
+      [
+        "身心放松",
+        "舒缓疗愈"
+      ]
+  };
 
 
-            image:
-              "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=700&q=85",
+const profile = {
 
+  image:
+    item.avatar ||
+    item.image ||
+    defaultProfile.image,
 
-            years:
-              "专业疗愈师",
+  years:
+    item.years ||
+    item.experience ||
+    defaultProfile.years,
 
+  intro:
+    item.intro ||
+    item.specialty ||
+    item.description ||
+    defaultProfile.intro,
 
-            intro:
-              "专注身心放松与舒缓体验，为您提供专业细致的疗愈服务。",
+  tags:
+    item.tags ||
+    defaultProfile.tags
 
-
-            tags:
-              [
-                "身心放松",
-                "舒缓疗愈"
-              ]
-
-          };
-
+};
 
         const card =
           document.createElement(
