@@ -299,7 +299,6 @@ await pool.query(
 console.log(
   "therapists 表结构检查完成"
 );
-```
 
 
 
