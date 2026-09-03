@@ -202,10 +202,12 @@ await pool.query(
 );
 
 
+js
 // =============================================
 // 疗愈师表
 // =============================================
 
+// 新数据库直接创建完整表
 await pool.query(
   `
   CREATE TABLE IF NOT EXISTS therapists (
@@ -220,6 +222,84 @@ await pool.query(
   )
   `
 );
+
+
+// =============================================
+// 自动兼容旧数据库
+// 如果旧 therapists 表缺少字段，自动补齐
+// =============================================
+
+await pool.query(
+  `
+  ALTER TABLE therapists
+  ADD COLUMN IF NOT EXISTS avatar TEXT
+  `
+);
+
+await pool.query(
+  `
+  ALTER TABLE therapists
+  ADD COLUMN IF NOT EXISTS bio TEXT
+  `
+);
+
+await pool.query(
+  `
+  ALTER TABLE therapists
+  ADD COLUMN IF NOT EXISTS experience VARCHAR(255)
+  `
+);
+
+await pool.query(
+  `
+  ALTER TABLE therapists
+  ADD COLUMN IF NOT EXISTS specialties TEXT
+  `
+);
+
+await pool.query(
+  `
+  ALTER TABLE therapists
+  ADD COLUMN IF NOT EXISTS is_active BOOLEAN DEFAULT TRUE
+  `
+);
+
+await pool.query(
+  `
+  ALTER TABLE therapists
+  ADD COLUMN IF NOT EXISTS created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+  `
+);
+
+
+// =============================================
+// 删除旧版本可能存在的姓名唯一限制
+// 允许多个疗愈师出现相同姓名
+// =============================================
+
+await pool.query(
+  `
+  ALTER TABLE therapists
+  DROP CONSTRAINT IF EXISTS therapists_name_key
+  `
+);
+
+
+// =============================================
+// 自动处理旧数据库中的其他可能唯一索引
+// =============================================
+
+await pool.query(
+  `
+  DROP INDEX IF EXISTS therapists_name_key
+  `
+);
+
+
+console.log(
+  "therapists 表结构检查完成"
+);
+
 
 
 console.log(
