@@ -4,15 +4,15 @@
 
 <head>
 
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-  <meta name="theme-color" content="#f7f4ef" />
+  <meta name="theme-color" content="#f6f2ec">
 
-  <meta name="description" content="奕心疗愈舍｜身心同调 · 医心疗愈 · 回归本真" />
+  <meta name="description" content="奕心疗愈舍｜身心同调 · 医心疗愈 · 回归本真">
 
-  <title>奕心疗愈舍｜身心同调 · 医心疗愈 · 回归本真</title>
+  <title>奕心疗愈舍</title>
 
 
 
@@ -32,15 +32,11 @@
 
 
 
-    html {
-
-      scroll-behavior: smooth;
-
-    }
-
-
-
     body {
+
+      background: #f6f2ec;
+
+      color: #302c27;
 
       font-family:
 
@@ -50,17 +46,9 @@
 
         "PingFang SC",
 
-        "Hiragino Sans GB",
-
         "Microsoft YaHei",
 
         sans-serif;
-
-      background: #f7f4ef;
-
-      color: #292722;
-
-      line-height: 1.6;
 
     }
 
@@ -78,6 +66,8 @@
 
     button {
 
+      border: 0;
+
       cursor: pointer;
 
     }
@@ -90,11 +80,9 @@
 
       max-width: 760px;
 
-      margin: 0 auto;
+      margin: auto;
 
       min-height: 100vh;
-
-      background: #f7f4ef;
 
     }
 
@@ -102,7 +90,7 @@
 
     /* =========================
 
-       顶部品牌
+       品牌
 
     ========================= */
 
@@ -112,7 +100,7 @@
 
       text-align: center;
 
-      padding: 28px 20px 18px;
+      padding: 28px 20px 20px;
 
     }
 
@@ -120,15 +108,11 @@
 
     .brand-name {
 
-      font-size: 29px;
+      font-size: 28px;
 
       font-weight: 500;
 
       letter-spacing: 7px;
-
-      color: #292722;
-
-      margin-left: 7px;
 
     }
 
@@ -138,11 +122,11 @@
 
       margin-top: 8px;
 
+      color: #9b9288;
+
       font-size: 11px;
 
       letter-spacing: 3px;
-
-      color: #9a9288;
 
     }
 
@@ -150,7 +134,7 @@
 
     /* =========================
 
-       Hero
+       主视觉
 
     ========================= */
 
@@ -158,15 +142,15 @@
 
     .hero {
 
-      position: relative;
+      height: 250px;
 
-      margin: 0 14px 22px;
-
-      height: 300px;
+      margin: 0 14px 18px;
 
       border-radius: 22px;
 
       overflow: hidden;
+
+      position: relative;
 
       background:
 
@@ -174,15 +158,13 @@
 
           to bottom,
 
-          rgba(0, 0, 0, 0.03),
+          rgba(0,0,0,.02),
 
-          rgba(0, 0, 0, 0.18)
+          rgba(0,0,0,.35)
 
         ),
 
-        url("https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=85")
-
-        center / cover no-repeat;
+        url("/anxin.png") center 22% / cover no-repeat;
 
     }
 
@@ -200,9 +182,9 @@
 
         to top,
 
-        rgba(20, 18, 15, 0.42),
+        rgba(20,17,14,.48),
 
-        rgba(20, 18, 15, 0.03) 65%
+        transparent 65%
 
       );
 
@@ -210,7 +192,7 @@
 
 
 
-    .hero-content {
+    .hero-info {
 
       position: absolute;
 
@@ -218,11 +200,21 @@
 
       left: 24px;
 
-      right: 24px;
+      bottom: 22px;
 
-      bottom: 24px;
+      color: white;
 
-      color: #fff;
+    }
+
+
+
+    .hero-name {
+
+      font-size: 27px;
+
+      letter-spacing: 4px;
+
+      font-weight: 400;
 
     }
 
@@ -230,25 +222,13 @@
 
     .hero-title {
 
-      font-size: 25px;
-
-      font-weight: 400;
-
-      letter-spacing: 3px;
-
-    }
-
-
-
-    .hero-subtitle {
-
-      margin-top: 7px;
+      margin-top: 5px;
 
       font-size: 12px;
 
       letter-spacing: 2px;
 
-      opacity: 0.9;
+      opacity: .92;
 
     }
 
@@ -256,7 +236,7 @@
 
     /* =========================
 
-       主体
+       内容
 
     ========================= */
 
@@ -264,7 +244,7 @@
 
     .content {
 
-      padding: 0 14px 40px;
+      padding: 0 14px 45px;
 
     }
 
@@ -282,13 +262,11 @@
 
       display: flex;
 
-      align-items: center;
-
       justify-content: space-between;
 
-      margin-bottom: 10px;
+      align-items: center;
 
-      padding: 0 4px;
+      padding: 0 4px 9px;
 
     }
 
@@ -300,17 +278,17 @@
 
       font-weight: 500;
 
-      letter-spacing: 1px;
-
     }
 
 
 
     .section-title span {
 
-      font-size: 11px;
+      color: #aaa197;
 
-      color: #a39b91;
+      font-size: 10px;
+
+      letter-spacing: 1px;
 
     }
 
@@ -318,15 +296,15 @@
 
     .card {
 
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255,255,255,.92);
 
-      border: 1px solid rgba(80, 70, 60, 0.07);
+      border: 1px solid rgba(90,80,70,.07);
 
       border-radius: 18px;
 
-      padding: 16px;
+      padding: 17px;
 
-      box-shadow: 0 5px 20px rgba(80, 70, 60, 0.04);
+      box-shadow: 0 6px 22px rgba(70,60,50,.035);
 
     }
 
@@ -334,7 +312,369 @@
 
     /* =========================
 
-       服务项目
+       疗愈师档案
+
+    ========================= */
+
+
+
+    .profile-top {
+
+      display: flex;
+
+      gap: 15px;
+
+      align-items: center;
+
+    }
+
+
+
+    .profile-avatar {
+
+      width: 92px;
+
+      height: 112px;
+
+      border-radius: 13px;
+
+      object-fit: cover;
+
+      object-position: center top;
+
+      flex-shrink: 0;
+
+      background: #eee7de;
+
+    }
+
+
+
+    .profile-main {
+
+      flex: 1;
+
+    }
+
+
+
+    .profile-name {
+
+      font-size: 23px;
+
+      font-weight: 500;
+
+      letter-spacing: 2px;
+
+    }
+
+
+
+    .profile-title {
+
+      display: inline-block;
+
+      margin-top: 6px;
+
+      padding: 4px 9px;
+
+      border-radius: 20px;
+
+      background: #f0ebe4;
+
+      color: #756b60;
+
+      font-size: 10px;
+
+    }
+
+
+
+    .profile-experience {
+
+      margin-top: 8px;
+
+      color: #8e857b;
+
+      font-size: 11px;
+
+    }
+
+
+
+    .profile-rating {
+
+      margin-top: 8px;
+
+      font-size: 13px;
+
+    }
+
+
+
+    .stars {
+
+      color: #8a7b67;
+
+      letter-spacing: 1px;
+
+    }
+
+
+
+    .rating-number {
+
+      margin-left: 4px;
+
+      font-weight: 500;
+
+    }
+
+
+
+    .review-count {
+
+      color: #aaa198;
+
+      font-size: 10px;
+
+      margin-left: 4px;
+
+    }
+
+
+
+    /* 数据 */
+
+
+
+    .profile-stats {
+
+      display: grid;
+
+      grid-template-columns: repeat(4, 1fr);
+
+      margin-top: 18px;
+
+      padding-top: 16px;
+
+      border-top: 1px solid #eee8e0;
+
+    }
+
+
+
+    .stat {
+
+      text-align: center;
+
+      border-right: 1px solid #eee8e0;
+
+    }
+
+
+
+    .stat:last-child {
+
+      border-right: 0;
+
+    }
+
+
+
+    .stat-number {
+
+      font-size: 17px;
+
+      font-weight: 500;
+
+      color: #403a34;
+
+    }
+
+
+
+    .stat-label {
+
+      margin-top: 3px;
+
+      font-size: 9px;
+
+      color: #a39a90;
+
+    }
+
+
+
+    /* 专业资料 */
+
+
+
+    .profile-subtitle {
+
+      margin: 20px 0 10px;
+
+      font-size: 14px;
+
+      font-weight: 500;
+
+    }
+
+
+
+    .specialty {
+
+      padding: 11px 13px;
+
+      border-radius: 11px;
+
+      background: #f5f1eb;
+
+      color: #665e55;
+
+      font-size: 12px;
+
+    }
+
+
+
+    .info-grid {
+
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      border-top: 1px solid #eee8e0;
+
+      border-left: 1px solid #eee8e0;
+
+      margin-top: 12px;
+
+    }
+
+
+
+    .info-item {
+
+      padding: 11px 12px;
+
+      border-right: 1px solid #eee8e0;
+
+      border-bottom: 1px solid #eee8e0;
+
+    }
+
+
+
+    .info-label {
+
+      color: #aaa197;
+
+      font-size: 10px;
+
+    }
+
+
+
+    .info-value {
+
+      margin-top: 3px;
+
+      color: #403a34;
+
+      font-size: 12px;
+
+    }
+
+
+
+    /* =========================
+
+       选择疗愈师
+
+    ========================= */
+
+
+
+    .therapist-select {
+
+      display: flex;
+
+      align-items: center;
+
+      padding: 12px;
+
+      border: 1px solid #8e8478;
+
+      border-radius: 14px;
+
+      background: #faf7f2;
+
+    }
+
+
+
+    .therapist-small-avatar {
+
+      width: 58px;
+
+      height: 58px;
+
+      border-radius: 50%;
+
+      object-fit: cover;
+
+      object-position: center top;
+
+    }
+
+
+
+    .therapist-select-info {
+
+      flex: 1;
+
+      margin-left: 12px;
+
+    }
+
+
+
+    .therapist-select-name {
+
+      font-size: 16px;
+
+      font-weight: 500;
+
+    }
+
+
+
+    .therapist-select-title {
+
+      margin-top: 3px;
+
+      color: #948a80;
+
+      font-size: 10px;
+
+    }
+
+
+
+    .therapist-select-arrow {
+
+      color: #aaa198;
+
+      font-size: 22px;
+
+    }
+
+
+
+    /* =========================
+
+       服务
 
     ========================= */
 
@@ -356,17 +696,15 @@
 
       position: relative;
 
-      padding: 18px 15px;
+      padding: 17px 14px;
 
-      border: 1px solid #e7e1d8;
+      text-align: left;
+
+      border: 1px solid #e5ded5;
 
       border-radius: 15px;
 
-      background: #fff;
-
-      transition: 0.2s ease;
-
-      text-align: left;
+      background: white;
 
     }
 
@@ -374,19 +712,11 @@
 
     .service-card.active {
 
-      border-color: #8d8377;
+      border-color: #7c7267;
 
-      background: #f9f6f1;
+      box-shadow: inset 0 0 0 1px #7c7267;
 
-      box-shadow: inset 0 0 0 1px #8d8377;
-
-    }
-
-
-
-    .service-card:active {
-
-      transform: scale(0.98);
+      background: #faf7f2;
 
     }
 
@@ -394,11 +724,9 @@
 
     .service-duration {
 
-      font-size: 11px;
+      color: #9d948b;
 
-      color: #9a9288;
-
-      margin-bottom: 5px;
+      font-size: 10px;
 
     }
 
@@ -406,9 +734,9 @@
 
     .service-name {
 
-      font-size: 16px;
+      margin-top: 5px;
 
-      color: #2c2925;
+      font-size: 16px;
 
       font-weight: 500;
 
@@ -420,11 +748,9 @@
 
       margin-top: 7px;
 
-      color: #756b60;
+      color: #71675c;
 
       font-size: 18px;
-
-      font-weight: 500;
 
     }
 
@@ -432,9 +758,9 @@
 
     .service-price small {
 
-      font-size: 11px;
+      font-size: 10px;
 
-      font-weight: 400;
+      color: #aaa198;
 
     }
 
@@ -448,13 +774,13 @@
 
       right: 12px;
 
-      width: 19px;
+      width: 18px;
 
-      height: 19px;
+      height: 18px;
+
+      border: 1px solid #d7cfc5;
 
       border-radius: 50%;
-
-      border: 1px solid #d6cec3;
 
     }
 
@@ -462,9 +788,9 @@
 
     .service-card.active .service-check {
 
-      border-color: #6f665c;
+      background: #756b60;
 
-      background: #6f665c;
+      border-color: #756b60;
 
     }
 
@@ -480,9 +806,9 @@
 
       height: 4px;
 
-      border-left: 1.5px solid #fff;
+      border-left: 1.5px solid white;
 
-      border-bottom: 1.5px solid #fff;
+      border-bottom: 1.5px solid white;
 
       transform: rotate(-45deg);
 
@@ -502,241 +828,23 @@
 
 
 
-    .date-wrap {
-
-      position: relative;
-
-    }
-
-
-
     .date-input {
 
       width: 100%;
 
       height: 48px;
 
-      border: 1px solid #e2dcd3;
+      border: 1px solid #e1dad1;
 
       border-radius: 12px;
 
-      background: #fff;
+      background: white;
 
-      padding: 0 14px;
-
-      color: #39352f;
+      padding: 0 13px;
 
       outline: none;
 
-    }
-
-
-
-    .date-input:focus {
-
-      border-color: #9b9185;
-
-    }
-
-
-
-    /* =========================
-
-       疗愈师
-
-    ========================= */
-
-
-
-    .therapist-list {
-
-      display: grid;
-
-      gap: 10px;
-
-    }
-
-
-
-    .therapist-card {
-
-      display: flex;
-
-      align-items: center;
-
-      gap: 13px;
-
-      width: 100%;
-
-      padding: 12px;
-
-      background: #fff;
-
-      border: 1px solid #e7e1d8;
-
-      border-radius: 15px;
-
-      text-align: left;
-
-      transition: 0.2s ease;
-
-    }
-
-
-
-    .therapist-card.active {
-
-      border-color: #8d8377;
-
-      background: #faf8f4;
-
-      box-shadow: inset 0 0 0 1px #8d8377;
-
-    }
-
-
-
-    .therapist-card:active {
-
-      transform: scale(0.99);
-
-    }
-
-
-
-    .therapist-avatar {
-
-      width: 68px;
-
-      height: 68px;
-
-      flex: 0 0 68px;
-
-      border-radius: 50%;
-
-      object-fit: cover;
-
-      background: #eee8df;
-
-    }
-
-
-
-    .therapist-info {
-
-      min-width: 0;
-
-      flex: 1;
-
-    }
-
-
-
-    .therapist-name-row {
-
-      display: flex;
-
-      align-items: center;
-
-      gap: 8px;
-
-    }
-
-
-
-    .therapist-name {
-
-      font-size: 16px;
-
-      font-weight: 500;
-
-      color: #2f2b26;
-
-    }
-
-
-
-    .therapist-years {
-
-      font-size: 10px;
-
-      color: #9b9288;
-
-      padding: 2px 7px;
-
-      border: 1px solid #e1dad1;
-
-      border-radius: 20px;
-
-    }
-
-
-
-    .therapist-intro {
-
-      margin-top: 4px;
-
-      color: #7e766d;
-
-      font-size: 11px;
-
-      line-height: 1.5;
-
-    }
-
-
-
-    .therapist-tags {
-
-      display: flex;
-
-      flex-wrap: wrap;
-
-      gap: 5px;
-
-      margin-top: 6px;
-
-    }
-
-
-
-    .therapist-tag {
-
-      font-size: 9px;
-
-      color: #8b8176;
-
-      background: #f4f0ea;
-
-      padding: 3px 7px;
-
-      border-radius: 20px;
-
-    }
-
-
-
-    .therapist-arrow {
-
-      color: #b4aba1;
-
-      font-size: 20px;
-
-      padding-left: 3px;
-
-    }
-
-
-
-    .empty {
-
-      padding: 24px 10px;
-
-      text-align: center;
-
-      color: #aaa198;
-
-      font-size: 12px;
+      color: #403a34;
 
     }
 
@@ -766,17 +874,15 @@
 
       height: 40px;
 
-      border: 1px solid #e4ddd4;
+      border: 1px solid #e3ddd4;
 
       border-radius: 10px;
 
-      background: #fff;
+      background: white;
 
-      color: #575047;
+      color: #5e564e;
 
-      font-size: 12px;
-
-      transition: 0.2s ease;
+      font-size: 11px;
 
     }
 
@@ -784,19 +890,27 @@
 
     .time-btn.active {
 
-      background: #746b61;
+      background: #756b60;
 
-      color: #fff;
+      border-color: #756b60;
 
-      border-color: #746b61;
+      color: white;
 
     }
 
 
 
-    .time-btn:active {
+    .empty {
 
-      transform: scale(0.97);
+      grid-column: 1 / -1;
+
+      text-align: center;
+
+      padding: 22px 8px;
+
+      color: #aaa198;
+
+      font-size: 11px;
 
     }
 
@@ -832,9 +946,9 @@
 
       margin-bottom: 6px;
 
-      font-size: 12px;
+      color: #756d64;
 
-      color: #6e665d;
+      font-size: 11px;
 
     }
 
@@ -846,25 +960,17 @@
 
       height: 46px;
 
-      border: 1px solid #e3ddd5;
+      border: 1px solid #e2dcd4;
 
       border-radius: 11px;
 
-      background: #fff;
+      background: white;
 
       padding: 0 13px;
 
-      color: #36322d;
-
       outline: none;
 
-    }
-
-
-
-    .form-input:focus {
-
-      border-color: #9b9185;
+      color: #38332e;
 
     }
 
@@ -872,7 +978,7 @@
 
     .form-input::placeholder {
 
-      color: #b7afa6;
+      color: #b6aea5;
 
     }
 
@@ -880,7 +986,7 @@
 
     /* =========================
 
-       订单摘要
+       预约摘要
 
     ========================= */
 
@@ -892,7 +998,7 @@
 
       border-radius: 13px;
 
-      padding: 14px;
+      padding: 13px;
 
     }
 
@@ -904,11 +1010,9 @@
 
       justify-content: space-between;
 
-      align-items: center;
-
       padding: 6px 0;
 
-      font-size: 12px;
+      font-size: 11px;
 
     }
 
@@ -916,7 +1020,7 @@
 
     .summary-row span:first-child {
 
-      color: #91887e;
+      color: #9b9288;
 
     }
 
@@ -924,7 +1028,7 @@
 
     .summary-row span:last-child {
 
-      color: #443f39;
+      color: #4a443d;
 
       text-align: right;
 
@@ -942,47 +1046,23 @@
 
 
 
-    /* =========================
-
-       提交按钮
-
-    ========================= */
-
-
-
     .submit-btn {
 
       width: 100%;
 
       height: 52px;
 
-      margin-top: 15px;
+      margin-top: 14px;
 
-      border: 0;
-
-      border-radius: 15px;
+      border-radius: 14px;
 
       background: #403b35;
 
-      color: #fff;
+      color: white;
 
-      font-size: 15px;
+      font-size: 14px;
 
       letter-spacing: 2px;
-
-      transition: 0.2s ease;
-
-      box-shadow: 0 8px 22px rgba(60, 54, 48, 0.14);
-
-    }
-
-
-
-    .submit-btn:active {
-
-      transform: translateY(1px);
-
-      opacity: 0.9;
 
     }
 
@@ -990,27 +1070,7 @@
 
     .submit-btn:disabled {
 
-      background: #bdb5ac;
-
-      box-shadow: none;
-
-      cursor: not-allowed;
-
-    }
-
-
-
-    .footer {
-
-      padding: 10px 20px 30px;
-
-      text-align: center;
-
-      color: #aaa198;
-
-      font-size: 10px;
-
-      letter-spacing: 1px;
+      background: #b9b1a8;
 
     }
 
@@ -1018,7 +1078,7 @@
 
     /* =========================
 
-       Modal
+       弹窗
 
     ========================= */
 
@@ -1026,13 +1086,13 @@
 
     .modal {
 
+      display: none;
+
       position: fixed;
 
       inset: 0;
 
       z-index: 999;
-
-      display: none;
 
       align-items: center;
 
@@ -1040,7 +1100,7 @@
 
       padding: 25px;
 
-      background: rgba(30, 27, 24, 0.42);
+      background: rgba(30,27,24,.45);
 
     }
 
@@ -1058,17 +1118,15 @@
 
       width: 100%;
 
-      max-width: 400px;
+      max-width: 390px;
 
-      background: #fff;
+      background: white;
 
       border-radius: 20px;
 
-      padding: 27px 22px 22px;
+      padding: 28px 22px 22px;
 
       text-align: center;
-
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
 
     }
 
@@ -1076,11 +1134,11 @@
 
     .modal-icon {
 
-      width: 52px;
+      width: 50px;
 
-      height: 52px;
+      height: 50px;
 
-      margin: 0 auto 13px;
+      margin: auto;
 
       border-radius: 50%;
 
@@ -1088,9 +1146,9 @@
 
       display: flex;
 
-      align-items: center;
-
       justify-content: center;
+
+      align-items: center;
 
       font-size: 23px;
 
@@ -1100,11 +1158,11 @@
 
     .modal-title {
 
+      margin-top: 12px;
+
       font-size: 19px;
 
       font-weight: 500;
-
-      color: #332f2a;
 
     }
 
@@ -1112,11 +1170,11 @@
 
     .modal-text {
 
-      margin-top: 9px;
+      margin-top: 8px;
+
+      color: #8c837a;
 
       font-size: 12px;
-
-      color: #8a8178;
 
       line-height: 1.8;
 
@@ -1132,13 +1190,11 @@
 
       margin-top: 18px;
 
-      border: 0;
-
       border-radius: 11px;
 
       background: #403b35;
 
-      color: #fff;
+      color: white;
 
       font-size: 13px;
 
@@ -1146,89 +1202,45 @@
 
 
 
-    /* =========================
+    .footer {
 
-       Loading
-
-    ========================= */
-
-
-
-    .loading {
-
-      padding: 20px;
+      padding: 8px 20px 30px;
 
       text-align: center;
 
       color: #aaa198;
 
-      font-size: 12px;
+      font-size: 9px;
+
+      letter-spacing: 1px;
 
     }
-
-
-
-    .error {
-
-      padding: 18px;
-
-      text-align: center;
-
-      color: #a17768;
-
-      font-size: 12px;
-
-      background: #faf4f1;
-
-      border-radius: 12px;
-
-    }
-
-
-
-    /* =========================
-
-       手机端
-
-    ========================= */
 
 
 
     @media (max-width: 420px) {
 
-      .brand {
-
-        padding-top: 24px;
-
-      }
-
-
-
-      .brand-name {
-
-        font-size: 26px;
-
-      }
-
-
-
       .hero {
 
-        height: 270px;
-
-        margin-left: 12px;
-
-        margin-right: 12px;
+        height: 235px;
 
       }
 
 
 
-      .content {
+      .profile-avatar {
 
-        padding-left: 12px;
+        width: 82px;
 
-        padding-right: 12px;
+        height: 102px;
+
+      }
+
+
+
+      .profile-name {
+
+        font-size: 21px;
 
       }
 
@@ -1237,18 +1249,6 @@
       .time-list {
 
         grid-template-columns: repeat(4, 1fr);
-
-      }
-
-
-
-      .therapist-avatar {
-
-        width: 62px;
-
-        height: 62px;
-
-        flex-basis: 62px;
 
       }
 
@@ -1262,665 +1262,1113 @@
 
 <body>
 
-  <div class="page">
+
+
+<div class="page">
 
 
 
-    <!-- 品牌 -->
+  <!-- 品牌 -->
 
-    <header class="brand">
+  <header class="brand">
 
-      <div class="brand-name">奕心疗愈舍</div>
+    <div class="brand-name">奕心疗愈舍</div>
 
-      <div class="brand-slogan">身心同调 · 医心疗愈 · 回归本真</div>
+    <div class="brand-slogan">
 
-    </header>
+      身心同调 · 医心疗愈 · 回归本真
+
+    </div>
+
+  </header>
 
 
 
-    <!-- 首页主视觉 -->
+  <!-- 奕安心主视觉 -->
 
-    <section class="hero">
+  <section class="hero">
 
-      <div class="hero-content">
+    <div class="hero-info">
 
-        <div class="hero-title">让身体慢下来</div>
+      <div class="hero-name">奕安心</div>
 
-        <div class="hero-subtitle">在安静的时间里，重新感受自己</div>
+      <div class="hero-title">
+
+        高级疗愈师 · 9年专业经验
 
       </div>
+
+    </div>
+
+  </section>
+
+
+
+  <main class="content">
+
+
+
+    <!-- =========================
+
+         疗愈师档案
+
+    ========================= -->
+
+
+
+    <section class="section">
+
+
+
+      <div class="section-title">
+
+        <h2>疗愈师档案</h2>
+
+        <span>THERAPIST PROFILE</span>
+
+      </div>
+
+
+
+      <div class="card">
+
+
+
+        <div class="profile-top">
+
+
+
+          <img
+
+            class="profile-avatar"
+
+            src="/anxin.png"
+
+            alt="奕安心"
+
+            onerror="this.src='/anxin.png'"
+
+          >
+
+
+
+          <div class="profile-main">
+
+
+
+            <div class="profile-name">
+
+              奕安心
+
+            </div>
+
+
+
+            <div class="profile-title">
+
+              高级疗愈师
+
+            </div>
+
+
+
+            <div class="profile-experience">
+
+              专业经验 9年 · 入驻奕心疗愈舍 2年
+
+            </div>
+
+
+
+            <div class="profile-rating">
+
+              <span class="stars">★★★★★</span>
+
+              <span class="rating-number">5.0</span>
+
+              <span class="review-count">128条评价</span>
+
+            </div>
+
+
+
+          </div>
+
+
+
+        </div>
+
+
+
+        <!-- 核心数据 -->
+
+
+
+        <div class="profile-stats">
+
+
+
+          <div class="stat">
+
+            <div class="stat-number">5.0</div>
+
+            <div class="stat-label">评分</div>
+
+          </div>
+
+
+
+          <div class="stat">
+
+            <div class="stat-number">128</div>
+
+            <div class="stat-label">评价</div>
+
+          </div>
+
+
+
+          <div class="stat">
+
+            <div class="stat-number">386</div>
+
+            <div class="stat-label">服务人数</div>
+
+          </div>
+
+
+
+          <div class="stat">
+
+            <div class="stat-number">96%</div>
+
+            <div class="stat-label">回头率</div>
+
+          </div>
+
+
+
+        </div>
+
+
+
+        <!-- 满意度 -->
+
+
+
+        <div style="
+
+          margin-top:14px;
+
+          padding:11px 13px;
+
+          border-radius:11px;
+
+          background:#f5f1eb;
+
+          display:flex;
+
+          justify-content:space-between;
+
+          align-items:center;
+
+        ">
+
+          <span style="font-size:11px;color:#8f867d;">
+
+            客户满意度
+
+          </span>
+
+
+
+          <strong style="
+
+            font-size:15px;
+
+            font-weight:500;
+
+            color:#62594f;
+
+          ">
+
+            100%
+
+          </strong>
+
+        </div>
+
+
+
+        <!-- 专业资料 -->
+
+
+
+        <div class="profile-subtitle">
+
+          专业资料
+
+        </div>
+
+
+
+        <div class="specialty">
+
+          <span style="color:#9b9288;">擅长：</span>
+
+          中式 / SPA
+
+        </div>
+
+
+
+        <div class="info-grid">
+
+
+
+          <div class="info-item">
+
+            <div class="info-label">入驻</div>
+
+            <div class="info-value">2年</div>
+
+          </div>
+
+
+
+          <div class="info-item">
+
+            <div class="info-label">专业经验</div>
+
+            <div class="info-value">9年</div>
+
+          </div>
+
+
+
+          <div class="info-item">
+
+            <div class="info-label">民族</div>
+
+            <div class="info-value">汉族</div>
+
+          </div>
+
+
+
+          <div class="info-item">
+
+            <div class="info-label">学历</div>
+
+            <div class="info-value">本科</div>
+
+          </div>
+
+
+
+          <div class="info-item">
+
+            <div class="info-label">身高</div>
+
+            <div class="info-value">165cm</div>
+
+          </div>
+
+
+
+          <div class="info-item">
+
+            <div class="info-label">体重</div>
+
+            <div class="info-value">48kg</div>
+
+          </div>
+
+
+
+        </div>
+
+
+
+      </div>
+
+
 
     </section>
 
 
 
-    <main class="content">
 
 
+    <!-- =========================
 
-      <!-- 1. 服务项目 -->
+         当前选择疗愈师
 
-      <section class="section">
+    ========================= -->
 
-        <div class="section-title">
 
-          <h2>选择疗愈项目</h2>
 
-          <span>Choose Service</span>
+    <section class="section">
 
-        </div>
 
 
+      <div class="section-title">
 
-        <div class="service-list">
+        <h2>预约疗愈师</h2>
 
-
-
-          <button
-
-            type="button"
-
-            class="service-card active"
-
-            data-duration="90"
-
-            data-price="298"
-
-            data-service="轻享疗愈"
-
-          >
-
-            <div class="service-duration">90 MIN</div>
-
-            <div class="service-name">轻享疗愈</div>
-
-            <div class="service-price">
-
-              ¥298 <small>/ 次</small>
-
-            </div>
-
-            <div class="service-check"></div>
-
-          </button>
-
-
-
-          <button
-
-            type="button"
-
-            class="service-card"
-
-            data-duration="120"
-
-            data-price="398"
-
-            data-service="臻享疗愈"
-
-          >
-
-            <div class="service-duration">120 MIN</div>
-
-            <div class="service-name">臻享疗愈</div>
-
-            <div class="service-price">
-
-              ¥398 <small>/ 次</small>
-
-            </div>
-
-            <div class="service-check"></div>
-
-          </button>
-
-
-
-        </div>
-
-      </section>
-
-
-
-      <!-- 2. 日期 -->
-
-      <section class="section">
-
-        <div class="section-title">
-
-          <h2>选择日期</h2>
-
-          <span>Select Date</span>
-
-        </div>
-
-
-
-        <div class="card">
-
-          <div class="date-wrap">
-
-            <input
-
-              id="dateInput"
-
-              class="date-input"
-
-              type="date"
-
-            />
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-
-      <!-- 3. 疗愈师 -->
-
-      <section class="section">
-
-        <div class="section-title">
-
-          <h2>选择疗愈师</h2>
-
-          <span>Select Therapist</span>
-
-        </div>
-
-
-
-        <div class="card">
-
-          <div id="therapistList" class="therapist-list">
-
-            <div class="loading">正在加载疗愈师...</div>
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-
-      <!-- 4. 时间 -->
-
-      <section class="section">
-
-        <div class="section-title">
-
-          <h2>选择时间</h2>
-
-          <span>Select Time</span>
-
-        </div>
-
-
-
-        <div class="card">
-
-          <div id="timeList" class="time-list">
-
-            <div class="empty" style="grid-column: 1 / -1;">
-
-              请先选择日期和疗愈师
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-
-      <!-- 5. 客户信息 -->
-
-      <section class="section">
-
-        <div class="section-title">
-
-          <h2>预约信息</h2>
-
-          <span>Your Information</span>
-
-        </div>
-
-
-
-        <div class="card">
-
-
-
-          <div class="form-group">
-
-            <label class="form-label" for="nameInput">
-
-              姓名
-
-            </label>
-
-
-
-            <input
-
-              id="nameInput"
-
-              class="form-input"
-
-              type="text"
-
-              maxlength="20"
-
-              placeholder="请输入您的姓名"
-
-            />
-
-          </div>
-
-
-
-          <div class="form-group">
-
-            <label class="form-label" for="phoneInput">
-
-              手机号
-
-            </label>
-
-
-
-            <input
-
-              id="phoneInput"
-
-              class="form-input"
-
-              type="tel"
-
-              inputmode="numeric"
-
-              maxlength="11"
-
-              placeholder="请输入11位手机号"
-
-            />
-
-          </div>
-
-
-
-          <div class="form-group">
-
-            <label class="form-label" for="addressInput">
-
-              服务地址
-
-            </label>
-
-
-
-            <input
-
-              id="addressInput"
-
-              class="form-input"
-
-              type="text"
-
-              maxlength="100"
-
-              placeholder="请输入详细服务地址"
-
-            />
-
-          </div>
-
-
-
-        </div>
-
-      </section>
-
-
-
-      <!-- 6. 预约确认 -->
-
-      <section class="section">
-
-        <div class="section-title">
-
-          <h2>预约确认</h2>
-
-          <span>Confirm Booking</span>
-
-        </div>
-
-
-
-        <div class="card">
-
-
-
-          <div class="summary">
-
-
-
-            <div class="summary-row">
-
-              <span>疗愈项目</span>
-
-              <span id="summaryService">轻享疗愈</span>
-
-            </div>
-
-
-
-            <div class="summary-row">
-
-              <span>时长</span>
-
-              <span id="summaryDuration">90 分钟</span>
-
-            </div>
-
-
-
-            <div class="summary-row">
-
-              <span>日期</span>
-
-              <span id="summaryDate">请选择</span>
-
-            </div>
-
-
-
-            <div class="summary-row">
-
-              <span>疗愈师</span>
-
-              <span id="summaryTherapist">请选择</span>
-
-            </div>
-
-
-
-            <div class="summary-row">
-
-              <span>时间</span>
-
-              <span id="summaryTime">请选择</span>
-
-            </div>
-
-
-
-            <div class="summary-row">
-
-              <span>费用</span>
-
-              <span
-
-                id="summaryPrice"
-
-                class="summary-price"
-
-              >
-
-                ¥298
-
-              </span>
-
-            </div>
-
-
-
-          </div>
-
-
-
-          <button
-
-            id="submitBtn"
-
-            class="submit-btn"
-
-            type="button"
-
-          >
-
-            确认预约
-
-          </button>
-
-
-
-        </div>
-
-      </section>
-
-
-
-    </main>
-
-
-
-    <footer class="footer">
-
-      奕心疗愈舍 · 身心同调 · 医心疗愈 · 回归本真
-
-    </footer>
-
-
-
-  </div>
-
-
-
-  <!-- 成功弹窗 -->
-
-  <div id="successModal" class="modal">
-
-    <div class="modal-box">
-
-
-
-      <div class="modal-icon">✓</div>
-
-
-
-      <div class="modal-title">
-
-        预约成功
+        <span>YOUR THERAPIST</span>
 
       </div>
 
 
 
-      <div
+      <div class="card">
 
-        id="successText"
 
-        class="modal-text"
 
-      >
+        <div class="therapist-select">
 
-        您的预约已提交成功。
+
+
+          <img
+
+            class="therapist-small-avatar"
+
+            src="/anxin.png"
+
+            alt="奕安心"
+
+          >
+
+
+
+          <div class="therapist-select-info">
+
+
+
+            <div class="therapist-select-name">
+
+              奕安心
+
+            </div>
+
+
+
+            <div class="therapist-select-title">
+
+              高级疗愈师 · 9年经验 · 5.0评分
+
+            </div>
+
+
+
+          </div>
+
+
+
+          <div class="therapist-select-arrow">
+
+            ✓
+
+          </div>
+
+
+
+        </div>
+
+
 
       </div>
 
 
 
-      <button
-
-        type="button"
-
-        class="modal-btn"
-
-        onclick="closeModal()"
-
-      >
-
-        好的
-
-      </button>
+    </section>
 
 
+
+
+
+    <!-- =========================
+
+         服务项目
+
+    ========================= -->
+
+
+
+    <section class="section">
+
+
+
+      <div class="section-title">
+
+        <h2>选择疗愈项目</h2>
+
+        <span>CHOOSE SERVICE</span>
+
+      </div>
+
+
+
+      <div class="service-list">
+
+
+
+        <button
+
+          type="button"
+
+          class="service-card active"
+
+          data-service="轻享疗愈"
+
+          data-price="298"
+
+          data-duration="90"
+
+        >
+
+
+
+          <div class="service-duration">
+
+            90 MIN
+
+          </div>
+
+
+
+          <div class="service-name">
+
+            轻享疗愈
+
+          </div>
+
+
+
+          <div class="service-price">
+
+            ¥298 <small>/ 次</small>
+
+          </div>
+
+
+
+          <div class="service-check"></div>
+
+
+
+        </button>
+
+
+
+
+
+        <button
+
+          type="button"
+
+          class="service-card"
+
+          data-service="臻享疗愈"
+
+          data-price="398"
+
+          data-duration="120"
+
+        >
+
+
+
+          <div class="service-duration">
+
+            120 MIN
+
+          </div>
+
+
+
+          <div class="service-name">
+
+            臻享疗愈
+
+          </div>
+
+
+
+          <div class="service-price">
+
+            ¥398 <small>/ 次</small>
+
+          </div>
+
+
+
+          <div class="service-check"></div>
+
+
+
+        </button>
+
+
+
+      </div>
+
+
+
+    </section>
+
+
+
+
+
+    <!-- =========================
+
+         日期
+
+    ========================= -->
+
+
+
+    <section class="section">
+
+
+
+      <div class="section-title">
+
+        <h2>选择日期</h2>
+
+        <span>SELECT DATE</span>
+
+      </div>
+
+
+
+      <div class="card">
+
+
+
+        <input
+
+          id="dateInput"
+
+          class="date-input"
+
+          type="date"
+
+        >
+
+
+
+      </div>
+
+
+
+    </section>
+
+
+
+
+
+    <!-- =========================
+
+         时间
+
+    ========================= -->
+
+
+
+    <section class="section">
+
+
+
+      <div class="section-title">
+
+        <h2>选择时间</h2>
+
+        <span>SELECT TIME</span>
+
+      </div>
+
+
+
+      <div class="card">
+
+
+
+        <div id="timeList" class="time-list">
+
+
+
+          <div class="empty">
+
+            请选择日期后查看可预约时间
+
+          </div>
+
+
+
+        </div>
+
+
+
+      </div>
+
+
+
+    </section>
+
+
+
+
+
+    <!-- =========================
+
+         客户信息
+
+    ========================= -->
+
+
+
+    <section class="section">
+
+
+
+      <div class="section-title">
+
+        <h2>预约信息</h2>
+
+        <span>YOUR INFORMATION</span>
+
+      </div>
+
+
+
+      <div class="card">
+
+
+
+        <div class="form-group">
+
+
+
+          <label class="form-label">
+
+            姓名
+
+          </label>
+
+
+
+          <input
+
+            id="nameInput"
+
+            class="form-input"
+
+            type="text"
+
+            maxlength="20"
+
+            placeholder="请输入您的姓名"
+
+          >
+
+
+
+        </div>
+
+
+
+
+
+        <div class="form-group">
+
+
+
+          <label class="form-label">
+
+            手机号
+
+          </label>
+
+
+
+          <input
+
+            id="phoneInput"
+
+            class="form-input"
+
+            type="tel"
+
+            inputmode="numeric"
+
+            maxlength="11"
+
+            placeholder="请输入11位手机号"
+
+          >
+
+
+
+        </div>
+
+
+
+
+
+        <div class="form-group">
+
+
+
+          <label class="form-label">
+
+            服务地址
+
+          </label>
+
+
+
+          <input
+
+            id="addressInput"
+
+            class="form-input"
+
+            type="text"
+
+            maxlength="100"
+
+            placeholder="请输入详细服务地址"
+
+          >
+
+
+
+        </div>
+
+
+
+      </div>
+
+
+
+    </section>
+
+
+
+
+
+    <!-- =========================
+
+         确认预约
+
+    ========================= -->
+
+
+
+    <section class="section">
+
+
+
+      <div class="section-title">
+
+        <h2>预约确认</h2>
+
+        <span>CONFIRM</span>
+
+      </div>
+
+
+
+      <div class="card">
+
+
+
+        <div class="summary">
+
+
+
+          <div class="summary-row">
+
+            <span>疗愈师</span>
+
+            <span>奕安心</span>
+
+          </div>
+
+
+
+          <div class="summary-row">
+
+            <span>职称</span>
+
+            <span>高级疗愈师</span>
+
+          </div>
+
+
+
+          <div class="summary-row">
+
+            <span>项目</span>
+
+            <span id="summaryService">轻享疗愈</span>
+
+          </div>
+
+
+
+          <div class="summary-row">
+
+            <span>时长</span>
+
+            <span id="summaryDuration">90分钟</span>
+
+          </div>
+
+
+
+          <div class="summary-row">
+
+            <span>日期</span>
+
+            <span id="summaryDate">请选择</span>
+
+          </div>
+
+
+
+          <div class="summary-row">
+
+            <span>时间</span>
+
+            <span id="summaryTime">请选择</span>
+
+          </div>
+
+
+
+          <div class="summary-row">
+
+            <span>费用</span>
+
+            <span
+
+              id="summaryPrice"
+
+              class="summary-price"
+
+            >
+
+              ¥298
+
+            </span>
+
+          </div>
+
+
+
+        </div>
+
+
+
+        <button
+
+          id="submitBtn"
+
+          class="submit-btn"
+
+          type="button"
+
+        >
+
+          确认预约
+
+        </button>
+
+
+
+      </div>
+
+
+
+    </section>
+
+
+
+  </main>
+
+
+
+  <footer class="footer">
+
+    奕心疗愈舍 · 身心同调 · 医心疗愈 · 回归本真
+
+  </footer>
+
+
+
+</div>
+
+
+
+
+
+<!-- =========================
+
+     成功弹窗
+
+========================= -->
+
+
+
+<div
+
+  id="successModal"
+
+  class="modal"
+
+>
+
+
+
+  <div class="modal-box">
+
+
+
+    <div class="modal-icon">
+
+      ✓
 
     </div>
 
+
+
+    <div class="modal-title">
+
+      预约成功
+
+    </div>
+
+
+
+    <div
+
+      id="successText"
+
+      class="modal-text"
+
+    >
+
+      您的预约已提交成功。
+
+    </div>
+
+
+
+    <button
+
+      class="modal-btn"
+
+      type="button"
+
+      onclick="closeModal()"
+
+    >
+
+      好的
+
+    </button>
+
+
+
   </div>
 
 
 
-  <script>
+</div>
 
-    /* =====================================================
 
-       奕心疗愈舍 V1.0
 
-       客户预约前端
 
-       对接 Render + PostgreSQL 后端
 
-    ===================================================== */
+<script>
 
 
 
-    const $ = (selector) => document.querySelector(selector);
+  /* =====================================================
 
+     奕心疗愈舍
 
+     客户预约页面最终版
 
-    const API = "";
+  ===================================================== */
 
 
 
-    /* =========================
+  const state = {
 
-       默认疗愈师资料
 
-    ========================= */
 
+    service: "轻享疗愈",
 
 
-    const therapistProfiles = {
 
-      "安然": {
+    price: 298,
 
-        years: "6年经验",
 
-        intro: "专注身体舒缓与深度放松，服务风格细腻温和。",
 
-        tags: ["深度放松", "肩颈舒缓", "身心平衡"],
+    duration: 90,
 
-        image: "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=700&q=85"
 
-      },
 
+    date: "",
 
 
-      "若溪": {
 
-        years: "5年经验",
+    time: "",
 
-        intro: "注重节奏与身体感受，让疗愈过程更加自然舒适。",
 
-        tags: ["轻柔舒缓", "压力释放", "情绪放松"],
 
-        image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=700&q=85"
+    therapistId: null,
 
-      },
 
 
+    therapistName: "奕安心"
 
-      "舒宁": {
 
-        years: "7年经验",
 
-        intro: "擅长深层放松与整体节奏调理，服务体验稳定细致。",
+  };
 
-        tags: ["深度舒缓", "全身放松", "静心疗愈"],
 
-        image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=700&q=85"
 
-      },
 
 
+  const $ = (selector) => {
 
-      "静宜": {
+    return document.querySelector(selector);
 
-        years: "4年经验",
+  };
 
-        intro: "温和细致的服务风格，为忙碌生活带来安静的放松时刻。",
 
-        tags: ["轻享放松", "身心舒缓", "睡眠放松"],
 
-        image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=700&q=85"
 
-      }
 
-    };
+  /* =====================================================
 
+     初始化
 
+  ===================================================== */
 
-    const defaultProfile = {
 
-      years: "专业疗愈师",
 
-      intro: "以细致、专业的服务，为您带来安静舒适的疗愈体验。",
+  document.addEventListener(
 
-      tags: ["身心放松", "身体舒缓", "静心疗愈"],
+    "DOMContentLoaded",
 
-      image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=700&q=85"
-
-    };
-
-
-
-    /* =========================
-
-       当前状态
-
-    ========================= */
-
-
-
-    const state = {
-
-      service: "轻享疗愈",
-
-      price: 298,
-
-      duration: 90,
-
-
-
-      date: "",
-
-      therapistId: "",
-
-      therapistName: "",
-
-      time: ""
-
-    };
-
-
-
-    /* =========================
-
-       初始化
-
-    ========================= */
-
-
-
-    document.addEventListener("DOMContentLoaded", () => {
+    () => {
 
 
 
@@ -1928,571 +2376,121 @@
 
 
 
-      bindServiceEvents();
+      initServices();
 
 
 
-      bindDateEvent();
+      bindDate();
 
 
 
-      bindSubmitEvent();
-
-
-
-      loadTherapists();
+      bindSubmit();
 
 
 
       updateSummary();
 
-    });
 
-
-
-    /* =========================
-
-       日期初始化
-
-    ========================= */
-
-
-
-    function initDate() {
-
-
-
-      const dateInput = $("#dateInput");
-
-
-
-      if (!dateInput) return;
-
-
-
-      const today = new Date();
-
-
-
-      const yyyy = today.getFullYear();
-
-
-
-      const mm = String(today.getMonth() + 1).padStart(2, "0");
-
-
-
-      const dd = String(today.getDate()).padStart(2, "0");
-
-
-
-      const todayString = `${yyyy}-${mm}-${dd}`;
-
-
-
-      dateInput.min = todayString;
-
-
-
-      dateInput.value = todayString;
-
-
-
-      state.date = todayString;
-
-
-
-      updateSummary();
 
     }
 
+  );
 
 
-    /* =========================
 
-       服务项目
 
-    ========================= */
 
+  /* =====================================================
 
+     日期
 
-    function bindServiceEvents() {
+  ===================================================== */
 
 
 
-      const cards = document.querySelectorAll(".service-card");
+  function initDate() {
 
 
 
-      cards.forEach((card) => {
+    const input = $("#dateInput");
 
 
 
-        card.addEventListener("click", () => {
+    const now = new Date();
 
 
 
-          cards.forEach((item) => {
+    const year =
 
-            item.classList.remove("active");
+      now.getFullYear();
 
-          });
 
 
+    const month =
 
-          card.classList.add("active");
+      String(
 
+        now.getMonth() + 1
 
+      ).padStart(2, "0");
 
-          state.service = card.dataset.service;
 
 
+    const day =
 
-          state.price = Number(card.dataset.price);
+      String(
 
+        now.getDate()
 
+      ).padStart(2, "0");
 
-          state.duration = Number(card.dataset.duration);
 
 
+    const today =
 
-          state.time = "";
+      `${year}-${month}-${day}`;
 
 
 
-          updateSummary();
+    input.min = today;
 
 
 
-          if (state.date && state.therapistId) {
+    input.value = today;
 
-            loadTimeSlots();
 
-          }
 
-        });
+    state.date = today;
 
-      });
 
-    }
 
+    loadTimeSlots();
 
 
-    /* =========================
 
-       日期
+  }
 
-    ========================= */
 
 
 
-    function bindDateEvent() {
 
+  function bindDate() {
 
 
-      const dateInput = $("#dateInput");
 
+    $("#dateInput")
 
+      .addEventListener(
 
-      if (!dateInput) return;
+        "change",
 
+        () => {
 
 
-      dateInput.addEventListener("change", () => {
 
+          state.date =
 
-
-        state.date = dateInput.value;
-
-
-
-        state.therapistId = "";
-
-
-
-        state.therapistName = "";
-
-
-
-        state.time = "";
-
-
-
-        updateSummary();
-
-
-
-        loadTherapists();
-
-
-
-        renderEmptyTime();
-
-      });
-
-    }
-
-
-
-    /* =========================
-
-       获取疗愈师
-
-    ========================= */
-
-
-
-    async function loadTherapists() {
-
-
-
-      const container = $("#therapistList");
-
-
-
-      if (!container) return;
-
-
-
-      container.innerHTML =
-
-        '<div class="loading">正在加载疗愈师...</div>';
-
-
-
-      try {
-
-
-
-        if (!state.date) {
-
-          container.innerHTML =
-
-            '<div class="empty">请先选择日期</div>';
-
-          return;
-
-        }
-
-
-
-        const response = await fetch(
-
-          `${API}/api/available-therapists?date=${encodeURIComponent(state.date)}`
-
-        );
-
-
-
-        const data = await response.json();
-
-
-
-        if (!response.ok) {
-
-          throw new Error(
-
-            data.message || "获取疗愈师失败"
-
-          );
-
-        }
-
-
-
-        const therapists =
-
-          Array.isArray(data)
-
-            ? data
-
-            : Array.isArray(data.therapists)
-
-              ? data.therapists
-
-              : [];
-
-
-
-        renderTherapists(therapists);
-
-
-
-      } catch (error) {
-
-
-
-        console.error(error);
-
-
-
-        container.innerHTML = `
-
-          <div class="error">
-
-            暂时无法获取疗愈师信息，请稍后再试
-
-          </div>
-
-        `;
-
-      }
-
-    }
-
-
-
-    /* =========================
-
-       渲染疗愈师
-
-    ========================= */
-
-
-
-    function renderTherapists(therapists) {
-
-
-
-      const container = $("#therapistList");
-
-
-
-      if (!container) return;
-
-
-
-      if (!therapists.length) {
-
-
-
-        container.innerHTML = `
-
-          <div class="empty">
-
-            当前日期暂无可预约疗愈师
-
-          </div>
-
-        `;
-
-
-
-        return;
-
-      }
-
-
-
-      container.innerHTML = "";
-
-
-
-      therapists.forEach((item) => {
-
-
-
-        const id =
-
-          item.id ??
-
-          item.therapist_id ??
-
-          item.therapistId;
-
-
-
-        const name =
-
-          item.name ??
-
-          item.therapist ??
-
-          item.therapist_name ??
-
-          "";
-
-
-
-        const profile =
-
-          therapistProfiles[name] || defaultProfile;
-
-
-
-        const image =
-
-          item.avatar ||
-
-          item.image ||
-
-          profile.image;
-
-
-
-        const years =
-
-          item.years ||
-
-          item.experience ||
-
-          profile.years;
-
-
-
-        const intro =
-
-          item.intro ||
-
-          item.specialty ||
-
-          item.description ||
-
-          profile.intro;
-
-
-
-        const tags =
-
-          Array.isArray(item.tags)
-
-            ? item.tags
-
-            : profile.tags;
-
-
-
-        const card = document.createElement("button");
-
-
-
-        card.type = "button";
-
-
-
-        card.className = "therapist-card";
-
-
-
-        card.innerHTML = `
-
-          <img
-
-            class="therapist-avatar"
-
-            src="${escapeHtml(image)}"
-
-            alt="${escapeHtml(name)}"
-
-            onerror="this.src='${defaultProfile.image}'"
-
-          >
-
-
-
-          <div class="therapist-info">
-
-
-
-            <div class="therapist-name-row">
-
-
-
-              <div class="therapist-name">
-
-                ${escapeHtml(name)}
-
-              </div>
-
-
-
-              <div class="therapist-years">
-
-                ${escapeHtml(years)}
-
-              </div>
-
-
-
-            </div>
-
-
-
-            <div class="therapist-intro">
-
-              ${escapeHtml(intro)}
-
-            </div>
-
-
-
-            <div class="therapist-tags">
-
-
-
-              ${tags
-
-                .map(
-
-                  (tag) => `
-
-                    <span class="therapist-tag">
-
-                      ${escapeHtml(tag)}
-
-                    </span>
-
-                  `
-
-                )
-
-                .join("")}
-
-
-
-            </div>
-
-
-
-          </div>
-
-
-
-          <div class="therapist-arrow">
-
-            ›
-
-          </div>
-
-        `;
-
-
-
-        card.addEventListener("click", () => {
-
-
-
-          document
-
-            .querySelectorAll(".therapist-card")
-
-            .forEach((item) => {
-
-              item.classList.remove("active");
-
-            });
-
-
-
-          card.classList.add("active");
-
-
-
-          state.therapistId = id;
-
-
-
-          state.therapistName = name;
+            $("#dateInput").value;
 
 
 
@@ -2506,295 +2504,311 @@
 
           loadTimeSlots();
 
-        });
+
+
+        }
+
+      );
 
 
 
-        container.appendChild(card);
-
-      });
-
-    }
+  }
 
 
 
-    /* =========================
-
-       获取可预约时间
-
-    ========================= */
 
 
+  /* =====================================================
 
-    async function loadTimeSlots() {
+     服务
+
+  ===================================================== */
 
 
 
-      const container = $("#timeList");
+  function initServices() {
 
 
 
-      if (!container) return;
+    const cards =
+
+      document.querySelectorAll(
+
+        ".service-card"
+
+      );
 
 
 
-      if (!state.date || !state.therapistId) {
+    cards.forEach(card => {
 
 
 
-        renderEmptyTime();
+      card.addEventListener(
+
+        "click",
+
+        () => {
 
 
 
-        return;
+          cards.forEach(
 
-      }
+            item =>
 
+              item.classList.remove(
 
+                "active"
 
-      container.innerHTML =
-
-        '<div class="loading" style="grid-column:1/-1;">正在查询可预约时间...</div>';
-
-
-
-      try {
-
-
-
-        const url =
-
-          `${API}/api/available-slots` +
-
-          `?therapistId=${encodeURIComponent(state.therapistId)}` +
-
-          `&date=${encodeURIComponent(state.date)}` +
-
-          `&duration=${encodeURIComponent(state.duration)}`;
-
-
-
-        const response = await fetch(url);
-
-
-
-        const data = await response.json();
-
-
-
-        if (!response.ok) {
-
-          throw new Error(
-
-            data.message || "获取时间失败"
+              )
 
           );
 
-        }
 
 
+          card.classList.add(
 
-        const slots =
+            "active"
 
-          Array.isArray(data)
+          );
 
-            ? data
 
-            : Array.isArray(data.slots)
 
-              ? data.slots
+          state.service =
 
-              : [];
+            card.dataset.service;
 
 
 
-        renderTimeSlots(slots);
+          state.price =
 
+            Number(
 
+              card.dataset.price
 
-      } catch (error) {
+            );
 
 
 
-        console.error(error);
+          state.duration =
 
+            Number(
 
+              card.dataset.duration
 
-        container.innerHTML = `
+            );
 
-          <div
 
-            class="error"
 
-            style="grid-column:1/-1;"
-
-          >
-
-            暂时无法获取可预约时间，请稍后再试
-
-          </div>
-
-        `;
-
-      }
-
-    }
-
-
-
-    /* =========================
-
-       渲染时间
-
-    ========================= */
-
-
-
-    function renderTimeSlots(slots) {
-
-
-
-      const container = $("#timeList");
-
-
-
-      if (!container) return;
-
-
-
-      if (!slots.length) {
-
-
-
-        container.innerHTML = `
-
-          <div
-
-            class="empty"
-
-            style="grid-column:1/-1;"
-
-          >
-
-            当天暂无可预约时间
-
-          </div>
-
-        `;
-
-
-
-        state.time = "";
-
-
-
-        updateSummary();
-
-
-
-        return;
-
-      }
-
-
-
-      container.innerHTML = "";
-
-
-
-      slots.forEach((slot) => {
-
-
-
-        let time = "";
-
-
-
-        if (typeof slot === "string") {
-
-
-
-          time = slot;
-
-
-
-        } else {
-
-
-
-          time =
-
-            slot.time ||
-
-            slot.start_time ||
-
-            slot.startTime ||
-
-            "";
-
-        }
-
-
-
-        if (!time) return;
-
-
-
-        const button =
-
-          document.createElement("button");
-
-
-
-        button.type = "button";
-
-
-
-        button.className = "time-btn";
-
-
-
-        button.textContent = formatTime(time);
-
-
-
-        button.addEventListener("click", () => {
-
-
-
-          document
-
-            .querySelectorAll(".time-btn")
-
-            .forEach((item) => {
-
-              item.classList.remove("active");
-
-            });
-
-
-
-          button.classList.add("active");
-
-
-
-          state.time = time;
+          state.time = "";
 
 
 
           updateSummary();
 
+
+
+          loadTimeSlots();
+
+
+
+        }
+
+      );
+
+
+
+    });
+
+
+
+  }
+
+
+
+
+
+  /* =====================================================
+
+     获取时间
+
+  ===================================================== */
+
+
+
+  async function loadTimeSlots() {
+
+
+
+    const container =
+
+      $("#timeList");
+
+
+
+    container.innerHTML = `
+
+      <div
+
+        class="empty"
+
+        style="grid-column:1/-1"
+
+      >
+
+        正在查询可预约时间...
+
+      </div>
+
+    `;
+
+
+
+
+
+    try {
+
+
+
+      /*
+
+        这里从后端获取当前疗愈师的可预约时间。
+
+
+
+        如果数据库中奕安心的 therapist ID
+
+        已经存在，则正常使用。
+
+
+
+        页面第一次加载时自动读取疗愈师。
+
+      */
+
+
+
+      const therapistResponse =
+
+        await fetch(
+
+          `/api/available-therapists?date=${encodeURIComponent(state.date)}`
+
+        );
+
+
+
+
+
+      const therapistData =
+
+        await therapistResponse.json();
+
+
+
+
+
+      const therapists =
+
+        Array.isArray(therapistData)
+
+          ? therapistData
+
+          : (
+
+              Array.isArray(
+
+                therapistData.therapists
+
+              )
+
+                ? therapistData.therapists
+
+                : []
+
+            );
+
+
+
+
+
+      /*
+
+        找奕安心
+
+      */
+
+
+
+      const therapist =
+
+        therapists.find(item => {
+
+
+
+          const name =
+
+            item.name ||
+
+            item.therapist ||
+
+            item.therapist_name ||
+
+            "";
+
+
+
+          return name === "奕安心";
+
+
+
         });
 
 
 
-        container.appendChild(button);
-
-      });
 
 
+      /*
 
-      if (!container.children.length) {
+        如果后台已经有奕安心
+
+      */
+
+
+
+      if (therapist) {
+
+
+
+        state.therapistId =
+
+          therapist.id ??
+
+          therapist.therapist_id ??
+
+          therapist.therapistId;
+
+
+
+      }
+
+
+
+
+
+      /*
+
+        如果数据库里没有找到，
+
+        页面仍然显示完整档案，
+
+        但无法提交真实订单。
+
+      */
+
+
+
+      if (!state.therapistId) {
 
 
 
@@ -2804,39 +2818,125 @@
 
             class="empty"
 
-            style="grid-column:1/-1;"
+            style="grid-column:1/-1"
 
           >
 
-            暂无可预约时间
+            当前日期暂未开放预约时间
 
           </div>
 
         `;
 
+
+
+        return;
+
       }
 
-    }
 
 
 
-    /* =========================
 
-       空时间
+      /*
 
-    ========================= */
+        获取可预约时间
 
-
-
-    function renderEmptyTime() {
+      */
 
 
 
-      const container = $("#timeList");
+      const url =
+
+        `/api/available-slots` +
+
+        `?therapistId=${encodeURIComponent(
+
+          state.therapistId
+
+        )}` +
+
+        `&date=${encodeURIComponent(
+
+          state.date
+
+        )}` +
+
+        `&duration=${encodeURIComponent(
+
+          state.duration
+
+        )}`;
 
 
 
-      if (!container) return;
+
+
+      const response =
+
+        await fetch(url);
+
+
+
+
+
+      const data =
+
+        await response.json();
+
+
+
+
+
+      if (!response.ok) {
+
+
+
+        throw new Error(
+
+          data.message ||
+
+          "获取预约时间失败"
+
+        );
+
+
+
+      }
+
+
+
+
+
+      const slots =
+
+        Array.isArray(data)
+
+          ? data
+
+          : (
+
+              Array.isArray(data.slots)
+
+                ? data.slots
+
+                : []
+
+            );
+
+
+
+
+
+      renderTimeSlots(slots);
+
+
+
+    } catch (error) {
+
+
+
+      console.error(error);
 
 
 
@@ -2846,309 +2946,657 @@
 
           class="empty"
 
-          style="grid-column:1/-1;"
+          style="grid-column:1/-1"
 
         >
 
-          请先选择日期和疗愈师
+          暂时无法获取预约时间
 
         </div>
 
       `;
 
-    }
 
-
-
-    /* =========================
-
-       更新摘要
-
-    ========================= */
-
-
-
-    function updateSummary() {
-
-
-
-      const service =
-
-        $("#summaryService");
-
-
-
-      const duration =
-
-        $("#summaryDuration");
-
-
-
-      const date =
-
-        $("#summaryDate");
-
-
-
-      const therapist =
-
-        $("#summaryTherapist");
-
-
-
-      const time =
-
-        $("#summaryTime");
-
-
-
-      const price =
-
-        $("#summaryPrice");
-
-
-
-      if (service) {
-
-        service.textContent =
-
-          state.service || "请选择";
-
-      }
-
-
-
-      if (duration) {
-
-        duration.textContent =
-
-          state.duration
-
-            ? `${state.duration} 分钟`
-
-            : "请选择";
-
-      }
-
-
-
-      if (date) {
-
-        date.textContent =
-
-          state.date
-
-            ? formatDate(state.date)
-
-            : "请选择";
-
-      }
-
-
-
-      if (therapist) {
-
-        therapist.textContent =
-
-          state.therapistName || "请选择";
-
-      }
-
-
-
-      if (time) {
-
-        time.textContent =
-
-          state.time
-
-            ? formatTime(state.time)
-
-            : "请选择";
-
-      }
-
-
-
-      if (price) {
-
-        price.textContent =
-
-          state.price
-
-            ? `¥${state.price}`
-
-            : "¥0";
-
-      }
 
     }
 
 
 
-    /* =========================
-
-       提交预约
-
-    ========================= */
+  }
 
 
 
-    function bindSubmitEvent() {
+
+
+  /* =====================================================
+
+     时间列表
+
+  ===================================================== */
 
 
 
-      const button = $("#submitBtn");
+  function renderTimeSlots(slots) {
 
 
 
-      if (!button) return;
+    const container =
+
+      $("#timeList");
 
 
 
-      button.addEventListener("click", submitOrder);
+    container.innerHTML = "";
+
+
+
+
+
+    if (!slots.length) {
+
+
+
+      container.innerHTML = `
+
+        <div
+
+          class="empty"
+
+          style="grid-column:1/-1"
+
+        >
+
+          当天暂无可预约时间
+
+        </div>
+
+      `;
+
+
+
+      return;
+
+
 
     }
 
 
 
-    async function submitOrder() {
+
+
+    slots.forEach(slot => {
 
 
 
-      const nameInput =
-
-        $("#nameInput");
+      let time = "";
 
 
 
-      const phoneInput =
+      if (
 
-        $("#phoneInput");
+        typeof slot === "string"
+
+      ) {
 
 
 
-      const addressInput =
+        time = slot;
 
-        $("#addressInput");
+
+
+      } else {
+
+
+
+        time =
+
+          slot.time ||
+
+          slot.start_time ||
+
+          slot.startTime ||
+
+          "";
+
+
+
+      }
+
+
+
+
+
+      if (!time) return;
+
+
 
 
 
       const button =
 
-        $("#submitBtn");
+        document.createElement(
 
+          "button"
 
+        );
 
-      const name =
 
-        nameInput.value.trim();
 
+      button.type = "button";
 
 
-      const phoneNumber =
 
-        phoneInput.value.trim();
+      button.className =
 
-
-
-      const addressValue =
-
-        addressInput.value.trim();
-
-
-
-      /* ---------- 基础验证 ---------- */
-
-
-
-      if (!state.service) {
-
-        showError("请选择疗愈项目");
-
-        return;
-
-      }
-
-
-
-      if (!state.date) {
-
-        showError("请选择预约日期");
-
-        return;
-
-      }
-
-
-
-      if (!state.therapistId) {
-
-        showError("请选择疗愈师");
-
-        return;
-
-      }
-
-
-
-      if (!state.time) {
-
-        showError("请选择预约时间");
-
-        return;
-
-      }
-
-
-
-      if (!name) {
-
-        showError("请输入您的姓名");
-
-        nameInput.focus();
-
-        return;
-
-      }
-
-
-
-      if (!/^1[3-9]\d{9}$/.test(phoneNumber)) {
-
-        showError("请输入正确的11位手机号");
-
-        phoneInput.focus();
-
-        return;
-
-      }
-
-
-
-      if (!addressValue) {
-
-        showError("请输入服务地址");
-
-        addressInput.focus();
-
-        return;
-
-      }
-
-
-
-      /* ---------- 防止重复点击 ---------- */
-
-
-
-      button.disabled = true;
+        "time-btn";
 
 
 
       button.textContent =
 
-        "正在提交预约…";
+        formatTime(time);
+
+
+
+
+
+      button.addEventListener(
+
+        "click",
+
+        () => {
+
+
+
+          document
+
+            .querySelectorAll(
+
+              ".time-btn"
+
+            )
+
+            .forEach(
+
+              item =>
+
+                item.classList.remove(
+
+                  "active"
+
+                )
+
+            );
+
+
+
+
+
+          button.classList.add(
+
+            "active"
+
+          );
+
+
+
+
+
+          state.time = time;
+
+
+
+          updateSummary();
+
+
+
+        }
+
+      );
+
+
+
+
+
+      container.appendChild(
+
+        button
+
+      );
+
+
+
+    });
+
+
+
+  }
+
+
+
+
+
+  /* =====================================================
+
+     更新摘要
+
+  ===================================================== */
+
+
+
+  function updateSummary() {
+
+
+
+    $("#summaryService")
+
+      .textContent =
+
+      state.service;
+
+
+
+    $("#summaryDuration")
+
+      .textContent =
+
+      `${state.duration}分钟`;
+
+
+
+    $("#summaryPrice")
+
+      .textContent =
+
+      `¥${state.price}`;
+
+
+
+    $("#summaryDate")
+
+      .textContent =
+
+      state.date
+
+        ? formatDate(state.date)
+
+        : "请选择";
+
+
+
+    $("#summaryTime")
+
+      .textContent =
+
+      state.time
+
+        ? formatTime(state.time)
+
+        : "请选择";
+
+
+
+  }
+
+
+
+
+
+  /* =====================================================
+
+     提交订单
+
+  ===================================================== */
+
+
+
+  function bindSubmit() {
+
+
+
+    $("#submitBtn")
+
+      .addEventListener(
+
+        "click",
+
+        submitOrder
+
+      );
+
+
+
+  }
+
+
+
+
+
+  async function submitOrder() {
+
+
+
+    const name =
+
+      $("#nameInput")
+
+        .value
+
+        .trim();
+
+
+
+
+
+    const phone =
+
+      $("#phoneInput")
+
+        .value
+
+        .trim();
+
+
+
+
+
+    const address =
+
+      $("#addressInput")
+
+        .value
+
+        .trim();
+
+
+
+
+
+    if (!state.therapistId) {
+
+
+
+      alert(
+
+        "当前疗愈师暂未开放该日期预约"
+
+      );
+
+
+
+      return;
+
+
+
+    }
+
+
+
+
+
+    if (!state.date) {
+
+
+
+      alert("请选择预约日期");
+
+
+
+      return;
+
+
+
+    }
+
+
+
+
+
+    if (!state.time) {
+
+
+
+      alert("请选择预约时间");
+
+
+
+      return;
+
+
+
+    }
+
+
+
+
+
+    if (!name) {
+
+
+
+      alert("请输入您的姓名");
+
+
+
+      $("#nameInput").focus();
+
+
+
+      return;
+
+
+
+    }
+
+
+
+
+
+    if (
+
+      !/^1[3-9]\d{9}$/.test(
+
+        phone
+
+      )
+
+    ) {
+
+
+
+      alert(
+
+        "请输入正确的11位手机号"
+
+      );
+
+
+
+      $("#phoneInput").focus();
+
+
+
+      return;
+
+
+
+    }
+
+
+
+
+
+    if (!address) {
+
+
+
+      alert("请输入服务地址");
+
+
+
+      $("#addressInput").focus();
+
+
+
+      return;
+
+
+
+    }
+
+
+
+
+
+    const button =
+
+      $("#submitBtn");
+
+
+
+
+
+    button.disabled = true;
+
+
+
+    button.textContent =
+
+      "正在提交预约…";
+
+
+
+
+
+    try {
+
+
+
+      const payload = {
+
+
+
+        service:
+
+          state.service,
+
+
+
+        price:
+
+          state.price,
+
+
+
+        duration:
+
+          state.duration,
+
+
+
+        therapist:
+
+          "奕安心",
+
+
+
+        therapistId:
+
+          Number(
+
+            state.therapistId
+
+          ),
+
+
+
+        service_date:
+
+          state.date,
+
+
+
+        service_time:
+
+          state.time,
+
+
+
+        customer_name:
+
+          name,
+
+
+
+        phone:
+
+          phone,
+
+
+
+        address:
+
+          address
+
+
+
+      };
+
+
+
+
+
+      console.log(
+
+        "提交预约：",
+
+        payload
+
+      );
+
+
+
+
+
+      const response =
+
+        await fetch(
+
+          "/api/orders",
+
+          {
+
+            method: "POST",
+
+
+
+            headers: {
+
+              "Content-Type":
+
+                "application/json"
+
+            },
+
+
+
+            body:
+
+              JSON.stringify(
+
+                payload
+
+              )
+
+          }
+
+        );
+
+
+
+
+
+      let data = {};
 
 
 
@@ -3156,291 +3604,217 @@
 
 
 
-        /* ---------- 与后端 server.js 对接 ---------- */
+        data =
 
+          await response.json();
 
 
-        const payload = {
 
-          service: state.service,
+      } catch {
 
-          price: state.price,
 
-          duration: state.duration,
 
+        data = {};
 
 
-          therapist: state.therapistName,
-
-          therapistId: Number(state.therapistId),
-
-
-
-          service_date: state.date,
-
-          service_time: state.time,
-
-
-
-          customer_name: name,
-
-          phone: phoneNumber,
-
-          address: addressValue
-
-        };
-
-
-
-        console.log(
-
-          "提交预约：",
-
-          payload
-
-        );
-
-
-
-        const response =
-
-          await fetch(
-
-            `${API}/api/orders`,
-
-            {
-
-              method: "POST",
-
-
-
-              headers: {
-
-                "Content-Type":
-
-                  "application/json"
-
-              },
-
-
-
-              body:
-
-                JSON.stringify(payload)
-
-            }
-
-          );
-
-
-
-        let data = {};
-
-
-
-        try {
-
-          data = await response.json();
-
-        } catch {
-
-          data = {};
-
-        }
-
-
-
-        if (!response.ok) {
-
-
-
-          throw new Error(
-
-            data.message ||
-
-            data.error ||
-
-            "预约提交失败，请稍后再试"
-
-          );
-
-        }
-
-
-
-        /* ---------- 成功 ---------- */
-
-
-
-        const orderId =
-
-          data.id ||
-
-          data.order_id ||
-
-          data.orderId ||
-
-          "";
-
-
-
-        let successMessage =
-
-          `您的 ${state.service} 已预约成功。`;
-
-
-
-        if (orderId) {
-
-          successMessage +=
-
-            `<br>预约编号：${escapeHtml(String(orderId))}`;
-
-        }
-
-
-
-        successMessage +=
-
-          `<br>${escapeHtml(formatDate(state.date))} ${escapeHtml(formatTime(state.time))}`;
-
-
-
-        successMessage +=
-
-          `<br>${escapeHtml(state.therapistName)} 为您服务`;
-
-
-
-        $("#successText").innerHTML =
-
-          successMessage;
-
-
-
-        $("#successModal")
-
-          .classList
-
-          .add("show");
-
-
-
-        /* ---------- 清理当前选择 ---------- */
-
-
-
-        state.time = "";
-
-
-
-        updateSummary();
-
-
-
-        renderEmptyTime();
-
-
-
-      } catch (error) {
-
-
-
-        console.error(
-
-          "预约提交失败：",
-
-          error
-
-        );
-
-
-
-        showError(
-
-          error.message ||
-
-          "预约提交失败，请稍后再试"
-
-        );
-
-
-
-      } finally {
-
-
-
-        button.disabled = false;
-
-
-
-        button.textContent =
-
-          "确认预约";
 
       }
 
-    }
 
 
 
-    /* =========================
 
-       错误提示
-
-    ========================= */
+      if (!response.ok) {
 
 
 
-    function showError(message) {
+        throw new Error(
+
+          data.message ||
+
+          data.error ||
+
+          "预约提交失败"
+
+        );
 
 
-
-      alert(message);
-
-    }
-
-
-
-    /* =========================
-
-       关闭弹窗
-
-    ========================= */
-
-
-
-    function closeModal() {
-
-
-
-      const modal =
-
-        $("#successModal");
-
-
-
-      if (modal) {
-
-        modal.classList.remove("show");
 
       }
 
+
+
+
+
+      const orderId =
+
+        data.id ||
+
+        data.order_id ||
+
+        data.orderId ||
+
+        "";
+
+
+
+
+
+      let text =
+
+        `您的${state.service}预约已成功。`;
+
+
+
+      if (orderId) {
+
+
+
+        text +=
+
+          `<br>预约编号：${escapeHtml(
+
+            String(orderId)
+
+          )}`;
+
+
+
+      }
+
+
+
+
+
+      text +=
+
+        `<br>${escapeHtml(
+
+          formatDate(state.date)
+
+        )} ${escapeHtml(
+
+          formatTime(state.time)
+
+        )}`;
+
+
+
+      text +=
+
+        `<br>疗愈师：奕安心`;
+
+
+
+
+
+      $("#successText")
+
+        .innerHTML =
+
+        text;
+
+
+
+
+
+      $("#successModal")
+
+        .classList
+
+        .add("show");
+
+
+
+
+
+    } catch (error) {
+
+
+
+      console.error(error);
+
+
+
+      alert(
+
+        error.message ||
+
+        "预约提交失败，请稍后再试"
+
+      );
+
+
+
+    } finally {
+
+
+
+      button.disabled = false;
+
+
+
+      button.textContent =
+
+        "确认预约";
+
+
+
     }
 
 
 
-    window.closeModal =
-
-      closeModal;
+  }
 
 
 
-    /* 点击遮罩关闭 */
+
+
+  /* =====================================================
+
+     弹窗
+
+  ===================================================== */
+
+
+
+  function closeModal() {
+
+
 
     $("#successModal")
 
-      .addEventListener("click", (event) => {
+      .classList
+
+      .remove("show");
+
+
+
+  }
+
+
+
+
+
+  window.closeModal =
+
+    closeModal;
+
+
+
+
+
+  /* 点击背景关闭 */
+
+
+
+  $("#successModal")
+
+    .addEventListener(
+
+      "click",
+
+      event => {
 
 
 
@@ -3452,129 +3826,181 @@
 
         ) {
 
+
+
           closeModal();
+
+
 
         }
 
-      });
 
-
-
-    /* =========================
-
-       日期格式化
-
-    ========================= */
-
-
-
-    function formatDate(value) {
-
-
-
-      if (!value) {
-
-        return "请选择";
 
       }
 
-
-
-      const parts =
-
-        String(value).split("-");
+    );
 
 
 
-      if (parts.length !== 3) {
-
-        return value;
-
-      }
 
 
+  /* =====================================================
 
-      return `${parts[0]}年${Number(parts[1])}月${Number(parts[2])}日`;
+     格式化
+
+  ===================================================== */
+
+
+
+  function formatDate(value) {
+
+
+
+    const parts =
+
+      String(value)
+
+        .split("-");
+
+
+
+    if (
+
+      parts.length !== 3
+
+    ) {
+
+
+
+      return value;
+
+
 
     }
 
 
 
-    /* =========================
+    return (
 
-       时间格式化
+      `${parts[0]}年` +
 
-    ========================= */
+      `${Number(parts[1])}月` +
 
+      `${Number(parts[2])}日`
 
-
-    function formatTime(value) {
-
-
-
-      if (!value) {
-
-        return "";
-
-      }
+    );
 
 
 
-      const stringValue =
-
-        String(value);
+  }
 
 
 
-      if (
 
-        stringValue.length >= 5 &&
 
-        /^\d{2}:\d{2}/.test(stringValue)
-
-      ) {
-
-        return stringValue.slice(0, 5);
-
-      }
+  function formatTime(value) {
 
 
 
-      return stringValue;
+    if (!value) return "";
+
+
+
+    const str =
+
+      String(value);
+
+
+
+    if (
+
+      /^\d{2}:\d{2}/.test(str)
+
+    ) {
+
+
+
+      return str.substring(
+
+        0,
+
+        5
+
+      );
+
+
 
     }
 
 
 
-    /* =========================
-
-       HTML 安全处理
-
-    ========================= */
+    return str;
 
 
 
-    function escapeHtml(value) {
+  }
 
 
 
-      return String(value ?? "")
 
-        .replace(/&/g, "&amp;")
 
-        .replace(/</g, "&lt;")
-
-        .replace(/>/g, "&gt;")
-
-        .replace(/"/g, "&quot;")
-
-        .replace(/'/g, "&#039;");
-
-    }
+  function escapeHtml(value) {
 
 
 
-  </script>
+    return String(
+
+      value ?? ""
+
+    )
+
+      .replace(
+
+        /&/g,
+
+        "&amp;"
+
+      )
+
+      .replace(
+
+        /</g,
+
+        "&lt;"
+
+      )
+
+      .replace(
+
+        />/g,
+
+        "&gt;"
+
+      )
+
+      .replace(
+
+        /"/g,
+
+        "&quot;"
+
+      )
+
+      .replace(
+
+        /'/g,
+
+        "&#039;"
+
+      );
+
+
+
+  }
+
+
+
+</script>
 
 
 
