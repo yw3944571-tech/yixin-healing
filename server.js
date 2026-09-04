@@ -262,408 +262,170 @@ async function initDatabase() {
 
 try {
 
-
-
 // =============================================
-
 // 订单表
-
 // =============================================
 
-
-
 await pool.query(
-
-  
-
+  `
   CREATE TABLE IF NOT EXISTS orders (
-
     id VARCHAR(100) PRIMARY KEY,
-
     service VARCHAR(255) NOT NULL,
-
     price NUMERIC DEFAULT 0,
-
     duration VARCHAR(100),
-
     therapist VARCHAR(255) NOT NULL,
-
     therapist_id INTEGER,
-
     service_date VARCHAR(50) NOT NULL,
-
     service_time VARCHAR(50) NOT NULL,
-
     customer_name VARCHAR(255) NOT NULL,
-
     phone VARCHAR(50) NOT NULL,
-
     address TEXT NOT NULL,
-
     status VARCHAR(50) DEFAULT '待确认',
-
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
-
   )
-
-  
-
+  `
 );
-
-// =============================================
-
-// 兼容旧 therapists 数据表
-
-// 自动补充旧数据库缺少的字段
-
-// =============================================
-
-
-
-await pool.query(
-
-  
-
-  ALTER TABLE therapists
-
-  ADD COLUMN IF NOT EXISTS avatar TEXT
-
-  
-
-);
-
-
-
-await pool.query(
-
-  
-
-  ALTER TABLE therapists
-
-  ADD COLUMN IF NOT EXISTS bio TEXT
-
-  
-
-);
-
-
-
-await pool.query(
-
-  
-
-  ALTER TABLE therapists
-
-  ADD COLUMN IF NOT EXISTS experience VARCHAR(255)
-
-  
-
-);
-
-
-
-await pool.query(
-
-  
-
-  ALTER TABLE therapists
-
-  ADD COLUMN IF NOT EXISTS specialties TEXT
-
-  
-
-);
-
-
-
-await pool.query(
-
-  
-
-  ALTER TABLE therapists
-
-  ADD COLUMN IF NOT EXISTS is_active BOOLEAN DEFAULT TRUE
-
-  
-
-);
-
-
-
-await pool.query(
-
-  
-
-  ALTER TABLE orders
-
-  ADD COLUMN IF NOT EXISTS therapist_id INTEGER
-
-  
-
-);
-
-
-
 
 
 // =============================================
-
 // 疗愈师表
-
+// 必须先创建，再 ALTER
 // =============================================
 
-
-
-// 新数据库直接创建完整表
-
 await pool.query(
-
-  
-
+  `
   CREATE TABLE IF NOT EXISTS therapists (
-
     id SERIAL PRIMARY KEY,
-
     name VARCHAR(100) NOT NULL,
-
     avatar TEXT,
-
     bio TEXT,
-
     experience VARCHAR(255),
-
     specialties TEXT,
-
     is_active BOOLEAN DEFAULT TRUE,
-
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
-
   )
-
-  
-
+  `
 );
 
 
-
-
-
 // =============================================
-
-// 自动兼容旧数据库
-
-// 如果旧 therapists 表缺少字段，自动补齐
-
+// 兼容旧 orders 表
 // =============================================
-
-
 
 await pool.query(
+  `
+  ALTER TABLE orders
+  ADD COLUMN IF NOT EXISTS therapist_id INTEGER
+  `
+);
 
-  
 
+// =============================================
+// 兼容旧 therapists 表
+// 表已经确保存在，所以这里不会报错
+// =============================================
+
+await pool.query(
+  `
   ALTER TABLE therapists
-
   ADD COLUMN IF NOT EXISTS avatar TEXT
-
-  
-
+  `
 );
 
-
-
 await pool.query(
-
-  
-
+  `
   ALTER TABLE therapists
-
   ADD COLUMN IF NOT EXISTS bio TEXT
-
-  
-
+  `
 );
 
-
-
 await pool.query(
-
-  
-
+  `
   ALTER TABLE therapists
-
   ADD COLUMN IF NOT EXISTS experience VARCHAR(255)
-
-  
-
+  `
 );
 
-
-
 await pool.query(
-
-  
-
+  `
   ALTER TABLE therapists
-
   ADD COLUMN IF NOT EXISTS specialties TEXT
-
-  
-
+  `
 );
 
-
-
 await pool.query(
-
-  
-
+  `
   ALTER TABLE therapists
-
   ADD COLUMN IF NOT EXISTS is_active BOOLEAN DEFAULT TRUE
-
-  
-
+  `
 );
 
-
-
 await pool.query(
-
-  
-
+  `
   ALTER TABLE therapists
-
   ADD COLUMN IF NOT EXISTS created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
-
-  
-
+  `
 );
 
 
-
-
-
 // =============================================
-
-// 删除旧版本可能存在的姓名唯一限制
-
-// 允许多个疗愈师出现相同姓名
-
+// 删除旧的姓名唯一限制
 // =============================================
-
-
 
 await pool.query(
-
-  
-
+  `
   ALTER TABLE therapists
-
   DROP CONSTRAINT IF EXISTS therapists_name_key
-
-  
-
+  `
 );
-
-
-
-
-
-// =============================================
-
-// 自动处理旧数据库中的其他可能唯一索引
-
-// =============================================
-
-
 
 await pool.query(
-
-  
-
+  `
   DROP INDEX IF EXISTS therapists_name_key
-
-  
-
+  `
 );
 
 
-
-
-
 console.log(
-
-  "therapists 表结构检查完成"
-
+  "================================"
 );
 
-
-
-
-
-
-
-
-
 console.log(
-
   "PostgreSQL 数据库连接成功"
-
 );
 
-
-
-
-
 console.log(
-
   "orders 表已准备完成"
-
 );
-
-
-
-
 
 console.log(
-
   "therapists 表已准备完成"
+);
 
+console.log(
+  "数据库初始化完成"
+);
+
+console.log(
+  "================================"
 );
 
 
-
-} catch (
-
-error
-
-) {
-
-
+} catch (error) {
 
 console.error(
-
   "数据库初始化失败：",
-
   error
-
 );
-
-
-
-
 
 process.exit(1);
 
 
-
 }
 
 
 
 }
-
 
 
 // =================================================
