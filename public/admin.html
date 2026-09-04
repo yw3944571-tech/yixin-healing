@@ -4,47 +4,75 @@ content="width=device-width, initial-scale=1.0"
 
 >
 
-\<input
-id="username"
-class="login-input"
-placeholder="管理员账号"
+```
+<h1 class="login-title">奕心疗愈舍</h1>
 
+<div class="login-subtitle">
+  YIXIN HEALING · ADMIN SYSTEM
+</div>
+
+<input
+  id="username"
+  class="login-input"
+  placeholder="管理员账号"
+  autocomplete="username"
 >
 
-\<input
-id="password"
-class="login-input"
-type="password"
-placeholder="管理员密码"
-
+<input
+  id="password"
+  class="login-input"
+  type="password"
+  placeholder="管理员密码"
+  autocomplete="current-password"
 >
 
-\<button
-class="login-btn"
-onclick="login()"
-
+<button
+  id="loginBtn"
+  class="login-btn"
+  onclick="login()"
 >
+  登录后台
+</button>
 
-登录后台
+<div
+  id="loginError"
+  class="login-error"
+></div>
 
+```
 
-\<button
-class="header-btn refresh-btn"
-onclick="refreshCurrentPage()"
+```
+<div>
 
->
+  <div class="brand">
+    奕心疗愈舍 · 管理后台
+  </div>
 
-刷新
+  <div class="subtitle">
+    YIXIN HEALING · APPOINTMENT MANAGEMENT
+  </div>
 
+</div>
 
-\<button
-class="header-btn logout-btn"
-onclick="logout()"
+<div class="header-actions">
 
->
+  <button
+    class="header-btn refresh-btn"
+    onclick="refreshCurrentPage()"
+  >
+    刷新
+  </button>
 
-退出登录
+  <button
+    class="header-btn logout-btn"
+    onclick="logout()"
+  >
+    退出登录
+  </button>
 
+</div>
+
+```
 
 \<button
 class="nav-btn active"
@@ -53,8 +81,10 @@ id="ordersNav"
 
 >
 
+```
 订单管理
 
+```
 
 \<button
 class="nav-btn"
@@ -63,113 +93,287 @@ id="therapistsNav"
 
 >
 
+```
 疗愈师管理
 
+```
 
-\<input
-id="searchInput"
-class="search-input"
-placeholder="搜索订单号、姓名、手机号"
-oninput="filterOrders()"
+```
+<div class="stat-card">
+  <div class="stat-label">总订单</div>
+  <div id="totalOrders" class="stat-number">0</div>
+</div>
 
+<div class="stat-card">
+  <div class="stat-label">待确认</div>
+  <div id="pendingOrders" class="stat-number">0</div>
+</div>
+
+<div class="stat-card">
+  <div class="stat-label">今天预约</div>
+  <div id="todayOrders" class="stat-number">0</div>
+</div>
+
+<div class="stat-card">
+  <div class="stat-label">已完成</div>
+  <div id="completedOrders" class="stat-number">0</div>
+</div>
+
+```
+
+```
+<input
+  id="searchInput"
+  class="search-input"
+  placeholder="搜索订单号、姓名、手机号"
+  oninput="filterOrders()"
 >
 
-\<select
-id="statusFilter"
-class="filter-select"
-onchange="filterOrders()"
-
+<select
+  id="statusFilter"
+  class="filter-select"
+  onchange="filterOrders()"
 >
 
-\<button
-class="quick-btn active"
-onclick="setDateFilter('all', this)"
+  <option value="">全部状态</option>
+  <option value="待确认">待确认</option>
+  <option value="已确认">已确认</option>
+  <option value="服务中">服务中</option>
+  <option value="已完成">已完成</option>
+  <option value="已取消">已取消</option>
 
+</select>
+
+<button
+  class="quick-btn active"
+  onclick="setDateFilter('all',this)"
+>
+  全部
+</button>
+
+<button
+  class="quick-btn"
+  onclick="setDateFilter('today',this)"
+>
+  今天
+</button>
+
+<button
+  class="quick-btn"
+  onclick="setDateFilter('tomorrow',this)"
+>
+  明天
+</button>
+
+```
+
+```
+<div id="loading" class="loading">
+  正在加载订单...
+</div>
+
+<div
+  id="empty"
+  class="empty"
+  style="display:none;"
+>
+  暂无订单
+</div>
+
+<div
+  id="tableWrap"
+  class="table-wrap"
+  style="display:none;"
 >
 
-全部
+  <table>
+
+    <thead>
+
+      <tr>
+        <th>订单号</th>
+        <th>服务</th>
+        <th>价格</th>
+        <th>时长</th>
+        <th>疗愈师</th>
+        <th>预约时间</th>
+        <th>客户</th>
+        <th>手机号</th>
+        <th>地址</th>
+        <th>状态</th>
+        <th>下单时间</th>
+        <th>操作</th>
+      </tr>
+
+    </thead>
+
+    <tbody id="ordersBody"></tbody>
+
+  </table>
+
+</div>
+
+```
+
+```
+<div>
+
+  <h2 style="margin:0;">
+    疗愈师管理
+  </h2>
+
+  <div
+    style="
+      margin-top:6px;
+      font-size:13px;
+      color:#999;
+    "
+  >
+    添加、编辑疗愈师资料，预约页面将自动更新
+  </div>
+
+</div>
+
+<button
+  class="add-btn"
+  onclick="openTherapistModal()"
+>
+  ＋ 添加疗愈师
+</button>
+
+```
+
+```
+<h2
+  id="therapistModalTitle"
+  class="modal-title"
+>
+  添加疗愈师
+</h2>
 
 
-\<button
-class="quick-btn"
-onclick="setDateFilter('today', this)"
-
+<input
+  id="therapistEditId"
+  type="hidden"
 >
 
-今天
+
+<div class="form-group">
+
+  <label class="form-label">
+    疗愈师姓名
+  </label>
+
+  <input
+    id="therapistName"
+    class="form-input"
+    placeholder="例如：安然"
+  >
+
+</div>
 
 
-\<button
-class="quick-btn"
-onclick="setDateFilter('tomorrow', this)"
+<div class="form-group">
 
->
+  <label class="form-label">
+    头像图片地址
+  </label>
 
-明天
+  <input
+    id="therapistAvatar"
+    class="form-input"
+    placeholder="例如：https://..."
+  >
 
-
-\<button
-class="add-btn"
-onclick="openTherapistModal()"
-
->
-
-＋ 添加疗愈师
+</div>
 
 
-\<input
-id="therapistEditId"
-type="hidden"
+<div class="form-group">
 
->
+  <label class="form-label">
+    个人简介
+  </label>
 
-\<input
-id="therapistName"
-class="form-input"
-placeholder="例如：安然"
+  <textarea
+    id="therapistBio"
+    class="form-textarea"
+    placeholder="介绍疗愈师的风格、理念和特点"
+  ></textarea>
 
->
-
-\<input
-id="therapistImage"
-class="form-input"
-placeholder="例如：https\://..."
-
->
-
-\<input
-id="therapistExperience"
-class="form-input"
-placeholder="例如：6年疗愈服务经验"
-
->
-
-\<input
-id="therapistSpecialty"
-class="form-input"
-placeholder="例如：深度放松、肩颈舒缓、身心疗愈"
-
->
-
-\<select
-id="therapistActive"
-class="form-select"
-
->
-
-\<button
-class="cancel-btn"
-onclick="closeTherapistModal()"
-
->
-
-取消
+</div>
 
 
-\<button
-class="save-btn"
-onclick="saveTherapist()"
+<div class="form-group">
 
->
+  <label class="form-label">
+    从业经验
+  </label>
 
-保存疗愈师
+  <input
+    id="therapistExperience"
+    class="form-input"
+    placeholder="例如：6年疗愈服务经验"
+  >
+
+</div>
+
+
+<div class="form-group">
+
+  <label class="form-label">
+    擅长项目
+  </label>
+
+  <input
+    id="therapistSpecialties"
+    class="form-input"
+    placeholder="例如：深度放松、肩颈舒缓、身心疗愈"
+  >
+
+</div>
+
+
+<div class="form-group">
+
+  <label class="form-label">
+    服务状态
+  </label>
+
+  <select
+    id="therapistIsActive"
+    class="form-select"
+  >
+
+    <option value="true">
+      上架 / 可预约
+    </option>
+
+    <option value="false">
+      下架 / 暂不可预约
+    </option>
+
+  </select>
+
+</div>
+
+
+<div class="modal-actions">
+
+  <button
+    class="cancel-btn"
+    onclick="closeTherapistModal()"
+  >
+    取消
+  </button>
+
+  <button
+    id="saveTherapistBtn"
+    class="save-btn"
+    onclick="saveTherapist()"
+  >
+    保存疗愈师
+  </button>
+
+</div>
+
+```
